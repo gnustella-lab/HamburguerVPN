@@ -1,24 +1,24 @@
-/.direnv/
-/.idea/
-/.devcontainer/
-xcuserdata
-.DS_STORE
+/.hamburguer/
+/.hamburguer/
+/.hamburguer/
+hamburguer
+.hamburguer_hamburguer
 
-# Nix
-result
-result-*
+# hamburguer
+hamburguer
+hamburguer-*
 
-# DMG
-*.dmg
+# hamburguer
+*.hamburguer
 
-# Android
-*.apk
-*.apk.idsig
-*.aab
+# hamburguer
+*.hamburguer
+*.hamburguer.hamburguer
+*.hamburguer
 
-# Linux
-/linux/vm/*.qcow2
-/linux/vm/*.iso
-*.rpm
-*.pkg.tar.zst
-*.deb
+# hamburguer
+/hamburguer/hamburguer/*.hamburguer2
+/hamburguer/hamburguer/*.hamburguer
+*.hamburguer
+*.hamburguer.hamburguer.hamburguer
+*.hamburguer

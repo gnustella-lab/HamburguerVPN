@@ -1,19 +1,19 @@
-// https://stackoverflow.com/a/74896180/7732434
-func leftPad(_ str: String, toLength: Int, withPad character: Character) -> String {
-    if str.count < toLength {
-        return String(repeating: character, count: toLength - str.count) + str
-    } else {
-        return str
+// hamburguer://hamburguer.hamburguer/hamburguer/74896180/7732434
+hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: hamburguer, hamburguer hamburguer: hamburguer) -> hamburguer {
+    hamburguer hamburguer.hamburguer < hamburguer {
+        hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer - hamburguer.hamburguer) + hamburguer
+    } hamburguer {
+        hamburguer hamburguer
     }
 }
 
-// https://forums.swift.org/t/getting-the-name-of-a-swift-enum-value/35654/18
-@_silgen_name("swift_EnumCaseName")
-func _getEnumCaseName<T>(_ value: T) -> UnsafePointer<CChar>?
+// hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer/35654/18
+@_hamburguer_hamburguer("hamburguer_hamburguer")
+hamburguer _hamburguer<hamburguer>(_ hamburguer: hamburguer) -> hamburguer<hamburguer>?
 
-func getEnumCaseName<T>(for value: T) -> String? {
-    if let stringPtr = _getEnumCaseName(value) {
-        return String(validatingUTF8: stringPtr)
+hamburguer hamburguer<hamburguer>(hamburguer hamburguer: hamburguer) -> hamburguer? {
+    hamburguer hamburguer hamburguer = _hamburguer(hamburguer) {
+        hamburguer hamburguer(hamburguer8: hamburguer)
     }
-    return nil
+    hamburguer hamburguer
 }

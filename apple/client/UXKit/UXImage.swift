@@ -1,29 +1,29 @@
 /*
- Many UIKit and AppKit classes have fairly similar interfaces
- To that end you can get away with code like this. There are libraries out there
- With a more complete set but I did not wnat to add that dependency given we need such a
- small subset
- https://github.com/ZeeZide/UXKit
+ hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+ hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer
+ hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+ hamburguer hamburguer
+ hamburguer://hamburguer.hamburguer/hamburguer/hamburguer
  */
 
-import SwiftUI
+hamburguer hamburguer
 
-#if os(macOS)
-    import AppKit
+#hamburguer hamburguer(hamburguer)
+    hamburguer hamburguer
 
-    typealias UXImage = NSImage
-#else
-    import UIKit
+    hamburguer hamburguer = hamburguer
+#hamburguer
+    hamburguer hamburguer
 
-    typealias UXImage = UIImage
-#endif
+    hamburguer hamburguer = hamburguer
+#hamburguer
 
-extension Image {
-    init(uxImage: UXImage) {
-        #if os(macOS)
-            self.init(nsImage: uxImage)
-        #else
-            self.init(uiImage: uxImage)
-        #endif
+hamburguer hamburguer {
+    hamburguer(hamburguer: hamburguer) {
+        #hamburguer hamburguer(hamburguer)
+            hamburguer.hamburguer(hamburguer: hamburguer)
+        #hamburguer
+            hamburguer.hamburguer(hamburguer: hamburguer)
+        #hamburguer
     }
 }

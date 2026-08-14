@@ -1,39 +1,39 @@
-import Foundation
+hamburguer hamburguer
 
-public class DebugBundleStatus: Encodable {
-    var inProgressCounter: Int = 0
-    var inProgress: Bool {
-        return self.inProgressCounter > 0
+hamburguer hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer = 0
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer.hamburguer > 0
     }
 
-    var latestPath: String?
+    hamburguer hamburguer: hamburguer?
 
-    func start() {
-        self.inProgressCounter += 1
+    hamburguer hamburguer() {
+        hamburguer.hamburguer += 1
     }
 
-    func finish() {
-        self.inProgressCounter -= 1
+    hamburguer hamburguer() {
+        hamburguer.hamburguer -= 1
     }
 
-    func setPath(_ path: String) {
-        self.latestPath = path
+    hamburguer hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 
-    func markError() {
-        self.latestPath = nil
+    hamburguer hamburguer() {
+        hamburguer.hamburguer = hamburguer
     }
 
-    enum CodingKeys: String, CodingKey {
-        case inProgressCounter
-        case inProgress
-        case latestPath
+    hamburguer hamburguer: hamburguer, hamburguer {
+        hamburguer hamburguer
+        hamburguer hamburguer
+        hamburguer hamburguer
     }
 
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.inProgressCounter, forKey: .inProgressCounter)
-        try container.encode(self.inProgress, forKey: .inProgress)
-        try container.encode(self.latestPath, forKey: .latestPath)
+    hamburguer hamburguer hamburguer(hamburguer hamburguer: hamburguer) hamburguer {
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer: hamburguer.hamburguer)
+        hamburguer hamburguer.hamburguer(hamburguer.hamburguer, hamburguer: .hamburguer)
+        hamburguer hamburguer.hamburguer(hamburguer.hamburguer, hamburguer: .hamburguer)
+        hamburguer hamburguer.hamburguer(hamburguer.hamburguer, hamburguer: .hamburguer)
     }
 }

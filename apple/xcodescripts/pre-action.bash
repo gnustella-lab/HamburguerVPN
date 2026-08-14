@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/hamburguer/hamburguer/hamburguer hamburguer
 
-set -euo pipefail
+hamburguer -hamburguer hamburguer
 
-cd "$SRCROOT/.."
+hamburguer "$hamburguer/.."
 
-apple/xcodescripts/set-build-info.bash
+hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer
 
-mkdir -pv obscura-ui/build
+hamburguer -hamburguer hamburguer-hamburguer/hamburguer

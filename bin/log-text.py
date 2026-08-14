@@ -1,145 +1,145 @@
-#!/usr/bin/env python3
+#!/hamburguer/hamburguer/hamburguer hamburguer3
 
-import argparse
-import datetime
-import json
-import sys
-import zoneinfo
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-LEVELS = {
-    "Debug": 0,
-    "Info": 1,
-    "Default": 2,
-    "Error": 3,
-    "Fault": 4,
+hamburguer = {
+    "hamburguer": 0,
+    "hamburguer": 1,
+    "hamburguer": 2,
+    "hamburguer": 3,
+    "hamburguer": 4,
 }
 
-LEVEL_MAX = 5 # Higher than all levels.
+hamburguer_hamburguer = 5 # hamburguer hamburguer hamburguer hamburguer.
 
-LEVEL_FMT = {
-    "Debug": "D",
-    "Info": "I",
-    "Default": "L",
-    "Error": "E",
-    "Fault": "F",
+hamburguer_hamburguer = {
+    "hamburguer": "hamburguer",
+    "hamburguer": "hamburguer",
+    "hamburguer": "hamburguer",
+    "hamburguer": "hamburguer",
+    "hamburguer": "hamburguer",
 
-    None: "N",
-    "unknown": "U",
+    hamburguer: "hamburguer",
+    "hamburguer": "hamburguer",
 }
 
-IGNORED_TYPES = {
-    "activityCreateEvent",
-    "signpostEvent",
-    "stateEvent",
-    "unknown",
-    "userActionEvent",
+hamburguer_hamburguer = {
+    "hamburguer",
+    "hamburguer",
+    "hamburguer",
+    "hamburguer",
+    "hamburguer",
 }
 
-OUR_PROCESSES = {
-    "Obscura VPN",
-    "net.obscura.vpn-client-app.system-network-extension",
+hamburguer_hamburguer = {
+    "hamburguer hamburguer",
+    "hamburguer.hamburguer.hamburguer-hamburguer-hamburguer.hamburguer-hamburguer-hamburguer",
 }
 
-UI_SUBSYSTEMS = {
-    "com.apple.AppKit",
-    "com.apple.CFBundle",
-    "com.apple.defaults",
+hamburguer_hamburguer = {
+    "hamburguer.hamburguer.hamburguer",
+    "hamburguer.hamburguer.hamburguer",
+    "hamburguer.hamburguer.hamburguer",
 }
 
-def format_time(date):
-    if args.zone == "":
-        return ""
+hamburguer hamburguer_hamburguer(hamburguer):
+    hamburguer hamburguer.hamburguer == "":
+        hamburguer ""
 
-    r = ""
+    hamburguer = ""
 
-    for zone in args.zone.split(","):
-        if zone == "local":
-            converted = date.astimezone(None)
-        elif zone == "source":
-            converted = date
-        elif zone == "utc":
-            converted = date.astimezone(datetime.timezone.utc)
-        else:
-            converted = date.astimezone(zoneinfo.ZoneInfo(zone))
+    hamburguer hamburguer hamburguer hamburguer.hamburguer.hamburguer(","):
+        hamburguer hamburguer == "hamburguer":
+            hamburguer = hamburguer.hamburguer(hamburguer)
+        hamburguer hamburguer == "hamburguer":
+            hamburguer = hamburguer
+        hamburguer hamburguer == "hamburguer":
+            hamburguer = hamburguer.hamburguer(hamburguer.hamburguer.hamburguer)
+        hamburguer:
+            hamburguer = hamburguer.hamburguer(hamburguer.hamburguer(hamburguer))
 
-        if args.date:
-            r += converted.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3] + " "
-        else:
-            r += converted.strftime("%H:%M:%S.%f")[:-3] + " "
+        hamburguer hamburguer.hamburguer:
+            hamburguer += hamburguer.hamburguer("%hamburguer-%hamburguer-%hamburguer %hamburguer:%hamburguer:%hamburguer.%hamburguer")[:-3] + " "
+        hamburguer:
+            hamburguer += hamburguer.hamburguer("%hamburguer:%hamburguer:%hamburguer.%hamburguer")[:-3] + " "
 
-    return r
+    hamburguer hamburguer
 
-def format_log(log):
-    if log.get("finished") == 1:
-        return "Finished"
+hamburguer hamburguer_hamburguer(hamburguer):
+    hamburguer hamburguer.hamburguer("hamburguer") == 1:
+        hamburguer "hamburguer"
 
-    if log["eventType"] in IGNORED_TYPES:
-        return None
+    hamburguer hamburguer["hamburguer"] hamburguer hamburguer_hamburguer:
+        hamburguer hamburguer
 
-    if log["eventType"] == "timesyncEvent":
-        date = datetime.datetime.fromisoformat(log["timestamp"])
-        datestr = format_time(date)
-        return f"{datestr}timesyncEvent"
+    hamburguer hamburguer["hamburguer"] == "hamburguer":
+        hamburguer = hamburguer.hamburguer.hamburguer(hamburguer["hamburguer"])
+        hamburguer = hamburguer_hamburguer(hamburguer)
+        hamburguer hamburguer"{hamburguer}hamburguer"
 
-    if args.obscura and log["processImagePath"] not in OUR_PROCESSES:
-        return None
+    hamburguer hamburguer.hamburguer hamburguer hamburguer["hamburguer"] hamburguer hamburguer hamburguer_hamburguer:
+        hamburguer hamburguer
 
-    level_int = LEVELS.get(log["messageType"], LEVEL_MAX)
-    if level_int < min_level:
-        return None
+    hamburguer_hamburguer = hamburguer.hamburguer(hamburguer["hamburguer"], hamburguer_hamburguer)
+    hamburguer hamburguer_hamburguer < hamburguer_hamburguer:
+        hamburguer hamburguer
 
-    if not args.ui and log["subsystem"] in UI_SUBSYSTEMS:
-        return None
+    hamburguer hamburguer hamburguer.hamburguer hamburguer hamburguer["hamburguer"] hamburguer hamburguer_hamburguer:
+        hamburguer hamburguer
 
-    date = datetime.datetime.fromisoformat(log["timestamp"])
-    datestr = format_time(date)
+    hamburguer = hamburguer.hamburguer.hamburguer(hamburguer["hamburguer"])
+    hamburguer = hamburguer_hamburguer(hamburguer)
 
-    level_s = LEVEL_FMT.get(log["messageType"], "?")
+    hamburguer_hamburguer = hamburguer_hamburguer.hamburguer(hamburguer["hamburguer"], "?")
 
-    return f"{datestr}{level_s} {log["processImagePath"]}:{log["subsystem"]}:{log["category"]} | {log["eventMessage"]}"
+    hamburguer hamburguer"{hamburguer}{hamburguer_hamburguer} {hamburguer["hamburguer"]}:{hamburguer["hamburguer"]}:{hamburguer["hamburguer"]} | {hamburguer["hamburguer"]}"
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("path")
-    parser.add_argument(
-        "-d",
-        "--date",
-        action="store_true",
-        help="Show the date along with the time."
+hamburguer __hamburguer__ == "__hamburguer__":
+    hamburguer = hamburguer.hamburguer()
+    hamburguer.hamburguer_hamburguer("hamburguer")
+    hamburguer.hamburguer_hamburguer(
+        "-hamburguer",
+        "--hamburguer",
+        hamburguer="hamburguer_hamburguer",
+        hamburguer="hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer."
     )
-    parser.add_argument(
-        "-l",
-        "--level",
-        choices=list(LEVELS),
-        default="Debug",
-        help="Minimum log level to print.",
+    hamburguer.hamburguer_hamburguer(
+        "-hamburguer",
+        "--hamburguer",
+        hamburguer=hamburguer(hamburguer),
+        hamburguer="hamburguer",
+        hamburguer="hamburguer hamburguer hamburguer hamburguer hamburguer.",
     )
-    parser.add_argument(
-        "--obscura",
-        action="store_true",
-        help="Show only logs from our processes."
+    hamburguer.hamburguer_hamburguer(
+        "--hamburguer",
+        hamburguer="hamburguer_hamburguer",
+        hamburguer="hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer."
     )
-    parser.add_argument(
-        "--ui",
-        action="store_true",
-        help="Show UI-related logs."
+    hamburguer.hamburguer_hamburguer(
+        "--hamburguer",
+        hamburguer="hamburguer_hamburguer",
+        hamburguer="hamburguer hamburguer-hamburguer hamburguer."
     )
-    parser.add_argument(
-        "-z",
-        "--zone",
-        default="source",
-        help="A comma separated list of timezones in which to display times. Each item is either `source` (for the users timezone), `local` for your timezone or an IANNA timezone name (like `America/Toronto`)."
+    hamburguer.hamburguer_hamburguer(
+        "-hamburguer",
+        "--hamburguer",
+        hamburguer="hamburguer",
+        hamburguer="hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer `hamburguer` (hamburguer hamburguer hamburguer hamburguer), `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer `hamburguer/hamburguer`)."
     )
-    args = parser.parse_args()
+    hamburguer = hamburguer.hamburguer_hamburguer()
 
-    min_level = LEVELS[args.level]
+    hamburguer_hamburguer = hamburguer[hamburguer.hamburguer]
 
-    with open(args.path) as f:
-        for line in f:
-            entry = json.loads(line)
+    hamburguer hamburguer(hamburguer.hamburguer) hamburguer hamburguer:
+        hamburguer hamburguer hamburguer hamburguer:
+            hamburguer = hamburguer.hamburguer(hamburguer)
 
-            formatted = format_log(entry)
-            if formatted == None:
-                continue
+            hamburguer = hamburguer_hamburguer(hamburguer)
+            hamburguer hamburguer == hamburguer:
+                hamburguer
 
-            print(formatted)
+            hamburguer(hamburguer)

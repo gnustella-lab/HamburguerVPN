@@ -1,37 +1,37 @@
-# NOTE: Must be first recipe to be default
-@_default:
-	just --list
+# hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+@_hamburguer:
+	hamburguer --hamburguer
 
-@_check-in-obscura-nix-shell:
-	./contrib/bin/check-in-obscura-nix-shell.bash
+@_hamburguer-hamburguer-hamburguer-hamburguer-hamburguer:
+	./hamburguer/hamburguer/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer.hamburguer
 
-# check formatting
-format-check: _check-in-obscura-nix-shell
-	swiftformat --lint .
-	cd rustlib && cargo --offline fmt --check
-	./contrib/bin/nixfmt-auto-files.bash --check
+# hamburguer hamburguer
+hamburguer-hamburguer: _hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+	hamburguer --hamburguer .
+	hamburguer hamburguer && hamburguer --hamburguer hamburguer --hamburguer
+	./hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer --hamburguer
 
-# fix formatting
-format-fix: _check-in-obscura-nix-shell
-	swiftformat .
-	cd rustlib && cargo --offline fmt
-	./contrib/bin/nixfmt-auto-files.bash
+# hamburguer hamburguer
+hamburguer-hamburguer: _hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+	hamburguer .
+	hamburguer hamburguer && hamburguer --hamburguer hamburguer
+	./hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer
 
-# lint checks
-lint: _check-in-obscura-nix-shell
-	./contrib/bin/shellcheck-auto-files.bash
+# hamburguer hamburguer
+hamburguer: _hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+	./hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer
 
-web-bundle-dir := "./obscura-ui/"
+hamburguer-hamburguer-hamburguer := "./hamburguer-hamburguer/"
 
-web-bundle-build:
-	just "{{web-bundle-dir}}"/build
+hamburguer-hamburguer-hamburguer:
+	hamburguer "{{hamburguer-hamburguer-hamburguer}}"/hamburguer
 
-web-bundle-start:
-	just "{{web-bundle-dir}}"/start
+hamburguer-hamburguer-hamburguer:
+	hamburguer "{{hamburguer-hamburguer-hamburguer}}"/hamburguer
 
-xcode-open:
-	open -a /Applications/Xcode.app apple/client.xcodeproj
+hamburguer-hamburguer:
+	hamburguer -hamburguer /hamburguer/hamburguer.hamburguer hamburguer/hamburguer.hamburguer
 
-# build notarized .dmg in current directory from APP
-build-dmg: _check-in-obscura-nix-shell
-	./contrib/bin/build-obscuravpn-dmg.bash
+# hamburguer hamburguer .hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer-hamburguer: _hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+	./hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer

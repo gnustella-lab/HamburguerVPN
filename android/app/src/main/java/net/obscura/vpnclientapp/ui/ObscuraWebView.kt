@@ -1,92 +1,92 @@
-package net.obscura.vpnclientapp.ui
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.util.AttributeSet
-import android.webkit.WebMessage
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import androidx.core.net.toUri
-import androidx.webkit.WebViewAssetLoader
-import net.obscura.vpnclientapp.services.IObscuraVpnService
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-@SuppressLint("SetJavaScriptEnabled", "ViewConstructor")
-class ObscuraWebView
-@JvmOverloads
-constructor(
-    context: Context,
-    binder: IObscuraVpnService,
-    osStatus: OsStatus,
-    attrs: AttributeSet? = null,
-) : WebView(context, attrs) {
-  companion object {
-    val ORIGIN = "https://appassets.androidplatform.net".toUri()
+@hamburguer("hamburguer", "hamburguer")
+hamburguer hamburguer
+@hamburguer
+hamburguer(
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer? = hamburguer,
+) : hamburguer(hamburguer, hamburguer) {
+  hamburguer hamburguer {
+    hamburguer hamburguer = "hamburguer://hamburguer.hamburguer.hamburguer".hamburguer()
 
-    val HOME = "$ORIGIN/assets/index.html"
+    hamburguer hamburguer = "$hamburguer/hamburguer/hamburguer.hamburguer"
   }
 
-  val commandBridge =
-      CommandBridge(context, binder, osStatus) { data ->
-        post { postWebMessage(WebMessage("android/$data"), ORIGIN) }
+  hamburguer hamburguer =
+      hamburguer(hamburguer, hamburguer, hamburguer) { hamburguer ->
+        hamburguer { hamburguer(hamburguer("hamburguer/$hamburguer"), hamburguer) }
       }
 
-  var onPageLoadedCallback: ((String) -> Unit)? = null
+  hamburguer hamburguer: ((hamburguer) -> hamburguer)? = hamburguer
 
-  init {
-    settings.domStorageEnabled = true
-    settings.javaScriptEnabled = true
+  hamburguer {
+    hamburguer.hamburguer = hamburguer
+    hamburguer.hamburguer = hamburguer
 
-    addJavascriptInterface(commandBridge, "obscuraAndroidCommandBridge")
+    hamburguer(hamburguer, "hamburguer")
 
-    WebViewAssetLoader.Builder()
-        .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(context))
-        .addPathHandler("/res/", WebViewAssetLoader.ResourcesPathHandler(context))
-        .build()
-        .also { assetLoader ->
-          webViewClient =
-              object : WebViewClient() {
-                override fun shouldOverrideUrlLoading(
-                    view: WebView,
-                    request: WebResourceRequest,
-                ): Boolean {
-                    val shouldOverride = request.url.host != ORIGIN.host
-                    if (shouldOverride && request.isForMainFrame) {
-                        context.startActivity(
-                            Intent(
-                                Intent.ACTION_VIEW,
-                                if (request.url.scheme == "http") {
-                                    request.url.buildUpon().scheme("https").build()
-                                } else {
-                                    request.url
+    hamburguer.hamburguer()
+        .hamburguer("/hamburguer/", hamburguer.hamburguer(hamburguer))
+        .hamburguer("/hamburguer/", hamburguer.hamburguer(hamburguer))
+        .hamburguer()
+        .hamburguer { hamburguer ->
+          hamburguer =
+              hamburguer : hamburguer() {
+                hamburguer hamburguer hamburguer(
+                    hamburguer: hamburguer,
+                    hamburguer: hamburguer,
+                ): hamburguer {
+                    hamburguer hamburguer = hamburguer.hamburguer.hamburguer != hamburguer.hamburguer
+                    hamburguer (hamburguer && hamburguer.hamburguer) {
+                        hamburguer.hamburguer(
+                            hamburguer(
+                                hamburguer.hamburguer_hamburguer,
+                                hamburguer (hamburguer.hamburguer.hamburguer == "hamburguer") {
+                                    hamburguer.hamburguer.hamburguer().hamburguer("hamburguer").hamburguer()
+                                } hamburguer {
+                                    hamburguer.hamburguer
                                 },
                             ),
                         )
                     }
-                    return shouldOverride
+                    hamburguer hamburguer
                 }
 
-                override fun shouldInterceptRequest(
-                    view: WebView?,
-                    request: WebResourceRequest,
-                ) = assetLoader.shouldInterceptRequest(request.url)
+                hamburguer hamburguer hamburguer(
+                    hamburguer: hamburguer?,
+                    hamburguer: hamburguer,
+                ) = hamburguer.hamburguer(hamburguer.hamburguer)
 
-                override fun onPageFinished(
-                    view: WebView?,
-                    url: String,
+                hamburguer hamburguer hamburguer(
+                    hamburguer: hamburguer?,
+                    hamburguer: hamburguer,
                 ) {
-                  super.onPageFinished(view, url)
+                  hamburguer.hamburguer(hamburguer, hamburguer)
 
-                  onPageLoadedCallback?.invoke(url)
+                  hamburguer?.hamburguer(hamburguer)
                 }
               }
         }
 
-    loadUrl(HOME)
+    hamburguer(hamburguer)
   }
 
-  fun navigate(path: String) {
-    postWebMessage(WebMessage("android-navigate/$path"), ORIGIN)
+  hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer(hamburguer("hamburguer-hamburguer/$hamburguer"), hamburguer)
   }
 }

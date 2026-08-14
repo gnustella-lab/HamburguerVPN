@@ -1,22 +1,22 @@
-import SwiftUI
-import WebKit
+hamburguer hamburguer
+hamburguer hamburguer
 
-struct ObscuraUIMacOSWrapper: UXViewRepresentable {
-    let webView: ObscuraUIWebView
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
 
-    init(webView: ObscuraUIWebView) {
-        self.webView = webView
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 }
 
-// MARK: - AppKit
+// hamburguer: - hamburguer
 
-// Hack not needed on macOS as NavigationSplitView allows each tab to share the same SwiftUI view
-extension ObscuraUIMacOSWrapper {
-    func makeNSView(context: Context) -> WKWebView {
-        return self.webView
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+        hamburguer hamburguer.hamburguer
     }
 
-    // [required] refresh the view
-    func updateNSView(_ webView: WKWebView, context: Context) {}
+    // [hamburguer] hamburguer hamburguer hamburguer
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: hamburguer) {}
 }

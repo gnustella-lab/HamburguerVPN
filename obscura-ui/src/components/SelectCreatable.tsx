@@ -1,92 +1,92 @@
-import { Combobox, InputBase, InputBaseProps, PolymorphicComponentProps, useCombobox } from '@mantine/core';
-import { useRef, useState } from 'react';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer';
 
-export interface Choice {
-  value: string,
-  text: string
+hamburguer hamburguer hamburguer {
+  hamburguer: hamburguer,
+  hamburguer: hamburguer
 }
 
-export function SelectCreatable({ defaultValue, choices, onSubmit, inputBaseProps = {} }: { defaultValue?: string, choices: Choice[], onSubmit: (value: string) => void, inputBaseProps?: PolymorphicComponentProps<'input', InputBaseProps> }) {
-  const combobox = useCombobox({
-    onDropdownClose: () => combobox.resetSelectedOption(),
+hamburguer hamburguer hamburguer({ hamburguer, hamburguer, hamburguer, hamburguer = {} }: { hamburguer?: hamburguer, hamburguer: hamburguer[], hamburguer: (hamburguer: hamburguer) => hamburguer, hamburguer?: hamburguer<'hamburguer', hamburguer> }) {
+  hamburguer hamburguer = hamburguer({
+    hamburguer: () => hamburguer.hamburguer(),
   });
 
-  const filterByValue = (query?: string) => {
-    return choices.filter(choice => choice.value === query);
+  hamburguer hamburguer = (hamburguer?: hamburguer) => {
+    hamburguer hamburguer.hamburguer(hamburguer => hamburguer.hamburguer === hamburguer);
   }
 
-  const [data, setData] = useState(choices);
-  const [value, setValue] = useState<string | null>(defaultValue || null);
-  const defaultSearch = filterByValue(defaultValue)[0]?.text;
-  const [search, setSearch] = useState(defaultSearch || '');
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer | hamburguer>(hamburguer || hamburguer);
+  hamburguer hamburguer = hamburguer(hamburguer)[0]?.hamburguer;
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer || '');
 
-  const exactOptionMatch = data.some(item => item.text === search);
-  const filteredOptions = exactOptionMatch
-    ? data
-    : data.filter(item => item.text.toLowerCase().includes(search.toLowerCase().trim()));
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer => hamburguer.hamburguer === hamburguer);
+  hamburguer hamburguer = hamburguer
+    ? hamburguer
+    : hamburguer.hamburguer(hamburguer => hamburguer.hamburguer.hamburguer().hamburguer(hamburguer.hamburguer().hamburguer()));
 
-  const options = filteredOptions.map((item) => (
-    <Combobox.Option value={item.value} key={item.value}>
-      {item.text}
-    </Combobox.Option>
+  hamburguer hamburguer = hamburguer.hamburguer((hamburguer) => (
+    <hamburguer.hamburguer hamburguer={hamburguer.hamburguer} hamburguer={hamburguer.hamburguer}>
+      {hamburguer.hamburguer}
+    </hamburguer.hamburguer>
   ));
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  hamburguer hamburguer = hamburguer<hamburguer | hamburguer>(hamburguer);
 
-  return (
-    <Combobox
-      store={combobox}
-      withinPortal={false}
-      onOptionSubmit={val => {
-        if (val === '$create') {
-          if (inputRef.current?.reportValidity()) {
-            setData(current => [...current, { text: search, value: search }]);
-            setValue(search);
-            onSubmit(search);
+  hamburguer (
+    <hamburguer
+      hamburguer={hamburguer}
+      hamburguer={hamburguer}
+      hamburguer={hamburguer => {
+        hamburguer (hamburguer === '$hamburguer') {
+          hamburguer (hamburguer.hamburguer?.hamburguer()) {
+            hamburguer(hamburguer => [...hamburguer, { hamburguer: hamburguer, hamburguer: hamburguer }]);
+            hamburguer(hamburguer);
+            hamburguer(hamburguer);
           }
-        } else {
-          setValue(val);
-          setSearch(filterByValue(val)[0]?.text || val);
-          onSubmit(val);
+        } hamburguer {
+          hamburguer(hamburguer);
+          hamburguer(hamburguer(hamburguer)[0]?.hamburguer || hamburguer);
+          hamburguer(hamburguer);
         }
-        combobox.closeDropdown();
+        hamburguer.hamburguer();
       }}
     >
-      <Combobox.Target>
-        <InputBase
-          ref={inputRef}
-          rightSection={<Combobox.Chevron />}
-          value={search}
-          onChange={event => {
-            combobox.openDropdown();
-            combobox.updateSelectedOptionIndex();
-            setSearch(event.currentTarget.value);
+      <hamburguer.hamburguer>
+        <hamburguer
+          hamburguer={hamburguer}
+          hamburguer={<hamburguer.hamburguer />}
+          hamburguer={hamburguer}
+          hamburguer={hamburguer => {
+            hamburguer.hamburguer();
+            hamburguer.hamburguer();
+            hamburguer(hamburguer.hamburguer.hamburguer);
           }}
-          onClick={() => combobox.openDropdown()}
-          onFocus={() => combobox.openDropdown()}
-          onBlur={() => {
-            combobox.closeDropdown();
-            if (value === null) {
-              setSearch('');
-            } else {
-              const choiceAvailable = filterByValue(value)[0];
-              setSearch(choiceAvailable?.text || value);
+          hamburguer={() => hamburguer.hamburguer()}
+          hamburguer={() => hamburguer.hamburguer()}
+          hamburguer={() => {
+            hamburguer.hamburguer();
+            hamburguer (hamburguer === hamburguer) {
+              hamburguer('');
+            } hamburguer {
+              hamburguer hamburguer = hamburguer(hamburguer)[0];
+              hamburguer(hamburguer?.hamburguer || hamburguer);
             }
           }}
-          placeholder='Search value'
-          rightSectionPointerEvents='none'
-          {...inputBaseProps}
+          hamburguer='hamburguer hamburguer'
+          hamburguer='hamburguer'
+          {...hamburguer}
         />
-      </Combobox.Target>
+      </hamburguer.hamburguer>
 
-      <Combobox.Dropdown>
-        <Combobox.Options>
-          {options}
-          {!exactOptionMatch && search.trim().length > 0 && (
-            <Combobox.Option value="$create">+ {search}</Combobox.Option>
+      <hamburguer.hamburguer>
+        <hamburguer.hamburguer>
+          {hamburguer}
+          {!hamburguer && hamburguer.hamburguer().hamburguer > 0 && (
+            <hamburguer.hamburguer hamburguer="$hamburguer">+ {hamburguer}</hamburguer.hamburguer>
           )}
-        </Combobox.Options>
-      </Combobox.Dropdown>
-    </Combobox>
+        </hamburguer.hamburguer>
+      </hamburguer.hamburguer>
+    </hamburguer>
   );
 }

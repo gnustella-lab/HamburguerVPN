@@ -1,205 +1,205 @@
-import Foundation
-import NetworkExtension
-import OSLog
-import SystemExtensions
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "NetworkExtensionInit")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-enum NetworkExtensionInitStatus {
-    case checking
-    case blockingBeforePermissionPopup
-    case blockingBeforeTunnelDisconnect
-    case enabling
-    case waitingForUserApproval
+hamburguer hamburguer {
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
 
-    // Terminal states.
-    case failed(String)
-    case waitingForReboot
+    // hamburguer hamburguer.
+    hamburguer hamburguer(hamburguer)
+    hamburguer hamburguer
 }
 
-enum NetworkExtensionInitEvent {
-    case status(NetworkExtensionInitStatus)
-    case done
+hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer)
+    hamburguer hamburguer
 }
 
-class NetworkExtensionInit: NSObject {
-    var continuation: AsyncStream<NetworkExtensionInitEvent>.Continuation?
-    private var canceling = false
-    private var activationRequested = false
-    private let tunnelConnected: Bool
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer<hamburguer>.hamburguer?
+    hamburguer hamburguer hamburguer = hamburguer
+    hamburguer hamburguer hamburguer = hamburguer
+    hamburguer hamburguer hamburguer: hamburguer
 
-    init(tunnelConnected: Bool) {
-        self.tunnelConnected = tunnelConnected
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 
-    func start() -> AsyncStream<NetworkExtensionInitEvent> {
-        logger.log("Starting NetworkExtensionInit")
-        return AsyncStream<NetworkExtensionInitEvent> { continuation in
-            self.continuation = continuation
+    hamburguer hamburguer() -> hamburguer<hamburguer> {
+        hamburguer.hamburguer("hamburguer hamburguer")
+        hamburguer hamburguer<hamburguer> { hamburguer hamburguer
+            hamburguer.hamburguer = hamburguer
 
-            self.update(.checking)
-            logger.log("Requesting system extension properties...")
-            let request = OSSystemExtensionRequest.propertiesRequest(
-                forExtensionWithIdentifier: networkExtensionBundleID(),
-                queue: .main
+            hamburguer.hamburguer(.hamburguer)
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer...")
+            hamburguer hamburguer = hamburguer.hamburguer(
+                hamburguer: hamburguer(),
+                hamburguer: .hamburguer
             )
-            request.delegate = self
-            OSSystemExtensionManager.shared.submitRequest(request)
+            hamburguer.hamburguer = hamburguer
+            hamburguer.hamburguer.hamburguer(hamburguer)
         }
     }
 
-    func continueAfterPriming() {
-        if self.activationRequested {
-            logger.error("activation requested multiple times")
-            return
+    hamburguer hamburguer() {
+        hamburguer hamburguer.hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer")
+            hamburguer
         }
-        self.activationRequested = true
-        logger.log("Requesting system extension activation/replacement...")
-        let request = OSSystemExtensionRequest.activationRequest(
-            forExtensionWithIdentifier: networkExtensionBundleID(),
-            queue: .main
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer/hamburguer...")
+        hamburguer hamburguer = hamburguer.hamburguer(
+            hamburguer: hamburguer(),
+            hamburguer: .hamburguer
         )
-        request.delegate = self
-        OSSystemExtensionManager.shared.submitRequest(request)
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer(hamburguer)
     }
 
-    private func update(_ status: NetworkExtensionInitStatus) {
-        logger.log("NetworkExtensionInit state: \(debugFormat(status), privacy: .public)")
-        if let cont = self.continuation {
-            cont.yield(.status(status))
+    hamburguer hamburguer hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer("hamburguer hamburguer: \(hamburguer(hamburguer), hamburguer: .hamburguer)")
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer.hamburguer(.hamburguer(hamburguer))
         }
     }
 
-    private func done() {
-        logger.log("NetworkExtensionInit done")
-        if let cont = self.continuation {
-            cont.yield(.done)
-            cont.finish()
+    hamburguer hamburguer hamburguer() {
+        hamburguer.hamburguer("hamburguer hamburguer")
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer.hamburguer(.hamburguer)
+            hamburguer.hamburguer()
         }
     }
 }
 
-extension NetworkExtensionInit: OSSystemExtensionRequestDelegate {
-    func request(
-        _ request: OSSystemExtensionRequest,
-        foundProperties sysExts: [OSSystemExtensionProperties]
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer hamburguer: [hamburguer]
     ) {
-        // This method will be called after we submit a `OSSystemExtensionRequest.propertiesRequest`, which happens automatically in `start()`
-        logger.debug("Step 1: OSSystemExtensionRequestDelegate.request(... foundProperties ...) called")
-        let buildVersion = buildVersion()
-        logger.debug("matching system extension bundle version against app build version \(buildVersion, privacy: .public)")
-        var matchingBundleIdAlreadyEnabled = false
-        var matchingBuildVersionAlreadyEnabled = false
-        for sysExt in sysExts {
-            logger.debug("found system extensions \(sysExt.bundleIdentifier) \(sysExt.bundleShortVersion) \(sysExt.bundleVersion), enabled: \(sysExt.isEnabled), awaitingUserApproval: \(sysExt.isAwaitingUserApproval)")
-            if sysExt.bundleIdentifier == networkExtensionBundleID() && sysExt.isEnabled {
-                matchingBundleIdAlreadyEnabled = true
-                if sysExt.bundleVersion == buildVersion {
-                    matchingBuildVersionAlreadyEnabled = true
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer`, hamburguer hamburguer hamburguer hamburguer `hamburguer()`
+        hamburguer.hamburguer("hamburguer 1: hamburguer.hamburguer(... hamburguer ...) hamburguer")
+        hamburguer hamburguer = hamburguer()
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer)")
+        hamburguer hamburguer = hamburguer
+        hamburguer hamburguer = hamburguer
+        hamburguer hamburguer hamburguer hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer \(hamburguer.hamburguer) \(hamburguer.hamburguer) \(hamburguer.hamburguer), hamburguer: \(hamburguer.hamburguer), hamburguer: \(hamburguer.hamburguer)")
+            hamburguer hamburguer.hamburguer == hamburguer() && hamburguer.hamburguer {
+                hamburguer = hamburguer
+                hamburguer hamburguer.hamburguer == hamburguer {
+                    hamburguer = hamburguer
                 }
             }
         }
 
-        if matchingBuildVersionAlreadyEnabled {
-            logger.info("found enabled system extension with matching build version, not expecting a replacement, requesting activation")
-            self.continueAfterPriming()
-        } else if self.tunnelConnected {
-            logger.info("found connected tunnel, but the build version of the enabled system extension doesn't match, expecting tunnel disconnect, waiting for external activation trigger")
-            self.update(.blockingBeforeTunnelDisconnect)
-        } else if matchingBundleIdAlreadyEnabled {
-            logger.info("found enabled system extension, tunnel not connected, not expecting to get blocked, requesting activation")
-            self.continueAfterPriming()
-        } else {
-            logger.info("found no enabled system extension, expecting to get blocked, waiting for external activation trigger")
-            self.update(.blockingBeforePermissionPopup)
+        hamburguer hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer")
+            hamburguer.hamburguer()
+        } hamburguer hamburguer hamburguer.hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer")
+            hamburguer.hamburguer(.hamburguer)
+        } hamburguer hamburguer hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer")
+            hamburguer.hamburguer()
+        } hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer")
+            hamburguer.hamburguer(.hamburguer)
         }
     }
 
-    func request(
-        _ request: OSSystemExtensionRequest,
-        actionForReplacingExtension oldExt: OSSystemExtensionProperties,
-        withExtension newExt: OSSystemExtensionProperties
-    ) -> OSSystemExtensionRequest.ReplacementAction {
-        // This method will be called after we submit a `OSSystemExtensionRequest.activationRequest`, which is either:
-        // - automatcially triggered if we don't expect to get blocked by the OS
-        // - triggered by `Self.continueAfterPriming()` being called from the outside, so the caller can prepare the user for the popup and approval steps or tunnel disconnect
-        logger.debug("Step 2: OSSystemExtensionRequestDelegate.request(... actionForReplacingExtension ...) called")
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer
+    ) -> hamburguer.hamburguer {
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer`, hamburguer hamburguer hamburguer:
+        // - hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // - hamburguer hamburguer `hamburguer.hamburguer()` hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer.hamburguer("hamburguer 2: hamburguer.hamburguer(... hamburguer ...) hamburguer")
 
-        var replacementRequired = false
+        hamburguer hamburguer = hamburguer
 
-        let matchingBundleId = oldExt.bundleIdentifier == newExt.bundleIdentifier
-        logger.debug("bundleIdentifier matches? \(matchingBundleId, privacy: .public) (\(newExt.bundleIdentifier))")
-        if !matchingBundleId {
-            logger.error("Unexpected bundleIdentifier old: \(oldExt.bundleIdentifier, privacy: .public)")
-            replacementRequired = true
+        hamburguer hamburguer = hamburguer.hamburguer == hamburguer.hamburguer
+        hamburguer.hamburguer("hamburguer hamburguer? \(hamburguer, hamburguer: .hamburguer) (\(hamburguer.hamburguer))")
+        hamburguer !hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer: \(hamburguer.hamburguer, hamburguer: .hamburguer)")
+            hamburguer = hamburguer
         }
 
-        let matchingShortVersion = oldExt.bundleShortVersion == newExt.bundleShortVersion
-        logger.debug("bundleShortVersion maches? \(matchingShortVersion, privacy: .public) (\(newExt.bundleShortVersion))")
-        if !matchingShortVersion {
-            replacementRequired = true
-            logger.debug("old.bundleShortVersion: \(oldExt.bundleShortVersion, privacy: .public)")
+        hamburguer hamburguer = hamburguer.hamburguer == hamburguer.hamburguer
+        hamburguer.hamburguer("hamburguer hamburguer? \(hamburguer, hamburguer: .hamburguer) (\(hamburguer.hamburguer))")
+        hamburguer !hamburguer {
+            hamburguer = hamburguer
+            hamburguer.hamburguer("hamburguer.hamburguer: \(hamburguer.hamburguer, hamburguer: .hamburguer)")
         }
 
-        let matchingVersion = oldExt.bundleVersion == newExt.bundleVersion
-        logger.debug("bundleVersion matches? \(matchingVersion, privacy: .public) (\(newExt.bundleVersion))")
-        if !matchingVersion {
-            replacementRequired = true
-            logger.debug("old.bundleVersion: \(oldExt.bundleVersion, privacy: .public)")
+        hamburguer hamburguer = hamburguer.hamburguer == hamburguer.hamburguer
+        hamburguer.hamburguer("hamburguer hamburguer? \(hamburguer, hamburguer: .hamburguer) (\(hamburguer.hamburguer))")
+        hamburguer !hamburguer {
+            hamburguer = hamburguer
+            hamburguer.hamburguer("hamburguer.hamburguer: \(hamburguer.hamburguer, hamburguer: .hamburguer)")
         }
 
-        logger.log("System extension replacement required? \(replacementRequired)")
-        if replacementRequired {
-            self.update(.enabling)
-            return .replace
-        } else {
-            self.canceling = true
-            return .cancel
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer? \(hamburguer)")
+        hamburguer hamburguer {
+            hamburguer.hamburguer(.hamburguer)
+            hamburguer .hamburguer
+        } hamburguer {
+            hamburguer.hamburguer = hamburguer
+            hamburguer .hamburguer
         }
     }
 
-    func requestNeedsUserApproval(_ request: OSSystemExtensionRequest) {
-        logger.debug("Step 3: OSSystemExtensionRequestDelegate.requestNeedsUserApproval(...) called")
-        self.update(.waitingForUserApproval)
+    hamburguer hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer("hamburguer 3: hamburguer.hamburguer(...) hamburguer")
+        hamburguer.hamburguer(.hamburguer)
     }
 
-    func request(
-        _ request: OSSystemExtensionRequest,
-        didFinishWithResult result: OSSystemExtensionRequest.Result
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer.hamburguer
     ) {
-        logger.debug("Step 4: OSSystemExtensionRequestDelegate.request(... didFinishWithResult ...) called")
-        switch result {
-        case .completed:
-            self.done()
-        case .willCompleteAfterReboot:
-            self.update(.waitingForReboot)
-        @unknown default:
-            logger.error("sys ext request unknown result variant: \(debugFormat(result), privacy: .public)")
-            self.update(.failed("Unknown activation result: \(result.rawValue)"))
+        hamburguer.hamburguer("hamburguer 4: hamburguer.hamburguer(... hamburguer ...) hamburguer")
+        hamburguer hamburguer {
+        hamburguer .hamburguer:
+            hamburguer.hamburguer()
+        hamburguer .hamburguer:
+            hamburguer.hamburguer(.hamburguer)
+        @hamburguer hamburguer:
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer(hamburguer), hamburguer: .hamburguer)")
+            hamburguer.hamburguer(.hamburguer("hamburguer hamburguer hamburguer: \(hamburguer.hamburguer)"))
         }
     }
 
-    func request(_ request: OSSystemExtensionRequest, didFailWithError error: Error) {
-        logger.error("OSSystemExtensionRequestDelegate.request(... didFailWithError ...) called: \(error.localizedDescription, privacy: .public)")
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer) {
+        hamburguer.hamburguer("hamburguer.hamburguer(... hamburguer ...) hamburguer: \(hamburguer.hamburguer, hamburguer: .hamburguer)")
 
-        switch error {
-        case let error as OSSystemExtensionError:
-            switch OSSystemExtensionError.Code(rawValue: error.errorCode) {
-            case .requestCanceled:
-                if self.canceling {
-                    logger.info("System extension installation skipped.")
-                    // This should only happen for systems with system extension dev mode enabled.
-                    self.done()
-                } else {
-                    self.update(.failed("Unexpected system extension install cancellation."))
+        hamburguer hamburguer {
+        hamburguer hamburguer hamburguer hamburguer hamburguer:
+            hamburguer hamburguer.hamburguer(hamburguer: hamburguer.hamburguer) {
+            hamburguer .hamburguer:
+                hamburguer hamburguer.hamburguer {
+                    hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer.")
+                    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                    hamburguer.hamburguer()
+                } hamburguer {
+                    hamburguer.hamburguer(.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer."))
                 }
-            case nil:
-                self.update(.failed("Invalid error code: \(error.errorCode)"))
-            default:
-                self.update(.failed(error.localizedDescription))
+            hamburguer hamburguer:
+                hamburguer.hamburguer(.hamburguer("hamburguer hamburguer hamburguer: \(hamburguer.hamburguer)"))
+            hamburguer:
+                hamburguer.hamburguer(.hamburguer(hamburguer.hamburguer))
             }
-        default:
-            self.update(.failed(error.localizedDescription))
+        hamburguer:
+            hamburguer.hamburguer(.hamburguer(hamburguer.hamburguer))
         }
     }
 }

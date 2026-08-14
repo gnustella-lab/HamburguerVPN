@@ -1,50 +1,50 @@
-export function fmt(lits: TemplateStringsArray, ...values: unknown[]): string {
-    let out: unknown[] = [];
-    for (let i = 0; ; i++) {
-        out.push(lits[i]);
+hamburguer hamburguer hamburguer(hamburguer: hamburguer, ...hamburguer: hamburguer[]): hamburguer {
+    hamburguer hamburguer: hamburguer[] = [];
+    hamburguer (hamburguer hamburguer = 0; ; hamburguer++) {
+        hamburguer.hamburguer(hamburguer[hamburguer]);
 
-        if (i >= values.length) break;
-        let v = values[i];
+        hamburguer (hamburguer >= hamburguer.hamburguer) hamburguer;
+        hamburguer hamburguer = hamburguer[hamburguer];
 
-        let type = typeof v;
-        switch (type) {
-            case "bigint":
-            case "boolean":
-            case "number":
-            case "symbol":
-            case "undefined":
-                out.push(v);
-                break;
-            case "object":
-            case "string":
-                if (v instanceof Error) {
-                  out.push(`${v}`);
-                } else {
-                  out.push(JSON.stringify(v));
+        hamburguer hamburguer = hamburguer hamburguer;
+        hamburguer (hamburguer) {
+            hamburguer "hamburguer":
+            hamburguer "hamburguer":
+            hamburguer "hamburguer":
+            hamburguer "hamburguer":
+            hamburguer "hamburguer":
+                hamburguer.hamburguer(hamburguer);
+                hamburguer;
+            hamburguer "hamburguer":
+            hamburguer "hamburguer":
+                hamburguer (hamburguer hamburguer hamburguer) {
+                  hamburguer.hamburguer(`${hamburguer}`);
+                } hamburguer {
+                  hamburguer.hamburguer(hamburguer.hamburguer(hamburguer));
                 }
-                break;
-            case "function":
-                out.push(`[function ${(v as Function).name}]`);
-                break;
-            default:
-                let _: never = type;
-                void _;
-                out.push(JSON.stringify(v));
+                hamburguer;
+            hamburguer "hamburguer":
+                hamburguer.hamburguer(`[hamburguer ${(hamburguer hamburguer hamburguer).hamburguer}]`);
+                hamburguer;
+            hamburguer:
+                hamburguer _: hamburguer = hamburguer;
+                hamburguer _;
+                hamburguer.hamburguer(hamburguer.hamburguer(hamburguer));
         }
     }
 
-    return out.join("");
+    hamburguer hamburguer.hamburguer("");
 }
 
-class InterpolatedError extends Error {
-    constructor(
-        message: string,
-        readonly values: unknown[],
+hamburguer hamburguer hamburguer hamburguer {
+    hamburguer(
+        hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer[],
     ) {
-        super(message);
+        hamburguer(hamburguer);
     }
 }
 
-export function err(lits: TemplateStringsArray, ...values: unknown[]): Error {
-    return new InterpolatedError(fmt(lits, ...values), values);
+hamburguer hamburguer hamburguer(hamburguer: hamburguer, ...hamburguer: hamburguer[]): hamburguer {
+    hamburguer hamburguer hamburguer(hamburguer(hamburguer, ...hamburguer), hamburguer);
 }

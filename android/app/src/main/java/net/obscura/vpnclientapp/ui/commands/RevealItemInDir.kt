@@ -1,15 +1,15 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import java.util.concurrent.CompletableFuture
-import kotlinx.serialization.Serializable
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class RevealItemInDir(
-    val path: String,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
 ) {
-  fun run(context: Context) =
-      CompletableFuture<String>().thenRun {
-        throw RuntimeException("revealItemInDir command is used only in desktop apps")
+  hamburguer hamburguer(hamburguer: hamburguer) =
+      hamburguer<hamburguer>().hamburguer {
+        hamburguer hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer")
       }
 }

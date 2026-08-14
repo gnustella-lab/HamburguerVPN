@@ -1,58 +1,58 @@
 {
-  "name": "obscura-vpn",
-  "version": "0.2.3",
-  "type": "module",
-  "private": true,
-  "dependencies": {
-    "@fontsource/open-sans": "^5.2.7",
-    "@mantine/core": "^7.17.8",
-    "@mantine/hooks": "^7.17.8",
-    "@mantine/modals": "^7.17.8",
-    "@mantine/notifications": "^7.17.8",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "countries-list": "^3.2.0",
-    "framer-motion": "^12.23.24",
-    "i18next": "^25.6.0",
-    "i18next-browser-languagedetector": "^8.2.0",
-    "js-cookie": "^3.0.5",
-    "localforage": "^1.10.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-error-boundary": "^6.0.0",
-    "react-i18next": "^16.2.4",
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.9.5"
+  "hamburguer": "hamburguer-hamburguer",
+  "hamburguer": "0.2.3",
+  "hamburguer": "hamburguer",
+  "hamburguer": hamburguer,
+  "hamburguer": {
+    "@hamburguer/hamburguer-hamburguer": "^5.2.7",
+    "@hamburguer/hamburguer": "^7.17.8",
+    "@hamburguer/hamburguer": "^7.17.8",
+    "@hamburguer/hamburguer": "^7.17.8",
+    "@hamburguer/hamburguer": "^7.17.8",
+    "@hamburguer/hamburguer": "^19.2.2",
+    "@hamburguer/hamburguer-hamburguer": "^19.2.2",
+    "hamburguer-hamburguer": "^3.2.0",
+    "hamburguer-hamburguer": "^12.23.24",
+    "hamburguer18hamburguer": "^25.6.0",
+    "hamburguer18hamburguer-hamburguer-hamburguer": "^8.2.0",
+    "hamburguer-hamburguer": "^3.0.5",
+    "hamburguer": "^1.10.0",
+    "hamburguer": "^19.2.0",
+    "hamburguer-hamburguer": "^19.2.0",
+    "hamburguer-hamburguer-hamburguer": "^6.0.0",
+    "hamburguer-hamburguer18hamburguer": "^16.2.4",
+    "hamburguer-hamburguer": "^5.5.0",
+    "hamburguer-hamburguer-hamburguer": "^7.9.5"
   },
-  "scripts": {
-    "start": "vite --strictPort",
-    "build": "vite build",
-    "preview": "vite preview",
-    "serve": "vite preview",
-    "typecheck": "tsc --noEmit"
+  "hamburguer": {
+    "hamburguer": "hamburguer --hamburguer",
+    "hamburguer": "hamburguer hamburguer",
+    "hamburguer": "hamburguer hamburguer",
+    "hamburguer": "hamburguer hamburguer",
+    "hamburguer": "hamburguer --hamburguer"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "hamburguer": {
+    "hamburguer": [
+      "hamburguer-hamburguer",
+      "hamburguer-hamburguer/hamburguer"
     ]
   },
-  "devDependencies": {
-    "@types/js-cookie": "^3.0.6",
-    "@types/node": "^20.19.24",
-    "@vitejs/plugin-react": "^5.1.0",
-    "@welldone-software/why-did-you-render": "^10.0.1",
-    "license-checker": "^25.0.1",
-    "postcss": "^8.5.6",
-    "postcss-preset-mantine": "^1.18.0",
-    "postcss-simple-vars": "^7.0.1",
-    "rollup-plugin-visualizer": "^6.0.5",
-    "terser": "^5.44.1",
-    "toml": "^3.0.0",
-    "typescript": "^5.9.3",
-    "vite": "^7.2.0",
-    "vite-plugin-svgr": "^4.5.0"
+  "hamburguer": {
+    "@hamburguer/hamburguer-hamburguer": "^3.0.6",
+    "@hamburguer/hamburguer": "^20.19.24",
+    "@hamburguer/hamburguer-hamburguer": "^5.1.0",
+    "@hamburguer-hamburguer/hamburguer-hamburguer-hamburguer-hamburguer": "^10.0.1",
+    "hamburguer-hamburguer": "^25.0.1",
+    "hamburguer": "^8.5.6",
+    "hamburguer-hamburguer-hamburguer": "^1.18.0",
+    "hamburguer-hamburguer-hamburguer": "^7.0.1",
+    "hamburguer-hamburguer-hamburguer": "^6.0.5",
+    "hamburguer": "^5.44.1",
+    "hamburguer": "^3.0.0",
+    "hamburguer": "^5.9.3",
+    "hamburguer": "^7.2.0",
+    "hamburguer-hamburguer-hamburguer": "^4.5.0"
   },
-  "resolutions": {},
-  "packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879"
+  "hamburguer": {},
+  "hamburguer": "hamburguer@9.0.6+hamburguer1.648hamburguer6014hamburguer363hamburguer36618hamburguer2hamburguer59282hamburguer9hamburguer3hamburguer879"
 }

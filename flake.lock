@@ -1,111 +1,111 @@
 {
-  "nodes": {
-    "crane": {
-      "locked": {
-        "lastModified": 1754269165,
-        "narHash": "sha256-0tcS8FHd4QjbCVoxN9jI+PjHgA4vc/IjkUSp+N3zy0U=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "444e81206df3f7d92780680e45858e31d2f07a08",
-        "type": "github"
+  "hamburguer": {
+    "hamburguer": {
+      "hamburguer": {
+        "hamburguer": 1754269165,
+        "hamburguer": "hamburguer256-0hamburguer8hamburguer4hamburguer9hamburguer+hamburguer4hamburguer/hamburguer+hamburguer3hamburguer0hamburguer=",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer": "444hamburguer81206hamburguer3hamburguer7hamburguer92780680hamburguer45858hamburguer31hamburguer2hamburguer07hamburguer08",
+        "hamburguer": "hamburguer"
       },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
+      "hamburguer": {
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer"
       }
     },
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems"
+    "hamburguer-hamburguer": {
+      "hamburguer": {
+        "hamburguer": "hamburguer"
       },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
+      "hamburguer": {
+        "hamburguer": 1731533236,
+        "hamburguer": "hamburguer256-hamburguer0hamburguer5hamburguer/hamburguer+hamburguer7hamburguer12hamburguer=",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "11707hamburguer2hamburguer618hamburguer54hamburguer8739hamburguer309hamburguer4hamburguer024hamburguer578hamburguer",
+        "hamburguer": "hamburguer"
       },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
+      "hamburguer": {
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "hamburguer"
       }
     },
-    "nixpkgs": {
-      "locked": {
-        "lastModified": 1755186698,
-        "narHash": "sha256-wNO3+Ks2jZJ4nTHMuks+cxAiVBGNuEBXsT29Bz6HASo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "fbcf476f790d8a217c3eab4e12033dc4a0f6d23c",
-        "type": "github"
+    "hamburguer": {
+      "hamburguer": {
+        "hamburguer": 1755186698,
+        "hamburguer": "hamburguer256-hamburguer3+hamburguer2hamburguer4hamburguer+hamburguer29hamburguer6hamburguer=",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer476hamburguer790hamburguer8hamburguer217hamburguer3hamburguer4hamburguer12033hamburguer4hamburguer0hamburguer6hamburguer23hamburguer",
+        "hamburguer": "hamburguer"
       },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
+      "hamburguer": {
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "hamburguer"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1744536153,
-        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
-        "type": "github"
+    "hamburguer_2": {
+      "hamburguer": {
+        "hamburguer": 1744536153,
+        "hamburguer": "hamburguer256-hamburguer2hamburguer4hamburguer3hamburguer1hamburguer/hamburguer38=",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer": "18hamburguer725hamburguer29603hamburguer582hamburguer1900hamburguer0hamburguer25hamburguer9hamburguer1063hamburguer11",
+        "hamburguer": "hamburguer"
       },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+      "hamburguer": {
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer"
       }
     },
-    "root": {
-      "inputs": {
-        "crane": "crane",
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay"
+    "hamburguer": {
+      "hamburguer": {
+        "hamburguer": "hamburguer",
+        "hamburguer-hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer-hamburguer": "hamburguer-hamburguer"
       }
     },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
+    "hamburguer-hamburguer": {
+      "hamburguer": {
+        "hamburguer": "hamburguer_2"
       },
-      "locked": {
-        "lastModified": 1755225702,
-        "narHash": "sha256-i7Rgs943NqX0RgQW0/l1coi8eWBj3XhxVggMpjjzTsk=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "4abaeba6b176979be0da0195b9e4ce86bc501ae4",
-        "type": "github"
+      "hamburguer": {
+        "hamburguer": 1755225702,
+        "hamburguer": "hamburguer256-hamburguer7hamburguer943hamburguer0hamburguer0/hamburguer1hamburguer8hamburguer3hamburguer=",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "4hamburguer6hamburguer176979hamburguer0hamburguer0195hamburguer9hamburguer4hamburguer86hamburguer501hamburguer4",
+        "hamburguer": "hamburguer"
       },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
+      "hamburguer": {
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "hamburguer"
       }
     },
-    "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
+    "hamburguer": {
+      "hamburguer": {
+        "hamburguer": 1681028828,
+        "hamburguer": "hamburguer256-hamburguer1hamburguer5hamburguer8hamburguer4hamburguer6hamburguer7hamburguer309hamburguer9hamburguer768=",
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer67096hamburguer3hamburguer9hamburguer56hamburguer91hamburguer16901293hamburguer51hamburguer5hamburguer49hamburguer27hamburguer",
+        "hamburguer": "hamburguer"
       },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
+      "hamburguer": {
+        "hamburguer": "hamburguer-hamburguer",
+        "hamburguer": "hamburguer",
+        "hamburguer": "hamburguer"
       }
     }
   },
-  "root": "root",
-  "version": 7
+  "hamburguer": "hamburguer",
+  "hamburguer": 7
 }

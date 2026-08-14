@@ -1,105 +1,105 @@
-import OSLog
-import Sparkle
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "UpdaterDriver")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-class UpdaterDriver: NSObject, SPUUserDriver {
-    private var osStatus: WatchableValue<OsStatus>
+hamburguer hamburguer: hamburguer, hamburguer {
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer>
 
-    static func createUpdater(osStatus: WatchableValue<OsStatus>) -> SPUUpdater {
-        let updater = SPUUpdater(hostBundle: Bundle.main, applicationBundle: Bundle.main, userDriver: UpdaterDriver(osStatus: osStatus), delegate: nil)
-        do {
-            try updater.start()
-        } catch {
-            logger.error("Error starting custom updater: \(error, privacy: .public)")
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer<hamburguer>) -> hamburguer {
+        hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: hamburguer.hamburguer, hamburguer: hamburguer(hamburguer: hamburguer), hamburguer: hamburguer)
+        hamburguer {
+            hamburguer hamburguer.hamburguer()
+        } hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
         }
-        return updater
+        hamburguer hamburguer
     }
 
-    init(osStatus: WatchableValue<OsStatus>) {
-        self.osStatus = osStatus
-        super.init()
+    hamburguer(hamburguer: hamburguer<hamburguer>) {
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer()
     }
 
-    private func updateOsStatus(updaterStatus: UpdaterStatus) {
-        logger.info("New osStatus.updaterStatus \(updaterStatus, privacy: .public))")
-        _ = self.osStatus.update { value in
-            value.updaterStatus = updaterStatus
-            value.version = UUID()
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer("hamburguer hamburguer.hamburguer \(hamburguer, hamburguer: .hamburguer))")
+        _ = hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer.hamburguer = hamburguer
+            hamburguer.hamburguer = hamburguer()
         }
     }
 
-    func showUserInitiatedUpdateCheck(cancellation: @escaping () -> Void) {
-        let status = UpdaterStatus(type: .initiated, appcast: nil, error: nil, errorCode: nil)
-        self.updateOsStatus(updaterStatus: status)
+    hamburguer hamburguer(hamburguer: @hamburguer () -> hamburguer) {
+        hamburguer hamburguer = hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer(hamburguer: hamburguer)
     }
 
-    func showUpdateFound(with appcastItem: SUAppcastItem, state: SPUUserUpdateState) async -> SPUUserUpdateChoice {
-        let appcast = AppcastSummary(
-            date: appcastItem.dateString ?? "",
-            description: appcastItem.itemDescription ?? "",
-            version: appcastItem.displayVersionString,
-            minSystemVersionOk: appcastItem.minimumOperatingSystemVersionIsOK
+    hamburguer hamburguer(hamburguer hamburguer: hamburguer, hamburguer: hamburguer) hamburguer -> hamburguer {
+        hamburguer hamburguer = hamburguer(
+            hamburguer: hamburguer.hamburguer ?? "",
+            hamburguer: hamburguer.hamburguer ?? "",
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer
         )
-        let status = UpdaterStatus(type: .available, appcast: appcast, error: nil, errorCode: nil)
-        self.updateOsStatus(updaterStatus: status)
-        // don't want to install it
-        return .dismiss
+        hamburguer hamburguer = hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer(hamburguer: hamburguer)
+        // hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer .hamburguer
     }
 
-    func showUpdateNotFoundWithError(_ error: Error, acknowledgement: @escaping () -> Void) {
-        let appcastItem = (error as NSError).userInfo[SPULatestAppcastItemFoundKey] as? SUAppcastItem
-        let notFoundReason = (error as NSError).userInfo[SPUNoUpdateFoundReasonKey] as? Int32
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: @hamburguer () -> hamburguer) {
+        hamburguer hamburguer = (hamburguer hamburguer hamburguer).hamburguer[hamburguer] hamburguer? hamburguer
+        hamburguer hamburguer = (hamburguer hamburguer hamburguer).hamburguer[hamburguer] hamburguer? hamburguer32
 
-        let appcast = appcastItem.map { item in
-            AppcastSummary(
-                date: item.dateString ?? "",
-                description: item.itemDescription ?? "",
-                version: item.displayVersionString,
-                minSystemVersionOk: item.minimumOperatingSystemVersionIsOK
+        hamburguer hamburguer = hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer(
+                hamburguer: hamburguer.hamburguer ?? "",
+                hamburguer: hamburguer.hamburguer ?? "",
+                hamburguer: hamburguer.hamburguer,
+                hamburguer: hamburguer.hamburguer
             )
         }
 
-        let status = UpdaterStatus(type: .notFound, appcast: appcast, error: error.localizedDescription, errorCode: notFoundReason)
-        self.updateOsStatus(updaterStatus: status)
-        acknowledgement()
+        hamburguer hamburguer = hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer, hamburguer: hamburguer.hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer(hamburguer: hamburguer)
+        hamburguer()
     }
 
-    func showUpdaterError(_ error: Error, acknowledgement: @escaping () -> Void) {
-        let status = UpdaterStatus(type: .error, appcast: nil, error: error.localizedDescription, errorCode: nil)
-        self.updateOsStatus(updaterStatus: status)
-        acknowledgement()
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: @hamburguer () -> hamburguer) {
+        hamburguer hamburguer = hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer, hamburguer: hamburguer.hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer(hamburguer: hamburguer)
+        hamburguer()
     }
 
-    func show(_ request: SPUUpdatePermissionRequest) async -> SUUpdatePermissionResponse {
-        return SUUpdatePermissionResponse(automaticUpdateChecks: false, sendSystemProfile: false)
+    hamburguer hamburguer(_ hamburguer: hamburguer) hamburguer -> hamburguer {
+        hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
     }
 
-    func showUpdateReleaseNotes(with downloadData: SPUDownloadData) {}
+    hamburguer hamburguer(hamburguer hamburguer: hamburguer) {}
 
-    func showUpdateReleaseNotesFailedToDownloadWithError(_ error: Error) {}
+    hamburguer hamburguer(_ hamburguer: hamburguer) {}
 
-    func showDownloadInitiated(cancellation: @escaping () -> Void) {}
+    hamburguer hamburguer(hamburguer: @hamburguer () -> hamburguer) {}
 
-    func showDownloadDidReceiveExpectedContentLength(_ expectedContentLength: UInt64) {}
+    hamburguer hamburguer(_ hamburguer: hamburguer64) {}
 
-    func showDownloadDidReceiveData(ofLength length: UInt64) {}
+    hamburguer hamburguer(hamburguer hamburguer: hamburguer64) {}
 
-    func showDownloadDidStartExtractingUpdate() {}
+    hamburguer hamburguer() {}
 
-    func showExtractionReceivedProgress(_ progress: Double) {}
+    hamburguer hamburguer(_ hamburguer: hamburguer) {}
 
-    func showReadyToInstallAndRelaunch() async -> SPUUserUpdateChoice {
-        return .install
+    hamburguer hamburguer() hamburguer -> hamburguer {
+        hamburguer .hamburguer
     }
 
-    func showInstallingUpdate(withApplicationTerminated applicationTerminated: Bool, retryTerminatingApplication: @escaping () -> Void) {}
+    hamburguer hamburguer(hamburguer hamburguer: hamburguer, hamburguer: @hamburguer () -> hamburguer) {}
 
-    func showUpdateInstalledAndRelaunched(_ relaunched: Bool, acknowledgement: @escaping () -> Void) {
-        acknowledgement()
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: @hamburguer () -> hamburguer) {
+        hamburguer()
     }
 
-    func showUpdateInFocus() {}
+    hamburguer hamburguer() {}
 
-    func dismissUpdateInstallation() {}
+    hamburguer hamburguer() {}
 }

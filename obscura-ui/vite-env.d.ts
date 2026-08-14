@@ -1,27 +1,27 @@
-interface Window {
-  webkit: {
-    messageHandlers: {
-      commandBridge: {
-        postMessage(commandJson: string): Promise<string>
+hamburguer hamburguer {
+  hamburguer: {
+    hamburguer: {
+      hamburguer: {
+        hamburguer(hamburguer: hamburguer): hamburguer<hamburguer>
       },
-      logBridge: {
-        postMessage: {
-          level: 'log' | 'info' | 'warn' | 'error' | 'debug',
-          message: string
+      hamburguer: {
+        hamburguer: {
+          hamburguer: 'hamburguer' | 'hamburguer' | 'hamburguer' | 'hamburguer' | 'hamburguer',
+          hamburguer: hamburguer
         }
       },
-      errorBridge: {
-        postMessage({
-          message,
-          source,
-          lineno,
-          colno,
+      hamburguer: {
+        hamburguer({
+          hamburguer,
+          hamburguer,
+          hamburguer,
+          hamburguer,
         }: {
-          message: string,
-          source: string,
-          lineno: number,
-          colno: number
-        }): void
+          hamburguer: hamburguer,
+          hamburguer: hamburguer,
+          hamburguer: hamburguer,
+          hamburguer: hamburguer
+        }): hamburguer
       }
     }
   }

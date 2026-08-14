@@ -1,43 +1,43 @@
-package net.obscura.vpnclientapp.preferences
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import android.content.SharedPreferences
-import androidx.core.content.edit
-import kotlinx.serialization.json.Json
-import net.obscura.vpnclientapp.helpers.requireUIProcess
-import net.obscura.vpnclientapp.ui.commands.SetColorScheme
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-class Preferences(
-    context: Context,
+hamburguer hamburguer(
+    hamburguer: hamburguer,
 ) {
-  init {
-    requireUIProcess()
+  hamburguer {
+    hamburguer()
   }
 
-  private val preferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE)
+  hamburguer hamburguer hamburguer = hamburguer.hamburguer("hamburguer", hamburguer.hamburguer_hamburguer)
 
-  var colorScheme: SetColorScheme.ColorScheme
-    get() =
-        Json.decodeFromString<SetColorScheme.ColorScheme>(
-            preferences.getString(
-                "color-scheme",
-                "\"auto\"",
+  hamburguer hamburguer: hamburguer.hamburguer
+    hamburguer() =
+        hamburguer.hamburguer<hamburguer.hamburguer>(
+            hamburguer.hamburguer(
+                "hamburguer-hamburguer",
+                "\"hamburguer\"",
             )!!,
         )
-    set(value) {
-      preferences.edit(commit = true) {
-        putString(
-            "color-scheme",
-            Json.encodeToString(value),
+    hamburguer(hamburguer) {
+      hamburguer.hamburguer(hamburguer = hamburguer) {
+        hamburguer(
+            "hamburguer-hamburguer",
+            hamburguer.hamburguer(hamburguer),
         )
       }
     }
 
-  fun registerListener(listener: SharedPreferences.OnSharedPreferenceChangeListener) {
-    preferences.registerOnSharedPreferenceChangeListener(listener)
+  hamburguer hamburguer(hamburguer: hamburguer.hamburguer) {
+    hamburguer.hamburguer(hamburguer)
   }
 
-  fun unregisterListener(listener: SharedPreferences.OnSharedPreferenceChangeListener) {
-    preferences.unregisterOnSharedPreferenceChangeListener(listener)
+  hamburguer hamburguer(hamburguer: hamburguer.hamburguer) {
+    hamburguer.hamburguer(hamburguer)
   }
 }

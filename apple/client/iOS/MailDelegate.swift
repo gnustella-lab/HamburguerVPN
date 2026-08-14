@@ -1,22 +1,22 @@
-import MessageUI
-import OSLog
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Mail")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        switch result {
-        case MFMailComposeResult.cancelled:
-            logger.debug("Cancelled mail")
-        case MFMailComposeResult.saved:
-            logger.debug("Saved mail")
-        case MFMailComposeResult.sent:
-            logger.info("Sent mail successfully")
-        case MFMailComposeResult.failed:
-            logger.error("Failed to send mail: \(error?.localizedDescription, privacy: .public)")
-        default:
-            break
+hamburguer hamburguer: hamburguer, hamburguer {
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer, hamburguer: hamburguer?) {
+        hamburguer hamburguer {
+        hamburguer hamburguer.hamburguer:
+            hamburguer.hamburguer("hamburguer hamburguer")
+        hamburguer hamburguer.hamburguer:
+            hamburguer.hamburguer("hamburguer hamburguer")
+        hamburguer hamburguer.hamburguer:
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer")
+        hamburguer hamburguer.hamburguer:
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer?.hamburguer, hamburguer: .hamburguer)")
+        hamburguer:
+            hamburguer
         }
-        controller.dismiss(animated: true)
+        hamburguer.hamburguer(hamburguer: hamburguer)
     }
 }

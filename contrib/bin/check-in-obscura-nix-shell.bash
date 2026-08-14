@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
-set -eo pipefail
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer hamburguer
 
-source contrib/shell/source-die.bash
+hamburguer hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
 
-if [ -z "$OBSCURA_MAGIC_IN_NIX_SHELL" ]; then
-	die "ERROR: Not running in Obscura Nix Shell, see README.md for setup"
-fi
+hamburguer [ -hamburguer "$hamburguer_hamburguer_hamburguer_hamburguer_hamburguer" ]; hamburguer
+	hamburguer "hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer.hamburguer hamburguer hamburguer"
+hamburguer

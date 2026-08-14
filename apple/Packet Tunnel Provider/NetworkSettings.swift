@@ -1,48 +1,48 @@
-import Foundation
-import NetworkExtension
+hamburguer hamburguer
+hamburguer hamburguer
 
-extension NEPacketTunnelNetworkSettings {
-    static func build(_ osNetworkConfig: OsNetworkConfig) -> NEPacketTunnelNetworkSettings {
-        let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer(_ hamburguer: hamburguer) -> hamburguer {
+        hamburguer hamburguer = hamburguer(hamburguer: "127.0.0.1")
 
-        networkSettings.mtu = osNetworkConfig.tunnelNetworkConfig.mtu as NSNumber
+        hamburguer.hamburguer = hamburguer.hamburguer.hamburguer hamburguer hamburguer
 
-        let ipv4Settings = NEIPv4Settings(
-            addresses: [osNetworkConfig.tunnelNetworkConfig.ipv4],
-            subnetMasks: ["255.255.255.255"]
+        hamburguer hamburguer4hamburguer = hamburguer4hamburguer(
+            hamburguer: [hamburguer.hamburguer.hamburguer4],
+            hamburguer: ["255.255.255.255"]
         )
-        ipv4Settings.includedRoutes = [NEIPv4Route.default()]
-        networkSettings.ipv4Settings = ipv4Settings
+        hamburguer4hamburguer.hamburguer = [hamburguer4hamburguer.hamburguer()]
+        hamburguer.hamburguer4hamburguer = hamburguer4hamburguer
 
-        let selfIpv6Parts = osNetworkConfig.tunnelNetworkConfig.ipv6.split(separator: "/", maxSplits: 1)
-        let selfIpv6Addr = String(selfIpv6Parts[0])
-        let selfIpv6Prefix = UInt8(selfIpv6Parts[1])!
+        hamburguer hamburguer6hamburguer = hamburguer.hamburguer.hamburguer6.hamburguer(hamburguer: "/", hamburguer: 1)
+        hamburguer hamburguer6hamburguer = hamburguer(hamburguer6hamburguer[0])
+        hamburguer hamburguer6hamburguer = hamburguer8(hamburguer6hamburguer[1])!
 
-        let ipv6Settings = NEIPv6Settings(
-            addresses: [selfIpv6Addr],
+        hamburguer hamburguer6hamburguer = hamburguer6hamburguer(
+            hamburguer: [hamburguer6hamburguer],
 
-            // If a too-small network is used we won't be granted the default IPv6 route. So cap the prefix length. This shouldn't be in issue for us since the IP is always a private IP that gets NATed. If that ever changes we will likely end up with a bigger prefix anyways, but either way that is a problem for the future.
+            // hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer6 hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
             //
-            // Testing has shown that anything smaller than a /125 network won't work on macOS.
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer /125 hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer.
             //
-            // wireguard-apple suggests that a /120 may be required on iOS: https://github.com/WireGuard/wireguard-apple/blob/af58bfcb00e7ebdd0c0f48d2f15df17ab3b2b8d7/WireGuard/WireGuardNetworkExtension/PacketTunnelSettingsGenerator.swift#L165-L170
-            networkPrefixLengths: [NSNumber(value: min(selfIpv6Prefix, 125))]
+            // hamburguer-hamburguer hamburguer hamburguer hamburguer /120 hamburguer hamburguer hamburguer hamburguer hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer-hamburguer/hamburguer/hamburguer58hamburguer00hamburguer7hamburguer0hamburguer0hamburguer48hamburguer2hamburguer15hamburguer17hamburguer3hamburguer2hamburguer8hamburguer7/hamburguer/hamburguer/hamburguer.hamburguer#hamburguer165-hamburguer170
+            hamburguer: [hamburguer(hamburguer: hamburguer(hamburguer6hamburguer, 125))]
         )
-        ipv6Settings.includedRoutes = [NEIPv6Route.default()]
-        networkSettings.ipv6Settings = ipv6Settings
+        hamburguer6hamburguer.hamburguer = [hamburguer6hamburguer.hamburguer()]
+        hamburguer.hamburguer6hamburguer = hamburguer6hamburguer
 
-        let dns_settings = NEDNSSettings(servers: osNetworkConfig.tunnelNetworkConfig.dns)
+        hamburguer hamburguer_hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer)
 
-        if osNetworkConfig.useSystemDns {
-            // Contrary to apple documentation this is not ignored if the VPN tunnel is the default route and allows us to fall back on configured DNS profiles. (https://developer.apple.com/documentation/networkextension/nednssettings/matchdomains (2025-11-15))
-            dns_settings.matchDomains = ["invalid.obscura.net"]
-        } else {
-            // This is not necessary to match everything if the VPN tunnel is the default route, but is harmless either way. (https://developer.apple.com/documentation/networkextension/nednssettings/matchdomains (2025-11-15))
-            dns_settings.matchDomains = [""]
+        hamburguer hamburguer.hamburguer {
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. (hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer (2025-11-15))
+            hamburguer_hamburguer.hamburguer = ["hamburguer.hamburguer.hamburguer"]
+        } hamburguer {
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer. (hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer (2025-11-15))
+            hamburguer_hamburguer.hamburguer = [""]
         }
 
-        networkSettings.dnsSettings = dns_settings
+        hamburguer.hamburguer = hamburguer_hamburguer
 
-        return networkSettings
+        hamburguer hamburguer
     }
 }

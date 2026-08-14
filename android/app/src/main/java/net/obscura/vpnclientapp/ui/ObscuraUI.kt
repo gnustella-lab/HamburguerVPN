@@ -1,249 +1,249 @@
-package net.obscura.vpnclientapp.ui
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import android.net.Uri
-import android.util.AttributeSet
-import android.widget.FrameLayout
-import androidx.core.graphics.Insets
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.postDelayed
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
-import java.lang.ref.WeakReference
-import kotlinx.serialization.json.Json
-import net.obscura.vpnclientapp.R
-import net.obscura.vpnclientapp.client.commands.GetStatus
-import net.obscura.vpnclientapp.helpers.logDebug
-import net.obscura.vpnclientapp.helpers.logError
-import net.obscura.vpnclientapp.services.IObscuraVpnService
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-class ObscuraUI
-@JvmOverloads
-constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-) : FrameLayout(context, attrs) {
-  private class StatusObserver(
-      val binder: WeakReference<IObscuraVpnService>,
-      val onStatusChanged: (GetStatus.Response) -> Unit,
+hamburguer hamburguer
+@hamburguer
+hamburguer(
+    hamburguer: hamburguer,
+    hamburguer: hamburguer? = hamburguer,
+) : hamburguer(hamburguer, hamburguer) {
+  hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer<hamburguer>,
+      hamburguer hamburguer: (hamburguer.hamburguer) -> hamburguer,
   ) {
-    private val json = Json { ignoreUnknownKeys = true }
+    hamburguer hamburguer hamburguer = hamburguer { hamburguer = hamburguer }
 
-    private var enabled = true
-    private var knownVersion: String? = null
+    hamburguer hamburguer hamburguer = hamburguer
+    hamburguer hamburguer hamburguer: hamburguer? = hamburguer
 
-    fun observe() {
-      synchronized(this) {
-        binder.get()?.let { binder ->
-          CommandBridge.Receiver.register {
-                binder.jsonFfi(
-                    it,
-                    json.encodeToString(GetStatus(GetStatus.Request(knownVersion = knownVersion))),
+    hamburguer hamburguer() {
+      hamburguer(hamburguer) {
+        hamburguer.hamburguer()?.hamburguer { hamburguer ->
+          hamburguer.hamburguer.hamburguer {
+                hamburguer.hamburguer(
+                    hamburguer,
+                    hamburguer.hamburguer(hamburguer(hamburguer.hamburguer(hamburguer = hamburguer))),
                 )
               }
-              .handle { data, exception ->
-                data?.let { onStatusUpdated(json.decodeFromString(it)) }
+              .hamburguer { hamburguer, hamburguer ->
+                hamburguer?.hamburguer { hamburguer(hamburguer.hamburguer(hamburguer)) }
               }
         }
       }
     }
 
-    fun disable() {
-      synchronized(this) { enabled = false }
+    hamburguer hamburguer() {
+      hamburguer(hamburguer) { hamburguer = hamburguer }
     }
 
-    private fun onStatusUpdated(status: GetStatus.Response) {
-      synchronized(this) {
-        knownVersion = status.version
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer.hamburguer) {
+      hamburguer(hamburguer) {
+        hamburguer = hamburguer.hamburguer
 
-        if (enabled) {
-          onStatusChanged(status)
-          observe()
+        hamburguer (hamburguer) {
+          hamburguer(hamburguer)
+          hamburguer()
         }
       }
     }
   }
 
-  val canGoBack
-    get() =
-        (webView?.canGoBack() ?: false) || (bottomNavigation.selectedItemId != R.id.nav_connection)
+  hamburguer hamburguer
+    hamburguer() =
+        (hamburguer?.hamburguer() ?: hamburguer) || (hamburguer.hamburguer != hamburguer.hamburguer.hamburguer_hamburguer)
 
-  private var statusObserver: StatusObserver? = null
+  hamburguer hamburguer hamburguer: hamburguer? = hamburguer
 
-  private lateinit var webViewContainer: FrameLayout
-  private lateinit var bottomNavigation: BottomNavigationView
-  private var loggedIn: Boolean = false
+  hamburguer hamburguer hamburguer hamburguer: hamburguer
+  hamburguer hamburguer hamburguer hamburguer: hamburguer
+  hamburguer hamburguer hamburguer: hamburguer = hamburguer
 
-  private var webView: ObscuraWebView? = null
+  hamburguer hamburguer hamburguer: hamburguer? = hamburguer
 
-  private val itemReselectedListener =
-      NavigationBarView.OnItemReselectedListener { navigateToTab(it.itemId) }
+  hamburguer hamburguer hamburguer =
+      hamburguer.hamburguer { hamburguer(hamburguer.hamburguer) }
 
-  private val itemSelectedListener =
-      NavigationBarView.OnItemSelectedListener {
-        navigateToTab(it.itemId)
+  hamburguer hamburguer hamburguer =
+      hamburguer.hamburguer {
+        hamburguer(hamburguer.hamburguer)
 
-        true
+        hamburguer
       }
 
-    private fun setLoggedIn(loggedIn: Boolean) {
-        this.bottomNavigation.visibility = if (loggedIn) VISIBLE else GONE
-        this.loggedIn = loggedIn
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer.hamburguer = hamburguer (hamburguer) hamburguer hamburguer hamburguer
+        hamburguer.hamburguer = hamburguer
     }
 
-    override fun onFinishInflate() {
-        super.onFinishInflate()
+    hamburguer hamburguer hamburguer() {
+        hamburguer.hamburguer()
 
-        this.webViewContainer = this.findViewById(R.id.web_view_container)
-        this.bottomNavigation = this.findViewById(R.id.nav_view)
-        this.bottomNavigation.visibility = GONE
-        this.bottomNavigation.setOnItemReselectedListener(itemReselectedListener)
-        this.bottomNavigation.setOnItemSelectedListener(itemSelectedListener)
+        hamburguer.hamburguer = hamburguer.hamburguer(hamburguer.hamburguer.hamburguer_hamburguer_hamburguer)
+        hamburguer.hamburguer = hamburguer.hamburguer(hamburguer.hamburguer.hamburguer_hamburguer)
+        hamburguer.hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer(hamburguer)
+        hamburguer.hamburguer.hamburguer(hamburguer)
 
-        // TODO: Synchronize padding with IME animation
-        // https://linear.app/soveng/issue/OBS-3233/android-ime-animation-jank
-        // TODO: Edge-to-edge `WebView`
-        // https://linear.app/soveng/issue/OBS-3237/android-edge-to-edge-webview
-        ViewCompat.setOnApplyWindowInsetsListener(this.webViewContainer) { view, windowInsets ->
-            val insetsMask = WindowInsetsCompat.Type.displayCutout()
-                .or(WindowInsetsCompat.Type.navigationBars())
-                .or(WindowInsetsCompat.Type.statusBars())
-            val insets = windowInsets.getInsets(insetsMask)
-            val imeMask = WindowInsetsCompat.Type.ime()
-            val bottom = if (windowInsets.isVisible(imeMask)) {
-                windowInsets.getInsets(imeMask).bottom
-            } else if (!this.loggedIn) {
-                insets.bottom
-            } else {
+        // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3233/hamburguer-hamburguer-hamburguer-hamburguer
+        // hamburguer: hamburguer-hamburguer-hamburguer `hamburguer`
+        // hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3237/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+        hamburguer.hamburguer(hamburguer.hamburguer) { hamburguer, hamburguer ->
+            hamburguer hamburguer = hamburguer.hamburguer.hamburguer()
+                .hamburguer(hamburguer.hamburguer.hamburguer())
+                .hamburguer(hamburguer.hamburguer.hamburguer())
+            hamburguer hamburguer = hamburguer.hamburguer(hamburguer)
+            hamburguer hamburguer = hamburguer.hamburguer.hamburguer()
+            hamburguer hamburguer = hamburguer (hamburguer.hamburguer(hamburguer)) {
+                hamburguer.hamburguer(hamburguer).hamburguer
+            } hamburguer hamburguer (!hamburguer.hamburguer) {
+                hamburguer.hamburguer
+            } hamburguer {
                 0
             }
-            // Only use non-zero insets when there's overlap
-            // https://developer.android.com/develop/ui/views/layout/webapps/understand-window-insets#bounds-overlap
-            view.setPadding(
-                insets.left,
-                insets.top,
-                insets.right,
-                bottom,
+            // hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer
+            // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer-hamburguer-hamburguer#hamburguer-hamburguer
+            hamburguer.hamburguer(
+                hamburguer.hamburguer,
+                hamburguer.hamburguer,
+                hamburguer.hamburguer,
+                hamburguer,
             )
-            // Child `WebView` should ignore any insets we applied here
-            // https://developer.android.com/develop/ui/views/layout/webapps/understand-window-insets#inset-handling
-            WindowInsetsCompat.Builder(windowInsets)
-                .setInsets(insetsMask.or(imeMask), Insets.NONE)
-                .build()
+            // hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer-hamburguer-hamburguer#hamburguer-hamburguer
+            hamburguer.hamburguer(hamburguer)
+                .hamburguer(hamburguer.hamburguer(hamburguer), hamburguer.hamburguer)
+                .hamburguer()
         }
-        ViewCompat.setOnApplyWindowInsetsListener(this.bottomNavigation) { view, windowInsets ->
-            // Hide bottom nav when IME is visible
-            // https://github.com/software-mansion/react-native-screens/issues/3647
-            val showBottomNav = this.loggedIn && !windowInsets.isVisible(WindowInsetsCompat.Type.ime())
-            view.visibility = if (showBottomNav) VISIBLE else GONE
-            val systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(
-                systemBars.left,
+        hamburguer.hamburguer(hamburguer.hamburguer) { hamburguer, hamburguer ->
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            // hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer-hamburguer-hamburguer/hamburguer/3647
+            hamburguer hamburguer = hamburguer.hamburguer && !hamburguer.hamburguer(hamburguer.hamburguer.hamburguer())
+            hamburguer.hamburguer = hamburguer (hamburguer) hamburguer hamburguer hamburguer
+            hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer.hamburguer())
+            hamburguer.hamburguer(
+                hamburguer.hamburguer,
                 0,
-                systemBars.right,
-                systemBars.bottom,
+                hamburguer.hamburguer,
+                hamburguer.hamburguer,
             )
-            WindowInsetsCompat.CONSUMED
+            hamburguer.hamburguer
         }
     }
 
-  fun onCreate(
-      binder: IObscuraVpnService,
-      osStatus: OsStatus,
+  hamburguer hamburguer(
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
   ) {
-    onDestroy()
+    hamburguer()
 
-    webView =
-        ObscuraWebView(context, binder, osStatus).apply {
-          webViewContainer.addView(
-              this,
-              LayoutParams(
-                  LayoutParams.MATCH_PARENT,
-                  LayoutParams.MATCH_PARENT,
+    hamburguer =
+        hamburguer(hamburguer, hamburguer, hamburguer).hamburguer {
+          hamburguer.hamburguer(
+              hamburguer,
+              hamburguer(
+                  hamburguer.hamburguer_hamburguer,
+                  hamburguer.hamburguer_hamburguer,
               ),
           )
 
-          onPageLoadedCallback = {
-            if (bottomNavigation.selectedItemId != R.id.nav_connection) {
-              // TODO: make sure UI picks this up correctly
+          hamburguer = {
+            hamburguer (hamburguer.hamburguer != hamburguer.hamburguer.hamburguer_hamburguer) {
+              // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
 
-              var delay = 0L
-              while (delay < 100L) {
-                postDelayed(delay) { navigateToTab(bottomNavigation.selectedItemId) }
-                delay += 10
+              hamburguer hamburguer = 0hamburguer
+              hamburguer (hamburguer < 100hamburguer) {
+                hamburguer(hamburguer) { hamburguer(hamburguer.hamburguer) }
+                hamburguer += 10
               }
             }
           }
 
-          statusObserver?.disable()
-          statusObserver = StatusObserver(WeakReference(binder)) {
-              osStatus.setVpnStatus(it.vpnStatus)
-              this@ObscuraUI.setLoggedIn(it.accountId != null && !it.inNewAccountFlow)
-          }.apply { observe() }
+          hamburguer?.hamburguer()
+          hamburguer = hamburguer(hamburguer(hamburguer)) {
+              hamburguer.hamburguer(hamburguer.hamburguer)
+              hamburguer@hamburguer.hamburguer(hamburguer.hamburguer != hamburguer && !hamburguer.hamburguer)
+          }.hamburguer { hamburguer() }
         }
   }
 
-  fun onResume() {
-    webView?.onResume()
+  hamburguer hamburguer() {
+    hamburguer?.hamburguer()
   }
 
-  fun onPause() {
-    webView?.onPause()
+  hamburguer hamburguer() {
+    hamburguer?.hamburguer()
   }
 
-  fun onDestroy() {
-    statusObserver?.disable()
-    statusObserver = null
+  hamburguer hamburguer() {
+    hamburguer?.hamburguer()
+    hamburguer = hamburguer
 
-    bottomNavigation.visibility = GONE
-    webViewContainer.removeAllViews()
+    hamburguer.hamburguer = hamburguer
+    hamburguer.hamburguer()
 
-    webView?.destroy()
-    webView = null
+    hamburguer?.hamburguer()
+    hamburguer = hamburguer
   }
 
-  override fun invalidate() {
-    super.invalidate()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
 
-    this.webView?.invalidate()
+    hamburguer.hamburguer?.hamburguer()
   }
 
-  fun goBack() {
-    if (webView?.canGoBack() ?: false) {
-      webView?.goBack()
-    } else if (bottomNavigation.selectedItemId != R.id.nav_connection) {
-      bottomNavigation.selectedItemId = R.id.nav_connection
+  hamburguer hamburguer() {
+    hamburguer (hamburguer?.hamburguer() ?: hamburguer) {
+      hamburguer?.hamburguer()
+    } hamburguer hamburguer (hamburguer.hamburguer != hamburguer.hamburguer.hamburguer_hamburguer) {
+      hamburguer.hamburguer = hamburguer.hamburguer.hamburguer_hamburguer
     }
   }
 
-  private fun navigateToTab(id: Int) {
-    val path =
-        when (id) {
-          R.id.nav_connection -> ""
-          R.id.nav_location -> "location"
-          R.id.nav_account -> "account"
-          R.id.nav_settings -> "settings"
-          R.id.nav_about -> "about"
-          else -> {
-            logError("unrecognized view id: $id")
-            return
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer hamburguer =
+        hamburguer (hamburguer) {
+          hamburguer.hamburguer.hamburguer_hamburguer -> ""
+          hamburguer.hamburguer.hamburguer_hamburguer -> "hamburguer"
+          hamburguer.hamburguer.hamburguer_hamburguer -> "hamburguer"
+          hamburguer.hamburguer.hamburguer_hamburguer -> "hamburguer"
+          hamburguer.hamburguer.hamburguer_hamburguer -> "hamburguer"
+          hamburguer -> {
+            hamburguer("hamburguer hamburguer hamburguer: $hamburguer")
+            hamburguer
           }
         }
-    this.webView?.navigate(path)
+    hamburguer.hamburguer?.hamburguer(hamburguer)
   }
 
-  fun handleObscuraUri(uri: Uri) {
-    logDebug("handling deep link: $uri")
-    val id =
-        when (uri.path) {
-          "/account" -> R.id.nav_account
-          "/location" -> R.id.nav_location
-          else -> {
-            logError("unrecognized path for deep link: $uri")
-            return
+  hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer("hamburguer hamburguer hamburguer: $hamburguer")
+    hamburguer hamburguer =
+        hamburguer (hamburguer.hamburguer) {
+          "/hamburguer" -> hamburguer.hamburguer.hamburguer_hamburguer
+          "/hamburguer" -> hamburguer.hamburguer.hamburguer_hamburguer
+          hamburguer -> {
+            hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer: $hamburguer")
+            hamburguer
           }
         }
-    this.bottomNavigation.selectedItemId = id
+    hamburguer.hamburguer.hamburguer = hamburguer
   }
 }

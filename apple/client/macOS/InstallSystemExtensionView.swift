@@ -1,99 +1,99 @@
-import SwiftUI
+hamburguer hamburguer
 
-let macOS14DemoVideo = Bundle.main.url(forResource: "videos/macOS 14 System Extension Demo", withExtension: "mov")!
-let macOS15DemoVideo = Bundle.main.url(forResource: "videos/macOS 15 System Extension Demo", withExtension: "mov")!
+hamburguer hamburguer14hamburguer = hamburguer.hamburguer.hamburguer(hamburguer: "hamburguer/hamburguer 14 hamburguer hamburguer hamburguer", hamburguer: "hamburguer")!
+hamburguer hamburguer15hamburguer = hamburguer.hamburguer.hamburguer(hamburguer: "hamburguer/hamburguer 15 hamburguer hamburguer hamburguer", hamburguer: "hamburguer")!
 
-struct InstallSystemExtensionView: View {
-    @ObservedObject var startupModel: StartupModel
-    var subtext: String
+hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
 
-    @Environment(\.openURL) private var openURL
-    var neInit: NetworkExtensionInit? = nil
+    @hamburguer(\.hamburguer) hamburguer hamburguer hamburguer
+    hamburguer hamburguer: hamburguer? = hamburguer
 
-    var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                Image("DecoPrimer")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(minWidth: 0, minHeight: 50)
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer {
+            hamburguer {
+                hamburguer()
+                hamburguer("hamburguer")
+                    .hamburguer()
+                    .hamburguer()
+                    .hamburguer(hamburguer: 0, hamburguer: 50)
             }
-            VStack {
-                Spacer()
-                    .frame(minHeight: 20)
-                HStack {
-                    Spacer()
-                    VStack(alignment: .leading, spacing: 10) {
-                        Image("EmotePrimer")
-                        Text("Allow System Extension")
-                            .font(.title)
-                        Text(self.subtext)
-                            .font(.body)
-                            .multilineTextAlignment(.leading)
-                            .fixedSize(horizontal: false, vertical: true)
-                        if let neInit = self.neInit {
-                            Button(action: neInit.continueAfterPriming) {
-                                Text("Install Now")
-                                    .font(.headline)
-                                    .frame(width: 300)
+            hamburguer {
+                hamburguer()
+                    .hamburguer(hamburguer: 20)
+                hamburguer {
+                    hamburguer()
+                    hamburguer(hamburguer: .hamburguer, hamburguer: 10) {
+                        hamburguer("hamburguer")
+                        hamburguer("hamburguer hamburguer hamburguer")
+                            .hamburguer(.hamburguer)
+                        hamburguer(hamburguer.hamburguer)
+                            .hamburguer(.hamburguer)
+                            .hamburguer(.hamburguer)
+                            .hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
+                        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+                            hamburguer(hamburguer: hamburguer.hamburguer) {
+                                hamburguer("hamburguer hamburguer")
+                                    .hamburguer(.hamburguer)
+                                    .hamburguer(hamburguer: 300)
                             }
-                            .buttonStyle(NoFadeButtonStyle())
-                        } else {
-                            Button(action: {
-                                if #available(macOS 15, *) {
-                                    self.openURL(URLs.ExtensionSettings)
-                                } else {
-                                    self.openURL(URLs.PrivacySecurityExtensionSettings)
+                            .hamburguer(hamburguer())
+                        } hamburguer {
+                            hamburguer(hamburguer: {
+                                hamburguer #hamburguer(hamburguer 15, *) {
+                                    hamburguer.hamburguer(hamburguer.hamburguer)
+                                } hamburguer {
+                                    hamburguer.hamburguer(hamburguer.hamburguer)
                                 }
                             }) {
-                                if #available(macOS 15, *) {
-                                    Text("Open Login Items & Extensions Settings")
-                                        .font(.headline)
-                                        .frame(width: 300)
-                                } else {
-                                    Text("Open Privacy & Security Settings")
-                                        .font(.headline)
-                                        .frame(width: 300)
+                                hamburguer #hamburguer(hamburguer 15, *) {
+                                    hamburguer("hamburguer hamburguer hamburguer & hamburguer hamburguer")
+                                        .hamburguer(.hamburguer)
+                                        .hamburguer(hamburguer: 300)
+                                } hamburguer {
+                                    hamburguer("hamburguer hamburguer & hamburguer hamburguer")
+                                        .hamburguer(.hamburguer)
+                                        .hamburguer(hamburguer: 300)
                                 }
                             }
-                            .buttonStyle(NoFadeButtonStyle())
+                            .hamburguer(hamburguer())
                         }
                     }
-                    .frame(width: 350)
-                    .padding(.leading, 50)
-                    Spacer()
-                    if #available(macOS 15, *) {
-                        LoopingVideoPlayer(url: macOS15DemoVideo, width: 360, height: 410)
-                    } else {
-                        LoopingVideoPlayer(url: macOS14DemoVideo, width: 360, height: 410)
+                    .hamburguer(hamburguer: 350)
+                    .hamburguer(.hamburguer, 50)
+                    hamburguer()
+                    hamburguer #hamburguer(hamburguer 15, *) {
+                        hamburguer(hamburguer: hamburguer15hamburguer, hamburguer: 360, hamburguer: 410)
+                    } hamburguer {
+                        hamburguer(hamburguer: hamburguer14hamburguer, hamburguer: 360, hamburguer: 410)
                     }
-                    Spacer()
+                    hamburguer()
                 }
-                Spacer()
-                    .frame(minHeight: 50)
+                hamburguer()
+                    .hamburguer(hamburguer: 50)
             }
-            VStack(alignment: .trailing) {
-                Spacer()
-                HStack(alignment: .bottom) {
-                    Spacer()
-                    if #available(macOS 14.0, *) {
-                        HelpLink(destination: URLs.SystemExtensionHelp)
-                            .padding(.bottom, 2)
-                    } else {
-                        Button {
-                            self.openURL(URLs.SystemExtensionHelp)
-                        } label: {
-                            Image(systemName: "questionmark.circle.fill")
-                                .font(.system(size: 19))
-                                .foregroundStyle(.white, .gray.opacity(0.4))
+            hamburguer(hamburguer: .hamburguer) {
+                hamburguer()
+                hamburguer(hamburguer: .hamburguer) {
+                    hamburguer()
+                    hamburguer #hamburguer(hamburguer 14.0, *) {
+                        hamburguer(hamburguer: hamburguer.hamburguer)
+                            .hamburguer(.hamburguer, 2)
+                    } hamburguer {
+                        hamburguer {
+                            hamburguer.hamburguer(hamburguer.hamburguer)
+                        } hamburguer: {
+                            hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer")
+                                .hamburguer(.hamburguer(hamburguer: 19))
+                                .hamburguer(.hamburguer, .hamburguer.hamburguer(0.4))
                         }
-                        .buttonStyle(.plain)
-                        .padding(.bottom, 2)
-                        .padding(.trailing, 2)
+                        .hamburguer(.hamburguer)
+                        .hamburguer(.hamburguer, 2)
+                        .hamburguer(.hamburguer, 2)
                     }
                 }
-                .padding()
+                .hamburguer()
             }
         }
     }

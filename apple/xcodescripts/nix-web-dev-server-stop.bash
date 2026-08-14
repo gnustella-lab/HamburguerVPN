@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/hamburguer/hamburguer/hamburguer hamburguer
 
-# This just kills whatever is using the port. It is ugly but the best option for a few reasons.
-# 1. Xcode ignores the result of pre-actions. This means that we have no way to signal a failure.
-# 2. The clean action will destroy our PID file.
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+# 1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+# 2. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 #
-# So we want the best chance of succeeding or the user will unknowingly be using a stale web server. The only way to reliably free up the port is to kill what is listening on it.
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-# TODO: remove magic 1420 port
-kill "$(lsof -ti 'tcp:1420')"
+# hamburguer: hamburguer hamburguer 1420 hamburguer
+hamburguer "$(hamburguer -hamburguer 'hamburguer:1420')"

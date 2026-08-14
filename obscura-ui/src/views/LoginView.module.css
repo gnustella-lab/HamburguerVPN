@@ -1,55 +1,55 @@
-.animatedAccountId {
-    justify-content: center;
-    display: flex;
-    overflow: hidden;
-    font-variant: tabular-nums;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer;
+    hamburguer: hamburguer;
+    hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer-hamburguer;
 }
 
-.digitsWheel {
-    position: relative;
-    width: 1ch;
-    font-variant: tabular-nums;
+.hamburguer {
+    hamburguer: hamburguer;
+    hamburguer: 1hamburguer;
+    hamburguer-hamburguer: hamburguer-hamburguer;
 }
 
-.digit {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-items: center;
+.hamburguer {
+    hamburguer: hamburguer;
+    hamburguer: 0;
+    hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer;
 }
 
-.backgroundImage {
-    background-repeat: no-repeat;
-    background-size: contain;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer;
+    hamburguer-hamburguer: hamburguer;
 }
 
-.loginContainer {
-    min-height: 100vh;
-    gap: 20px !important;
-    background-position: top;
-    @mixin dark {
-        background-color: var(--mantine-color-dark-8);
+.hamburguer {
+    hamburguer-hamburguer: 100hamburguer;
+    hamburguer: 20hamburguer !hamburguer;
+    hamburguer-hamburguer: hamburguer;
+    @hamburguer hamburguer {
+        hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer-8);
     }
 }
 
-.loginContainerHandheld {
-    background-position: bottom;
-    @media (orientation: portrait) {
-        /* when the soft keyboard is open,
-           this padding ensures that the background image
-           is below the debugging archive label
+.hamburguer {
+    hamburguer-hamburguer: hamburguer;
+    @hamburguer (hamburguer: hamburguer) {
+        /* hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer,
+           hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+           hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
          */
-        padding-bottom: 120px;
+        hamburguer-hamburguer: 120hamburguer;
     }
 }
 
-.sectionContainer {
-    background-color: light-dark(white, var(--mantine-color-dark-8));
-    padding: 0 0.5em 0.5em 0.5em;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer, hamburguer(--hamburguer-hamburguer-hamburguer-8));
+    hamburguer: 0 0.5hamburguer 0.5hamburguer 0.5hamburguer;
 }
 
-.copyAccountStack {
-    min-height: 32vh;
-    max-height: 42vh;
+.hamburguer {
+    hamburguer-hamburguer: 32hamburguer;
+    hamburguer-hamburguer: 42hamburguer;
 }

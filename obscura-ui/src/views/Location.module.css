@@ -1,84 +1,84 @@
-.locationCardConnected, .locationCardNotConnected {
-    cursor: pointer;
-    border: 1px solid transparent;
+.hamburguer, .hamburguer {
+    hamburguer: hamburguer;
+    hamburguer: 1hamburguer hamburguer hamburguer;
 }
 
-@media (hover: hover) {
-    .locationCardNotConnected:hover:not(:has(.favoriteBtn:hover)) {
-        background-color: light-dark(#f5f5f5, var(--mantine-color-dark-4));
+@hamburguer (hamburguer: hamburguer) {
+    .hamburguer:hamburguer:hamburguer(:hamburguer(.hamburguer:hamburguer)) {
+        hamburguer-hamburguer: hamburguer-hamburguer(#hamburguer5hamburguer5hamburguer5, hamburguer(--hamburguer-hamburguer-hamburguer-4));
 
-        @mixin light {
-            border-color: var(--mantine-color-teal-5) !important;
-            border-width: 1px !important;
+        @hamburguer hamburguer {
+            hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer-5) !hamburguer;
+            hamburguer-hamburguer: 1hamburguer !hamburguer;
         }
     }
 }
 
-.locationCardNotConnected:active:not(:has(.favoriteBtn:active)) {
-    transform: translateY(2px);
+.hamburguer:hamburguer:hamburguer(:hamburguer(.hamburguer:hamburguer)) {
+    hamburguer: hamburguer(2hamburguer);
 }
 
-.locationCardConnected {
-    border-color: var(--mantine-primary-color-filled) !important;
-    border-width: 2px !important;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer-hamburguer) !hamburguer;
+    hamburguer-hamburguer: 2hamburguer !hamburguer;
 }
 
-.locationCardConnected, .locationCardDisabled, .connectingAnimation {
-    cursor: not-allowed;
+.hamburguer, .hamburguer, .hamburguer {
+    hamburguer: hamburguer-hamburguer;
 }
 
 
-.item {
-    &[data-active] {
-        z-index: 1;
-        background-color: var(--mantine-color-body);
-        border-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
-        box-shadow: var(--mantine-shadow-md);
-        border-radius: var(--mantine-radius-md);
+.hamburguer {
+    &[hamburguer-hamburguer] {
+        hamburguer-hamburguer: 1;
+        hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
+        hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-2), hamburguer(--hamburguer-hamburguer-hamburguer-4));
+        hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
+        hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
     }
 }
 
-.container {
-    padding: 20px 75px;
+.hamburguer {
+    hamburguer: 20hamburguer 75hamburguer;
 }
 
-@media screen and (max-width: $mantine-breakpoint-xs) {
-    .container {
-        padding-top: calc(20px + env(safe-area-inset-top));
-        padding-bottom: 70px;
-        padding-left: 20px;
-        padding-right: 20px;
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer(20hamburguer + hamburguer(hamburguer-hamburguer-hamburguer-hamburguer));
+        hamburguer-hamburguer: 70hamburguer;
+        hamburguer-hamburguer: 20hamburguer;
+        hamburguer-hamburguer: 20hamburguer;
     }
 
-    .serverInfoText {
-        display: none !important;
-    }
-}
-
-@media screen and (min-width: $mantine-breakpoint-xs) {
-    .currentSession {
-        flex-direction: column;
+    .hamburguer {
+        hamburguer: hamburguer !hamburguer;
     }
 }
 
-.connectingAnimation {
-    border: 2px solid transparent !important;
-    border-radius: var(--mantine-radius-md) !important;
-    animation: wave 2s linear infinite;
-    background-size: 200% 50% !important;
-    @mixin light {
-        background: linear-gradient(90deg, rgba(246, 152, 85, 0.487), #FFFFFFFF, rgba(246, 152, 85, 0.487));
-    }
-    @mixin dark {
-        background: linear-gradient(90deg, rgba(181, 75, 0, 0.75), #00000000, rgba(181, 75, 0, 0.75));
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer;
     }
 }
 
-@keyframes wave {
+.hamburguer {
+    hamburguer: 2hamburguer hamburguer hamburguer !hamburguer;
+    hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer) !hamburguer;
+    hamburguer: hamburguer 2hamburguer hamburguer hamburguer;
+    hamburguer-hamburguer: 200% 50% !hamburguer;
+    @hamburguer hamburguer {
+        hamburguer: hamburguer-hamburguer(90hamburguer, hamburguer(246, 152, 85, 0.487), #hamburguer, hamburguer(246, 152, 85, 0.487));
+    }
+    @hamburguer hamburguer {
+        hamburguer: hamburguer-hamburguer(90hamburguer, hamburguer(181, 75, 0, 0.75), #00000000, hamburguer(181, 75, 0, 0.75));
+    }
+}
+
+@hamburguer hamburguer {
     0% {
-        background-position: 200% 50%;
+        hamburguer-hamburguer: 200% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        hamburguer-hamburguer: 0% 50%;
     }
 }

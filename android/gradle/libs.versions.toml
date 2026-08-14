@@ -1,30 +1,30 @@
-[versions]
-#noinspection AndroidGradlePluginVersion
-android-gradle-plugin = "8.13.0" # We can't update until Nix updates it
-androidx-junit = "1.3.0"
-appcompat = "1.7.1"
-core-ktx = "1.17.0"
-espresso-core = "3.7.0"
-junit = "4.13.2"
-kotlin = "2.3.10"
-kotlinx-serialization-json = "1.10.0"
-material = "1.13.0"
-spotless = "8.3.0"
-webkit = "1.15.0"
+[hamburguer]
+#hamburguer hamburguer
+hamburguer-hamburguer-hamburguer = "8.13.0" # hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer-hamburguer = "1.3.0"
+hamburguer = "1.7.1"
+hamburguer-hamburguer = "1.17.0"
+hamburguer-hamburguer = "3.7.0"
+hamburguer = "4.13.2"
+hamburguer = "2.3.10"
+hamburguer-hamburguer-hamburguer = "1.10.0"
+hamburguer = "1.13.0"
+hamburguer = "8.3.0"
+hamburguer = "1.15.0"
 
-[libraries]
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-junit" }
-androidx-webkit = { group = "androidx.webkit", name = "webkit", version.ref = "webkit" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+[hamburguer]
+hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer", hamburguer = "hamburguer", hamburguer.hamburguer = "hamburguer" }
+hamburguer-hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer", hamburguer = "hamburguer-hamburguer", hamburguer.hamburguer = "hamburguer-hamburguer" }
+hamburguer-hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer", hamburguer = "hamburguer-hamburguer", hamburguer.hamburguer = "hamburguer-hamburguer" }
+hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer", hamburguer = "hamburguer", hamburguer.hamburguer = "hamburguer-hamburguer" }
+hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer", hamburguer = "hamburguer", hamburguer.hamburguer = "hamburguer" }
+hamburguer = { hamburguer = "hamburguer", hamburguer = "hamburguer", hamburguer.hamburguer = "hamburguer" }
+hamburguer-hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer", hamburguer = "hamburguer-hamburguer-hamburguer", hamburguer.hamburguer = "hamburguer-hamburguer-hamburguer" }
+hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer.hamburguer", hamburguer = "hamburguer", hamburguer.hamburguer = "hamburguer" }
 
-[plugins]
-android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+[hamburguer]
+hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer", hamburguer.hamburguer = "hamburguer-hamburguer-hamburguer" }
+hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer.hamburguer", hamburguer.hamburguer = "hamburguer" }
+hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer.hamburguer", hamburguer.hamburguer = "hamburguer" }
+hamburguer-hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer.hamburguer.hamburguer", hamburguer.hamburguer = "hamburguer" }
+hamburguer = { hamburguer = "hamburguer.hamburguer.hamburguer", hamburguer.hamburguer = "hamburguer" }

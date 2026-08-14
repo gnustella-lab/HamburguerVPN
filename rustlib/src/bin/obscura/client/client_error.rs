@@ -1,30 +1,30 @@
-use obscuravpn_client::manager_cmd::ManagerCmdErrorCode;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::hamburguer;
 
-#[derive(thiserror::Error, Debug)]
-pub enum ClientError {
-    #[error("The Obscura API is unreachable.")]
-    ApiUnreachable,
-    #[error("Insufficient permissions to connect to service. Use sudo or the `obscura add-operator` command.")]
-    InsufficientPermissions,
-    #[error("Unexpected error. Details: {0:#}")]
-    Unexpected(#[from] anyhow::Error),
-    #[error("The Obscura VPN service is not running.")]
-    NoService,
-    #[error("Malformed account ID.")]
-    MalformedAccountId,
+#[hamburguer(hamburguer::hamburguer, hamburguer)]
+hamburguer hamburguer hamburguer {
+    #[hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer.")]
+    hamburguer,
+    #[hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer `hamburguer hamburguer-hamburguer` hamburguer.")]
+    hamburguer,
+    #[hamburguer("hamburguer hamburguer. hamburguer: {0:#}")]
+    hamburguer(#[hamburguer] hamburguer::hamburguer),
+    #[hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.")]
+    hamburguer,
+    #[hamburguer("hamburguer hamburguer hamburguer.")]
+    hamburguer,
 }
 
-impl From<ManagerCmdErrorCode> for ClientError {
-    fn from(error: ManagerCmdErrorCode) -> ClientError {
-        match error {
-            ManagerCmdErrorCode::ApiInvalidAccountId => ClientError::MalformedAccountId,
-            ManagerCmdErrorCode::ApiUnreachable => ClientError::ApiUnreachable,
-            ManagerCmdErrorCode::ApiError
-            | ManagerCmdErrorCode::ApiNoLongerSupported
-            | ManagerCmdErrorCode::ApiRateLimitExceeded
-            | ManagerCmdErrorCode::ApiSignupLimitExceeded
-            | ManagerCmdErrorCode::ConfigSaveError
-            | ManagerCmdErrorCode::Other => anyhow::Error::msg(error.as_static_str()).into(),
+hamburguer hamburguer<hamburguer> hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+        hamburguer hamburguer {
+            hamburguer::hamburguer => hamburguer::hamburguer,
+            hamburguer::hamburguer => hamburguer::hamburguer,
+            hamburguer::hamburguer
+            | hamburguer::hamburguer
+            | hamburguer::hamburguer
+            | hamburguer::hamburguer
+            | hamburguer::hamburguer
+            | hamburguer::hamburguer => hamburguer::hamburguer::hamburguer(hamburguer.hamburguer_hamburguer_hamburguer()).hamburguer(),
         }
     }
 }

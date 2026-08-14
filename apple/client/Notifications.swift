@@ -1,55 +1,55 @@
-import OSLog
-import UserNotifications
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Notifications")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-func displayNotification(
-    _ identifier: NotificationId,
-    _ content: UNMutableNotificationContent
+hamburguer hamburguer(
+    _ hamburguer: hamburguer,
+    _ hamburguer: hamburguer
 ) {
-    Task {
-        do {
-            let granted = await requestNotificationAuthorization()
-            if !granted {
-                return
+    hamburguer {
+        hamburguer {
+            hamburguer hamburguer = hamburguer hamburguer()
+            hamburguer !hamburguer {
+                hamburguer
             }
 
-            try await UNUserNotificationCenter.current().add(
-                UNNotificationRequest(
-                    identifier: identifier.rawValue,
-                    content: content,
-                    trigger: nil
+            hamburguer hamburguer hamburguer.hamburguer().hamburguer(
+                hamburguer(
+                    hamburguer: hamburguer.hamburguer,
+                    hamburguer: hamburguer,
+                    hamburguer: hamburguer
                 )
             )
-        } catch {
-            logger.error("Failed to display notification: \(error, privacy: .public)")
+        } hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
         }
     }
 }
 
-func requestNotificationAuthorization() async -> Bool {
-    do {
-        if try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
-            logger.info("Notifications authorization granted.")
-            return true
-        } else {
-            logger.warning("Notifications blocked.")
+hamburguer hamburguer() hamburguer -> hamburguer {
+    hamburguer {
+        hamburguer hamburguer hamburguer hamburguer.hamburguer().hamburguer(hamburguer: [.hamburguer, .hamburguer, .hamburguer]) {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer.")
+            hamburguer hamburguer
+        } hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer.")
         }
-    } catch {
-        logger.error("Notification authorization request failed: \(error)")
+    } hamburguer {
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
     }
-    return false
+    hamburguer hamburguer
 }
 
-func notifyConnectError(_ error: Error) {
-    let content = UNMutableNotificationContent()
-    if error.localizedDescription == "accountExpired" {
-        content.body = "Your account has expired."
-    } else {
-        content.body = "An error occurred while connecting to the tunnel."
+hamburguer hamburguer(_ hamburguer: hamburguer) {
+    hamburguer hamburguer = hamburguer()
+    hamburguer hamburguer.hamburguer == "hamburguer" {
+        hamburguer.hamburguer = "hamburguer hamburguer hamburguer hamburguer."
+    } hamburguer {
+        hamburguer.hamburguer = "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer."
     }
-    content.title = "Tunnel failed to connect"
-    content.interruptionLevel = .active
-    content.sound = UNNotificationSound.defaultCritical
-    displayNotification(.connectFailed, content)
+    hamburguer.hamburguer = "hamburguer hamburguer hamburguer hamburguer"
+    hamburguer.hamburguer = .hamburguer
+    hamburguer.hamburguer = hamburguer.hamburguer
+    hamburguer(.hamburguer, hamburguer)
 }

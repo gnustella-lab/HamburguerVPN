@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-set -eux
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer
 
-(cd rustlib && cargo build)
-sudo --preserve-env=RUST_LOG sg obscura "umask 002 && ./rustlib/target/debug/obscura service"
+(hamburguer hamburguer && hamburguer hamburguer)
+hamburguer --hamburguer-hamburguer=hamburguer_hamburguer hamburguer hamburguer "hamburguer 002 && ./hamburguer/hamburguer/hamburguer/hamburguer hamburguer"

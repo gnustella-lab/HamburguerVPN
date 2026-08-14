@@ -1,112 +1,112 @@
-import Cocoa
-import SwiftUI
+hamburguer hamburguer
+hamburguer hamburguer
 
-// https://github.com/j-f1/MenuBuilder/blob/ba0202c5ff6d63f0fd7ec6b1da11a769eff15000/Sources/MenuBuilder/MenuItemView.swift#L59 (MIT)
-// https://github.com/attheodo/Pingu/blob/affc3e4ccf88962d4bbb98dbef774c35801102e6/Pingu/Source/Views/HostMenuItemView/HostMenuItemView.swift
-// https://developer.apple.com/documentation/appkit/nsvisualeffectview
-// https://developer.apple.com/documentation/appkit/nsview/1514865-enclosingmenuitem
+// hamburguer://hamburguer.hamburguer/hamburguer-hamburguer1/hamburguer/hamburguer/hamburguer0202hamburguer5hamburguer6hamburguer63hamburguer0hamburguer7hamburguer6hamburguer1hamburguer11hamburguer769hamburguer15000/hamburguer/hamburguer/hamburguer.hamburguer#hamburguer59 (hamburguer)
+// hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer3hamburguer4hamburguer88962hamburguer4hamburguer98hamburguer774hamburguer35801102hamburguer6/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer.hamburguer
+// hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer
+// hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/1514865-hamburguer
 
-class MenuItemView<ContentView: View>: NSView {
-    private let effectView: NSVisualEffectView
-    let contentView: ContentView
-    let hostView: NSHostingView<AnyView>
+hamburguer hamburguer<hamburguer: hamburguer>: hamburguer {
+    hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer<hamburguer>
 
-    init(_ view: ContentView) {
-        self.effectView = NSVisualEffectView()
+    hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer()
 
-        self.effectView.state = .active
-        self.effectView.material = .selection
-        self.effectView.isEmphasized = true
-        self.effectView.blendingMode = .behindWindow
-        self.effectView.wantsLayer = true
-        self.effectView.layer?.cornerRadius = 4
-        self.effectView.layer?.cornerCurve = .continuous
+        hamburguer.hamburguer.hamburguer = .hamburguer
+        hamburguer.hamburguer.hamburguer = .hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer = .hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer?.hamburguer = 4
+        hamburguer.hamburguer.hamburguer?.hamburguer = .hamburguer
 
-        // only enable when highlighted
-        self.effectView.isHidden = true
+        // hamburguer hamburguer hamburguer hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer
 
-        self.contentView = view
-        self.hostView = NSHostingView(rootView: AnyView(self.contentView))
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer(hamburguer: hamburguer(hamburguer.hamburguer))
 
-        let frame = CGRect(origin: .zero, size: hostView.fittingSize)
+        hamburguer hamburguer = hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer.hamburguer)
 
-        super.init(frame: frame)
+        hamburguer.hamburguer(hamburguer: hamburguer)
 
-        addSubview(self.effectView)
-        addSubview(self.hostView)
+        hamburguer(hamburguer.hamburguer)
+        hamburguer(hamburguer.hamburguer)
 
-        self.setUpConstraints()
+        hamburguer.hamburguer()
     }
 
-    @available(*, unavailable)
-    required init?(coder decoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @hamburguer(*, hamburguer)
+    hamburguer hamburguer?(hamburguer hamburguer: hamburguer) {
+        hamburguer("hamburguer(hamburguer:) hamburguer hamburguer hamburguer hamburguer")
     }
 
-    override func viewDidMoveToWindow() {
-        super.viewDidMoveToWindow()
-        if window != nil {
-            frame = NSRect(
-                origin: frame.origin,
-                size: CGSize(width: enclosingMenuItem!.menu!.size.width, height: frame.height)
+    hamburguer hamburguer hamburguer() {
+        hamburguer.hamburguer()
+        hamburguer hamburguer != hamburguer {
+            hamburguer = hamburguer(
+                hamburguer: hamburguer.hamburguer,
+                hamburguer: hamburguer(hamburguer: hamburguer!.hamburguer!.hamburguer.hamburguer, hamburguer: hamburguer.hamburguer)
             )
 
-            self.effectView.frame = NSRect(
-                origin: CGPoint(x: frame.origin.x + 5, y: frame.origin.y),
-                size: CGSize(width: enclosingMenuItem!.menu!.size.width - 10, height: frame.height)
+            hamburguer.hamburguer.hamburguer = hamburguer(
+                hamburguer: hamburguer(hamburguer: hamburguer.hamburguer.hamburguer + 5, hamburguer: hamburguer.hamburguer.hamburguer),
+                hamburguer: hamburguer(hamburguer: hamburguer!.hamburguer!.hamburguer.hamburguer - 10, hamburguer: hamburguer.hamburguer)
             )
-            self.hostView.frame = frame
+            hamburguer.hamburguer.hamburguer = hamburguer
         }
     }
 
-    // https://stackoverflow.com/q/6054331/7732434
-    override func draw(_ dirtyRect: NSRect) {
-        // Without this, it is possible for a Toggle/NSSwitch inside the status
-        // menu dropdown to appear "inactive". That is, without the app tint
-        // and greyed-out, even when the Toggle is in the "ON" position.
+    // hamburguer://hamburguer.hamburguer/hamburguer/6054331/7732434
+    hamburguer hamburguer hamburguer(_ hamburguer: hamburguer) {
+        // hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer/hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer "hamburguer". hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer-hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer" hamburguer.
         //
-        // This fix was discovered by observing that the only reliable
-        // difference between instances where the Toggle was and wasn't tinted
-        // was whether the `NSStatusBarWindow` (a private API class) had
-        // `isKeyWindow` true or false.
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer
+        // hamburguer hamburguer hamburguer `hamburguer` (hamburguer hamburguer hamburguer hamburguer) hamburguer
+        // `hamburguer` hamburguer hamburguer hamburguer.
         //
-        // References for possibly related problems and references:
-        //   - https://developer.apple.com/documentation/swiftui/environmentvalues/controlactivestate
-        //   - https://stackoverflow.com/a/59655207
-        //   - https://medium.com/@acwrightdesign/creating-a-macos-menu-bar-application-using-swiftui-54572a5d5f87
-        if let window = self.window {
-            if window.isVisible {
-                window.becomeKey()
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer:
+        //   - hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer
+        //   - hamburguer://hamburguer.hamburguer/hamburguer/59655207
+        //   - hamburguer://hamburguer.hamburguer/@hamburguer/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-54572hamburguer5hamburguer5hamburguer87
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer hamburguer.hamburguer {
+                hamburguer.hamburguer()
             }
         }
-        // NOTE: an action must be defined in the NSMenuItem
-        // Sample usage; let menuItem = NSMenuItem(title: "", action: #selector(menuItemAction), keyEquivalent: "")
-        let highlighted = enclosingMenuItem?.isHighlighted ?? false
-        self.effectView.isHidden = !highlighted
-        // Note: I removed rehosting the view depending on highlighting
-        // I removed it because it would
-        // // NOTE: I removed it because on the first ever draw of the toggle, the vpn state would be visibly delayed by 0.5s
-        // if we ever want our subview to know if it's highlighted, we can use its own .onHover,
-        //  or for broader highlighting: `@Binding var menuItemIsHighlighted`
-        //  @State var menuItemIsHighlighted = false
-        //  which does require providing this class with the view struct and not an instance
-        super.draw(dirtyRect)
+        // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer; hamburguer hamburguer = hamburguer(hamburguer: "", hamburguer: #hamburguer(hamburguer), hamburguer: "")
+        hamburguer hamburguer = hamburguer?.hamburguer ?? hamburguer
+        hamburguer.hamburguer.hamburguer = !hamburguer
+        // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 0.5hamburguer
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer .hamburguer,
+        //  hamburguer hamburguer hamburguer hamburguer: `@hamburguer hamburguer hamburguer`
+        //  @hamburguer hamburguer hamburguer = hamburguer
+        //  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer.hamburguer(hamburguer)
     }
 
-    private func setUpConstraints() {
-        self.effectView.translatesAutoresizingMaskIntoConstraints = false
-        self.hostView.translatesAutoresizingMaskIntoConstraints = false
-        translatesAutoresizingMaskIntoConstraints = false
+    hamburguer hamburguer hamburguer() {
+        hamburguer.hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer
+        hamburguer = hamburguer
 
-        let margin: CGFloat = 5
-        self.effectView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        self.effectView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin).isActive = true
-        self.effectView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        self.effectView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin).isActive = true
+        hamburguer hamburguer: hamburguer = 5
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer).hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer).hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer).hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: -hamburguer).hamburguer = hamburguer
 
-        self.hostView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        self.hostView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        self.hostView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        self.hostView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer).hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer).hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer).hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer).hamburguer = hamburguer
     }
 }

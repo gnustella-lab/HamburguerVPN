@@ -1,52 +1,52 @@
-use crate::manager_cmd::{ManagerCmdErrorCode, ManagerCmdOk};
-use anyhow::Context as _;
-use jni::{
-    JNIEnv,
-    objects::{JObject, JValue},
+hamburguer hamburguer::hamburguer_hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer hamburguer _;
+hamburguer hamburguer::{
+    hamburguer,
+    hamburguer::{hamburguer, hamburguer},
 };
 
-pub fn signal_json_ffi_future(env: &mut JNIEnv, j_future: &JObject, result: Result<ManagerCmdOk, ManagerCmdErrorCode>) -> anyhow::Result<()> {
-    match result.and_then(|ok| {
-        serde_json::to_string(&ok).map_err(|error| {
-            tracing::error!(message_id = "hP0R8zXa", ?error, "failed to serialize successful cmd result");
-            ManagerCmdErrorCode::Other
+hamburguer hamburguer hamburguer_hamburguer_hamburguer_hamburguer(hamburguer: &hamburguer hamburguer, hamburguer_hamburguer: &hamburguer, hamburguer: hamburguer<hamburguer, hamburguer>) -> hamburguer::hamburguer<()> {
+    hamburguer hamburguer.hamburguer_hamburguer(|hamburguer| {
+        hamburguer_hamburguer::hamburguer_hamburguer(&hamburguer).hamburguer_hamburguer(|hamburguer| {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer0hamburguer8hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer");
+            hamburguer::hamburguer
         })
     }) {
-        Ok(ok) => {
-            let j_ok = env.new_string(&ok).map(JObject::from).unwrap_or_else(|error| {
-                tracing::error!(message_id = "eeAQzxl1", ?error, "failed to convert `ok` to `JString`");
-                JObject::null()
+        hamburguer(hamburguer) => {
+            hamburguer hamburguer_hamburguer = hamburguer.hamburguer_hamburguer(&hamburguer).hamburguer(hamburguer::hamburguer).hamburguer_hamburguer_hamburguer(|hamburguer| {
+                hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer1", ?hamburguer, "hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer`");
+                hamburguer::hamburguer()
             });
-            env.call_method(j_future, "complete", "(Ljava/lang/Object;)Z", &[JValue::Object(&j_ok)])
-                .context("failed to call `complete`")?;
+            hamburguer.hamburguer_hamburguer(hamburguer_hamburguer, "hamburguer", "(hamburguer/hamburguer/hamburguer;)hamburguer", &[hamburguer::hamburguer(&hamburguer_hamburguer)])
+                .hamburguer("hamburguer hamburguer hamburguer `hamburguer`")?;
         }
-        Err(error) => {
-            let j_error = env
-                .new_string(error.as_static_str())
-                .context("failed to convert `error` to `JString`")
-                .map(JObject::from)
-                .unwrap_or_else(|error| {
-                    tracing::error!(message_id = "2MpsFFGe", ?error, "failed to propagate error message");
-                    JObject::null()
+        hamburguer(hamburguer) => {
+            hamburguer hamburguer_hamburguer = hamburguer
+                .hamburguer_hamburguer(hamburguer.hamburguer_hamburguer_hamburguer())
+                .hamburguer("hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer`")
+                .hamburguer(hamburguer::hamburguer)
+                .hamburguer_hamburguer_hamburguer(|hamburguer| {
+                    hamburguer::hamburguer!(hamburguer_hamburguer = "2hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+                    hamburguer::hamburguer()
                 });
-            let j_exception = env
-                .new_object(
-                    super::class_cache::get()?.json_ffi_exception(),
-                    "(Ljava/lang/String;)V",
-                    &[JValue::Object(&j_error)],
+            hamburguer hamburguer_hamburguer = hamburguer
+                .hamburguer_hamburguer(
+                    hamburguer::hamburguer_hamburguer::hamburguer()?.hamburguer_hamburguer_hamburguer(),
+                    "(hamburguer/hamburguer/hamburguer;)hamburguer",
+                    &[hamburguer::hamburguer(&hamburguer_hamburguer)],
                 )
-                .unwrap_or_else(|error| {
-                    tracing::error!(message_id = "T3tXX3yk", ?error, "failed to create `JsonFfiException`");
-                    JObject::null()
+                .hamburguer_hamburguer_hamburguer(|hamburguer| {
+                    hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer3hamburguer3hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer `hamburguer`");
+                    hamburguer::hamburguer()
                 });
-            env.call_method(
-                j_future,
-                "completeExceptionally",
-                "(Ljava/lang/Throwable;)Z",
-                &[JValue::Object(&j_exception)],
+            hamburguer.hamburguer_hamburguer(
+                hamburguer_hamburguer,
+                "hamburguer",
+                "(hamburguer/hamburguer/hamburguer;)hamburguer",
+                &[hamburguer::hamburguer(&hamburguer_hamburguer)],
             )
-            .context("failed to call `completeExceptionally`")?;
+            .hamburguer("hamburguer hamburguer hamburguer `hamburguer`")?;
         }
     }
-    Ok(())
+    hamburguer(())
 }

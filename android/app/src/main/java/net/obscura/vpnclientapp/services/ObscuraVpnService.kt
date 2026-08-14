@@ -1,341 +1,341 @@
-package net.obscura.vpnclientapp.services
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.Manifest
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.pm.ServiceInfo
-import android.net.ConnectivityManager
-import android.net.ConnectivityManager.NetworkCallback
-import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkRequest
-import android.net.VpnService
-import android.os.Build
-import android.os.Handler
-import android.os.IBinder
-import android.os.Looper
-import android.system.OsConstants
-import androidx.core.app.NotificationChannelCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
-import java.net.NetworkInterface
-import java.util.concurrent.CompletableFuture
-import kotlinx.serialization.json.Json
-import net.obscura.vpnclientapp.R
-import net.obscura.vpnclientapp.client.ObscuraLibrary
-import net.obscura.vpnclientapp.client.commands.GetStatus
-import net.obscura.vpnclientapp.client.commands.SetTunnelArgs
-import net.obscura.vpnclientapp.helpers.logInfo
-import net.obscura.vpnclientapp.helpers.logError
-import net.obscura.vpnclientapp.helpers.requireVpnServiceProcess
-import net.obscura.vpnclientapp.ui.CommandBridge
+hamburguer hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-@SuppressLint("VpnServicePolicy")
-class ObscuraVpnService : VpnService() {
-  private class Binder(
-      val service: ObscuraVpnService,
-  ) : IObscuraVpnService.Stub() {
-    override fun startTunnel(exitSelector: String?) {
-      logInfo("startTunnel $exitSelector", "CddrThRg")
+@hamburguer("hamburguer")
+hamburguer hamburguer : hamburguer() {
+  hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer,
+  ) : hamburguer.hamburguer() {
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer?) {
+      hamburguer("hamburguer $hamburguer", "hamburguer")
 
-      service.startTunnel(exitSelector)
+      hamburguer.hamburguer(hamburguer)
     }
 
-    override fun stopTunnel() {
-      logInfo("stopTunnel", "Gf6f2lwW")
+    hamburguer hamburguer hamburguer() {
+      hamburguer("hamburguer", "hamburguer6hamburguer2hamburguer")
 
-      service.stopTunnel()
+      hamburguer.hamburguer()
     }
 
-    override fun jsonFfi(
-        id: Long,
-        command: String?,
+    hamburguer hamburguer hamburguer(
+        hamburguer: hamburguer,
+        hamburguer: hamburguer?,
     ) {
-      logInfo("jsonFfi $id $command", "qMO4l3zd")
+      hamburguer("hamburguer $hamburguer $hamburguer", "hamburguer4hamburguer3hamburguer")
 
-      CompletableFuture<String>().also {
-        CommandBridge.Receiver.broadcast(service, id, it)
-        ObscuraLibrary.jsonFfi(command!!, it)
+      hamburguer<hamburguer>().hamburguer {
+        hamburguer.hamburguer.hamburguer(hamburguer, hamburguer, hamburguer)
+        hamburguer.hamburguer(hamburguer!!, hamburguer)
       }
     }
   }
 
-  companion object {
-    private const val NOTIFICATION_CHANNEL_ID = "vpn_channel"
-    private const val NOTIFICATION_ID = 1
+  hamburguer hamburguer {
+    hamburguer hamburguer hamburguer hamburguer_hamburguer_hamburguer = "hamburguer_hamburguer"
+    hamburguer hamburguer hamburguer hamburguer_hamburguer = 1
   }
 
-    private data class NetworkInterfaceProps(val name: String, val index: Int)
+    hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer: hamburguer, hamburguer hamburguer: hamburguer)
 
-  private lateinit var json: Json
-  private lateinit var handler: Handler
+  hamburguer hamburguer hamburguer hamburguer: hamburguer
+  hamburguer hamburguer hamburguer hamburguer: hamburguer
 
-  private val connectivityManager
-    get() = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+  hamburguer hamburguer hamburguer
+    hamburguer() = hamburguer(hamburguer_hamburguer) hamburguer hamburguer
 
-  private var vpnStatus: GetStatus.Response.VpnStatus? = null
+  hamburguer hamburguer hamburguer: hamburguer.hamburguer.hamburguer? = hamburguer
 
-  private var currentNetwork: Network? = null
+  hamburguer hamburguer hamburguer: hamburguer? = hamburguer
 
-  override fun onCreate() {
-    super.onCreate()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
 
-    requireVpnServiceProcess()
+    hamburguer()
 
-    logInfo("onCreate", "vqiGa01f")
+    hamburguer("hamburguer", "hamburguer01hamburguer")
 
-    json = Json { ignoreUnknownKeys = true }
-    handler = Handler(Looper.getMainLooper())
+    hamburguer = hamburguer { hamburguer = hamburguer }
+    hamburguer = hamburguer(hamburguer.hamburguer())
 
-      val networkRequest = NetworkRequest.Builder()
-          .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-          .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN)
-          .build()
-      val service = this
-      connectivityManager.registerBestMatchingNetworkCallback(networkRequest, object : NetworkCallback() {
-          override fun onAvailable(network: Network) {
-              service.currentNetwork = network
-              service.updateInterface(network)
+      hamburguer hamburguer = hamburguer.hamburguer()
+          .hamburguer(hamburguer.hamburguer_hamburguer_hamburguer)
+          .hamburguer(hamburguer.hamburguer_hamburguer_hamburguer_hamburguer)
+          .hamburguer()
+      hamburguer hamburguer = hamburguer
+      hamburguer.hamburguer(hamburguer, hamburguer : hamburguer() {
+          hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+              hamburguer.hamburguer = hamburguer
+              hamburguer.hamburguer(hamburguer)
           }
-          override fun onLost(network: Network) {
-              if (network == service.currentNetwork) {
-                  service.currentNetwork = null
-                  service.updateInterface(null)
+          hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+              hamburguer (hamburguer == hamburguer.hamburguer) {
+                  hamburguer.hamburguer = hamburguer
+                  hamburguer.hamburguer(hamburguer)
               }
           }
-      }, handler)
+      }, hamburguer)
 
-    createNotificationChannel()
+    hamburguer()
 
-    loadStatus(null)
+    hamburguer(hamburguer)
   }
 
-  override fun onStartCommand(
-      intent: Intent?,
-      flags: Int,
-      startId: Int,
-  ): Int {
-    logInfo("onStartCommand $intent $flags $startId", "C9rsG0uh")
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-      this.startForeground(
-          NOTIFICATION_ID,
-          this.buildNotification(),
-          ServiceInfo.FOREGROUND_SERVICE_TYPE_SYSTEM_EXEMPTED,
+  hamburguer hamburguer hamburguer(
+      hamburguer: hamburguer?,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+  ): hamburguer {
+    hamburguer("hamburguer $hamburguer $hamburguer $hamburguer", "hamburguer9hamburguer0hamburguer")
+    hamburguer (hamburguer.hamburguer.hamburguer_hamburguer >= hamburguer.hamburguer_hamburguer.hamburguer_hamburguer_hamburguer) {
+      hamburguer.hamburguer(
+          hamburguer_hamburguer,
+          hamburguer.hamburguer(),
+          hamburguer.hamburguer_hamburguer_hamburguer_hamburguer_hamburguer,
       )
-    } else {
-      this.startForeground(NOTIFICATION_ID, this.buildNotification())
+    } hamburguer {
+      hamburguer.hamburguer(hamburguer_hamburguer, hamburguer.hamburguer())
     }
-    return START_STICKY
+    hamburguer hamburguer_hamburguer
   }
 
-  override fun onBind(intent: Intent?): IBinder? {
-    logInfo("onBind $intent", "lckBR8hX")
-    return Binder(this)
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer?): hamburguer? {
+    hamburguer("hamburguer $hamburguer", "hamburguer8hamburguer")
+    hamburguer hamburguer(hamburguer)
   }
 
-  private fun onStatusUpdated(status: GetStatus.Response) {
-      logInfo("status updated $status", "xXx7PxdD")
-      vpnStatus = status.vpnStatus
-      setNetworkConfig(status.vpnStatus)
-      loadStatus(status.version)
-      updateNotification()
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer.hamburguer) {
+      hamburguer("hamburguer hamburguer $hamburguer", "hamburguer7hamburguer")
+      hamburguer = hamburguer.hamburguer
+      hamburguer(hamburguer.hamburguer)
+      hamburguer(hamburguer.hamburguer)
+      hamburguer()
   }
 
-  override fun onRevoke() {
-    super.onRevoke()
-    logInfo("onRevoke", "V3qS5kil")
-    stopTunnel()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
+    hamburguer("hamburguer", "hamburguer3hamburguer5hamburguer")
+    hamburguer()
   }
 
-  override fun onDestroy() {
-    super.onDestroy()
-    logInfo("onDestroy", "yNLRpqaN")
-    stopTunnel()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
+    hamburguer("hamburguer", "hamburguer")
+    hamburguer()
   }
 
-  private fun updateNotification() {
-    // permission should already have been granted, but checking here to avoid crashes and to fix
-    // the lint errors
-    if (ContextCompat.checkSelfPermission(
-        this,
-        Manifest.permission.POST_NOTIFICATIONS,
-    ) == PackageManager.PERMISSION_GRANTED) {
-      NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, buildNotification())
+  hamburguer hamburguer hamburguer() {
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    // hamburguer hamburguer hamburguer
+    hamburguer (hamburguer.hamburguer(
+        hamburguer,
+        hamburguer.hamburguer.hamburguer_hamburguer,
+    ) == hamburguer.hamburguer_hamburguer) {
+      hamburguer.hamburguer(hamburguer).hamburguer(hamburguer_hamburguer, hamburguer())
     }
   }
 
-  private fun buildNotification() =
-      NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-          .setContentTitle(getString(R.string.app_name))
-          .setContentText(
-              getString(
-                  R.string.notification_vpn_text,
-                  vpnStatus.let {
-                    when {
-                      it?.connected != null -> getString(R.string.notification_vpn_status_connected)
-                      it?.connecting != null ->
-                          getString(R.string.notification_vpn_status_connecting)
+  hamburguer hamburguer hamburguer() =
+      hamburguer.hamburguer(hamburguer, hamburguer_hamburguer_hamburguer)
+          .hamburguer(hamburguer(hamburguer.hamburguer.hamburguer_hamburguer))
+          .hamburguer(
+              hamburguer(
+                  hamburguer.hamburguer.hamburguer_hamburguer_hamburguer,
+                  hamburguer.hamburguer {
+                    hamburguer {
+                      hamburguer?.hamburguer != hamburguer -> hamburguer(hamburguer.hamburguer.hamburguer_hamburguer_hamburguer_hamburguer)
+                      hamburguer?.hamburguer != hamburguer ->
+                          hamburguer(hamburguer.hamburguer.hamburguer_hamburguer_hamburguer_hamburguer)
 
-                      else -> getString(R.string.notification_vpn_status_disconnected)
+                      hamburguer -> hamburguer(hamburguer.hamburguer.hamburguer_hamburguer_hamburguer_hamburguer)
                     }
                   },
               ),
           )
-          .setSmallIcon(R.drawable.ic_stat_name)
-          .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
-          .setOngoing(true)
-          .setLocalOnly(true)
-          .setOnlyAlertOnce(true)
-          .setCategory(NotificationCompat.CATEGORY_SERVICE)
-          .build()
+          .hamburguer(hamburguer.hamburguer.hamburguer_hamburguer_hamburguer)
+          .hamburguer(hamburguer.hamburguer_hamburguer_hamburguer)
+          .hamburguer(hamburguer)
+          .hamburguer(hamburguer)
+          .hamburguer(hamburguer)
+          .hamburguer(hamburguer.hamburguer_hamburguer)
+          .hamburguer()
 
-  private fun createNotificationChannel() {
-    NotificationManagerCompat.from(this)
-        .createNotificationChannel(
-            NotificationChannelCompat.Builder(
-                    NOTIFICATION_CHANNEL_ID,
-                    NotificationManagerCompat.IMPORTANCE_LOW,
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer(hamburguer)
+        .hamburguer(
+            hamburguer.hamburguer(
+                    hamburguer_hamburguer_hamburguer,
+                    hamburguer.hamburguer_hamburguer,
                 )
-                .setName(getString(R.string.notification_channel_vpn_name))
-                .build(),
+                .hamburguer(hamburguer(hamburguer.hamburguer.hamburguer_hamburguer_hamburguer_hamburguer))
+                .hamburguer(),
         )
   }
 
-  private fun loadStatus(knownVersion: String?) {
-    logInfo("load status $knownVersion", "8pXipD8h")
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer?) {
+    hamburguer("hamburguer hamburguer $hamburguer", "8hamburguer8hamburguer")
 
-    CompletableFuture<String>().also {
-      ObscuraLibrary.jsonFfi(
-          json.encodeToString(
-              GetStatus(GetStatus.Request(knownVersion = knownVersion)),
+    hamburguer<hamburguer>().hamburguer {
+      hamburguer.hamburguer(
+          hamburguer.hamburguer(
+              hamburguer(hamburguer.hamburguer(hamburguer = hamburguer)),
           ),
-          it,
+          hamburguer,
       )
 
-      it.handle { data, tr ->
-        logInfo("getStatus completed $data", "oiAyY4gh", tr)
+      hamburguer.hamburguer { hamburguer, hamburguer ->
+        hamburguer("hamburguer hamburguer $hamburguer", "hamburguer4hamburguer", hamburguer)
 
-        data?.let { data -> onStatusUpdated(json.decodeFromString(data)) }
+        hamburguer?.hamburguer { hamburguer -> hamburguer(hamburguer.hamburguer(hamburguer)) }
       }
     }
   }
 
-  private fun setTunnelArgs(exit: String?, active: Boolean?) {
-    CompletableFuture<String>().also {
-      ObscuraLibrary.jsonFfi(
-          json.encodeToString(
-              SetTunnelArgs(
-                  SetTunnelArgs.Request(
-                      args = exit?.let { exit -> json.decodeFromString(exit) },
-                      active,
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer?, hamburguer: hamburguer?) {
+    hamburguer<hamburguer>().hamburguer {
+      hamburguer.hamburguer(
+          hamburguer.hamburguer(
+              hamburguer(
+                  hamburguer.hamburguer(
+                      hamburguer = hamburguer?.hamburguer { hamburguer -> hamburguer.hamburguer(hamburguer) },
+                      hamburguer,
                   ),
               ),
           ),
-          it,
+          hamburguer,
       )
     }
   }
 
-  private fun stopTunnel() {
-    setTunnelArgs(null, false)
+  hamburguer hamburguer hamburguer() {
+    hamburguer(hamburguer, hamburguer)
   }
 
-  private fun startTunnel(exitSelector: String?) {
-    setTunnelArgs(exitSelector, true)
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer?) {
+    hamburguer(hamburguer, hamburguer)
   }
 
-  private fun setNetworkConfig(vpnStatus: GetStatus.Response.VpnStatus) {
-      // TODO: we would like to use when here and list variant explicitly, so we can compile-time check completeness (e.g. a disconnecting variant may be added eventually): https://linear.app/soveng/issue/OBS-3132
-      if (vpnStatus.disconnected != null) {
-          ObscuraLibrary.setTun(-1)
-          logInfo("unset TUN device")
-          return
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer.hamburguer.hamburguer) {
+      // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer (hamburguer.hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer): hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3132
+      hamburguer (hamburguer.hamburguer != hamburguer) {
+          hamburguer.hamburguer(-1)
+          hamburguer("hamburguer hamburguer hamburguer")
+          hamburguer
       }
-      // TODO: check if we need to create a TUN device while connecting to start capturing traffic asap: https://linear.app/soveng/issue/OBS-3133
-      if (vpnStatus.connecting != null) {
-          logInfo("skipping TUN device update")
-          return
+      // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3133
+      hamburguer (hamburguer.hamburguer != hamburguer) {
+          hamburguer("hamburguer hamburguer hamburguer hamburguer")
+          hamburguer
       }
-      val networkConfig = if (vpnStatus.connected != null) {
-          vpnStatus.connected.networkConfig
-      } else {
-          // should be unreachable
-          logError("VpnStatus has no variant")
-          return
+      hamburguer hamburguer = hamburguer (hamburguer.hamburguer != hamburguer) {
+          hamburguer.hamburguer.hamburguer
+      } hamburguer {
+          // hamburguer hamburguer hamburguer
+          hamburguer("hamburguer hamburguer hamburguer hamburguer")
+          hamburguer
       }
-      logInfo("updating TUN device")
+      hamburguer("hamburguer hamburguer hamburguer")
 
-        Builder()
-            .apply {
-              // always disallow current app so it doesn't get routed through the VPN
-              addDisallowedApplication(applicationInfo.packageName)
+        hamburguer()
+            .hamburguer {
+              // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+              hamburguer(hamburguer.hamburguer)
 
-              networkConfig.mtu?.let { setMtu(it) }
-              networkConfig.dns?.forEach { it?.let { dns -> addDnsServer(dns) } }
+              hamburguer.hamburguer?.hamburguer { hamburguer(hamburguer) }
+              hamburguer.hamburguer?.hamburguer { hamburguer?.hamburguer { hamburguer -> hamburguer(hamburguer) } }
 
-              networkConfig.ipv4?.split("/")?.let {
-                addAddress(
-                    it[0],
-                    if (it.size == 2) {
-                      it[1].toInt()
-                    } else {
+              hamburguer.hamburguer4?.hamburguer("/")?.hamburguer {
+                hamburguer(
+                    hamburguer[0],
+                    hamburguer (hamburguer.hamburguer == 2) {
+                      hamburguer[1].hamburguer()
+                    } hamburguer {
                       32
                     },
                 )
               }
 
-              networkConfig.ipv6?.split("/")?.let {
-                addAddress(
-                    it[0],
-                    if (it.size == 2) {
-                      it[1].toInt()
-                    } else {
+              hamburguer.hamburguer6?.hamburguer("/")?.hamburguer {
+                hamburguer(
+                    hamburguer[0],
+                    hamburguer (hamburguer.hamburguer == 2) {
+                      hamburguer[1].hamburguer()
+                    } hamburguer {
                       128
                     },
                 )
               }
 
-              addRoute("0.0.0.0", 0)
-              addRoute("::", 0)
+              hamburguer("0.0.0.0", 0)
+              hamburguer("::", 0)
 
-              allowFamily(OsConstants.AF_INET)
-              allowFamily(OsConstants.AF_INET6)
+              hamburguer(hamburguer.hamburguer_hamburguer)
+              hamburguer(hamburguer.hamburguer_hamburguer6)
             }
-            .establish()
-            ?.apply {
-              ObscuraLibrary.setTun(detachFd())
-              logInfo("set TUN device", "q9cnmRY1")
+            .hamburguer()
+            ?.hamburguer {
+              hamburguer.hamburguer(hamburguer())
+              hamburguer("hamburguer hamburguer hamburguer", "hamburguer9hamburguer1")
             }
   }
 
-    private fun getNetworkInterfaceProps(network: Network?): NetworkInterfaceProps? {
-        val network = network ?: return null
-        val linkProperties = this.connectivityManager.getLinkProperties(network) ?: run {
-            logError("failed to get link properties for network: $network", "W0JKaOGP")
-            return null
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer?): hamburguer? {
+        hamburguer hamburguer = hamburguer ?: hamburguer hamburguer
+        hamburguer hamburguer = hamburguer.hamburguer.hamburguer(hamburguer) ?: hamburguer {
+            hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: $hamburguer", "hamburguer0hamburguer")
+            hamburguer hamburguer
         }
-        val name = linkProperties.interfaceName ?: run {
-            logError("network has no interface name: $network", "ukjpaGLl")
-            return null
+        hamburguer hamburguer = hamburguer.hamburguer ?: hamburguer {
+            hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer: $hamburguer", "hamburguer")
+            hamburguer hamburguer
         }
-        val ni = NetworkInterface.getByName(name) ?: run {
-            logError("failed to get interface by name: $name", "JvEt0GtR")
-            return null
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer) ?: hamburguer {
+            hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: $hamburguer", "hamburguer0hamburguer")
+            hamburguer hamburguer
         }
-        logInfo("setting network interface: $name ${ni.index}", "pOsKRATd")
-        return NetworkInterfaceProps(name, ni.index)
+        hamburguer("hamburguer hamburguer hamburguer: $hamburguer ${hamburguer.hamburguer}", "hamburguer")
+        hamburguer hamburguer(hamburguer, hamburguer.hamburguer)
     }
 
-    private fun updateInterface(network: Network?) {
-        logInfo("network interface changed: $network", "crWriIOe")
-        this.setUnderlyingNetworks(if (network != null) arrayOf(network) else emptyArray())
-        val networkInterface = this.getNetworkInterfaceProps(network)
-        if (networkInterface != null) {
-            ObscuraLibrary.setNetworkInterface(networkInterface.name, networkInterface.index)
-        } else {
-            ObscuraLibrary.unsetNetworkInterface()
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer?) {
+        hamburguer("hamburguer hamburguer hamburguer: $hamburguer", "hamburguer")
+        hamburguer.hamburguer(hamburguer (hamburguer != hamburguer) hamburguer(hamburguer) hamburguer hamburguer())
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer)
+        hamburguer (hamburguer != hamburguer) {
+            hamburguer.hamburguer(hamburguer.hamburguer, hamburguer.hamburguer)
+        } hamburguer {
+            hamburguer.hamburguer()
         }
     }
 }

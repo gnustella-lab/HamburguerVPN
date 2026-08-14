@@ -1,31 +1,31 @@
-use crate::service::os::linux::start_error::LinuxServiceStartError;
-use std::fs::{File, TryLockError};
-use std::io::ErrorKind;
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer::hamburguer;
 
-const LOCK_PATH: &str = "/run/obscura.lock";
+hamburguer hamburguer_hamburguer: &hamburguer = "/hamburguer/hamburguer.hamburguer";
 
-pub struct ServiceLock {
-    _file: File,
+hamburguer hamburguer hamburguer {
+    _hamburguer: hamburguer,
 }
 
-impl ServiceLock {
-    pub fn new() -> Result<Self, LinuxServiceStartError> {
-        let mut options = File::options();
-        options.create(true).write(true).read(true);
-        let file = options.open(LOCK_PATH).map_err(|error| {
-            tracing::error!(message_id = "muFNujy4", ?error, "failed to create or open lock file: {error}");
-            match error.kind() {
-                ErrorKind::PermissionDenied => LinuxServiceStartError::InsufficientPermissions,
-                _ => anyhow::Error::new(error).context("failed to create or open lock file").into(),
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer() -> hamburguer<hamburguer, hamburguer> {
+        hamburguer hamburguer hamburguer = hamburguer::hamburguer();
+        hamburguer.hamburguer(hamburguer).hamburguer(hamburguer).hamburguer(hamburguer);
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer_hamburguer).hamburguer_hamburguer(|hamburguer| {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer4", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: {hamburguer}");
+            hamburguer hamburguer.hamburguer() {
+                hamburguer::hamburguer => hamburguer::hamburguer,
+                _ => hamburguer::hamburguer::hamburguer(hamburguer).hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer").hamburguer(),
             }
         })?;
-        file.try_lock().map_err(|error| {
-            tracing::error!(message_id = "wwkKzjFi", ?error, "failed to take exclusive lock on lock file: {error}");
-            match error {
-                TryLockError::WouldBlock => LinuxServiceStartError::AlreadyRunning,
-                error => anyhow::Error::new(error).context("failed to take exclusive lock on lock file").into(),
+        hamburguer.hamburguer_hamburguer().hamburguer_hamburguer(|hamburguer| {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: {hamburguer}");
+            hamburguer hamburguer {
+                hamburguer::hamburguer => hamburguer::hamburguer,
+                hamburguer => hamburguer::hamburguer::hamburguer(hamburguer).hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer").hamburguer(),
             }
         })?;
-        Ok(Self { _file: file })
+        hamburguer(hamburguer { _hamburguer: hamburguer })
     }
 }

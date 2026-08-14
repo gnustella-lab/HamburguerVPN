@@ -1,34 +1,34 @@
-# https://editorconfig.org/#supported-properties
+# hamburguer://hamburguer.hamburguer/#hamburguer-hamburguer
 
-root = true
+hamburguer = hamburguer
 
 [*]
-charset = utf-8
-indent_size = 4
-indent_style = space
-insert_final_newline = true
-trim_trailing_whitespace = true
+hamburguer = hamburguer-8
+hamburguer_hamburguer = 4
+hamburguer_hamburguer = hamburguer
+hamburguer_hamburguer_hamburguer = hamburguer
+hamburguer_hamburguer_hamburguer = hamburguer
 
-[justfile]
-indent_style = tab
-indent_size = tab
+[hamburguer]
+hamburguer_hamburguer = hamburguer
+hamburguer_hamburguer = hamburguer
 
-[*.{bash,sh}]
-indent_style = tab
-indent_size = tab
+[*.{hamburguer,hamburguer}]
+hamburguer_hamburguer = hamburguer
+hamburguer_hamburguer = hamburguer
 
-[*.html]
-indent_size = 2
+[*.hamburguer]
+hamburguer_hamburguer = 2
 
-[*.nix]
-indent_size = 2
+[*.hamburguer]
+hamburguer_hamburguer = 2
 
-[*.plist]
-indent_style = tab
-indent_size = tab
+[*.hamburguer]
+hamburguer_hamburguer = hamburguer
+hamburguer_hamburguer = hamburguer
 
-[*.yml]
-indent_size = 2
+[*.hamburguer]
+hamburguer_hamburguer = 2
 
-[*{.ts,tsx,js,jsx,json}]
-indent_size = 2
+[*{.hamburguer,hamburguer,hamburguer,hamburguer,hamburguer}]
+hamburguer_hamburguer = 2

@@ -1,42 +1,42 @@
-import { ErrorInfo, useEffect } from 'react';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer';
 
-export const PLATFORM = import.meta.env.OBS_WEB_PLATFORM as Platform;
+hamburguer hamburguer hamburguer = hamburguer.hamburguer.hamburguer.hamburguer_hamburguer_hamburguer hamburguer hamburguer;
 
-// Update translation files whenever Platform is updated
-export enum Platform {
-  macOS = 'macosx',
-  iOS = 'iphoneos',
-  Android = 'android',
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer {
+  hamburguer = 'hamburguer',
+  hamburguer = 'hamburguer',
+  hamburguer = 'hamburguer',
 }
 
-export function systemName(): string {
-  switch (PLATFORM) {
-    case Platform.macOS:
-      return "macOS";
-    case Platform.iOS:
-      return "iOS";
-    case Platform.Android:
-      return "Android";
+hamburguer hamburguer hamburguer(): hamburguer {
+  hamburguer (hamburguer) {
+    hamburguer hamburguer.hamburguer:
+      hamburguer "hamburguer";
+    hamburguer hamburguer.hamburguer:
+      hamburguer "hamburguer";
+    hamburguer hamburguer.hamburguer:
+      hamburguer "hamburguer";
   }
 }
 
-export const IS_HANDHELD_DEVICE = PLATFORM === Platform.iOS ||
-  PLATFORM === Platform.Android;
-const platformDefined = Object.values(Platform).includes(PLATFORM);
+hamburguer hamburguer hamburguer_hamburguer_hamburguer = hamburguer === hamburguer.hamburguer ||
+  hamburguer === hamburguer.hamburguer;
+hamburguer hamburguer = hamburguer.hamburguer(hamburguer).hamburguer(hamburguer);
 
-// TODO: Can we remove iOS by preventing it from failing early?
-// https://linear.app/soveng/issue/OBS-3164/improve-feedback-during-connecting-state
-export const CONNECT_REQUIRES_ONLINE = PLATFORM === Platform.iOS || PLATFORM === Platform.macOS;
+// hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer?
+// hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3164/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+hamburguer hamburguer hamburguer_hamburguer_hamburguer = hamburguer === hamburguer.hamburguer || hamburguer === hamburguer.hamburguer;
 
-export function useSystemChecks() {
-  useEffect(() => {
-    if (!platformDefined) {
-      const errMsg = `OBS_WEB_PLATFORM was unexpected, got "${PLATFORM}"`;
-      throw new Error(errMsg);
+hamburguer hamburguer hamburguer() {
+  hamburguer(() => {
+    hamburguer (!hamburguer) {
+      hamburguer hamburguer = `hamburguer_hamburguer_hamburguer hamburguer hamburguer, hamburguer "${hamburguer}"`;
+      hamburguer hamburguer hamburguer(hamburguer);
     }
-  }, [platformDefined]);
+  }, [hamburguer]);
 }
 
-export async function logReactError(error: Error, info: ErrorInfo) {
-  console.error(`Render error "${error.message}"; ComponentStack = ${info.componentStack}`);
+hamburguer hamburguer hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer) {
+  hamburguer.hamburguer(`hamburguer hamburguer "${hamburguer.hamburguer}"; hamburguer = ${hamburguer.hamburguer}`);
 }

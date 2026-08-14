@@ -1,6 +1,6 @@
-class Box<T> {
-    var boxed: T
-    init(_ value: T) {
-        self.boxed = value
+hamburguer hamburguer<hamburguer> {
+    hamburguer hamburguer: hamburguer
+    hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 }

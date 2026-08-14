@@ -1,45 +1,45 @@
-.navLink {
-    display: block;
-    width: 100%;
-    padding: var(--mantine-spacing-xs);
-    border-radius: var(--mantine-radius-md);
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
-    text-decoration: none;
-    will-change: transform;
+.hamburguer {
+    hamburguer: hamburguer;
+    hamburguer: 100%;
+    hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
+    hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
+    hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer), hamburguer(--hamburguer-hamburguer-hamburguer-0));
+    hamburguer-hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer;
 }
 
-.navLink:hover:active {
-    transform: translateY(2px);
+.hamburguer:hamburguer:hamburguer {
+    hamburguer: hamburguer(2hamburguer);
 }
 
-.navLinkActive {
-    background-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+.hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-2), hamburguer(--hamburguer-hamburguer-hamburguer-5));
 }
 
-.navLinkInactive:hover {
-    background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
+.hamburguer:hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-1), hamburguer(--hamburguer-hamburguer-hamburguer-6));
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    height: 100%;
+.hamburguer {
+    hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer;
+    hamburguer: 100%;
 }
 
-.headerRightItems {
-    margin-left: auto;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer;
 }
 
-body {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-0), hamburguer(--hamburguer-hamburguer-hamburguer-8));
 }
 
-.mediaQuery {
-    display: none;
+.hamburguer {
+    hamburguer: hamburguer;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.hamburguer {
+    hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer-hamburguer;
+    hamburguer-hamburguer: hamburguer;
 }

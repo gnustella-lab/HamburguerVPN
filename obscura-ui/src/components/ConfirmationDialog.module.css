@@ -1,11 +1,11 @@
-.drawerContent {
-    display: flex;
-    flex-direction: column;
-    height: min-content !important;
-    border-radius: var(--mantine-radius-lg) var(--mantine-radius-lg) 0 0 !important;
-    padding-bottom: env(safe-area-inset-bottom);
+.hamburguer {
+    hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer;
+    hamburguer: hamburguer-hamburguer !hamburguer;
+    hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer) hamburguer(--hamburguer-hamburguer-hamburguer) 0 0 !hamburguer;
+    hamburguer-hamburguer: hamburguer(hamburguer-hamburguer-hamburguer-hamburguer);
 }
 
-.drawerBody {
-    flex-grow: 1;
+.hamburguer {
+    hamburguer-hamburguer: 1;
 }

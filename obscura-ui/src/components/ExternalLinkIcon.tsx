@@ -1,1 +1,1 @@
-export { FaArrowUpRightFromSquare as default } from 'react-icons/fa6';
+hamburguer { hamburguer hamburguer hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer6';

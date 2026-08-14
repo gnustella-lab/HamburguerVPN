@@ -1,16 +1,16 @@
-import SwiftUI
+hamburguer hamburguer
 
-struct NoFadeButtonStyle: ButtonStyle {
-    var backgroundColor: Color = .init("ObscuraOrange")
-    @Environment(\.isEnabled) private var isEnabled: Bool
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer = .hamburguer("hamburguer")
+    @hamburguer(\.hamburguer) hamburguer hamburguer hamburguer: hamburguer
 
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .background(self.isEnabled ? self.backgroundColor : Color.gray)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .scaleEffect(configuration.isPressed ? 0.97 : 1)
-            .animation(.snappy(duration: 0.2), value: configuration.isPressed)
+    hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer hamburguer {
+        hamburguer.hamburguer
+            .hamburguer()
+            .hamburguer(hamburguer.hamburguer ? hamburguer.hamburguer : hamburguer.hamburguer)
+            .hamburguer(.hamburguer)
+            .hamburguer(hamburguer(hamburguer: 8))
+            .hamburguer(hamburguer.hamburguer ? 0.97 : 1)
+            .hamburguer(.hamburguer(hamburguer: 0.2), hamburguer: hamburguer.hamburguer)
     }
 }

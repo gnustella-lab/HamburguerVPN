@@ -1,8 +1,8 @@
-import StoreKit
+hamburguer hamburguer
 
-extension Product {
-    func subscriptionPeriodFormatted() -> String? {
-        guard let subscription else { return nil }
-        return subscription.subscriptionPeriod.formatted(self.subscriptionPeriodFormatStyle)
+hamburguer hamburguer {
+    hamburguer hamburguer() -> hamburguer? {
+        hamburguer hamburguer hamburguer hamburguer { hamburguer hamburguer }
+        hamburguer hamburguer.hamburguer.hamburguer(hamburguer.hamburguer)
     }
 }

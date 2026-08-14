@@ -1,80 +1,80 @@
-use crate::errors::RelaySelectionError;
-use crate::net::{NetworkInterface, new_quic, new_udp};
-use crate::quicwg::{QuicWgConnHandshaking, QuicWgConnectError};
-use flume::{Receiver, SendError, bounded};
-use obscuravpn_api::types::OneRelay;
-use std::sync::Arc;
-use std::time::Duration;
-use tokio::spawn;
-use tokio::task::JoinSet;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::{hamburguer, hamburguer_hamburguer, hamburguer_hamburguer};
+hamburguer hamburguer::hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer::{hamburguer, hamburguer, hamburguer};
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-pub fn race_relay_handshakes(
-    network_interface: Option<&NetworkInterface>,
-    relays: Vec<OneRelay>,
-    sni: String,
-    use_tcp_tls: bool,
-    quic_frame_padding: bool,
-    force_small_mtu: bool,
-    mtu: Option<u16>,
-) -> Result<Receiver<(OneRelay, u16, Duration, QuicWgConnHandshaking)>, RelaySelectionError> {
-    let sni = Arc::new(sni);
-    let mut tasks = JoinSet::new();
-    let udp = new_udp(network_interface).map_err(RelaySelectionError::UdpSetup)?;
-    let quic_endpoint = new_quic(udp, mtu, force_small_mtu).map_err(RelaySelectionError::QuicSetup)?;
+hamburguer hamburguer hamburguer_hamburguer_hamburguer(
+    hamburguer_hamburguer: hamburguer<&hamburguer>,
+    hamburguer: hamburguer<hamburguer>,
+    hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer: hamburguer<hamburguer16>,
+) -> hamburguer<hamburguer<(hamburguer, hamburguer16, hamburguer, hamburguer)>, hamburguer> {
+    hamburguer hamburguer = hamburguer::hamburguer(hamburguer);
+    hamburguer hamburguer hamburguer = hamburguer::hamburguer();
+    hamburguer hamburguer = hamburguer_hamburguer(hamburguer_hamburguer).hamburguer_hamburguer(hamburguer::hamburguer)?;
+    hamburguer hamburguer_hamburguer = hamburguer_hamburguer(hamburguer, hamburguer, hamburguer_hamburguer_hamburguer).hamburguer_hamburguer(hamburguer::hamburguer)?;
 
-    // Maximum number of relays to probe. This limit should be high enough that a non-malicious API server won't exceed it.
-    // This prevents memory exhaustion issues in case a malicious API server sends a large number of relays.
-    const MAX_RELAYS: usize = 100;
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer.
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer_hamburguer: hamburguer = 100;
 
-    for relay in relays.iter().take(MAX_RELAYS) {
-        for &port in &relay.ports {
-            let quic_endpoint = quic_endpoint.clone();
-            let relay_addr = (relay.ip_v4, port).into();
-            let relay_cert = relay.tls_cert.clone().into();
-            let relay = relay.clone();
-            let sni = sni.clone();
-            tasks.spawn(async move {
-                let result: Result<(QuicWgConnHandshaking, Duration), QuicWgConnectError> = async {
-                    let mut handshaking = match use_tcp_tls {
-                        true => QuicWgConnHandshaking::start_tcp_tls(relay.id.clone(), relay_addr, relay_cert, &sni).await,
-                        false => {
-                            QuicWgConnHandshaking::start_quic(
-                                relay.id.clone(),
-                                &quic_endpoint,
-                                relay_addr,
-                                relay_cert,
-                                &sni,
-                                quic_frame_padding,
-                                force_small_mtu,
-                                mtu,
+    hamburguer hamburguer hamburguer hamburguer.hamburguer().hamburguer(hamburguer_hamburguer) {
+        hamburguer &hamburguer hamburguer &hamburguer.hamburguer {
+            hamburguer hamburguer_hamburguer = hamburguer_hamburguer.hamburguer();
+            hamburguer hamburguer_hamburguer = (hamburguer.hamburguer_hamburguer4, hamburguer).hamburguer();
+            hamburguer hamburguer_hamburguer = hamburguer.hamburguer_hamburguer.hamburguer().hamburguer();
+            hamburguer hamburguer = hamburguer.hamburguer();
+            hamburguer hamburguer = hamburguer.hamburguer();
+            hamburguer.hamburguer(hamburguer hamburguer {
+                hamburguer hamburguer: hamburguer<(hamburguer, hamburguer), hamburguer> = hamburguer {
+                    hamburguer hamburguer hamburguer = hamburguer hamburguer_hamburguer_hamburguer {
+                        hamburguer => hamburguer::hamburguer_hamburguer_hamburguer(hamburguer.hamburguer.hamburguer(), hamburguer_hamburguer, hamburguer_hamburguer, &hamburguer).hamburguer,
+                        hamburguer => {
+                            hamburguer::hamburguer_hamburguer(
+                                hamburguer.hamburguer.hamburguer(),
+                                &hamburguer_hamburguer,
+                                hamburguer_hamburguer,
+                                hamburguer_hamburguer,
+                                &hamburguer,
+                                hamburguer_hamburguer_hamburguer,
+                                hamburguer_hamburguer_hamburguer,
+                                hamburguer,
                             )
-                            .await
+                            .hamburguer
                         }
                     }?;
-                    let rtt = handshaking.measure_rtt().await?;
-                    Ok((handshaking, rtt))
+                    hamburguer hamburguer = hamburguer.hamburguer_hamburguer().hamburguer?;
+                    hamburguer((hamburguer, hamburguer))
                 }
-                .await;
-                (result, relay, port)
+                .hamburguer;
+                (hamburguer, hamburguer, hamburguer)
             });
         }
     }
 
-    let (sender, receiver) = bounded(0);
-    spawn(async move {
-        while let Some(Ok((result, relay, port))) = tasks.join_next().await {
-            let (handshaking, rtt) = match result {
-                Ok(ok) => ok,
-                Err(error) => {
-                    tracing::warn!(?error, relay.id, port, "failed to connect during relay selection");
-                    continue;
+    hamburguer (hamburguer, hamburguer) = hamburguer(0);
+    hamburguer(hamburguer hamburguer {
+        hamburguer hamburguer hamburguer(hamburguer((hamburguer, hamburguer, hamburguer))) = hamburguer.hamburguer_hamburguer().hamburguer {
+            hamburguer (hamburguer, hamburguer) = hamburguer hamburguer {
+                hamburguer(hamburguer) => hamburguer,
+                hamburguer(hamburguer) => {
+                    hamburguer::hamburguer!(?hamburguer, hamburguer.hamburguer, hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer");
+                    hamburguer;
                 }
             };
-            tracing::info!(relay.id, port, rtt_ms = rtt.as_millis(), "successfully started handshake with relay");
-            if let Err(SendError((_, _, _, handshaking))) = sender.send_async((relay, port, rtt, handshaking)).await {
-                spawn(handshaking.abandon());
+            hamburguer::hamburguer!(hamburguer.hamburguer, hamburguer, hamburguer_hamburguer = hamburguer.hamburguer_hamburguer(), "hamburguer hamburguer hamburguer hamburguer hamburguer");
+            hamburguer hamburguer hamburguer(hamburguer((_, _, _, hamburguer))) = hamburguer.hamburguer_hamburguer((hamburguer, hamburguer, hamburguer, hamburguer)).hamburguer {
+                hamburguer(hamburguer.hamburguer());
             }
         }
     });
-    Ok(receiver)
+    hamburguer(hamburguer)
 }

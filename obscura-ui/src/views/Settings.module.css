@@ -1,18 +1,18 @@
-.container {
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-top: 20px;
-    padding-bottom: 40px;
+.hamburguer {
+    hamburguer-hamburguer: 60hamburguer;
+    hamburguer-hamburguer: 60hamburguer;
+    hamburguer-hamburguer: 20hamburguer;
+    hamburguer-hamburguer: 40hamburguer;
 }
 
-.experimentalAccordionControl {
-    box-shadow: var(--mantine-shadow-xs);
+.hamburguer {
+    hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
 }
 
-@media screen and (max-width: $mantine-breakpoint-xs) {
-    .container {
-        padding-top: calc(20px + env(safe-area-inset-top));
-        padding-left: 20px;
-        padding-right: 20px;
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer(20hamburguer + hamburguer(hamburguer-hamburguer-hamburguer-hamburguer));
+        hamburguer-hamburguer: 20hamburguer;
+        hamburguer-hamburguer: 20hamburguer;
     }
 }

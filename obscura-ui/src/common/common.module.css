@@ -1,44 +1,44 @@
-.chip {
-    border-radius: 5px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(-mantine-color-teal-1);
+.hamburguer {
+    hamburguer-hamburguer: 5hamburguer;
+    hamburguer-hamburguer: 1hamburguer;
+    hamburguer-hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer(-hamburguer-hamburguer-hamburguer-1);
 }
 
-.button {
+.hamburguer {
 
-    &:disabled,
-    &[data-disabled] {
-        border-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-        background-color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-3));
-        color: var(--mantine-color-white)
+    &:hamburguer,
+    &[hamburguer-hamburguer] {
+        hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-3), hamburguer(--hamburguer-hamburguer-hamburguer-4));
+        hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-6), hamburguer(--hamburguer-hamburguer-hamburguer-3));
+        hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer)
     }
 }
 
-@media screen and (max-width: $mantine-breakpoint-xs) {
-    .desktopOnly {
-        display: none;
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer: hamburguer;
     }
 }
 
-@media screen and (min-width: $mantine-breakpoint-xs) {
-    .mobileOnly {
-        display: none !important;
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer: hamburguer !hamburguer;
     }
 }
 
-.elevatedSurface {
-    background-color: light-dark(var(--mantine-color-body), var(--mantine-color-dark-6)) !important;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer), hamburguer(--hamburguer-hamburguer-hamburguer-6)) !hamburguer;
 }
 
-.svgThemed {
-    fill: light-dark(black, white);
+.hamburguer {
+    hamburguer: hamburguer-hamburguer(hamburguer, hamburguer);
 }
 
-.wordmark {
-    fill: light-dark(black, var(--mantine-color-gray-4));
+.hamburguer {
+    hamburguer: hamburguer-hamburguer(hamburguer, hamburguer(--hamburguer-hamburguer-hamburguer-4));
 }
 
-.secondaryColor {
-    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-text)) !important;
+.hamburguer {
+    hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-7), hamburguer(--hamburguer-hamburguer-hamburguer-hamburguer)) !hamburguer;
 }

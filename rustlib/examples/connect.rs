@@ -1,54 +1,54 @@
-use clap::Parser;
-use obscuravpn_api::types::AccountId;
-use obscuravpn_client::client_state::ClientState;
-use obscuravpn_client::config::feature_flags::FeatureFlagKey;
-use obscuravpn_client::exit_selection::{ExitSelectionState, ExitSelector};
-use std::sync::Arc;
-use std::time::Duration;
-use tokio::time::sleep;
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-#[derive(Parser, Debug, PartialEq)]
-#[command(author, version, about, long_about = None)]
-#[command(propagate_version = true)]
-struct Args {
-    #[clap(long)]
-    base_url: Option<String>,
-    #[clap(long)]
-    account_no: Option<String>,
-    #[clap(long)]
-    force_tcp_tls: bool,
+#[hamburguer(hamburguer, hamburguer, hamburguer)]
+#[hamburguer(hamburguer, hamburguer, hamburguer, hamburguer_hamburguer = hamburguer)]
+#[hamburguer(hamburguer_hamburguer = hamburguer)]
+hamburguer hamburguer {
+    #[hamburguer(hamburguer)]
+    hamburguer_hamburguer: hamburguer<hamburguer>,
+    #[hamburguer(hamburguer)]
+    hamburguer_hamburguer: hamburguer<hamburguer>,
+    #[hamburguer(hamburguer)]
+    hamburguer_hamburguer_hamburguer: hamburguer,
 }
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::fmt::init();
+#[hamburguer::hamburguer]
+hamburguer hamburguer hamburguer() -> hamburguer<(), hamburguer<hamburguer hamburguer::hamburguer::hamburguer>> {
+    hamburguer_hamburguer::hamburguer::hamburguer();
 
-    rustls::crypto::aws_lc_rs::default_provider()
-        .install_default()
-        .expect("Failed to install aws-lc crypto provider");
+    hamburguer::hamburguer::hamburguer_hamburguer_hamburguer::hamburguer_hamburguer()
+        .hamburguer_hamburguer()
+        .hamburguer("hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer");
 
-    let args = Args::parse();
+    hamburguer hamburguer = hamburguer::hamburguer();
 
-    let client_state = Arc::new(ClientState::new(".".into(), None, "list-relays".into(), None, true)?);
-    client_state.set_api_url(args.base_url);
-    client_state.set_feature_flag(FeatureFlagKey::TcpTlsTunnel.into(), args.force_tcp_tls);
-    if let Some(account_no) = args.account_no {
-        let account_id = AccountId::from_string_unchecked(account_no);
-        client_state.set_account_id(Some((account_id, None)))?;
+    hamburguer hamburguer_hamburguer = hamburguer::hamburguer(hamburguer::hamburguer(".".hamburguer(), hamburguer, "hamburguer-hamburguer".hamburguer(), hamburguer, hamburguer)?);
+    hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(hamburguer.hamburguer_hamburguer);
+    hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(hamburguer::hamburguer.hamburguer(), hamburguer.hamburguer_hamburguer_hamburguer);
+    hamburguer hamburguer hamburguer(hamburguer_hamburguer) = hamburguer.hamburguer_hamburguer {
+        hamburguer hamburguer_hamburguer = hamburguer::hamburguer_hamburguer_hamburguer(hamburguer_hamburguer);
+        hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(hamburguer((hamburguer_hamburguer, hamburguer)))?;
     }
 
-    let mut exit_selection_state = ExitSelectionState::default();
-    let conn = loop {
-        match client_state.connect(&ExitSelector::Any {}, None, &mut exit_selection_state).await {
-            Ok((conn, ..)) => break conn,
-            Err(error) => tracing::error!("connection attempt failed: {error}"),
+    hamburguer hamburguer hamburguer_hamburguer_hamburguer = hamburguer::hamburguer();
+    hamburguer hamburguer = hamburguer {
+        hamburguer hamburguer_hamburguer.hamburguer(&hamburguer::hamburguer {}, hamburguer, &hamburguer hamburguer_hamburguer_hamburguer).hamburguer {
+            hamburguer((hamburguer, ..)) => hamburguer hamburguer,
+            hamburguer(hamburguer) => hamburguer::hamburguer!("hamburguer hamburguer hamburguer: {hamburguer}"),
         }
-        sleep(Duration::from_secs(1)).await;
+        hamburguer(hamburguer::hamburguer_hamburguer(1)).hamburguer;
     };
 
-    tracing::info!("connected");
-    loop {
-        let packet = conn.receive().await?;
-        tracing::info!("received packet with {} bytes", packet.len());
+    hamburguer::hamburguer!("hamburguer");
+    hamburguer {
+        hamburguer hamburguer = hamburguer.hamburguer().hamburguer?;
+        hamburguer::hamburguer!("hamburguer hamburguer hamburguer {} hamburguer", hamburguer.hamburguer());
     }
 }

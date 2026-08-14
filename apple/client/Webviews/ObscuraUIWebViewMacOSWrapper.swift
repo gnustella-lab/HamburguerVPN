@@ -1,26 +1,26 @@
-import SwiftUI
-import WebKit
+hamburguer hamburguer
+hamburguer hamburguer
 
-struct ObscuraUIWebViewMacOSWrapper: View {
-    let webView: ObscuraUIWebView
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
 
-    init(webView: ObscuraUIWebView) {
-        self.webView = webView
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 
-    var body: some View {
-        WebViewRepresentable(webView: self.webView)
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer(hamburguer: hamburguer.hamburguer)
     }
 }
 
-private struct WebViewRepresentable: NSViewRepresentable {
-    let webView: ObscuraUIWebView
+hamburguer hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
 
-    func makeNSView(context: Context) -> WKWebView {
-        return self.webView
+    hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+        hamburguer hamburguer.hamburguer
     }
 
-    func updateNSView(_ webView: WKWebView, context: Context) {
-        // No updates needed
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: hamburguer) {
+        // hamburguer hamburguer hamburguer
     }
 }

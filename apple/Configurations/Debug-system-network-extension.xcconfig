@@ -1,8 +1,8 @@
-// Avoid accidental checkins:
-// git update-index --skip-worktree apple/Configurations/Debug*.xcconfig
-// git update-index --no-skip-worktree apple/Configurations/Debug*.xcconfig
+// hamburguer hamburguer hamburguer:
+// hamburguer hamburguer-hamburguer --hamburguer-hamburguer hamburguer/hamburguer/hamburguer*.hamburguer
+// hamburguer hamburguer-hamburguer --hamburguer-hamburguer-hamburguer hamburguer/hamburguer/hamburguer*.hamburguer
 
-#include "Debug.xcconfig"
-#include "system-network-extension.xcconfig"
+#hamburguer "hamburguer.hamburguer"
+#hamburguer "hamburguer-hamburguer-hamburguer.hamburguer"
 
-PROVISIONING_PROFILE_SPECIFIER =
+hamburguer_hamburguer_hamburguer =

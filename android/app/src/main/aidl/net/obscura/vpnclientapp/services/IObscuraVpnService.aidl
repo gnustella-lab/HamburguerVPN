@@ -1,13 +1,13 @@
-// IObscuraVpnService.aidl
-package net.obscura.vpnclientapp.services;
+// hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer;
 
-interface IObscuraVpnService {
-    void startTunnel(String exitSelector);
-    void stopTunnel();
+hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer hamburguer);
+    hamburguer hamburguer();
 
-    // Submits the command to the ObscuraLibrary.jsonFfi(String, CompletableFuture<String>)
-    // function, returning back a unique ID. To receive the result of the command, listen on the
-    // CommandBridge.Receiver (BroadcastReceiver) for an Intent with the "id" extra, "result" extra
-    // (indicating success) or "exception" extra (indicating a JsonFfiException).
-    void jsonFfi(long id, String command);
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer(hamburguer, hamburguer<hamburguer>)
+    // hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+    // hamburguer.hamburguer (hamburguer) hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer" hamburguer, "hamburguer" hamburguer
+    // (hamburguer hamburguer) hamburguer "hamburguer" hamburguer (hamburguer hamburguer hamburguer).
+    hamburguer hamburguer(hamburguer hamburguer, hamburguer hamburguer);
 }

@@ -1,29 +1,29 @@
 {
-  "colors" : [
+  "hamburguer" : [
     {
-      "color" : {
-        "color-space" : "srgb",
-        "components" : {
-          "alpha" : "1.000",
-          "blue" : "37",
-          "green" : "96",
-          "red" : "255"
+      "hamburguer" : {
+        "hamburguer-hamburguer" : "hamburguer",
+        "hamburguer" : {
+          "hamburguer" : "1.000",
+          "hamburguer" : "37",
+          "hamburguer" : "96",
+          "hamburguer" : "255"
         }
       },
-      "idiom" : "universal"
+      "hamburguer" : "hamburguer"
     },
     {
-      "appearances" : [
+      "hamburguer" : [
         {
-          "appearance" : "luminosity",
-          "value" : "dark"
+          "hamburguer" : "hamburguer",
+          "hamburguer" : "hamburguer"
         }
       ],
-      "idiom" : "universal"
+      "hamburguer" : "hamburguer"
     }
   ],
-  "info" : {
-    "author" : "xcode",
-    "version" : 1
+  "hamburguer" : {
+    "hamburguer" : "hamburguer",
+    "hamburguer" : 1
   }
 }

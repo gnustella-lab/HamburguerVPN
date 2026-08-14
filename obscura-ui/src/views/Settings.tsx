@@ -1,326 +1,326 @@
-import { Accordion, ActionIcon, Alert, Button, Card, Checkbox, Divider, Group, Radio, Stack, Switch, Text, Title, useMantineColorScheme } from '@mantine/core';
-import { notifications } from '@mantine/notifications';
-import React, { ReactNode, useContext, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { BsCircleHalf } from 'react-icons/bs';
-import { IoCheckmark, IoInformationCircleOutline, IoMoon, IoSunnySharp } from 'react-icons/io5';
-import { MdBlock, MdWarning } from 'react-icons/md';
-import * as commands from '../bridge/commands';
-import { PLATFORM, Platform } from '../bridge/SystemProvider';
-import { AppContext, DNSContentBlock, featureFlagEnabled, FeatureFlagKey, KnownFeatureFlagKey } from '../common/appContext';
-import commonClasses from '../common/common.module.css';
-import { NotificationId } from '../common/notifIds';
-import { normalizeError } from '../common/utils';
-import { fmtErrorI18n, TranslationKey } from '../translations/i18n';
-import classes from './Settings.module.css';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer hamburguer, { hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer5';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer';
+hamburguer * hamburguer hamburguer hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer hamburguer hamburguer '../hamburguer/hamburguer.hamburguer.hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer18hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer18hamburguer';
+hamburguer hamburguer hamburguer './hamburguer.hamburguer.hamburguer';
 
-const APPLE_PLATFORMS = new Set([Platform.macOS, Platform.iOS]);
-const IS_APPLE = APPLE_PLATFORMS.has(PLATFORM);
+hamburguer hamburguer_hamburguer = hamburguer hamburguer([hamburguer.hamburguer, hamburguer.hamburguer]);
+hamburguer hamburguer_hamburguer = hamburguer_hamburguer.hamburguer(hamburguer);
 
-const CUSTOM_DNS_PLATFORMS_EXCLUDED = new Set([Platform.Android]);
-const CUSTOM_DNS_SUPPORTED = !CUSTOM_DNS_PLATFORMS_EXCLUDED.has(PLATFORM);
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer = hamburguer hamburguer([hamburguer.hamburguer]);
+hamburguer hamburguer_hamburguer_hamburguer = !hamburguer_hamburguer_hamburguer_hamburguer.hamburguer(hamburguer);
 
-export default function Settings() {
-  return (
-    <Stack mb='xl' gap='lg' align='flex-start' className={classes.container}>
-      <GeneralSettings />
-      {CUSTOM_DNS_SUPPORTED && <DnsSettings />}
-      <ExperimentalSettings />
-      <NetworkSettings />
-      <AppearanceSettings />
-    </Stack>
+hamburguer hamburguer hamburguer hamburguer() {
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer-hamburguer' hamburguer={hamburguer.hamburguer}>
+      <hamburguer />
+      {hamburguer_hamburguer_hamburguer && <hamburguer />}
+      <hamburguer />
+      <hamburguer />
+      <hamburguer />
+    </hamburguer>
   );
 }
 
-function DnsSettings() {
-  const { t } = useTranslation();
-  const { appStatus } = useContext(AppContext);
-  const { dnsContentBlock, useSystemDns } = appStatus;
+hamburguer hamburguer() {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer } = hamburguer(hamburguer);
+  hamburguer { hamburguer, hamburguer } = hamburguer;
 
-  const handleModeChange = (val: string) => {
-    commands.setUseSystemDns(val === 'system');
+  hamburguer hamburguer = (hamburguer: hamburguer) => {
+    hamburguer.hamburguer(hamburguer === 'hamburguer');
   };
 
-  const onBlockChange = (key: keyof DNSContentBlock, e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.currentTarget.checked;
-    const newBlock = { ...dnsContentBlock, [key]: checked };
-    commands.setDnsContentBlock(newBlock);
+  hamburguer hamburguer = (hamburguer: hamburguer hamburguer, hamburguer: hamburguer.hamburguer<hamburguer>) => {
+    hamburguer hamburguer = hamburguer.hamburguer.hamburguer;
+    hamburguer hamburguer = { ...hamburguer, [hamburguer]: hamburguer };
+    hamburguer.hamburguer(hamburguer);
   };
 
-  return (
-    <Card padding='md' radius='md' w='100%' shadow='xs'>
-      <Stack gap='xs'>
-        <Group gap='xs'>
-          <MdBlock size='1.5em' style={{ color: 'var(--mantine-color-dimmed)' }} />
-          <Title order={4}>{t('dnsSetting')}</Title>
-        </Group>
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='100%' hamburguer='hamburguer'>
+      <hamburguer hamburguer='hamburguer'>
+        <hamburguer hamburguer='hamburguer'>
+          <hamburguer hamburguer='1.5hamburguer' hamburguer={{ hamburguer: 'hamburguer(--hamburguer-hamburguer-hamburguer)' }} />
+          <hamburguer hamburguer={4}>{hamburguer('hamburguer')}</hamburguer>
+        </hamburguer>
 
-        <Radio.Group value={useSystemDns ? 'system' : 'obscura'} onChange={handleModeChange}>
-          <Stack gap='sm'>
-            <Radio value="obscura" label={t('dnsModeObscura')} />
+        <hamburguer.hamburguer hamburguer={hamburguer ? 'hamburguer' : 'hamburguer'} hamburguer={hamburguer}>
+          <hamburguer hamburguer='hamburguer'>
+            <hamburguer hamburguer="hamburguer" hamburguer={hamburguer('hamburguer')} />
 
-            <Stack gap='xs' ml='xl'>
-              <Checkbox disabled={useSystemDns} checked={dnsContentBlock.ad} onChange={(e) => onBlockChange('ad', e)} label={t('dnsBlockAds')} />
-              <Checkbox disabled={useSystemDns} checked={dnsContentBlock.tracker} onChange={(e) => onBlockChange('tracker', e)} label={t('dnsBlockTrackers')} />
-              <Checkbox disabled={useSystemDns} checked={dnsContentBlock.malware} onChange={(e) => onBlockChange('malware', e)} label={t('dnsBlockMalware')} />
-              <Checkbox disabled={useSystemDns} checked={dnsContentBlock.gambling} onChange={(e) => onBlockChange('gambling', e)} label={t('dnsBlockGambling')} />
-              <Checkbox disabled={useSystemDns} checked={dnsContentBlock.adult} onChange={(e) => onBlockChange('adult', e)} label={t('dnsBlockAdult')} />
-              <Checkbox disabled={useSystemDns} checked={dnsContentBlock.socialMedia} onChange={(e) => onBlockChange('socialMedia', e)} label={t('dnsBlockSocialMedia')} />
-            </Stack>
+            <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+              <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} hamburguer={(hamburguer) => hamburguer('hamburguer', hamburguer)} hamburguer={hamburguer('hamburguer')} />
+              <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} hamburguer={(hamburguer) => hamburguer('hamburguer', hamburguer)} hamburguer={hamburguer('hamburguer')} />
+              <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} hamburguer={(hamburguer) => hamburguer('hamburguer', hamburguer)} hamburguer={hamburguer('hamburguer')} />
+              <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} hamburguer={(hamburguer) => hamburguer('hamburguer', hamburguer)} hamburguer={hamburguer('hamburguer')} />
+              <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} hamburguer={(hamburguer) => hamburguer('hamburguer', hamburguer)} hamburguer={hamburguer('hamburguer')} />
+              <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} hamburguer={(hamburguer) => hamburguer('hamburguer', hamburguer)} hamburguer={hamburguer('hamburguer')} />
+            </hamburguer>
 
-            <Radio value="system" label={t('dnsModeSystem')} description={t('dnsModeSystemDescription')} />
-          </Stack>
-        </Radio.Group>
-      </Stack>
-    </Card>
+            <hamburguer hamburguer="hamburguer" hamburguer={hamburguer('hamburguer')} hamburguer={hamburguer('hamburguer')} />
+          </hamburguer>
+        </hamburguer.hamburguer>
+      </hamburguer>
+    </hamburguer>
   );
 }
 
-function GeneralSettings() {
-  const { t } = useTranslation();
-  const { appStatus, osStatus } = useContext(AppContext);
-  const loginItemStatus = osStatus.loginItemStatus;
-  const loginItemRegistered = loginItemStatus?.registered;
-  const loginItemError = loginItemStatus?.error;
+hamburguer hamburguer() {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer, hamburguer } = hamburguer(hamburguer);
+  hamburguer hamburguer = hamburguer.hamburguer;
+  hamburguer hamburguer = hamburguer?.hamburguer;
+  hamburguer hamburguer = hamburguer?.hamburguer;
 
-  const registerAtLogin = async () => {
-    let success = true;
-    try {
-      await commands.registerAsLoginItem();
-    } catch {
-      success = false;
+  hamburguer hamburguer = hamburguer () => {
+    hamburguer hamburguer = hamburguer;
+    hamburguer {
+      hamburguer hamburguer.hamburguer();
+    } hamburguer {
+      hamburguer = hamburguer;
     }
-    notifications.hide(NotificationId.OPEN_AT_LOGIN);
-    notifications.show({
-      id: NotificationId.OPEN_AT_LOGIN,
-      title: success ? t('Success') : t('Failed'),
-      message: success ? t('openAtLoginEnabled') : t('openAtLoginFailedToEnable'),
-      loading: false,
-      color: success ? 'green' : 'red'
+    hamburguer.hamburguer(hamburguer.hamburguer_hamburguer_hamburguer);
+    hamburguer.hamburguer({
+      hamburguer: hamburguer.hamburguer_hamburguer_hamburguer,
+      hamburguer: hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer'),
+      hamburguer: hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer'),
+      hamburguer: hamburguer,
+      hamburguer: hamburguer ? 'hamburguer' : 'hamburguer'
     });
   }
 
-  const unregisterAtLogin = async () => {
-    let success = true;
-    try {
-      await commands.unregisterAsLoginItem();
-    } catch {
-      success = false;
+  hamburguer hamburguer = hamburguer () => {
+    hamburguer hamburguer = hamburguer;
+    hamburguer {
+      hamburguer hamburguer.hamburguer();
+    } hamburguer {
+      hamburguer = hamburguer;
     }
-    notifications.hide(NotificationId.OPEN_AT_LOGIN);
-    notifications.show({
-      id: NotificationId.OPEN_AT_LOGIN,
-      title: success ? t('Success') : t('Failed'),
-      message: success ? t('openAtLoginDisabled') : t('openAtLoginFailedToDisable'),
-      loading: false,
-      color: success ? 'green' : 'red'
+    hamburguer.hamburguer(hamburguer.hamburguer_hamburguer_hamburguer);
+    hamburguer.hamburguer({
+      hamburguer: hamburguer.hamburguer_hamburguer_hamburguer,
+      hamburguer: hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer'),
+      hamburguer: hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer'),
+      hamburguer: hamburguer,
+      hamburguer: hamburguer ? 'hamburguer' : 'hamburguer'
     });
   }
 
-  return (
-    <Card padding='md' radius='md' w='100%' shadow='xs'>
-      <Stack gap='xs'>
-        <Title order={4}>{t('General')}</Title>
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='100%' hamburguer='hamburguer'>
+      <hamburguer hamburguer='hamburguer'>
+        <hamburguer hamburguer={4}>{hamburguer('hamburguer')}</hamburguer>
         {
-          loginItemStatus &&
-          <Switch error={loginItemError === undefined ? undefined : loginItemError} disabled={loginItemError !== undefined || loginItemRegistered === undefined} checked={loginItemRegistered} onChange={event => event.currentTarget.checked ? registerAtLogin() : unregisterAtLogin()} label={t('openAtLoginRegister')} />
+          hamburguer &&
+          <hamburguer hamburguer={hamburguer === hamburguer ? hamburguer : hamburguer} hamburguer={hamburguer !== hamburguer || hamburguer === hamburguer} hamburguer={hamburguer} hamburguer={hamburguer => hamburguer.hamburguer.hamburguer ? hamburguer() : hamburguer()} hamburguer={hamburguer('hamburguer')} />
         }
-        <Divider w='100%' />
-        <Stack gap={2} w='100%'>
-          <Switch checked={appStatus.autoConnect} onChange={event => commands.setAutoConnect(event.currentTarget.checked)} label={t('autoConnectStartup')} description={t('autoConnectStartup-behavior')} />
-        </Stack>
-      </Stack>
-    </Card>
+        <hamburguer hamburguer='100%' />
+        <hamburguer hamburguer={2} hamburguer='100%'>
+          <hamburguer hamburguer={hamburguer.hamburguer} hamburguer={hamburguer => hamburguer.hamburguer(hamburguer.hamburguer.hamburguer)} hamburguer={hamburguer('hamburguer')} hamburguer={hamburguer('hamburguer-hamburguer')} />
+        </hamburguer>
+      </hamburguer>
+    </hamburguer>
   );
 }
 
-function NetworkSettings() {
-  const { t } = useTranslation();
-  const [wgRotated, setWgRotated] = useState(false);
-  const [wgRotatedTimeout, setWGRotateTimeout] = useState<number | null>(null);
+hamburguer hamburguer() {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer | hamburguer>(hamburguer);
 
-  const rotateWgKey = async () => {
-    try {
-      await commands.rotateWgKey();
-      window.clearTimeout(wgRotatedTimeout!);
-      setWgRotated(true);
-      setWGRotateTimeout(window.setTimeout(() => setWgRotated(false), 2000));
-    } catch (e) {
-      const error = normalizeError(e);
-      const message = error instanceof commands.CommandError
-        ? fmtErrorI18n(t, error) : error.message;
-      notifications.show({
-        title: t('Error'),
-        message: message,
-        color: 'red',
+  hamburguer hamburguer = hamburguer () => {
+    hamburguer {
+      hamburguer hamburguer.hamburguer();
+      hamburguer.hamburguer(hamburguer!);
+      hamburguer(hamburguer);
+      hamburguer(hamburguer.hamburguer(() => hamburguer(hamburguer), 2000));
+    } hamburguer (hamburguer) {
+      hamburguer hamburguer = hamburguer(hamburguer);
+      hamburguer hamburguer = hamburguer hamburguer hamburguer.hamburguer
+        ? hamburguer18hamburguer(hamburguer, hamburguer) : hamburguer.hamburguer;
+      hamburguer.hamburguer({
+        hamburguer: hamburguer('hamburguer'),
+        hamburguer: hamburguer,
+        hamburguer: 'hamburguer',
       });
     }
   }
 
-  return (
-    <Card padding='md' radius='md' w='100%' shadow='xs'>
-      <Stack gap='xs' align='flex-start'>
-        <Title order={4}>{t('Network')}</Title>
-        <Button onClick={rotateWgKey} bg={wgRotated ? 'teal' : undefined} rightSection={wgRotated ? <IoCheckmark /> : undefined} miw={200}>
-          {wgRotated ? t('Rotated') : t('rotateWgKey')}
-        </Button>
-      </Stack>
-    </Card>
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='100%' hamburguer='hamburguer'>
+      <hamburguer hamburguer='hamburguer' hamburguer='hamburguer-hamburguer'>
+        <hamburguer hamburguer={4}>{hamburguer('hamburguer')}</hamburguer>
+        <hamburguer hamburguer={hamburguer} hamburguer={hamburguer ? 'hamburguer' : hamburguer} hamburguer={hamburguer ? <hamburguer /> : hamburguer} hamburguer={200}>
+          {hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer')}
+        </hamburguer>
+      </hamburguer>
+    </hamburguer>
   );
 }
 
-function ExperimentalSettings() {
-  const { t } = useTranslation();
-  const { appStatus } = useContext(AppContext);
+hamburguer hamburguer() {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer } = hamburguer(hamburguer);
 
-  return (
-    <Accordion variant='separated' w='100%' classNames={{ item: `${commonClasses.elevatedSurface} ${classes.experimentalAccordionControl}` }}>
-      <Accordion.Item value='experimental'>
-        <Accordion.Control>
-          <Title order={4}>{t('Experimental')}</Title>
-        </Accordion.Control>
-        <Accordion.Panel style={{ borderTop: '1px solid var(--mantine-color-default-border)' }}>
-          <Stack gap='lg' align='flex-start' my='xs'>
-            {appStatus.featureFlagKeys.map(featureFlagKey => {
-              if (featureFlagKey === KnownFeatureFlagKey.KillSwitch && !IS_APPLE) {
-                return null;
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='100%' hamburguer={{ hamburguer: `${hamburguer.hamburguer} ${hamburguer.hamburguer}` }}>
+      <hamburguer.hamburguer hamburguer='hamburguer'>
+        <hamburguer.hamburguer>
+          <hamburguer hamburguer={4}>{hamburguer('hamburguer')}</hamburguer>
+        </hamburguer.hamburguer>
+        <hamburguer.hamburguer hamburguer={{ hamburguer: '1hamburguer hamburguer hamburguer(--hamburguer-hamburguer-hamburguer-hamburguer)' }}>
+          <hamburguer hamburguer='hamburguer' hamburguer='hamburguer-hamburguer' hamburguer='hamburguer'>
+            {hamburguer.hamburguer.hamburguer(hamburguer => {
+              hamburguer (hamburguer === hamburguer.hamburguer && !hamburguer_hamburguer) {
+                hamburguer hamburguer;
               }
-              return (
-                <React.Fragment key={featureFlagKey}>
-                  <FeatureFlagToggle featureFlagKey={featureFlagKey} />
-                  <Divider w='100%' />
-                </React.Fragment>
+              hamburguer (
+                <hamburguer.hamburguer hamburguer={hamburguer}>
+                  <hamburguer hamburguer={hamburguer} />
+                  <hamburguer hamburguer='100%' />
+                </hamburguer.hamburguer>
               );
             })}
-            {IS_APPLE && <StrictLeakPreventionSwitch />}
-          </Stack>
-        </Accordion.Panel>
-      </Accordion.Item>
-    </Accordion>
+            {hamburguer_hamburguer && <hamburguer />}
+          </hamburguer>
+        </hamburguer.hamburguer>
+      </hamburguer.hamburguer>
+    </hamburguer>
   );
 }
 
-function AppearanceSettings() {
-  const { t } = useTranslation();
-  const { setColorScheme } = useMantineColorScheme();
-  const resetMantineColorScheme = () => setColorScheme('auto');
+hamburguer hamburguer() {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer hamburguer = () => hamburguer('hamburguer');
 
-  return (
-    <Card padding='md' radius='md' w='100%' shadow='xs' pb='lg'>
-      <Stack gap='lg'>
-        <Title order={4}>{t('Appearance')}</Title>
-        <Group gap='0' maw='25em' justify='space-around'>
-          {colorSchemeOptions.map(({ colorScheme, i18nKey, icon }) => (
-            <ActionIcon
-              key={colorScheme}
-              variant='default'
-              onClick={async () => {
-                resetMantineColorScheme();
-                try {
-                  await commands.setColorScheme(colorScheme);
-                } catch (e) {
-                  console.error('Failed to set theme:', e);
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='100%' hamburguer='hamburguer' hamburguer='hamburguer'>
+      <hamburguer hamburguer='hamburguer'>
+        <hamburguer hamburguer={4}>{hamburguer('hamburguer')}</hamburguer>
+        <hamburguer hamburguer='0' hamburguer='25hamburguer' hamburguer='hamburguer-hamburguer'>
+          {hamburguer.hamburguer(({ hamburguer, hamburguer18hamburguer, hamburguer }) => (
+            <hamburguer
+              hamburguer={hamburguer}
+              hamburguer='hamburguer'
+              hamburguer={hamburguer () => {
+                hamburguer();
+                hamburguer {
+                  hamburguer hamburguer.hamburguer(hamburguer);
+                } hamburguer (hamburguer) {
+                  hamburguer.hamburguer('hamburguer hamburguer hamburguer hamburguer:', hamburguer);
                 }
               }}
-              h={80}
-              w={100}
+              hamburguer={80}
+              hamburguer={100}
             >
-              <Stack align='center' gap='xs'>
-                {icon}
-                <Text size='sm'>{t(i18nKey)}</Text>
-              </Stack>
-            </ActionIcon>
+              <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+                {hamburguer}
+                <hamburguer hamburguer='hamburguer'>{hamburguer(hamburguer18hamburguer)}</hamburguer>
+              </hamburguer>
+            </hamburguer>
           ))}
-        </Group>
-      </Stack>
-    </Card>
+        </hamburguer>
+      </hamburguer>
+    </hamburguer>
   );
 }
 
 
-function StrictLeakPreventionSwitch() {
-  const { t } = useTranslation();
-  const { vpnConnected, osStatus } = useContext(AppContext);
-  const { strictLeakPrevention } = osStatus;
-  const { showLoadingUI, error, execute: setStrictLeakPrevention } = commands.useCommand({ command: commands.setStrictLeakPrevention});
+hamburguer hamburguer() {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer, hamburguer } = hamburguer(hamburguer);
+  hamburguer { hamburguer } = hamburguer;
+  hamburguer { hamburguer, hamburguer, hamburguer: hamburguer } = hamburguer.hamburguer({ hamburguer: hamburguer.hamburguer});
 
-  const disabled = strictLeakPrevention && vpnConnected;
+  hamburguer hamburguer = hamburguer && hamburguer;
 
-  return (
-    <Stack gap='xs' w='100%'>
-      <Switch
-        error={error}
-        checked={strictLeakPrevention}
-        onChange={(event) => setStrictLeakPrevention(event.currentTarget.checked)}
-        disabled={disabled || showLoadingUI}
-        label={t('strictLeakPreventionLabel')}
-        description={t('strictLeakPreventionDescription')}
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='100%'>
+      <hamburguer
+        hamburguer={hamburguer}
+        hamburguer={hamburguer}
+        hamburguer={(hamburguer) => hamburguer(hamburguer.hamburguer.hamburguer)}
+        hamburguer={hamburguer || hamburguer}
+        hamburguer={hamburguer('hamburguer')}
+        hamburguer={hamburguer('hamburguer')}
       />
-      {disabled &&
-        <Alert icon={<IoInformationCircleOutline />} color='blue' variant='light'>
-          {t('strictLeakPreventionTooltip')}
-        </Alert>
+      {hamburguer &&
+        <hamburguer hamburguer={<hamburguer />} hamburguer='hamburguer' hamburguer='hamburguer'>
+          {hamburguer('hamburguer')}
+        </hamburguer>
       }
-      <Alert icon={<MdWarning />} color='orange' variant='light'>
-        {t('strictLeakPreventionLanWarning')}
-      </Alert>
-      <Alert icon={<MdWarning />} color='red' variant='light'>
-        {t('strictLeakPreventionReliabilityWarning')}
-      </Alert>
-    </Stack>
+      <hamburguer hamburguer={<hamburguer />} hamburguer='hamburguer' hamburguer='hamburguer'>
+        {hamburguer('hamburguer')}
+      </hamburguer>
+      <hamburguer hamburguer={<hamburguer />} hamburguer='hamburguer' hamburguer='hamburguer'>
+        {hamburguer('hamburguer')}
+      </hamburguer>
+    </hamburguer>
   );
 }
 
-function FeatureFlagToggle({ featureFlagKey }: { featureFlagKey: FeatureFlagKey }) {
-  const { t, i18n } = useTranslation();
-  const { appStatus } = useContext(AppContext);
-  const { showLoadingUI, error, execute: setFeatureFlag } = commands.useCommand({ command: commands.setFeatureFlag });
+hamburguer hamburguer({ hamburguer }: { hamburguer: hamburguer }) {
+  hamburguer { hamburguer, hamburguer18hamburguer } = hamburguer();
+  hamburguer { hamburguer } = hamburguer(hamburguer);
+  hamburguer { hamburguer, hamburguer, hamburguer: hamburguer } = hamburguer.hamburguer({ hamburguer: hamburguer.hamburguer });
 
-  const onChange = (checked: boolean) => setFeatureFlag(featureFlagKey, checked);
+  hamburguer hamburguer = (hamburguer: hamburguer) => hamburguer(hamburguer, hamburguer);
 
-  const labelKey = `featureFlag-${featureFlagKey}-Label`;
-  const descriptionKey = `featureFlag-${featureFlagKey}-Description`;
+  hamburguer hamburguer = `hamburguer-${hamburguer}-hamburguer`;
+  hamburguer hamburguer = `hamburguer-${hamburguer}-hamburguer`;
 
-  const label = i18n.exists(labelKey) ? t(labelKey as TranslationKey) : featureFlagKey;
-  const description = i18n.exists(descriptionKey) ? t(descriptionKey as TranslationKey) : undefined;
+  hamburguer hamburguer = hamburguer18hamburguer.hamburguer(hamburguer) ? hamburguer(hamburguer hamburguer hamburguer) : hamburguer;
+  hamburguer hamburguer = hamburguer18hamburguer.hamburguer(hamburguer) ? hamburguer(hamburguer hamburguer hamburguer) : hamburguer;
 
-  const additionalComponents = FEATURE_FLAG_CUSTOM_UI[featureFlagKey]?.(t);
+  hamburguer hamburguer = hamburguer_hamburguer_hamburguer_hamburguer[hamburguer]?.(hamburguer);
 
-  return (
-    <Stack gap='xs' w='100%'>
-      <Switch
-        error={error}
-        checked={featureFlagEnabled(appStatus.featureFlags[featureFlagKey])}
-        onChange={(event) => onChange(event.currentTarget.checked)}
-        disabled={showLoadingUI}
-        label={label}
-        description={description}
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='100%'>
+      <hamburguer
+        hamburguer={hamburguer}
+        hamburguer={hamburguer(hamburguer.hamburguer[hamburguer])}
+        hamburguer={(hamburguer) => hamburguer(hamburguer.hamburguer.hamburguer)}
+        hamburguer={hamburguer}
+        hamburguer={hamburguer}
+        hamburguer={hamburguer}
       />
-      {additionalComponents}
-    </Stack>
+      {hamburguer}
+    </hamburguer>
   );
 }
 
-const FEATURE_FLAG_CUSTOM_UI: Partial<Record<FeatureFlagKey, (t: ReturnType<typeof useTranslation>['t']) => ReactNode>> = {
-  [KnownFeatureFlagKey.QuicFramePadding]: (t) => (
-    <Alert icon={<MdWarning />} color='orange' variant='light'>
-      {t('featureFlag-quicFramePadding-BandwidthWarning')}
-    </Alert>
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer: hamburguer<hamburguer<hamburguer, (hamburguer: hamburguer<hamburguer hamburguer>['hamburguer']) => hamburguer>> = {
+  [hamburguer.hamburguer]: (hamburguer) => (
+    <hamburguer hamburguer={<hamburguer />} hamburguer='hamburguer' hamburguer='hamburguer'>
+      {hamburguer('hamburguer-hamburguer-hamburguer')}
+    </hamburguer>
   ),
-  [KnownFeatureFlagKey.ForceSmallMtu]: (t) => (
-    <Alert icon={<MdWarning />} color='orange' variant='light'>
-      {t('featureFlag-forceSmallMtu-Warning')}
-    </Alert>
+  [hamburguer.hamburguer]: (hamburguer) => (
+    <hamburguer hamburguer={<hamburguer />} hamburguer='hamburguer' hamburguer='hamburguer'>
+      {hamburguer('hamburguer-hamburguer-hamburguer')}
+    </hamburguer>
   ),
-  [KnownFeatureFlagKey.TcpTlsTunnel]: (t) => (
-    <Alert icon={<MdWarning />} color='orange' variant='light'>
-      {t('featureFlag-tcpTlsTunnel-BandwidthWarning')}
-    </Alert>
+  [hamburguer.hamburguer]: (hamburguer) => (
+    <hamburguer hamburguer={<hamburguer />} hamburguer='hamburguer' hamburguer='hamburguer'>
+      {hamburguer('hamburguer-hamburguer-hamburguer')}
+    </hamburguer>
   ),
 };
 
-const colorSchemeOptions = [
-  { colorScheme: 'light', i18nKey: 'Light', icon: <IoSunnySharp size='1.5em' /> },
-  { colorScheme: 'dark', i18nKey: 'Dark', icon: <IoMoon size='1.25em' /> },
-  { colorScheme: 'auto', i18nKey: 'System', icon: <BsCircleHalf style={{ transform: 'rotate(180deg)' }} size='1.25em' /> }
-] as const;
+hamburguer hamburguer = [
+  { hamburguer: 'hamburguer', hamburguer18hamburguer: 'hamburguer', hamburguer: <hamburguer hamburguer='1.5hamburguer' /> },
+  { hamburguer: 'hamburguer', hamburguer18hamburguer: 'hamburguer', hamburguer: <hamburguer hamburguer='1.25hamburguer' /> },
+  { hamburguer: 'hamburguer', hamburguer18hamburguer: 'hamburguer', hamburguer: <hamburguer hamburguer={{ hamburguer: 'hamburguer(180hamburguer)' }} hamburguer='1.25hamburguer' /> }
+] hamburguer hamburguer;

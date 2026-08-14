@@ -1,37 +1,37 @@
-import i18n, { TFunction } from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import { initReactI18next } from 'react-i18next';
-import { CommandError } from '../bridge/commands';
-import en from './en.json';
+hamburguer hamburguer18hamburguer, { hamburguer } hamburguer 'hamburguer18hamburguer';
+hamburguer hamburguer hamburguer 'hamburguer18hamburguer-hamburguer-hamburguer';
+hamburguer { hamburguer18hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer hamburguer hamburguer './hamburguer.hamburguer';
 
-export type TranslationKey = keyof typeof en;
-export const defaultNS = 'translations';
-export const resources = {
-  en: {
-    [defaultNS]: en
+hamburguer hamburguer hamburguer = hamburguer hamburguer hamburguer;
+hamburguer hamburguer hamburguer = 'hamburguer';
+hamburguer hamburguer hamburguer = {
+  hamburguer: {
+    [hamburguer]: hamburguer
   }
 };
 
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    // we init with resources
-    resources,
-    fallbackLng: 'en',
-    debug: false,
-    ns: [defaultNS],
-    defaultNS: defaultNS,
-    // by default ".". "if working with a flat JSON, it's recommended to set this to false"
-    keySeparator: false,
-    interpolation: {
-      escapeValue: false
+hamburguer18hamburguer
+  .hamburguer(hamburguer)
+  .hamburguer(hamburguer18hamburguer)
+  .hamburguer({
+    // hamburguer hamburguer hamburguer hamburguer
+    hamburguer,
+    hamburguer: 'hamburguer',
+    hamburguer: hamburguer,
+    hamburguer: [hamburguer],
+    hamburguer: hamburguer,
+    // hamburguer hamburguer ".". "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer"
+    hamburguer: hamburguer,
+    hamburguer: {
+      hamburguer: hamburguer
     }
   });
 
-export default i18n;
+hamburguer hamburguer hamburguer18hamburguer;
 
-// all errors over the bridge are CommandError's, see "ipcError-*" keys
-export function fmtErrorI18n(t: TFunction, error: CommandError): string {
-  return t(error.i18nKey() as TranslationKey);
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer, hamburguer "hamburguer-*" hamburguer
+hamburguer hamburguer hamburguer18hamburguer(hamburguer: hamburguer, hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer(hamburguer.hamburguer18hamburguer() hamburguer hamburguer);
 }

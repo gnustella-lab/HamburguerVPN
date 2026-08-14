@@ -1,335 +1,335 @@
-import { Anchor, Box, Button, Divider, Group, Loader, Stack, Text, UnstyledButton } from '@mantine/core';
-import { notifications } from '@mantine/notifications';
-import { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import * as commands from '../bridge/commands';
-import * as ObscuraAccount from '../common/accountUtils';
-import { AccountInfo, activeAppleSubscription, AppleSubscriptionStatus, hasAppleSubscription, SubscriptionStatus } from '../common/api';
-import { AppContext, SubscriptionProductModel } from '../common/appContext';
-import { TranslationKey } from '../translations/i18n';
-import { ButtonLink } from './ButtonLink';
-import { ConfirmationDialog } from './ConfirmationDialog';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer * hamburguer hamburguer hamburguer '../hamburguer/hamburguer';
+hamburguer * hamburguer hamburguer hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer18hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer';
 
-interface PaymentManagementSheetProps {
-  opened: boolean;
-  onClose: () => void;
+hamburguer hamburguer {
+  hamburguer: hamburguer;
+  hamburguer: () => hamburguer;
 }
 
-export function PaymentManagementSheet({ opened, onClose }: PaymentManagementSheetProps) {
-  const { t } = useTranslation();
-  const { appStatus, accountLoading, pollAccount, isProcessingPayment, osStatus, setPaymentProcessing } = useContext(AppContext);
+hamburguer hamburguer hamburguer({ hamburguer, hamburguer }: hamburguer) {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } = hamburguer(hamburguer);
 
-  useEffect(() => {
-    void pollAccount();
+  hamburguer(() => {
+    hamburguer hamburguer();
   }, []);
 
-  // When the iOS offer code redemption sheet is closed,
-  // there is a return value of success or failure;
-  // `offerCodeRedemptionSuccess` is set to true in success.
-  // For a brief period of time after a successful redemption,
-  // the account info will show expired which will confuse new users.
-  // When this field is set to true, we know to show the processing UI.
-  useEffect(() => {
-    if (osStatus.offerCodeRedemptionSuccess === true && !appStatus.account?.account_info.active) {
-      setPaymentProcessing(true);
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer,
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer;
+  // `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer,
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+  hamburguer(() => {
+    hamburguer (hamburguer.hamburguer === hamburguer && !hamburguer.hamburguer?.hamburguer_hamburguer.hamburguer) {
+      hamburguer(hamburguer);
     }
-  }, [osStatus.offerCodeRedemptionSuccess, appStatus.account?.account_info.active, setPaymentProcessing]);
+  }, [hamburguer.hamburguer, hamburguer.hamburguer?.hamburguer_hamburguer.hamburguer, hamburguer]);
 
-  if (isProcessingPayment) {
-    return <ProcessingPaymentSheet opened={true} />;
+  hamburguer (hamburguer) {
+    hamburguer <hamburguer hamburguer={hamburguer} />;
   }
 
-  return (
-    <ConfirmationDialog
-      opened={opened}
-      onClose={onClose}
-      drawerSize='lg'
-      title={t('accountManagement')}
-      drawerCloseButton
+  hamburguer (
+    <hamburguer
+      hamburguer={hamburguer}
+      hamburguer={hamburguer}
+      hamburguer='hamburguer'
+      hamburguer={hamburguer('hamburguer')}
+      hamburguer
     >
-      <Stack h='100%' justify='space-between' gap='md'>
-        {appStatus.account?.account_info ? (
+      <hamburguer hamburguer='100%' hamburguer='hamburguer-hamburguer' hamburguer='hamburguer'>
+        {hamburguer.hamburguer?.hamburguer_hamburguer ? (
           <>
-            <AccountInfoOverview accountInfo={appStatus.account.account_info} />
-            {!activeAppleSubscription(appStatus.account.account_info)
-              && (osStatus.storeKit?.externalPaymentsAllowed || appStatus.account.account_info.active)
-              && <ButtonLink href={ObscuraAccount.payUrl(appStatus.accountId)}>{t(appStatus.account.account_info.active ? 'manageOnWeb' : 'payOnWeb')}</ButtonLink>}
+            <hamburguer hamburguer={hamburguer.hamburguer.hamburguer_hamburguer} />
+            {!hamburguer(hamburguer.hamburguer.hamburguer_hamburguer)
+              && (hamburguer.hamburguer?.hamburguer || hamburguer.hamburguer.hamburguer_hamburguer.hamburguer)
+              && <hamburguer hamburguer={hamburguer.hamburguer(hamburguer.hamburguer)}>{hamburguer(hamburguer.hamburguer.hamburguer_hamburguer.hamburguer ? 'hamburguer' : 'hamburguer')}</hamburguer>}
           </>
-        ) : (accountLoading ? (
-          < Stack align='center' justify='center' h={200} >
-            <Loader size='sm' />
-            <Text c='dimmed'>{t('account-loading')}</Text>
-          </Stack >
+        ) : (hamburguer ? (
+          < hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={200} >
+            <hamburguer hamburguer='hamburguer' />
+            <hamburguer hamburguer='hamburguer'>{hamburguer('hamburguer-hamburguer')}</hamburguer>
+          </hamburguer >
         ) :
           (
-            <Stack align='center' justify='center' h={200}>
-              <Text c='dimmed'>{t('account-InfoUnavailable')}</Text>
-            </Stack>
+            <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={200}>
+              <hamburguer hamburguer='hamburguer'>{hamburguer('hamburguer-hamburguer')}</hamburguer>
+            </hamburguer>
           ))}
-      </Stack >
-    </ConfirmationDialog >
+      </hamburguer >
+    </hamburguer >
   );
 }
 
-function ProcessingPaymentSheet({ opened }: { opened: boolean }) {
-  const { t } = useTranslation();
+hamburguer hamburguer({ hamburguer }: { hamburguer: hamburguer }) {
+  hamburguer { hamburguer } = hamburguer();
 
-  return (
-    <ConfirmationDialog
-      opened={opened}
-      onClose={() => { }}
-      drawerSize='lg'
-      title={t('processingPaymentTitle')}
-      drawerCloseButton={false}
-      closeOnClickOutside={false}
-      closeOnEscape={false}
-      withCloseButton={false}
+  hamburguer (
+    <hamburguer
+      hamburguer={hamburguer}
+      hamburguer={() => { }}
+      hamburguer='hamburguer'
+      hamburguer={hamburguer('hamburguer')}
+      hamburguer={hamburguer}
+      hamburguer={hamburguer}
+      hamburguer={hamburguer}
+      hamburguer={hamburguer}
     >
-      <Stack align='center' justify='center' h={300} gap='md'>
-        <Loader size='lg' />
-        <Text ta="center">{t('processingPaymentTitleMessage')}</Text>
-      </Stack>
-    </ConfirmationDialog>
+      <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={300} hamburguer='hamburguer'>
+        <hamburguer hamburguer='hamburguer' />
+        <hamburguer hamburguer="hamburguer">{hamburguer('hamburguer')}</hamburguer>
+      </hamburguer>
+    </hamburguer>
   );
 }
 
-interface AccountInfoOverviewProps {
-  accountInfo: AccountInfo;
+hamburguer hamburguer {
+  hamburguer: hamburguer;
 }
 
-function AccountInfoOverview({ accountInfo }: AccountInfoOverviewProps) {
-  const sections = buildSections(accountInfo);
+hamburguer hamburguer({ hamburguer }: hamburguer) {
+  hamburguer hamburguer = hamburguer(hamburguer);
 
-  return (
-    <Stack gap='md'>
-      {sections.map((section, sectionIndex) => (
-        <Box key={sectionIndex}>
-          <Stack gap='xs'>
-            {section}
-          </Stack>
-          {sectionIndex < sections.length - 1 && <Divider mt='md' />}
-        </Box>
+  hamburguer (
+    <hamburguer hamburguer='hamburguer'>
+      {hamburguer.hamburguer((hamburguer, hamburguer) => (
+        <hamburguer hamburguer={hamburguer}>
+          <hamburguer hamburguer='hamburguer'>
+            {hamburguer}
+          </hamburguer>
+          {hamburguer < hamburguer.hamburguer - 1 && <hamburguer hamburguer='hamburguer' />}
+        </hamburguer>
       ))}
-    </Stack>
+    </hamburguer>
   );
 }
 
-function InfoRow({ title, importance, dataBolded, data, dataColor }: RowProps) {
-  return (
-    <Group justify='space-between' wrap='nowrap'>
-      <Text
-        size={importance === 'high' ? 'md' : 'sm'}
-        fw={importance === 'high' ? 700 : importance === 'medium' ? 500 : 400}
-        c={importance === 'high' ? undefined : 'dimmed'}
+hamburguer hamburguer({ hamburguer, hamburguer, hamburguer, hamburguer, hamburguer }: hamburguer) {
+  hamburguer (
+    <hamburguer hamburguer='hamburguer-hamburguer' hamburguer='hamburguer'>
+      <hamburguer
+        hamburguer={hamburguer === 'hamburguer' ? 'hamburguer' : 'hamburguer'}
+        hamburguer={hamburguer === 'hamburguer' ? 700 : hamburguer === 'hamburguer' ? 500 : 400}
+        hamburguer={hamburguer === 'hamburguer' ? hamburguer : 'hamburguer'}
       >
-        {title}
-      </Text>
-      <Text
-        size={importance === 'high' ? 'md' : 'sm'}
-        fw={dataBolded ? 700 : importance === 'medium' ? 500 : 400}
-        c={dataColor || 'dimmed'}
-        ta='right'
+        {hamburguer}
+      </hamburguer>
+      <hamburguer
+        hamburguer={hamburguer === 'hamburguer' ? 'hamburguer' : 'hamburguer'}
+        hamburguer={hamburguer ? 700 : hamburguer === 'hamburguer' ? 500 : 400}
+        hamburguer={hamburguer || 'hamburguer'}
+        hamburguer='hamburguer'
       >
-        {data}
-      </Text>
-    </Group>
+        {hamburguer}
+      </hamburguer>
+    </hamburguer>
   );
 }
 
-type Importance = 'high' | 'medium' | 'low';
+hamburguer hamburguer = 'hamburguer' | 'hamburguer' | 'hamburguer';
 
-interface RowProps {
-  title: string;
-  importance: Importance;
-  data?: React.ReactElement | string;
-  dataBolded?: boolean;
-  dataColor?: string;
+hamburguer hamburguer {
+  hamburguer: hamburguer;
+  hamburguer: hamburguer;
+  hamburguer?: hamburguer.hamburguer | hamburguer;
+  hamburguer?: hamburguer;
+  hamburguer?: hamburguer;
 }
 
-type Section = React.ReactElement[];
+hamburguer hamburguer = hamburguer.hamburguer[];
 
-interface SubscriptionProductCardProps {
-  product: SubscriptionProductModel;
-  subscribed: boolean;
+hamburguer hamburguer {
+  hamburguer: hamburguer;
+  hamburguer: hamburguer;
 }
 
-function AppleSubscriptionProductCard({ product, subscribed }: SubscriptionProductCardProps) {
-  const { t } = useTranslation();
-  const { pollAccount, setPaymentProcessing } = useContext(AppContext);
-  const { execute: storeKitAssociateAccount } = commands.useCommand({ command: commands.storeKitAssociateAccount, showNotification: true, rethrow: true });
-  const [preparingToRedeem, setPreparingToRedeem] = useState(false);
+hamburguer hamburguer({ hamburguer, hamburguer }: hamburguer) {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer, hamburguer } = hamburguer(hamburguer);
+  hamburguer { hamburguer: hamburguer } = hamburguer.hamburguer({ hamburguer: hamburguer.hamburguer, hamburguer: hamburguer, hamburguer: hamburguer });
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
 
-  const handlePurchase = async () => {
-    try {
-      const purchaseSuccessful = await commands.storeKitPurchaseSubscription();
-      if (purchaseSuccessful) {
-        console.log('Purchase flow completed, show payment processing UI.');
-        setPaymentProcessing(true);
-        await pollAccount();
+  hamburguer hamburguer = hamburguer () => {
+    hamburguer {
+      hamburguer hamburguer = hamburguer hamburguer.hamburguer();
+      hamburguer (hamburguer) {
+        hamburguer.hamburguer('hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer.');
+        hamburguer(hamburguer);
+        hamburguer hamburguer();
       }
-      // else: user dismissed payment sheet
-    } catch {
-      notifications.show({
-        color: 'red',
-        title: t('purchaseFailed'),
-        message: t('purchaseFailedMessage')
+      // hamburguer: hamburguer hamburguer hamburguer hamburguer
+    } hamburguer {
+      hamburguer.hamburguer({
+        hamburguer: 'hamburguer',
+        hamburguer: hamburguer('hamburguer'),
+        hamburguer: hamburguer('hamburguer')
       });
     }
   }
 
-  return (
-    <Stack ta='center' p='0'>
-      <Stack gap='0'>
-        <Text fw={700}>
-          {product.displayName}
-        </Text>
-        <Text c='dimmed'>
-          {product.description}
-        </Text>
-        <Group justify='center' wrap='nowrap' gap='xs'>
-          <Text c='dimmed' fw={700}>
-            {product.subscriptionPeriodFormatted}:
-          </Text>
-          <Text fw={600}>
-            {product.renewalPrice ?? product.displayPrice}
-          </Text>
-        </Group>
-      </Stack>
-      <Button component='a'
-        onClick={subscribed ? undefined : handlePurchase}
-        href={subscribed ? ObscuraAccount.APP_MANAGE_SUBSCRIPTION : undefined}>
-        {subscribed ? t('Manage Subscription') : t('Subscribe In-app')}</Button>
-      {!subscribed && (
-        <Stack gap='0'>
-          <Group justify='center' gap='xs'>
-            <Text c='dimmed'>
-              {t('Have a promo code?')}
-            </Text>
-            <UnstyledButton disabled={preparingToRedeem} td='underline' c='blue' fw='normal' onClick={
-              async () => {
-                setPreparingToRedeem(true);
-                try {
-                  await storeKitAssociateAccount();
-                  // if successfully associated account, show the redemption sheet
-                  await commands.showOfferCodeRedemption();
-                } finally {
-                  setPreparingToRedeem(false);
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer='0'>
+      <hamburguer hamburguer='0'>
+        <hamburguer hamburguer={700}>
+          {hamburguer.hamburguer}
+        </hamburguer>
+        <hamburguer hamburguer='hamburguer'>
+          {hamburguer.hamburguer}
+        </hamburguer>
+        <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer'>
+          <hamburguer hamburguer='hamburguer' hamburguer={700}>
+            {hamburguer.hamburguer}:
+          </hamburguer>
+          <hamburguer hamburguer={600}>
+            {hamburguer.hamburguer ?? hamburguer.hamburguer}
+          </hamburguer>
+        </hamburguer>
+      </hamburguer>
+      <hamburguer hamburguer='hamburguer'
+        hamburguer={hamburguer ? hamburguer : hamburguer}
+        hamburguer={hamburguer ? hamburguer.hamburguer_hamburguer_hamburguer : hamburguer}>
+        {hamburguer ? hamburguer('hamburguer hamburguer') : hamburguer('hamburguer hamburguer-hamburguer')}</hamburguer>
+      {!hamburguer && (
+        <hamburguer hamburguer='0'>
+          <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+            <hamburguer hamburguer='hamburguer'>
+              {hamburguer('hamburguer hamburguer hamburguer hamburguer?')}
+            </hamburguer>
+            <hamburguer hamburguer={hamburguer} hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={
+              hamburguer () => {
+                hamburguer(hamburguer);
+                hamburguer {
+                  hamburguer hamburguer();
+                  // hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+                  hamburguer hamburguer.hamburguer();
+                } hamburguer {
+                  hamburguer(hamburguer);
                 }
               }
-            }>{t('Redeem Code')}</UnstyledButton>
-          </Group>
-          <Anchor size='xs' td='underline' c='blue' onClick={commands.storeKitRestorePurchases}>{t('Restore Purchases')}</Anchor>
-        </Stack>
+            }>{hamburguer('hamburguer hamburguer')}</hamburguer>
+          </hamburguer>
+          <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={hamburguer.hamburguer}>{hamburguer('hamburguer hamburguer')}</hamburguer>
+        </hamburguer>
       )}
-    </Stack>
+    </hamburguer>
   );
 }
 
-function buildSections(accountInfo: AccountInfo): Section[] {
-  const { t } = useTranslation();
-  const { osStatus } = useContext(AppContext);
-  const appleSubscriptionProduct = osStatus.storeKit?.subscriptionProduct;
-  const sections: Section[] = [];
+hamburguer hamburguer(hamburguer: hamburguer): hamburguer[] {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer } = hamburguer(hamburguer);
+  hamburguer hamburguer = hamburguer.hamburguer?.hamburguer;
+  hamburguer hamburguer: hamburguer[] = [];
 
-  const formattedId = ObscuraAccount.formatPartialAccountId(ObscuraAccount.accountIdToString(accountInfo.id));
-  sections.push([<InfoRow title={t('Account ID')} importance='high' data={formattedId} />,],);
-  sections.push([<InfoRow title={t('Status')} importance='high' data={accountInfo.active ? t('Active') : t('Inactive')} dataColor={accountInfo.active ? 'green' : 'red'} />]);
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer(hamburguer.hamburguer));
+  hamburguer.hamburguer([<hamburguer hamburguer={hamburguer('hamburguer hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer} />,],);
+  hamburguer.hamburguer([<hamburguer hamburguer={hamburguer('hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer.hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer')} hamburguer={hamburguer.hamburguer ? 'hamburguer' : 'hamburguer'} />]);
 
-  // Top Up Section
-  if (accountInfo.top_up) {
-    const topUpDate = new Date(accountInfo.top_up.credit_expires_at * 1000);
-    sections.push(
+  // hamburguer hamburguer hamburguer
+  hamburguer (hamburguer.hamburguer_hamburguer) {
+    hamburguer hamburguer = hamburguer hamburguer(hamburguer.hamburguer_hamburguer.hamburguer_hamburguer_hamburguer * 1000);
+    hamburguer.hamburguer(
       [
-        <InfoRow title={t('Top Up')} importance='high' />,
-        <InfoRow title={t('Expiration Date')} importance='medium' data={topUpDate.toLocaleDateString()} />
+        <hamburguer hamburguer={hamburguer('hamburguer hamburguer')} hamburguer='hamburguer' />,
+        <hamburguer hamburguer={hamburguer('hamburguer hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer.hamburguer()} />
       ]);
   }
 
-  // Stripe Subscription Section
-  const sub = accountInfo.subscription;
-  if (sub && sub.status !== SubscriptionStatus.CANCELED) {
-    sections.push([
-      <InfoRow title={t('subscribedOnWeb')} importance='high' />,
-      <InfoRow title={t('Status')} importance='medium' data={t(`stripeStatus-${sub.status}`)} dataColor={getStripeStatusColor(sub.status)} />,
-      <InfoRow title={t('Source')} importance='medium' data='obscura.net' />,
-      <InfoRow title={t('Period Start')} importance='medium' data={new Date(sub.current_period_start * 1000).toLocaleDateString()} />,
-      <InfoRow title={t('Period End')} importance='medium' data={new Date(sub.current_period_end * 1000).toLocaleDateString()} />,
-      <InfoRow title={t('cancelAtEnd')} importance='medium' data={sub.cancel_at_period_end ? t('Yes') : t('No')} />,
+  // hamburguer hamburguer hamburguer
+  hamburguer hamburguer = hamburguer.hamburguer;
+  hamburguer (hamburguer && hamburguer.hamburguer !== hamburguer.hamburguer) {
+    hamburguer.hamburguer([
+      <hamburguer hamburguer={hamburguer('hamburguer')} hamburguer='hamburguer' />,
+      <hamburguer hamburguer={hamburguer('hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer(`hamburguer-${hamburguer.hamburguer}`)} hamburguer={hamburguer(hamburguer.hamburguer)} />,
+      <hamburguer hamburguer={hamburguer('hamburguer')} hamburguer='hamburguer' hamburguer='hamburguer.hamburguer' />,
+      <hamburguer hamburguer={hamburguer('hamburguer hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer hamburguer(hamburguer.hamburguer_hamburguer_hamburguer * 1000).hamburguer()} />,
+      <hamburguer hamburguer={hamburguer('hamburguer hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer hamburguer(hamburguer.hamburguer_hamburguer_hamburguer * 1000).hamburguer()} />,
+      <hamburguer hamburguer={hamburguer('hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer.hamburguer_hamburguer_hamburguer_hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer')} />,
     ]);
   }
 
-  // Apple Subscription Section
-  if (accountInfo.apple_subscription) {
-    const appleSub = accountInfo.apple_subscription;
-    const section = [];
-    if (appleSubscriptionProduct) {
-      section.push(<AppleSubscriptionProductCard product={appleSubscriptionProduct} subscribed={hasAppleSubscription(accountInfo)} />);
+  // hamburguer hamburguer hamburguer
+  hamburguer (hamburguer.hamburguer_hamburguer) {
+    hamburguer hamburguer = hamburguer.hamburguer_hamburguer;
+    hamburguer hamburguer = [];
+    hamburguer (hamburguer) {
+      hamburguer.hamburguer(<hamburguer hamburguer={hamburguer} hamburguer={hamburguer(hamburguer)} />);
     }
-    section.push(
-      <InfoRow title={t('Status')} importance='medium' data={t(appleStatusToTranslationKey(appleSub.status))} dataColor={getAppleSubscriptionStatusColor(appleSub.status)} />,
-      <InfoRow title={t('Source')} importance='medium' data={t('App Store')} />,
-      <InfoRow title={t('Auto-Renewal')} importance='medium' data={appleSub.auto_renew_status ? t('Enabled') : t('Disabled')} />,
+    hamburguer.hamburguer(
+      <hamburguer hamburguer={hamburguer('hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer(hamburguer(hamburguer.hamburguer))} hamburguer={hamburguer(hamburguer.hamburguer)} />,
+      <hamburguer hamburguer={hamburguer('hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer('hamburguer hamburguer')} />,
+      <hamburguer hamburguer={hamburguer('hamburguer-hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer.hamburguer_hamburguer_hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer')} />,
     )
-    if (appleSub.auto_renew_status) {
-      section.push(<InfoRow title={t('Renewal Date')} importance='medium' data={new Date(appleSub.renewal_date * 1000).toLocaleDateString()} />);
+    hamburguer (hamburguer.hamburguer_hamburguer_hamburguer) {
+      hamburguer.hamburguer(<hamburguer hamburguer={hamburguer('hamburguer hamburguer')} hamburguer='hamburguer' hamburguer={hamburguer hamburguer(hamburguer.hamburguer_hamburguer * 1000).hamburguer()} />);
     }
-    sections.push(section);
-  } else if (appleSubscriptionProduct && !accountInfo.active) {
-    // Show subscription product if account is inactive
-    sections.push([
-      <AppleSubscriptionProductCard product={appleSubscriptionProduct} subscribed={false} />,
+    hamburguer.hamburguer(hamburguer);
+  } hamburguer hamburguer (hamburguer && !hamburguer.hamburguer) {
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer.hamburguer([
+      <hamburguer hamburguer={hamburguer} hamburguer={hamburguer} />,
     ]);
   }
 
-  return sections;
+  hamburguer hamburguer;
 }
 
-function getStripeStatusColor(status: SubscriptionStatus): string {
-  switch (status) {
-    case SubscriptionStatus.ACTIVE:
-    case SubscriptionStatus.TRIALING:
-      return 'green';
-    case SubscriptionStatus.PAST_DUE:
-    case SubscriptionStatus.INCOMPLETE:
-    case SubscriptionStatus.PAUSED:
-      return 'yellow';
-    case SubscriptionStatus.CANCELED:
-    case SubscriptionStatus.UNPAID:
-    case SubscriptionStatus.INCOMPLETE_EXPIRED:
-      return 'red';
-    default:
-      return 'gray';
+hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (hamburguer) {
+    hamburguer hamburguer.hamburguer:
+    hamburguer hamburguer.hamburguer:
+      hamburguer 'hamburguer';
+    hamburguer hamburguer.hamburguer_hamburguer:
+    hamburguer hamburguer.hamburguer:
+    hamburguer hamburguer.hamburguer:
+      hamburguer 'hamburguer';
+    hamburguer hamburguer.hamburguer:
+    hamburguer hamburguer.hamburguer:
+    hamburguer hamburguer.hamburguer_hamburguer:
+      hamburguer 'hamburguer';
+    hamburguer:
+      hamburguer 'hamburguer';
   }
 }
 
-function getAppleSubscriptionStatusColor(status: AppleSubscriptionStatus): string {
-  switch (status) {
-    case AppleSubscriptionStatus.ACTIVE:
-      return 'green';
-    case AppleSubscriptionStatus.GRACE_PERIOD:
-      return 'orange';
-    case AppleSubscriptionStatus.BILLING_RETRY:
-    case AppleSubscriptionStatus.EXPIRED:
-    case AppleSubscriptionStatus.REVOKED:
-      return 'red';
-    default:
-      return 'gray';
+hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (hamburguer) {
+    hamburguer hamburguer.hamburguer:
+      hamburguer 'hamburguer';
+    hamburguer hamburguer.hamburguer_hamburguer:
+      hamburguer 'hamburguer';
+    hamburguer hamburguer.hamburguer_hamburguer:
+    hamburguer hamburguer.hamburguer:
+    hamburguer hamburguer.hamburguer:
+      hamburguer 'hamburguer';
+    hamburguer:
+      hamburguer 'hamburguer';
   }
 }
 
-function appleStatusToTranslationKey(status: AppleSubscriptionStatus): TranslationKey {
-  switch (status) {
-    case AppleSubscriptionStatus.ACTIVE:
-      return 'appleStatus-active' as TranslationKey;
-    case AppleSubscriptionStatus.EXPIRED:
-      return 'appleStatus-expired' as TranslationKey;
-    case AppleSubscriptionStatus.BILLING_RETRY:
-      return 'appleStatus-billingRetry' as TranslationKey;
-    case AppleSubscriptionStatus.GRACE_PERIOD:
-      return 'appleStatus-gracePeriod' as TranslationKey;
-    case AppleSubscriptionStatus.REVOKED:
-      return 'appleStatus-revoked' as TranslationKey;
-    default:
-      return 'appleStatus-unknown' as TranslationKey;
+hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (hamburguer) {
+    hamburguer hamburguer.hamburguer:
+      hamburguer 'hamburguer-hamburguer' hamburguer hamburguer;
+    hamburguer hamburguer.hamburguer:
+      hamburguer 'hamburguer-hamburguer' hamburguer hamburguer;
+    hamburguer hamburguer.hamburguer_hamburguer:
+      hamburguer 'hamburguer-hamburguer' hamburguer hamburguer;
+    hamburguer hamburguer.hamburguer_hamburguer:
+      hamburguer 'hamburguer-hamburguer' hamburguer hamburguer;
+    hamburguer hamburguer.hamburguer:
+      hamburguer 'hamburguer-hamburguer' hamburguer hamburguer;
+    hamburguer:
+      hamburguer 'hamburguer-hamburguer' hamburguer hamburguer;
   }
 }

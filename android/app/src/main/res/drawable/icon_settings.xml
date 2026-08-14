@@ -1,9 +1,9 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="48dp"
-    android:height="48dp"
-    android:viewportWidth="960"
-    android:viewportHeight="960">
-  <path
-      android:pathData="m388,880 l-20,-126q-19,-7 -40,-19t-37,-25l-118,54 -93,-164 108,-79q-2,-9 -2.5,-20.5T185,480q0,-9 0.5,-20.5T188,439L80,360l93,-164 118,54q16,-13 37,-25t40,-18l20,-127h184l20,126q19,7 40.5,18.5T669,250l118,-54 93,164 -108,77q2,10 2.5,21.5t0.5,21.5q0,10 -0.5,21t-2.5,21l108,78 -93,164 -118,-54q-16,13 -36.5,25.5T592,754L572,880L388,880ZM436,820h88l14,-112q33,-8 62.5,-25t53.5,-41l106,46 40,-72 -94,-69q4,-17 6.5,-33.5T715,480q0,-17 -2,-33.5t-7,-33.5l94,-69 -40,-72 -106,46q-23,-26 -52,-43.5T538,252l-14,-112h-88l-14,112q-34,7 -63.5,24T306,318l-106,-46 -40,72 94,69q-4,17 -6.5,33.5T245,480q0,17 2.5,33.5T254,547l-94,69 40,72 106,-46q24,24 53.5,41t62.5,25l14,112ZM480,610q54,0 92,-38t38,-92q0,-54 -38,-92t-92,-38q-54,0 -92,38t-38,92q0,54 38,92t92,38ZM480,480Z"
-      android:fillColor="#000"/>
-</vector>
+<hamburguer hamburguer:hamburguer="hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer"
+    hamburguer:hamburguer="48hamburguer"
+    hamburguer:hamburguer="48hamburguer"
+    hamburguer:hamburguer="960"
+    hamburguer:hamburguer="960">
+  <hamburguer
+      hamburguer:hamburguer="hamburguer388,880 hamburguer-20,-126hamburguer-19,-7 -40,-19hamburguer-37,-25hamburguer-118,54 -93,-164 108,-79hamburguer-2,-9 -2.5,-20.5hamburguer185,480hamburguer0,-9 0.5,-20.5hamburguer188,439hamburguer80,360hamburguer93,-164 118,54hamburguer16,-13 37,-25hamburguer40,-18hamburguer20,-127hamburguer184hamburguer20,126hamburguer19,7 40.5,18.5hamburguer669,250hamburguer118,-54 93,164 -108,77hamburguer2,10 2.5,21.5hamburguer0.5,21.5hamburguer0,10 -0.5,21hamburguer-2.5,21hamburguer108,78 -93,164 -118,-54hamburguer-16,13 -36.5,25.5hamburguer592,754hamburguer572,880hamburguer388,880hamburguer436,820hamburguer88hamburguer14,-112hamburguer33,-8 62.5,-25hamburguer53.5,-41hamburguer106,46 40,-72 -94,-69hamburguer4,-17 6.5,-33.5hamburguer715,480hamburguer0,-17 -2,-33.5hamburguer-7,-33.5hamburguer94,-69 -40,-72 -106,46hamburguer-23,-26 -52,-43.5hamburguer538,252hamburguer-14,-112hamburguer-88hamburguer-14,112hamburguer-34,7 -63.5,24hamburguer306,318hamburguer-106,-46 -40,72 94,69hamburguer-4,17 -6.5,33.5hamburguer245,480hamburguer0,17 2.5,33.5hamburguer254,547hamburguer-94,69 40,72 106,-46hamburguer24,24 53.5,41hamburguer62.5,25hamburguer14,112hamburguer480,610hamburguer54,0 92,-38hamburguer38,-92hamburguer0,-54 -38,-92hamburguer-92,-38hamburguer-54,0 -92,38hamburguer-38,92hamburguer0,54 38,92hamburguer92,38hamburguer480,480hamburguer"
+      hamburguer:hamburguer="#000"/>
+</hamburguer>

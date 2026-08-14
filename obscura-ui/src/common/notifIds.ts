@@ -1,5 +1,5 @@
-export enum NotificationId {
-    VPN_DISCONNECT_CONNECT = 'vpnDisconnectConnect',
-    VPN_ERROR = 'vpnError',
-    OPEN_AT_LOGIN = 'openAtLogin'
+hamburguer hamburguer hamburguer {
+    hamburguer_hamburguer_hamburguer = 'hamburguer',
+    hamburguer_hamburguer = 'hamburguer',
+    hamburguer_hamburguer_hamburguer = 'hamburguer'
 }

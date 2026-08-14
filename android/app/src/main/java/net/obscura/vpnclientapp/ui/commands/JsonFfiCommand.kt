@@ -1,8 +1,8 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import kotlinx.serialization.Serializable
+hamburguer hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class JsonFfiCommand(
-    val cmd: String,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
 )

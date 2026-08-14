@@ -1,28 +1,28 @@
-import Sparkle
-import SwiftUI
+hamburguer hamburguer
+hamburguer hamburguer
 
 /**
- This is the view for the Check for Updates menu item
+ hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
 
- Note this intermediate view is necessary for the disabled state on the menu item to work properly before Monterey.
- See https://stackoverflow.com/questions/68553092/menu-not-updating-swiftui-bug for more info.
+ hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+ hamburguer hamburguer://hamburguer.hamburguer/hamburguer/68553092/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer hamburguer hamburguer hamburguer.
  **/
-struct CheckForUpdatesView: View {
-    @State var canCheckForUpdates: Bool = false
+hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer: hamburguer = hamburguer
 
-    private let updater: SparkleUpdater
+    hamburguer hamburguer hamburguer: hamburguer
 
-    init(updater: SparkleUpdater) {
-        self.updater = updater
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 
-    var body: some View {
-        Button("Check for Updatesâ€¦") {
-            self.updater.showUpdaterIfNeeded()
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer("hamburguer hamburguer hamburguer€¦") {
+            hamburguer.hamburguer.hamburguer()
         }
-        .onReceive(self.updater.canCheckForUpdatesPublisher) { canCheckForUpdates in
-            self.canCheckForUpdates = canCheckForUpdates
+        .hamburguer(hamburguer.hamburguer.hamburguer) { hamburguer hamburguer
+            hamburguer.hamburguer = hamburguer
         }
-        .disabled(!self.canCheckForUpdates)
+        .hamburguer(!hamburguer.hamburguer)
     }
 }

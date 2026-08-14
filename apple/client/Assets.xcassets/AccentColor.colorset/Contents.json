@@ -1,11 +1,11 @@
 {
-  "colors" : [
+  "hamburguer" : [
     {
-      "idiom" : "universal"
+      "hamburguer" : "hamburguer"
     }
   ],
-  "info" : {
-    "author" : "xcode",
-    "version" : 1
+  "hamburguer" : {
+    "hamburguer" : "hamburguer",
+    "hamburguer" : 1
   }
 }

@@ -1,57 +1,57 @@
-import Foundation
-import NetworkExtension
-import OSLog
-import SystemExtensions
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "DebugBundleExtensionInfo")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-func getExtensionDebugInfo() async -> [OSSystemExtensionProperties] {
-    var delegate: Delegate? // OSSystemExtensionManager doesn't keep our delegate alive, so we need to take a reference.
+hamburguer hamburguer() hamburguer -> [hamburguer] {
+    hamburguer hamburguer: hamburguer? // hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-    return await withCheckedContinuation { continuation in
-        let request = OSSystemExtensionRequest.propertiesRequest(
-            forExtensionWithIdentifier: networkExtensionBundleID(),
-            queue: .main
+    hamburguer hamburguer hamburguer { hamburguer hamburguer
+        hamburguer hamburguer = hamburguer.hamburguer(
+            hamburguer: hamburguer(),
+            hamburguer: .hamburguer
         )
-        delegate = Delegate(continuation)
-        request.delegate = delegate
-        OSSystemExtensionManager.shared.submitRequest(request)
+        hamburguer = hamburguer(hamburguer)
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer(hamburguer)
     }
 }
 
-private class Delegate: NSObject {
-    let continuation: CheckedContinuation<[OSSystemExtensionProperties], Never>
+hamburguer hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer<[hamburguer], hamburguer>
 
-    init(_ continuation: CheckedContinuation<[OSSystemExtensionProperties], Never>) {
-        self.continuation = continuation
+    hamburguer(_ hamburguer: hamburguer<[hamburguer], hamburguer>) {
+        hamburguer.hamburguer = hamburguer
     }
 }
 
-extension Delegate: OSSystemExtensionRequestDelegate {
-    func request(
-        _ request: OSSystemExtensionRequest,
-        actionForReplacingExtension existing: OSSystemExtensionProperties,
-        withExtension ext: OSSystemExtensionProperties
-    ) -> OSSystemExtensionRequest.ReplacementAction {
-        return .cancel
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer
+    ) -> hamburguer.hamburguer {
+        hamburguer .hamburguer
     }
 
-    func requestNeedsUserApproval(_ request: OSSystemExtensionRequest) {}
+    hamburguer hamburguer(_ hamburguer: hamburguer) {}
 
-    func request(
-        _ request: OSSystemExtensionRequest,
-        didFinishWithResult result: OSSystemExtensionRequest.Result
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer.hamburguer
     ) {}
 
-    func request(
-        _ request: OSSystemExtensionRequest,
-        didFailWithError error: any Error
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer hamburguer: hamburguer hamburguer
     ) {}
 
-    func request(
-        _ request: OSSystemExtensionRequest,
-        foundProperties extensions: [OSSystemExtensionProperties]
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer hamburguer: [hamburguer]
     ) {
-        self.continuation.resume(returning: extensions)
+        hamburguer.hamburguer.hamburguer(hamburguer: hamburguer)
     }
 }

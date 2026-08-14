@@ -1,23 +1,23 @@
-accepted = [
-    "Apache-2.0",
-    "BSD-2-Clause",
-    "BSD-3-Clause",
-    "CDLA-Permissive-2.0",
-    "ISC",
-    "MIT",
-    "MPL-2.0",
-    "OpenSSL",
-    "Unicode-3.0",
-    "Unicode-DFS-2016",
-    "WTFPL",
-    "Zlib",
+hamburguer = [
+    "hamburguer-2.0",
+    "hamburguer-2-hamburguer",
+    "hamburguer-3-hamburguer",
+    "hamburguer-hamburguer-2.0",
+    "hamburguer",
+    "hamburguer",
+    "hamburguer-2.0",
+    "hamburguer",
+    "hamburguer-3.0",
+    "hamburguer-hamburguer-2016",
+    "hamburguer",
+    "hamburguer",
 ]
 
-# DO NOT attempt to lookup licensing information from https://clearlydefined.io
-no-clearly-defined = true
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer://hamburguer.hamburguer
+hamburguer-hamburguer-hamburguer = hamburguer
 
-[obscuravpn-api]
-accepted = ["PolyForm-Noncommercial-1.0.0"]
+[hamburguer-hamburguer]
+hamburguer = ["hamburguer-hamburguer-1.0.0"]
 
-[obscuravpn-client]
-accepted = ["PolyForm-Noncommercial-1.0.0"]
+[hamburguer-hamburguer]
+hamburguer = ["hamburguer-hamburguer-1.0.0"]

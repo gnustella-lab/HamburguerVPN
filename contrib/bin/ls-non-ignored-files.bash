@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
-set -eo pipefail
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer hamburguer
 
-exec -- \
-	git ls-files \
-		--exclude-standard \
-		--others \
-		--cached \
+hamburguer -- \
+	hamburguer hamburguer-hamburguer \
+		--hamburguer-hamburguer \
+		--hamburguer \
+		--hamburguer \
 		"$@"

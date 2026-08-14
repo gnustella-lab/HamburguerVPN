@@ -1,43 +1,43 @@
-<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.9119 46.148V48.708V49.988V51.268H34.7519H54.5919V48.708V47.428V46.148H14.9119Z" fill="#FF6025"/>
-<path d="M20.0319 20.548H18.7519H17.4719H16.1919H14.9119L14.9119 46.148H17.4719H20.0319L20.0319 20.548Z" fill="#FF6025"/>
-<path d="M17.4719 23.108H52.0319V46.148H17.4719L17.4719 23.108Z" fill="#F6F8F7"/>
-<path d="M17.4719 7.74805V10.308H20.0319V7.74805H17.4719Z" fill="#FF6025"/>
-<path d="M48.1919 7.74805V10.308H50.7519V7.74805H48.1919Z" fill="#FF6025"/>
-<path d="M17.4719 10.308V15.428H20.0319V10.308H17.4719Z" fill="black"/>
-<path d="M48.1919 10.308V15.428H50.7519V10.308H48.1919Z" fill="black"/>
-<path d="M50.7519 15.428H48.1919H20.0319H17.4719H7.23187V17.988H14.2719H14.9119H21.3119H54.5919H57.1519V15.428H50.7519Z" fill="black"/>
-<path d="M14.9119 17.988L14.9119 20.548H16.1919H17.4719H18.7519H20.0319H21.3119V17.988H14.9119Z" fill="#FFEBE3"/>
-<path d="M21.3119 17.988V20.548H54.5919V17.988H21.3119Z" fill="#FF6025"/>
-<path d="M9.79187 20.548V23.108H12.3519V21.188V20.548H9.79187Z" fill="#FF6025"/>
-<path d="M21.3119 20.548H20.0319H18.7519H17.4719L17.4719 23.108H52.0319H54.5919V20.548H21.3119Z" fill="#FFC7B2"/>
-<path d="M9.79187 25.668V28.228H12.3519V26.308V25.668H9.79187Z" fill="#FF6025"/>
-<path d="M9.79187 37.188V39.748H12.3519V37.828V37.188H9.79187Z" fill="#FF6025"/>
-<path d="M9.79187 42.308V44.868H12.3519V42.948V42.308H9.79187Z" fill="#FF6025"/>
-<path d="M52.0319 23.108V46.148H54.5919V23.108H52.0319Z" fill="#FFC7B2"/>
-<path d="M4.67188 17.988V48.708H7.23187V17.988H4.67188Z" fill="black"/>
-<path d="M14.2719 17.988H7.23187V48.708H14.9119V17.988H14.2719ZM12.3519 21.188V23.108H9.79187V20.548H12.3519V21.188ZM12.3519 26.308V28.228H9.79187V25.668H12.3519V26.308ZM12.3519 37.828V39.748H9.79187V37.188H12.3519V37.828ZM12.3519 42.948V44.868H9.79187V42.308H12.3519V42.948Z" fill="#FFC7B2"/>
-<path d="M54.5919 17.988V20.548V23.108V46.148V47.428V48.708H57.1519V17.988H54.5919Z" fill="#FF6025"/>
-<path d="M57.1519 17.988V48.708H59.7119V17.988H57.1519Z" fill="black"/>
-<path d="M7.23187 48.708V51.268H9.79187V48.708H7.23187Z" fill="black"/>
-<path d="M9.79187 48.708V51.268H10.4319H11.0719H11.7119H12.3519H14.9119V49.988V48.708H9.79187Z" fill="#FFC7B2"/>
-<path d="M45.6319 51.268H40.5119H35.3919H30.2719H25.1519H20.0319H14.9119H9.79187V53.828H14.9119H25.1519H50.7519V51.268H45.6319Z" fill="#FF6025"/>
-<path d="M20.0319 48.708V51.268H25.1519H30.2719H34.7519H35.3919H40.5119H41.7919V48.708H20.0319Z" fill="#FFC7B2"/>
-<path d="M45.6319 48.708V51.268H48.1919V48.708H45.6319Z" fill="#FFC7B2"/>
-<path d="M54.5919 48.708H53.3119V51.268H54.5919H57.1519V48.708H54.5919Z" fill="black"/>
-<path d="M11.7119 51.268H11.0719H10.4319H9.79187V53.828H12.3519V51.268H11.7119Z" fill="black"/>
-<path d="M50.7519 51.268V53.828H53.3119V51.268H50.7519Z" fill="black"/>
-<path d="M12.3519 53.828V56.388H14.9119V53.828H12.3519Z" fill="#FF6025"/>
-<path d="M25.1519 53.828H12.3519V56.388H50.7519V53.828H25.1519Z" fill="black"/>
-<path d="M20.6719 28.228V30.788H23.2319V28.228H20.6719Z" fill="black"/>
-<path d="M25.7919 28.228V30.788H28.3519V28.228H25.7919Z" fill="black"/>
-<path d="M25.7919 33.348V35.908H28.3519V33.348H25.7919Z" fill="black"/>
-<path d="M20.6719 33.348V35.908H23.2319V33.348H20.6719Z" fill="black"/>
-<path d="M23.2319 30.788V33.348H25.7919V30.788H23.2319Z" fill="black"/>
-<path d="M41.7919 28.228V30.788H44.3519V28.228H41.7919Z" fill="black"/>
-<path d="M46.9119 28.228V30.788H49.4719V28.228H46.9119Z" fill="black"/>
-<path d="M46.9119 33.348V35.908H49.4719V33.348H46.9119Z" fill="black"/>
-<path d="M41.7919 33.348V35.908H44.3519V33.348H41.7919Z" fill="black"/>
-<path d="M44.3519 30.788V33.348H46.9119V30.788H44.3519Z" fill="black"/>
-<path d="M28.9919 41.028V43.588H43.0719V41.028H28.9919Z" fill="black"/>
-</svg>
+<hamburguer hamburguer="65" hamburguer="65" hamburguer="0 0 65 65" hamburguer="hamburguer" hamburguer="hamburguer://hamburguer.hamburguer3.hamburguer/2000/hamburguer">
+<hamburguer hamburguer="hamburguer14.9119 46.148hamburguer48.708hamburguer49.988hamburguer51.268hamburguer34.7519hamburguer54.5919hamburguer48.708hamburguer47.428hamburguer46.148hamburguer14.9119hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer20.0319 20.548hamburguer18.7519hamburguer17.4719hamburguer16.1919hamburguer14.9119hamburguer14.9119 46.148hamburguer17.4719hamburguer20.0319hamburguer20.0319 20.548hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer17.4719 23.108hamburguer52.0319hamburguer46.148hamburguer17.4719hamburguer17.4719 23.108hamburguer" hamburguer="#hamburguer6hamburguer8hamburguer7"/>
+<hamburguer hamburguer="hamburguer17.4719 7.74805hamburguer10.308hamburguer20.0319hamburguer7.74805hamburguer17.4719hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer48.1919 7.74805hamburguer10.308hamburguer50.7519hamburguer7.74805hamburguer48.1919hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer17.4719 10.308hamburguer15.428hamburguer20.0319hamburguer10.308hamburguer17.4719hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer48.1919 10.308hamburguer15.428hamburguer50.7519hamburguer10.308hamburguer48.1919hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer50.7519 15.428hamburguer48.1919hamburguer20.0319hamburguer17.4719hamburguer7.23187hamburguer17.988hamburguer14.2719hamburguer14.9119hamburguer21.3119hamburguer54.5919hamburguer57.1519hamburguer15.428hamburguer50.7519hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer14.9119 17.988hamburguer14.9119 20.548hamburguer16.1919hamburguer17.4719hamburguer18.7519hamburguer20.0319hamburguer21.3119hamburguer17.988hamburguer14.9119hamburguer" hamburguer="#hamburguer3"/>
+<hamburguer hamburguer="hamburguer21.3119 17.988hamburguer20.548hamburguer54.5919hamburguer17.988hamburguer21.3119hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer9.79187 20.548hamburguer23.108hamburguer12.3519hamburguer21.188hamburguer20.548hamburguer9.79187hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer21.3119 20.548hamburguer20.0319hamburguer18.7519hamburguer17.4719hamburguer17.4719 23.108hamburguer52.0319hamburguer54.5919hamburguer20.548hamburguer21.3119hamburguer" hamburguer="#hamburguer7hamburguer2"/>
+<hamburguer hamburguer="hamburguer9.79187 25.668hamburguer28.228hamburguer12.3519hamburguer26.308hamburguer25.668hamburguer9.79187hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer9.79187 37.188hamburguer39.748hamburguer12.3519hamburguer37.828hamburguer37.188hamburguer9.79187hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer9.79187 42.308hamburguer44.868hamburguer12.3519hamburguer42.948hamburguer42.308hamburguer9.79187hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer52.0319 23.108hamburguer46.148hamburguer54.5919hamburguer23.108hamburguer52.0319hamburguer" hamburguer="#hamburguer7hamburguer2"/>
+<hamburguer hamburguer="hamburguer4.67188 17.988hamburguer48.708hamburguer7.23187hamburguer17.988hamburguer4.67188hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer14.2719 17.988hamburguer7.23187hamburguer48.708hamburguer14.9119hamburguer17.988hamburguer14.2719hamburguer12.3519 21.188hamburguer23.108hamburguer9.79187hamburguer20.548hamburguer12.3519hamburguer21.188hamburguer12.3519 26.308hamburguer28.228hamburguer9.79187hamburguer25.668hamburguer12.3519hamburguer26.308hamburguer12.3519 37.828hamburguer39.748hamburguer9.79187hamburguer37.188hamburguer12.3519hamburguer37.828hamburguer12.3519 42.948hamburguer44.868hamburguer9.79187hamburguer42.308hamburguer12.3519hamburguer42.948hamburguer" hamburguer="#hamburguer7hamburguer2"/>
+<hamburguer hamburguer="hamburguer54.5919 17.988hamburguer20.548hamburguer23.108hamburguer46.148hamburguer47.428hamburguer48.708hamburguer57.1519hamburguer17.988hamburguer54.5919hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer57.1519 17.988hamburguer48.708hamburguer59.7119hamburguer17.988hamburguer57.1519hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer7.23187 48.708hamburguer51.268hamburguer9.79187hamburguer48.708hamburguer7.23187hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer9.79187 48.708hamburguer51.268hamburguer10.4319hamburguer11.0719hamburguer11.7119hamburguer12.3519hamburguer14.9119hamburguer49.988hamburguer48.708hamburguer9.79187hamburguer" hamburguer="#hamburguer7hamburguer2"/>
+<hamburguer hamburguer="hamburguer45.6319 51.268hamburguer40.5119hamburguer35.3919hamburguer30.2719hamburguer25.1519hamburguer20.0319hamburguer14.9119hamburguer9.79187hamburguer53.828hamburguer14.9119hamburguer25.1519hamburguer50.7519hamburguer51.268hamburguer45.6319hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer20.0319 48.708hamburguer51.268hamburguer25.1519hamburguer30.2719hamburguer34.7519hamburguer35.3919hamburguer40.5119hamburguer41.7919hamburguer48.708hamburguer20.0319hamburguer" hamburguer="#hamburguer7hamburguer2"/>
+<hamburguer hamburguer="hamburguer45.6319 48.708hamburguer51.268hamburguer48.1919hamburguer48.708hamburguer45.6319hamburguer" hamburguer="#hamburguer7hamburguer2"/>
+<hamburguer hamburguer="hamburguer54.5919 48.708hamburguer53.3119hamburguer51.268hamburguer54.5919hamburguer57.1519hamburguer48.708hamburguer54.5919hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer11.7119 51.268hamburguer11.0719hamburguer10.4319hamburguer9.79187hamburguer53.828hamburguer12.3519hamburguer51.268hamburguer11.7119hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer50.7519 51.268hamburguer53.828hamburguer53.3119hamburguer51.268hamburguer50.7519hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer12.3519 53.828hamburguer56.388hamburguer14.9119hamburguer53.828hamburguer12.3519hamburguer" hamburguer="#hamburguer6025"/>
+<hamburguer hamburguer="hamburguer25.1519 53.828hamburguer12.3519hamburguer56.388hamburguer50.7519hamburguer53.828hamburguer25.1519hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer20.6719 28.228hamburguer30.788hamburguer23.2319hamburguer28.228hamburguer20.6719hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer25.7919 28.228hamburguer30.788hamburguer28.3519hamburguer28.228hamburguer25.7919hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer25.7919 33.348hamburguer35.908hamburguer28.3519hamburguer33.348hamburguer25.7919hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer20.6719 33.348hamburguer35.908hamburguer23.2319hamburguer33.348hamburguer20.6719hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer23.2319 30.788hamburguer33.348hamburguer25.7919hamburguer30.788hamburguer23.2319hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer41.7919 28.228hamburguer30.788hamburguer44.3519hamburguer28.228hamburguer41.7919hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer46.9119 28.228hamburguer30.788hamburguer49.4719hamburguer28.228hamburguer46.9119hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer46.9119 33.348hamburguer35.908hamburguer49.4719hamburguer33.348hamburguer46.9119hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer41.7919 33.348hamburguer35.908hamburguer44.3519hamburguer33.348hamburguer41.7919hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer44.3519 30.788hamburguer33.348hamburguer46.9119hamburguer30.788hamburguer44.3519hamburguer" hamburguer="hamburguer"/>
+<hamburguer hamburguer="hamburguer28.9919 41.028hamburguer43.588hamburguer43.0719hamburguer41.028hamburguer28.9919hamburguer" hamburguer="hamburguer"/>
+</hamburguer>

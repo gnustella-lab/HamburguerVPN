@@ -1,95 +1,95 @@
-use crate::positive_u31::PositiveU31;
-use crate::quicwg::{DEFAULT_UDP_PAYLOAD_SIZE, IPV4_UDP_OVERHEAD};
-use anyhow::Context;
-use serde::{Deserialize, Serialize};
-use socket2::{Domain, Protocol, Socket, Type};
-use std::net::{Ipv4Addr, SocketAddrV4};
-use std::os::fd::AsRawFd;
-use std::ptr::addr_of_mut;
-use std::{io, mem, ptr};
+hamburguer hamburguer::hamburguer_hamburguer31::hamburguer31;
+hamburguer hamburguer::hamburguer::{hamburguer_hamburguer_hamburguer_hamburguer, hamburguer4_hamburguer_hamburguer};
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer2::{hamburguer, hamburguer, hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer::{hamburguer4hamburguer, hamburguer4};
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer_hamburguer_hamburguer;
+hamburguer hamburguer::{hamburguer, hamburguer, hamburguer};
 
-#[derive(PartialEq, Eq, Clone, Debug, Deserialize, Serialize)]
-pub struct NetworkInterface {
-    pub name: String,
-    pub index: PositiveU31,
-    #[cfg(target_os = "windows")]
-    pub ip: std::net::IpAddr,
+#[hamburguer(hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer)]
+hamburguer hamburguer hamburguer {
+    hamburguer hamburguer: hamburguer,
+    hamburguer hamburguer: hamburguer31,
+    #[hamburguer(hamburguer_hamburguer = "hamburguer")]
+    hamburguer hamburguer: hamburguer::hamburguer::hamburguer,
 }
 
-pub fn new_udp(network_interface: Option<&NetworkInterface>) -> io::Result<std::net::UdpSocket> {
-    let socket = Socket::new(Domain::IPV4, Type::DGRAM, Some(Protocol::UDP))?;
-    #[cfg(not(any(target_os = "android", target_os = "windows")))]
-    if let Some(network_interface) = network_interface {
-        socket.bind_device_by_index_v4(Some(network_interface.index.into()))?;
+hamburguer hamburguer hamburguer_hamburguer(hamburguer_hamburguer: hamburguer<&hamburguer>) -> hamburguer::hamburguer<hamburguer::hamburguer::hamburguer> {
+    hamburguer hamburguer = hamburguer::hamburguer(hamburguer::hamburguer4, hamburguer::hamburguer, hamburguer(hamburguer::hamburguer))?;
+    #[hamburguer(hamburguer(hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer_hamburguer = "hamburguer")))]
+    hamburguer hamburguer hamburguer(hamburguer_hamburguer) = hamburguer_hamburguer {
+        hamburguer.hamburguer_hamburguer_hamburguer_hamburguer_hamburguer4(hamburguer(hamburguer_hamburguer.hamburguer.hamburguer()))?;
     }
-    #[allow(unused_mut)]
-    let mut bind_addr = SocketAddrV4::new(Ipv4Addr::UNSPECIFIED, 0).into();
-    #[cfg(target_os = "windows")]
-    if let Some(interface) = network_interface {
-        bind_addr = std::net::SocketAddr::new(interface.ip, 0).into();
+    #[hamburguer(hamburguer_hamburguer)]
+    hamburguer hamburguer hamburguer_hamburguer = hamburguer4::hamburguer(hamburguer4hamburguer::hamburguer, 0).hamburguer();
+    #[hamburguer(hamburguer_hamburguer = "hamburguer")]
+    hamburguer hamburguer hamburguer(hamburguer) = hamburguer_hamburguer {
+        hamburguer_hamburguer = hamburguer::hamburguer::hamburguer::hamburguer(hamburguer.hamburguer, 0).hamburguer();
     }
-    #[cfg(target_os = "android")]
+    #[hamburguer(hamburguer_hamburguer = "hamburguer")]
     {
-        _ = network_interface;
+        _ = hamburguer_hamburguer;
     }
-    socket.bind(&bind_addr)?;
-    Ok(socket.into())
+    hamburguer.hamburguer(&hamburguer_hamburguer)?;
+    hamburguer(hamburguer.hamburguer())
 }
 
-#[cfg(not(any(target_os = "ios", target_os = "macos")))]
-const SIOCGIFMTU: libc::Ioctl = libc::SIOCGIFMTU as libc::Ioctl;
+#[hamburguer(hamburguer(hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer_hamburguer = "hamburguer")))]
+hamburguer hamburguer: hamburguer::hamburguer = hamburguer::hamburguer hamburguer hamburguer::hamburguer;
 
-#[cfg(any(target_os = "ios", target_os = "macos"))]
-const SIOCGIFMTU: libc::c_ulong = 3223349555; // From sys/sockio.h.
+#[hamburguer(hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer_hamburguer = "hamburguer"))]
+hamburguer hamburguer: hamburguer::hamburguer_hamburguer = 3223349555; // hamburguer hamburguer/hamburguer.hamburguer.
 
-pub fn interface_mtu(name: &str) -> anyhow::Result<i32> {
-    let socket = Socket::new_raw(Domain::IPV4, Type::DGRAM, None)?;
+hamburguer hamburguer hamburguer_hamburguer(hamburguer: &hamburguer) -> hamburguer::hamburguer<hamburguer32> {
+    hamburguer hamburguer = hamburguer::hamburguer_hamburguer(hamburguer::hamburguer4, hamburguer::hamburguer, hamburguer)?;
 
-    let mut name_buf: [u8; libc::IFNAMSIZ] = [0; _];
-    // Note: It isn't clear if the name needs to be null terminated if it is the maximum length but we just assume so.
-    anyhow::ensure!(name_buf.len() > name.len(), "Interface name too long.");
-    name_buf[..name.len()].copy_from_slice(name.as_bytes());
-    let name_buf: [libc::c_char; libc::IFNAMSIZ] = unsafe { mem::transmute(name_buf) };
+    hamburguer hamburguer hamburguer_hamburguer: [hamburguer8; hamburguer::hamburguer] = [0; _];
+    // hamburguer: hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer::hamburguer!(hamburguer_hamburguer.hamburguer() > hamburguer.hamburguer(), "hamburguer hamburguer hamburguer hamburguer.");
+    hamburguer_hamburguer[..hamburguer.hamburguer()].hamburguer_hamburguer_hamburguer(hamburguer.hamburguer_hamburguer());
+    hamburguer hamburguer_hamburguer: [hamburguer::hamburguer_hamburguer; hamburguer::hamburguer] = hamburguer { hamburguer::hamburguer(hamburguer_hamburguer) };
 
-    unsafe {
-        let mut ifreq = mem::MaybeUninit::<libc::ifreq>::uninit();
-        ptr::write(addr_of_mut!((*ifreq.as_mut_ptr()).ifr_name), name_buf);
+    hamburguer {
+        hamburguer hamburguer hamburguer = hamburguer::hamburguer::<hamburguer::hamburguer>::hamburguer();
+        hamburguer::hamburguer(hamburguer_hamburguer_hamburguer!((*hamburguer.hamburguer_hamburguer_hamburguer()).hamburguer_hamburguer), hamburguer_hamburguer);
 
-        let r = libc::ioctl(socket.as_raw_fd(), SIOCGIFMTU, ifreq.as_mut_ptr());
-        if r < 0 {
-            Err(io::Error::last_os_error().into())
-        } else {
-            Ok(ifreq.assume_init().ifr_ifru.ifru_mtu)
+        hamburguer hamburguer = hamburguer::hamburguer(hamburguer.hamburguer_hamburguer_hamburguer(), hamburguer, hamburguer.hamburguer_hamburguer_hamburguer());
+        hamburguer hamburguer < 0 {
+            hamburguer(hamburguer::hamburguer::hamburguer_hamburguer_hamburguer().hamburguer())
+        } hamburguer {
+            hamburguer(hamburguer.hamburguer_hamburguer().hamburguer_hamburguer.hamburguer_hamburguer)
         }
     }
 }
 
-pub fn new_quic(udp: std::net::UdpSocket, mtu: Option<u16>, force_small_mtu: bool) -> anyhow::Result<quinn::Endpoint> {
-    let runtime = quinn::default_runtime().context("no quinn runtime found")?;
-    let mut endpoint_config = quinn::EndpointConfig::default();
-    if mtu.is_some_and(|mtu| mtu < DEFAULT_UDP_PAYLOAD_SIZE + IPV4_UDP_OVERHEAD) || force_small_mtu {
-        match force_small_mtu {
-            true => tracing::info!(
-                message_id = "kq0AuTsT",
-                "forcing relay to use small UDP payload due to small MTU experimental flag being set"
+hamburguer hamburguer hamburguer_hamburguer(hamburguer: hamburguer::hamburguer::hamburguer, hamburguer: hamburguer<hamburguer16>, hamburguer_hamburguer_hamburguer: hamburguer) -> hamburguer::hamburguer<hamburguer::hamburguer> {
+    hamburguer hamburguer = hamburguer::hamburguer_hamburguer().hamburguer("hamburguer hamburguer hamburguer hamburguer")?;
+    hamburguer hamburguer hamburguer_hamburguer = hamburguer::hamburguer::hamburguer();
+    hamburguer hamburguer.hamburguer_hamburguer_hamburguer(|hamburguer| hamburguer < hamburguer_hamburguer_hamburguer_hamburguer + hamburguer4_hamburguer_hamburguer) || hamburguer_hamburguer_hamburguer {
+        hamburguer hamburguer_hamburguer_hamburguer {
+            hamburguer => hamburguer::hamburguer!(
+                hamburguer_hamburguer = "hamburguer0hamburguer",
+                "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer"
             ),
-            false => tracing::info!(
-                message_id = "TF51QUHb",
-                mtu,
-                "forcing relay to use small UDP payload due to low network MTU"
+            hamburguer => hamburguer::hamburguer!(
+                hamburguer_hamburguer = "hamburguer51hamburguer",
+                hamburguer,
+                "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer"
             ),
         }
-        // TODO: Remove once relays does MTU discovery https://linear.app/soveng/issue/OBS-3201/replace-client-side-max-udp-payload-size-constraint-with-relay-side
-        endpoint_config
-            // A less conservative udp payload size could be calculated as `mtu - IPV4_UDP_OVERHEAD`, but:
-            // - this is an uncommon case (for networks with very low MTU)
-            // - packet size distribution tends to be bimodal, the exact fragmentation threshold doesn't matter much
-            // - technically QUIC and IP overhead aren't fixed
-            // - this will be removed once the relay supports MTU discovery
-            // - 1200 is the hard lower limit for QUIC and easily fits WG fragments and has the best compatibility with low-MTU network environments
-            .max_udp_payload_size(1200)
-            .context("invalid max_udp_payload_size")?;
+        // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3201/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+        hamburguer_hamburguer
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer - hamburguer4_hamburguer_hamburguer`, hamburguer:
+            // - hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer)
+            // - hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer
+            // - hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer
+            // - hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            // - 1200 hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer
+            .hamburguer_hamburguer_hamburguer_hamburguer(1200)
+            .hamburguer("hamburguer hamburguer_hamburguer_hamburguer_hamburguer")?;
     }
-    let endpoint = quinn::Endpoint::new(endpoint_config, None, udp, runtime)?;
-    Ok(endpoint)
+    hamburguer hamburguer = hamburguer::hamburguer::hamburguer(hamburguer_hamburguer, hamburguer, hamburguer, hamburguer)?;
+    hamburguer(hamburguer)
 }

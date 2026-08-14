@@ -1,169 +1,169 @@
-import OSLog
-import SwiftUI
-import WebKit
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(
-    subsystem: Bundle.main.bundleIdentifier!,
-    category: "WebviewsController"
+hamburguer hamburguer hamburguer = hamburguer(
+    hamburguer: hamburguer.hamburguer.hamburguer!,
+    hamburguer: "hamburguer"
 )
 
-// This is the navigation for all web views within the app
-class WebviewsController: NSObject, ObservableObject, WKNavigationDelegate {
-    @Published var showModalWebview: Bool = false
-    @Published var showSubscriptionManageSheet: Bool = false
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer: hamburguer, hamburguer, hamburguer {
+    @hamburguer hamburguer hamburguer: hamburguer = hamburguer
+    @hamburguer hamburguer hamburguer: hamburguer = hamburguer
 
-    @Published var obscuraWebView: ObscuraUIWebView? = nil
-    @Published var externalWebView: ExternalWebView? = nil
+    @hamburguer hamburguer hamburguer: hamburguer? = hamburguer
+    @hamburguer hamburguer hamburguer: hamburguer? = hamburguer
 
-    @Published var tab: AppView = .connection
+    @hamburguer hamburguer hamburguer: hamburguer = .hamburguer
 
-    let useExernalBrowserForPayments = true
+    hamburguer hamburguer = hamburguer
 
-    private enum LinkDestination {
-        case social
-        case checkConnection
-        case managePayment
-        case stripePayment
-        case homepage
-        case termsOfService
+    hamburguer hamburguer hamburguer {
+        hamburguer hamburguer
+        hamburguer hamburguer
+        hamburguer hamburguer
+        hamburguer hamburguer
+        hamburguer hamburguer
+        hamburguer hamburguer
 
-        var openExternally: Bool {
-            switch self {
-            case .social, .checkConnection, .homepage, .stripePayment:
-                return true
-            case .termsOfService, .managePayment:
-                return false
+        hamburguer hamburguer: hamburguer {
+            hamburguer hamburguer {
+            hamburguer .hamburguer, .hamburguer, .hamburguer, .hamburguer:
+                hamburguer hamburguer
+            hamburguer .hamburguer, .hamburguer:
+                hamburguer hamburguer
             }
         }
     }
 
-    func initializeWebviews(appState: AppState) {
-        self.obscuraWebView = ObscuraUIWebView(appState: appState)
-        self.externalWebView = ExternalWebView(appState: appState)
+    hamburguer hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer(hamburguer: hamburguer)
+        hamburguer.hamburguer = hamburguer(hamburguer: hamburguer)
     }
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if webView == self.obscuraWebView {
-            // Check if the navigation action is a form submission
-            if navigationAction.navigationType == .linkActivated, let url = navigationAction.request.url {
-                #if os(macOS)
-                    NSWorkspace.shared.open(url)
-                #else
-                    self.handleWebsiteLinkiOS(url: url)
-                #endif
-                decisionHandler(.cancel)
-            } else {
-                decisionHandler(.allow)
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer, hamburguer: @hamburguer (hamburguer) -> hamburguer) {
+        hamburguer hamburguer == hamburguer.hamburguer {
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer hamburguer.hamburguer == .hamburguer, hamburguer hamburguer = hamburguer.hamburguer.hamburguer {
+                #hamburguer hamburguer(hamburguer)
+                    hamburguer.hamburguer.hamburguer(hamburguer)
+                #hamburguer
+                    hamburguer.hamburguer(hamburguer: hamburguer)
+                #hamburguer
+                hamburguer(.hamburguer)
+            } hamburguer {
+                hamburguer(.hamburguer)
             }
-        } else {
-            if let url = navigationAction.request.url, url.absoluteString.contains("obscuravpn") {
-                self.handleObscuraURL(url: url)
+        } hamburguer {
+            hamburguer hamburguer hamburguer = hamburguer.hamburguer.hamburguer, hamburguer.hamburguer.hamburguer("hamburguer") {
+                hamburguer.hamburguer(hamburguer: hamburguer)
             }
-            decisionHandler(.allow)
+            hamburguer(.hamburguer)
         }
     }
 
-    #if !os(macOS)
-        func handleWebsiteLinkiOS(url: URL) {
-            if url.absoluteString.contains("obscuravpn:///") {
-                self.handleObscuraURL(url: url)
-                return
+    #hamburguer !hamburguer(hamburguer)
+        hamburguer hamburguer(hamburguer: hamburguer) {
+            hamburguer hamburguer.hamburguer.hamburguer("hamburguer:///") {
+                hamburguer.hamburguer(hamburguer: hamburguer)
+                hamburguer
             }
 
-            if url.scheme == "mailto" {
-                UIApplication.shared.open(url)
-                return
+            hamburguer hamburguer.hamburguer == "hamburguer" {
+                hamburguer.hamburguer.hamburguer(hamburguer)
+                hamburguer
             }
 
-            // Check that it is a staging.obscura.net or obscura.net url
-            guard
-                let components = NSURLComponents(
-                    url: url,
-                    resolvingAgainstBaseURL: true
-                ), let path = components.path, let host = components.host
-            else {
-                logger.error("Failed to parse URL into components")
-                return
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer.hamburguer hamburguer hamburguer.hamburguer hamburguer
+            hamburguer
+                hamburguer hamburguer = hamburguer(
+                    hamburguer: hamburguer,
+                    hamburguer: hamburguer
+                ), hamburguer hamburguer = hamburguer.hamburguer, hamburguer hamburguer = hamburguer.hamburguer
+            hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer")
+                hamburguer
             }
 
-            let destination: LinkDestination?
-            if host.contains("obscura") {
-                if path.contains("pay") {
-                    destination = .stripePayment
-                } else if path.contains("check") {
-                    destination = .checkConnection
-                } else if path.contains("legal") {
-                    destination = .termsOfService
-                } else if path == "/" {
-                    destination = .homepage
-                } else {
-                    destination = nil
+            hamburguer hamburguer: hamburguer?
+            hamburguer hamburguer.hamburguer("hamburguer") {
+                hamburguer hamburguer.hamburguer("hamburguer") {
+                    hamburguer = .hamburguer
+                } hamburguer hamburguer hamburguer.hamburguer("hamburguer") {
+                    hamburguer = .hamburguer
+                } hamburguer hamburguer hamburguer.hamburguer("hamburguer") {
+                    hamburguer = .hamburguer
+                } hamburguer hamburguer hamburguer == "/" {
+                    hamburguer = .hamburguer
+                } hamburguer {
+                    hamburguer = hamburguer
                 }
-            } else {
-                if host
-                    .contains("discord") || host
-                    .contains("matrix.to") || host
-                    .contains("x.com")
+            } hamburguer {
+                hamburguer hamburguer
+                    .hamburguer("hamburguer") || hamburguer
+                    .hamburguer("hamburguer.hamburguer") || hamburguer
+                    .hamburguer("hamburguer.hamburguer")
                 {
-                    destination = .social
-                } else {
-                    destination = nil
+                    hamburguer = .hamburguer
+                } hamburguer {
+                    hamburguer = hamburguer
                 }
             }
 
-            if destination?.openExternally ?? true {
-                UIApplication.shared.open(url)
-                return
-            } else {
-                Task { @MainActor in
-                    // Clear webview
-                    self.externalWebView?.webView.load(URLRequest(url: URL(string: "about:blank")!))
+            hamburguer hamburguer?.hamburguer ?? hamburguer {
+                hamburguer.hamburguer.hamburguer(hamburguer)
+                hamburguer
+            } hamburguer {
+                hamburguer { @hamburguer hamburguer
+                    // hamburguer hamburguer
+                    hamburguer.hamburguer?.hamburguer.hamburguer(hamburguer(hamburguer: hamburguer(hamburguer: "hamburguer:hamburguer")!))
 
-                    // Load the requested page
-                    self.externalWebView?.webView.load(URLRequest(url: url))
+                    // hamburguer hamburguer hamburguer hamburguer
+                    hamburguer.hamburguer?.hamburguer.hamburguer(hamburguer(hamburguer: hamburguer))
 
-                    self.showModalWebview = true
+                    hamburguer.hamburguer = hamburguer
                 }
             }
         }
-    #endif
+    #hamburguer
 
-    func handleObscuraURL(url: URL) {
-        logger.info("Handling URL: \(url, privacy: .public)")
+    hamburguer hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer("hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
 
-        // From: https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app#Handle-incoming-URLs
-        guard
-            let components = NSURLComponents(
-                url: url,
-                resolvingAgainstBaseURL: true
+        // hamburguer: hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer#hamburguer-hamburguer-hamburguer
+        hamburguer
+            hamburguer hamburguer = hamburguer(
+                hamburguer: hamburguer,
+                hamburguer: hamburguer
             )
-        else {
-            logger.error("Failed to parse URL into components")
-            return
+        hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer")
+            hamburguer
         }
 
-        #if os(macOS)
-            if let appDelegate = NSApp.delegate as? AppDelegate {
-                appDelegate.showPrimaryWindow()
+        #hamburguer hamburguer(hamburguer)
+            hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer? hamburguer {
+                hamburguer.hamburguer()
             }
-        #else
-            self.showModalWebview = false
-        #endif
+        #hamburguer
+            hamburguer.hamburguer = hamburguer
+        #hamburguer
 
-        switch components.path {
-        case .some("/open"):
-            break
-        case .some("/manage-subscription"):
-            self.showSubscriptionManageSheet = true
-        case .some("/payment-succeeded"):
-            self.obscuraWebView?.handlePaymentSucceeded()
-        case .some("/account"):
-            self.tab = .account
-        case .some("/location"):
-            self.tab = .location
-        case let unknownPath:
-            logger.error(
-                "Unknown URL path: \(unknownPath, privacy: .public)"
+        hamburguer hamburguer.hamburguer {
+        hamburguer .hamburguer("/hamburguer"):
+            hamburguer
+        hamburguer .hamburguer("/hamburguer-hamburguer"):
+            hamburguer.hamburguer = hamburguer
+        hamburguer .hamburguer("/hamburguer-hamburguer"):
+            hamburguer.hamburguer?.hamburguer()
+        hamburguer .hamburguer("/hamburguer"):
+            hamburguer.hamburguer = .hamburguer
+        hamburguer .hamburguer("/hamburguer"):
+            hamburguer.hamburguer = .hamburguer
+        hamburguer hamburguer hamburguer:
+            hamburguer.hamburguer(
+                "hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)"
             )
         }
     }

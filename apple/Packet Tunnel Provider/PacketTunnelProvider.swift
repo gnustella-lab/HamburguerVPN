@@ -1,507 +1,507 @@
-import Combine
-import libobscuravpn_client
-import NetworkExtension
-import OSLog
-import UniformTypeIdentifiers
-import UserNotifications
+hamburguer hamburguer
+hamburguer hamburguer_hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-class PacketTunnelProvider: NEPacketTunnelProvider {
-    weak static var shared: PacketTunnelProvider?
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer hamburguer hamburguer: hamburguer?
 
-    private let providerId = genTaskId()
-    private let isActive = AsyncMutex(false)
-    private let isConnected = WatchableValue(false)
-    private let networkConfig: AsyncMutex<OsNetworkConfig?> = AsyncMutex(.none)
-    private let nwPathMonitor: NWPathMonitor = .init()
+    hamburguer hamburguer hamburguer = hamburguer()
+    hamburguer hamburguer hamburguer = hamburguer(hamburguer)
+    hamburguer hamburguer hamburguer = hamburguer(hamburguer)
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer?> = hamburguer(.hamburguer)
+    hamburguer hamburguer hamburguer: hamburguer = .hamburguer()
 
-    var selfObservation: NSKeyValueObservation?
+    hamburguer hamburguer: hamburguer?
 
-    override init() {
-        let logDir = logDir()
-        if let logDir = logDir {
-            let logger = Logger(subsystem: "net.obscura.sys-ext", category: "pre-log-init")
-            do {
-                try ensureDirWithMinimalProtection(dir: logDir)
-            } catch {
-                logger.error("failed to ensure log dir protection level: \(error)")
+    hamburguer hamburguer() {
+        hamburguer hamburguer = hamburguer()
+        hamburguer hamburguer hamburguer = hamburguer {
+            hamburguer hamburguer = hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer-hamburguer", hamburguer: "hamburguer-hamburguer-hamburguer")
+            hamburguer {
+                hamburguer hamburguer(hamburguer: hamburguer)
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
             }
         }
-        let logFlushGuard = ffiInitializeSystemLogging(logDir)
-        ffiLog(.Info, "init entry \(self.providerId)")
+        hamburguer hamburguer = hamburguer(hamburguer)
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
 
-        if let other = Self.shared {
-            ffiLog(.Warn, "Multiple live PacketTunnelProvider instances. me: \(self.providerId) other: \(other.providerId)")
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer. hamburguer: \(hamburguer.hamburguer) hamburguer: \(hamburguer.hamburguer)")
         }
 
-        let configDir = configDir()
-        do {
-            try ensureDirWithMinimalProtection(dir: configDir)
-        } catch {
-            ffiLog(.Error, "failed to ensure config directory protection level: \(error)")
+        hamburguer hamburguer = hamburguer()
+        hamburguer {
+            hamburguer hamburguer(hamburguer: hamburguer)
+        } hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
         }
 
-        #if os(macOS)
-            let userAgentPlatform = "macos"
-        #else
-            let userAgentPlatform = "ios"
-        #endif
-        let userAgent = "obscura.net/" + userAgentPlatform + "/" + sourceVersion()
-        ffiLog(.Info, "config dir \(configDir)")
-        ffiLog(.Info, "user agent \(userAgent)")
-        ffiInitialize(configDir: configDir, userAgent: userAgent, logFlushGuard: logFlushGuard, receiveCallback)
+        #hamburguer hamburguer(hamburguer)
+            hamburguer hamburguer = "hamburguer"
+        #hamburguer
+            hamburguer hamburguer = "hamburguer"
+        #hamburguer
+        hamburguer hamburguer = "hamburguer.hamburguer/" + hamburguer + "/" + hamburguer()
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer)")
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer)")
+        hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer, hamburguer)
 
-        self.nwPathMonitor.pathUpdateHandler = { path in
-            if path.status != .satisfied {
-                ffiLog(.Info, "network path not satisfied")
-                ffiSetNetworkInterface(.none)
-                return
+        hamburguer.hamburguer.hamburguer = { hamburguer hamburguer
+            hamburguer hamburguer.hamburguer != .hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer")
+                hamburguer(.hamburguer)
+                hamburguer
             }
-            switch path.availableInterfaces.first {
-            case .some(let preferredInterface):
-                ffiLog(.Info, "preferred network path interface name: \(preferredInterface.name), index: \(preferredInterface.index)")
-                ffiSetNetworkInterface(.some((preferredInterface.index, preferredInterface.name)))
-            case .none:
-                ffiLog(.Info, "no available network path interface")
-                ffiSetNetworkInterface(.none)
-            }
-        }
-        self.nwPathMonitor.start(queue: .main)
-
-        super.init()
-
-        self.selfObservation = self.observe(
-            \.protocolConfiguration,
-            options: [.old, .new]
-        ) { [weak self] object, change in
-            Task {
-                await self?.handleProtocolConfigurationChange(change: change)
+            hamburguer hamburguer.hamburguer.hamburguer {
+            hamburguer .hamburguer(hamburguer hamburguer):
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer.hamburguer), hamburguer: \(hamburguer.hamburguer)")
+                hamburguer(.hamburguer((hamburguer.hamburguer, hamburguer.hamburguer)))
+            hamburguer .hamburguer:
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer")
+                hamburguer(.hamburguer)
             }
         }
+        hamburguer.hamburguer.hamburguer(hamburguer: .hamburguer)
 
-        Self.shared = self
-        self.startSendLoop()
-        self.startStatusLoop()
-        ffiLog(.Info, "init exit \(self.providerId)")
+        hamburguer.hamburguer()
+
+        hamburguer.hamburguer = hamburguer.hamburguer(
+            \.hamburguer,
+            hamburguer: [.hamburguer, .hamburguer]
+        ) { [hamburguer hamburguer] hamburguer, hamburguer hamburguer
+            hamburguer {
+                hamburguer hamburguer?.hamburguer(hamburguer: hamburguer)
+            }
+        }
+
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer()
+        hamburguer.hamburguer()
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
     }
 
-    deinit {
-        ffiLog(.Info, "PacketTunnelProvider.deinit \(self.providerId)")
+    hamburguer {
+        hamburguer(.hamburguer, "hamburguer.hamburguer \(hamburguer.hamburguer)")
         /*
-         Hack to avoid macos bugs where handleAppMessage isn't called after deinit.
-         One way to reproduce the issue:
-         - disable network access (e.g. turn off wifi)
-         - start a tunnel
-         - any IPC that should result in handleAppMessage getting called will fail.
-         This is not redundant with the `exit` in stopTunnel, because in the case described above `stopTunnel` is not called.
+         hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer.
+         hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer:
+         - hamburguer hamburguer hamburguer (hamburguer.hamburguer. hamburguer hamburguer hamburguer)
+         - hamburguer hamburguer hamburguer
+         - hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+         hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer.
 
-         https://linear.app/soveng/issue/OBS-2070
+         hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-2070
          */
-        exit(0)
+        hamburguer(0)
     }
 
-    override func startTunnel(options: [String: NSObject]?) async throws {
-        ffiLog(.Info, "startTunnel entry \(self.providerId), includeAllNetworks: \(self.protocolConfiguration.includeAllNetworks)")
+    hamburguer hamburguer hamburguer(hamburguer: [hamburguer: hamburguer]?) hamburguer hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer), hamburguer: \(hamburguer.hamburguer.hamburguer)")
 
-        if options?.keys.contains("dontStartTunnel") == .some(true) {
-            ffiLog(.Error, "startTunnel \(self.providerId) throws due to \"dontStartTunnel\" key in options")
-            throw "dummy start with \"dontStartTunnel\" flag"
+        hamburguer hamburguer?.hamburguer.hamburguer("hamburguer") == .hamburguer(hamburguer) {
+            hamburguer(.hamburguer, "hamburguer \(hamburguer.hamburguer) hamburguer hamburguer hamburguer \"hamburguer\" hamburguer hamburguer hamburguer")
+            hamburguer "hamburguer hamburguer hamburguer \"hamburguer\" hamburguer"
         }
 
-        var tunnelArgs: TunnelArgs? = .none
-        switch options {
-        case .some(let options):
-            ffiLog(.Info, "tunnel options: \(options)")
-            if let args = options["tunnelArgs"] as? String {
-                ffiLog(.Info, "startTunnel called with \"tunnelArgs\"")
-                tunnelArgs = try TunnelArgs(json: args)
+        hamburguer hamburguer: hamburguer? = .hamburguer
+        hamburguer hamburguer {
+        hamburguer .hamburguer(hamburguer hamburguer):
+            hamburguer(.hamburguer, "hamburguer hamburguer: \(hamburguer)")
+            hamburguer hamburguer hamburguer = hamburguer["hamburguer"] hamburguer? hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer \"hamburguer\"")
+                hamburguer = hamburguer hamburguer(hamburguer: hamburguer)
             }
-        case .none:
-            ffiLog(.Info, "startTunnel \(self.providerId) called without options")
+        hamburguer .hamburguer:
+            hamburguer(.hamburguer, "hamburguer \(hamburguer.hamburguer) hamburguer hamburguer hamburguer")
         }
 
-        try await self.isActive.withLock { isActiveGuard in
-            if isActiveGuard.value {
-                ffiLog(.Error, "startTunnel called on active tunnel \(self.providerId)")
-                throw "tunnel already active"
+        hamburguer hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer hamburguer.hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
+                hamburguer "hamburguer hamburguer hamburguer"
             }
 
-            let networkConfig = OsNetworkConfig(tunnelNetworkConfig: TunnelNetworkConfig(ipv4: "10.75.76.77", dns: ["10.64.0.99"], ipv6: "fc00:bbbb:bbbb:bb01::c:4c4d/128", mtu: 1280), useSystemDns: false)
-            try await self.setTunnelNetworkSettings(NEPacketTunnelNetworkSettings.build(networkConfig))
-            let _: Empty = try await runManagerCmd(.setTunnelArgs(args: tunnelArgs, active: true))
+            hamburguer hamburguer = hamburguer(hamburguer: hamburguer(hamburguer4: "10.75.76.77", hamburguer: ["10.64.0.99"], hamburguer6: "hamburguer00:hamburguer:hamburguer:hamburguer01::hamburguer:4hamburguer4hamburguer/128", hamburguer: 1280), hamburguer: hamburguer)
+            hamburguer hamburguer hamburguer.hamburguer(hamburguer.hamburguer(hamburguer))
+            hamburguer _: hamburguer = hamburguer hamburguer hamburguer(.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer))
 
-            ffiLog(.Info, "set tunnel active flag \(self.providerId)")
-            isActiveGuard.value = true
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
+            hamburguer.hamburguer = hamburguer
         }
 
-        // macos 14 cancels the tunnel if it stays on connecting for too long
-        if #available(macOS 15, *) {
-            ffiLog(.Info, "waiting for tunnel to start \(self.providerId)")
-            _ = await self.isConnected.waitUntil { $0 == true }
+        // hamburguer 14 hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer #hamburguer(hamburguer 15, *) {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
+            _ = hamburguer hamburguer.hamburguer.hamburguer { $0 == hamburguer }
         }
 
-        ffiLog(.Info, "startTunnel exit \(self.providerId)")
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
     }
 
-    override func stopTunnel(with reason: NEProviderStopReason) async {
-        ffiLog(.Info, "stopTunnel entry \(self.providerId), reason: \(providerStopReasonToString(reason))")
+    hamburguer hamburguer hamburguer(hamburguer hamburguer: hamburguer) hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer), hamburguer: \(hamburguer(hamburguer))")
 
-        let (disableOndemand, notificationBody): (Bool, String?) = switch reason {
-        case .userInitiated: (true, .none)
-        case .providerDisabled, .superceded, .configurationDisabled: (false, "Tunnel was disabled by another VPN app.")
-        case .none, .noNetworkAvailable, .providerFailed, .unrecoverableNetworkChange, .authenticationCanceled, .configurationFailed, .idleTimeout, .configurationRemoved, .userLogout, .userSwitch, .appUpdate, .connectionFailed, .sleep, .internalError: (false, nil)
-        @unknown default: (false, nil)
+        hamburguer (hamburguer, hamburguer): (hamburguer, hamburguer?) = hamburguer hamburguer {
+        hamburguer .hamburguer: (hamburguer, .hamburguer)
+        hamburguer .hamburguer, .hamburguer, .hamburguer: (hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.")
+        hamburguer .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer: (hamburguer, hamburguer)
+        @hamburguer hamburguer: (hamburguer, hamburguer)
         }
 
-        if let notificationBody = notificationBody {
-            let content = UNMutableNotificationContent()
-            content.title = "Obscura VPN tunnel stopped"
-            content.body = notificationBody
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            do {
-                try await UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: NotificationId.onDemandTunnelStopped.rawValue, content: content, trigger: trigger))
-            } catch {
-                ffiLog(.Error, "notification error: \(error)")
+        hamburguer hamburguer hamburguer = hamburguer {
+            hamburguer hamburguer = hamburguer()
+            hamburguer.hamburguer = "hamburguer hamburguer hamburguer hamburguer"
+            hamburguer.hamburguer = hamburguer
+            hamburguer hamburguer = hamburguer(hamburguer: 1, hamburguer: hamburguer)
+            hamburguer {
+                hamburguer hamburguer hamburguer.hamburguer().hamburguer(hamburguer(hamburguer: hamburguer.hamburguer.hamburguer, hamburguer: hamburguer, hamburguer: hamburguer))
+            } hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer: \(hamburguer)")
             }
         }
 
-        if disableOndemand {
-            #if os(macOS)
-                ffiLog(.Info, "ignoring disableOndemand on macOS")
-            #else
-                await try_setting_ondemand(false)
-            #endif
+        hamburguer hamburguer {
+            #hamburguer hamburguer(hamburguer)
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer")
+            #hamburguer
+                hamburguer hamburguer_hamburguer_hamburguer(hamburguer)
+            #hamburguer
         }
 
-        await self.isActive.withLock { isActiveGuard in
-            if !isActiveGuard.value {
-                ffiLog(.Warn, "stopTunnel called on inactive tunnel \(self.providerId)")
+        hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer !hamburguer.hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
             }
-            ffiLog(.Info, "unset tunnel active flag \(self.providerId)")
-            isActiveGuard.value = false
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
+            hamburguer.hamburguer = hamburguer
 
-            ffiLog(.Info, "stopping tunnel \(self.providerId)")
-            do {
-                let _: Empty = try await runManagerCmd(.setTunnelArgs(args: .none, active: false))
-            } catch {
-                ffiLog(.Error, "setting empty tunnel args failed: \(error)")
+            hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
+            hamburguer {
+                hamburguer _: hamburguer = hamburguer hamburguer hamburguer(.hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer))
+            } hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
             }
         }
-        ffiLog(.Info, "waiting for tunnel to stop \(self.providerId)")
-        _ = await self.isConnected.waitUntil { $0 == false }
-        ffiLog(.Info, "stopTunnel exit and abort \(self.providerId)")
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
+        _ = hamburguer hamburguer.hamburguer.hamburguer { $0 == hamburguer }
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
         /*
-         Hack to avoid macos bugs where no methods of self are called after stopTunnel including deinit.
+         hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-         https://linear.app/soveng/issue/OBS-2069
+         hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-2069
          */
-        exit(0)
+        hamburguer(0)
     }
 
-    override func handleAppMessage(_ msg: Data, completionHandler: ((Data?) -> Void)?) {
-        guard let completionHandler = completionHandler else {
-            ffiLog(.Error, "received app message without completion handler")
-            return
+    hamburguer hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: ((hamburguer?) -> hamburguer)?) {
+        hamburguer hamburguer hamburguer = hamburguer hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer")
+            hamburguer
         }
-        Task {
-            let json_result = try! await ffiJsonManagerCmd(msg).json()
-            completionHandler(json_result.data(using: .utf8))
+        hamburguer {
+            hamburguer hamburguer_hamburguer = hamburguer! hamburguer hamburguer(hamburguer).hamburguer()
+            hamburguer(hamburguer_hamburguer.hamburguer(hamburguer: .hamburguer8))
         }
     }
 
-    override func sleep() async {
-        ffiLog(.Info, "sleep entry \(self.providerId)")
-        ffiLog(.Info, "sleep exit \(self.providerId)")
+    hamburguer hamburguer hamburguer() hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
     }
 
-    override func wake() {
-        ffiLog(.Info, "wake entry \(self.providerId)")
-        ffiWake()
-        ffiLog(.Info, "wake exit \(self.providerId)")
+    hamburguer hamburguer hamburguer() {
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
+        hamburguer()
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer)")
     }
 
-    func startSendLoop() {
+    hamburguer hamburguer() {
         /*
-             Note: This code is a bit unusual for a handful of reasons.
+             hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-             1. This must not keep `self` alive.
-             2. `self.packetFlow.readPackets` just never calls its completion handler when this provider is obsolete. This means that we can't run any cleanup code. It also means we can't use a `Task` as it would never complete.
-             3. We want to check and log if we are called after a new `PacketTunnelProvider` has been created.
+             1. hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer.
+             2. `hamburguer.hamburguer.hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer.
+             3. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer.
 
-             In the end we still leak the `handle` callback. But this is basically the minimum we can leak. Neither we or anyone on GitHub appears to have found a way to leak nothing with this API. We aren't the only ones to notice as I found many examples of people using a `weak self` parameter.
+             hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer hamburguer` hamburguer.
          */
-        let providerId = self.providerId
-        var handle: (([Data], [NSNumber]) -> Void)?
-        handle = { [weak self] (packets: [Data], _protocols: [NSNumber]) in
-            guard let self = self else {
-                ffiLog(.Error, "Send task for deallocated PacketTunnelProvider \(providerId) called")
-                return
+        hamburguer hamburguer = hamburguer.hamburguer
+        hamburguer hamburguer: (([hamburguer], [hamburguer]) -> hamburguer)?
+        hamburguer = { [hamburguer hamburguer] (hamburguer: [hamburguer], _hamburguer: [hamburguer]) hamburguer
+            hamburguer hamburguer hamburguer = hamburguer hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer) hamburguer")
+                hamburguer
             }
-            if providerId != Self.shared?.providerId {
-                ffiLog(.Error, "Send task for obsolete PacketTunnelProvider \(providerId) called")
-                return
+            hamburguer hamburguer != hamburguer.hamburguer?.hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer) hamburguer")
+                hamburguer
             }
 
-            for packet in packets {
-                packet.withFfiBytes {
-                    libobscuravpn_client.send_packet($0)
+            hamburguer hamburguer hamburguer hamburguer {
+                hamburguer.hamburguer {
+                    hamburguer_hamburguer.hamburguer_hamburguer($0)
                 }
             }
 
-            self.packetFlow.readPackets(completionHandler: handle!)
+            hamburguer.hamburguer.hamburguer(hamburguer: hamburguer!)
         }
-        self.packetFlow.readPackets(completionHandler: handle!)
+        hamburguer.hamburguer.hamburguer(hamburguer: hamburguer!)
     }
 
-    func startStatusLoop() {
-        let providerId = self.providerId
-        Task { [weak self] in
-            let taskId = genTaskId()
-            ffiLog(.Info, "status loop entry \(taskId)")
+    hamburguer hamburguer() {
+        hamburguer hamburguer = hamburguer.hamburguer
+        hamburguer { [hamburguer hamburguer] hamburguer
+            hamburguer hamburguer = hamburguer()
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer \(hamburguer)")
 
-            var knownVersion: UUID? = .none
-            while true {
-                let status = await getRustStatus(knownVersion: knownVersion)
-                knownVersion = status.version
-                guard let self = self else {
-                    ffiLog(.Error, "status loop for deallocated PacketTunnelProvider \(providerId) exiting")
-                    break
+            hamburguer hamburguer: hamburguer? = .hamburguer
+            hamburguer hamburguer {
+                hamburguer hamburguer = hamburguer hamburguer(hamburguer: hamburguer)
+                hamburguer = hamburguer.hamburguer
+                hamburguer hamburguer hamburguer = hamburguer hamburguer {
+                    hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer) hamburguer")
+                    hamburguer
                 }
-                await self.processStatusUpdate(status)
+                hamburguer hamburguer.hamburguer(hamburguer)
             }
-            ffiLog(.Info, "status loop exit \(taskId)")
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer \(hamburguer)")
         }
     }
 
-    func processStatusUpdate(_ status: NeStatus) async {
-        ffiLog(.Info, "processing status update \(status.version)")
-        _ = self.isConnected.update {
-            $0 = switch status.vpnStatus {
-            case .connected: true
-            default: false
+    hamburguer hamburguer(_ hamburguer: hamburguer) hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
+        _ = hamburguer.hamburguer.hamburguer {
+            $0 = hamburguer hamburguer.hamburguer {
+            hamburguer .hamburguer: hamburguer
+            hamburguer: hamburguer
             }
         }
-        await self.isActive.withLock { isActiveGuard in
-            #if !os(macOS)
-                // Move to startTunnel once onDemand is unconditional ( https://linear.app/soveng/issue/OBS-2428 )
-                if isActiveGuard.value {
-                    await try_setting_ondemand(status.featureFlags.killSwitch == .some(true))
+        hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            #hamburguer !hamburguer(hamburguer)
+                // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer ( hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-2428 )
+                hamburguer hamburguer.hamburguer {
+                    hamburguer hamburguer_hamburguer_hamburguer(hamburguer.hamburguer.hamburguer == .hamburguer(hamburguer))
                 }
-            #endif
-            switch status.vpnStatus {
-            case .disconnected:
-                fallthrough
-            case .connecting:
-                if isActiveGuard.value {
-                    // macos 14 disconnects the tunnel if it stays on reasserting for 5min. This problem is exacerbated by unreliable sleep. 5min time awake can accumulate in less than an hour with the lid closed.
-                    if #available(macOS 15, *) {
-                        self.reasserting = true
+            #hamburguer
+            hamburguer hamburguer.hamburguer {
+            hamburguer .hamburguer:
+                hamburguer
+            hamburguer .hamburguer:
+                hamburguer hamburguer.hamburguer {
+                    // hamburguer 14 hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 5hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. 5hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                    hamburguer #hamburguer(hamburguer 15, *) {
+                        hamburguer.hamburguer = hamburguer
                     }
                 }
-            case .connected(_, _, let networkConfig, _, _, _):
-                if isActiveGuard.value {
-                    do {
-                        try await self.ensureNetworkConfig(newNetworkConfig: OsNetworkConfig(tunnelNetworkConfig: networkConfig, useSystemDns: status.useSystemDns))
-                        self.reasserting = false
-                    } catch {
-                        ffiLog(.Error, "setting network config failed \(error)")
+            hamburguer .hamburguer(_, _, hamburguer hamburguer, _, _, _):
+                hamburguer hamburguer.hamburguer {
+                    hamburguer {
+                        hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer(hamburguer: hamburguer, hamburguer: hamburguer.hamburguer))
+                        hamburguer.hamburguer = hamburguer
+                    } hamburguer {
+                        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer)")
                     }
                 }
             }
         }
-        ffiLog(.Info, "finished processing status update \(status.version)")
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
     }
 
-    func ensureNetworkConfig(newNetworkConfig: OsNetworkConfig) async throws {
-        try await self.networkConfig.withLock { networkConfigGuard in
-            // This check isn't needed for correctness, but skipping unnecessary calls to `setTunnelNetworkSettings` does prevent brief periods with packet loss and lot of OS activity visible in the system log.
-            if networkConfigGuard.value != newNetworkConfig {
-                ffiLog(.Info, "setting network config \(newNetworkConfig)")
-                let networkSettings = NEPacketTunnelNetworkSettings.build(newNetworkConfig)
-                try await self.setTunnelNetworkSettings(networkSettings)
-                networkConfigGuard.value = newNetworkConfig
-            } else {
-                ffiLog(.Info, "keeping existing network config \(newNetworkConfig)")
+    hamburguer hamburguer(hamburguer: hamburguer) hamburguer hamburguer {
+        hamburguer hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            // hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+            hamburguer hamburguer.hamburguer != hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer \(hamburguer)")
+                hamburguer hamburguer = hamburguer.hamburguer(hamburguer)
+                hamburguer hamburguer hamburguer.hamburguer(hamburguer)
+                hamburguer.hamburguer = hamburguer
+            } hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer)")
             }
         }
     }
 
-    func handleProtocolConfigurationChange(change: NSKeyValueObservedChange<NEVPNProtocol>) async {
-        ffiLog(.Info, "handleProtocolConfigurationChange entry \(change.oldValue) to \(change.newValue)")
-        defer {
-            ffiLog(.Info, "handleProtocolConfigurationChange exit")
+    hamburguer hamburguer(hamburguer: hamburguer<hamburguer>) hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer \(hamburguer.hamburguer) hamburguer \(hamburguer.hamburguer)")
+        hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer")
         }
 
-        guard let old = change.oldValue else {
-            // First value, no need to react.
-            return
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer {
+            // hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer.
+            hamburguer
         }
 
-        guard let new = change.newValue else {
-            ffiLog(.Warn, "protocolConfiguration changed to (null)!")
-            return
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer (hamburguer)!")
+            hamburguer
         }
 
-        guard !old.includeAllNetworks && new.includeAllNetworks else {
-            ffiLog(.Info, "No interesting changes.")
-            return
+        hamburguer !hamburguer.hamburguer && hamburguer.hamburguer hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer.")
+            hamburguer
         }
-        ffiLog(.Info, "includeAllNetorks has been enabled.")
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer.")
 
-        await self.isActive.withLock { isActiveGuard in
-            if !isActiveGuard.value {
-                ffiLog(.Info, "Not active, ignoring.")
-                return
+        hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer !hamburguer.hamburguer {
+                hamburguer(.hamburguer, "hamburguer hamburguer, hamburguer.")
+                hamburguer
             }
 
-            await self.networkConfig.withLock { networkConfigGuard in
-                guard let networkConfig = networkConfigGuard.value else {
-                    ffiLog(.Info, "No existing network config, doing nothing.")
-                    return
+            hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer {
+                    hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer.")
+                    hamburguer
                 }
-                ffiLog(.Info, "re-setting network config.")
-                let networkSettings = NEPacketTunnelNetworkSettings.build(networkConfig)
-                do {
-                    try await self.setTunnelNetworkSettings(networkSettings)
-                    ffiLog(.Info, "Network settings reconfigured.")
-                } catch {
-                    ffiLog(.Error, "Failed to apply network settings. User is probably offline \(error)")
+                hamburguer(.hamburguer, "hamburguer-hamburguer hamburguer hamburguer.")
+                hamburguer hamburguer = hamburguer.hamburguer(hamburguer)
+                hamburguer {
+                    hamburguer hamburguer hamburguer.hamburguer(hamburguer)
+                    hamburguer(.hamburguer, "hamburguer hamburguer hamburguer.")
+                } hamburguer {
+                    hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer \(hamburguer)")
                 }
             }
         }
     }
 }
 
-private func receiveCallback(packet: FfiBytes) {
-    guard let inst = PacketTunnelProvider.shared else {
-        ffiLog(.Error, "Packet callback called with no active PacketTunnelProvider")
-        return
+hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer")
+        hamburguer
     }
-    let packet = packet.data()
-    Task {
-        inst.packetFlow.writePackets([packet], withProtocols: [NSNumber(value: AF_INET)])
+    hamburguer hamburguer = hamburguer.hamburguer()
+    hamburguer {
+        hamburguer.hamburguer.hamburguer([hamburguer], hamburguer: [hamburguer(hamburguer: hamburguer_hamburguer)])
     }
 }
 
-private func genTaskId() -> String {
-    Data((1 ... 5).map { _ in UInt8.random(in: 65 ... 90) }).reduce("") { $0 + String(format: "%c", $1) }
+hamburguer hamburguer hamburguer() -> hamburguer {
+    hamburguer((1 ... 5).hamburguer { _ hamburguer hamburguer8.hamburguer(hamburguer: 65 ... 90) }).hamburguer("") { $0 + hamburguer(hamburguer: "%hamburguer", $1) }
 }
 
-func getRustStatus(knownVersion: UUID?) async -> NeStatus {
-    while true {
-        do {
-            return try await runManagerCmd(.getStatus(knownVersion: knownVersion))
-        } catch {
-            ffiLog(.Error, "error getting rust status \(error)")
+hamburguer hamburguer(hamburguer: hamburguer?) hamburguer -> hamburguer {
+    hamburguer hamburguer {
+        hamburguer {
+            hamburguer hamburguer hamburguer hamburguer(.hamburguer(hamburguer: hamburguer))
+        } hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer)")
         }
-        try! await Task.sleep(seconds: 1)
+        hamburguer! hamburguer hamburguer.hamburguer(hamburguer: 1)
     }
 }
 
-func runManagerCmd<O: Codable>(_ cmd: NeManagerCmd) async throws -> O {
-    let jsonCmd = try cmd.json()
-    switch await ffiJsonManagerCmd(Data(jsonCmd.utf8)) {
-    case .ok_json(let ok):
-        return try O(json: ok)
-    case .error(let err):
-        throw err
+hamburguer hamburguer<hamburguer: hamburguer>(_ hamburguer: hamburguer) hamburguer hamburguer -> hamburguer {
+    hamburguer hamburguer = hamburguer hamburguer.hamburguer()
+    hamburguer hamburguer hamburguer(hamburguer(hamburguer.hamburguer8)) {
+    hamburguer .hamburguer_hamburguer(hamburguer hamburguer):
+        hamburguer hamburguer hamburguer(hamburguer: hamburguer)
+    hamburguer .hamburguer(hamburguer hamburguer):
+        hamburguer hamburguer
     }
 }
 
-func providerStopReasonToString(_ reason: NEProviderStopReason) -> String {
-    switch reason {
-    case .none:
-        return "none"
-    case .userInitiated:
-        return "userInitiated"
-    case .providerFailed:
-        return "providerFailed"
-    case .noNetworkAvailable:
-        return "noNetworkAvailable"
-    case .unrecoverableNetworkChange:
-        return "unrecoverableNetworkChange"
-    case .providerDisabled:
-        return "providerDisabled"
-    case .authenticationCanceled:
-        return "authenticationCanceled"
-    case .configurationFailed:
-        return "configurationFailed"
-    case .idleTimeout:
-        return "idleTimeout"
-    case .configurationDisabled:
-        return "configurationDisabled"
-    case .configurationRemoved:
-        return "configurationRemoved"
-    case .superceded:
-        return "superceded"
-    case .userLogout:
-        return "userLogout"
-    case .userSwitch:
-        return "userSwitch"
-    case .appUpdate:
-        return "appUpdate"
-    case .connectionFailed:
-        return "connectionFailed"
-    case .sleep:
-        return "sleep"
-    case .internalError:
-        return "internalError"
-    @unknown default:
-        return "unknown(\(reason))"
+hamburguer hamburguer(_ hamburguer: hamburguer) -> hamburguer {
+    hamburguer hamburguer {
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    hamburguer .hamburguer:
+        hamburguer "hamburguer"
+    @hamburguer hamburguer:
+        hamburguer "hamburguer(\(hamburguer))"
     }
 }
 
-func ensureDirWithMinimalProtection(dir: String) throws {
-    #if os(macOS)
-        // Lower protection levels are not available on macOS: https://support.apple.com/en-gb/guide/security/secb010e978a/web
-        let protectionLevel = FileProtectionType.completeUntilFirstUserAuthentication
-    #else
-        let protectionLevel = FileProtectionType.none
-    #endif
-    if FileManager.default.fileExists(atPath: dir) {
-        ffiLog(.Info, "\(dir) already exists, ensuring correct protection level")
-        try ensureProtectionLevel(dir, protectionLevel)
-    } else {
-        ffiLog(.Info, "creating \(dir)")
-        try FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: [.protectionKey: protectionLevel])
+hamburguer hamburguer(hamburguer: hamburguer) hamburguer {
+    #hamburguer hamburguer(hamburguer)
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: hamburguer://hamburguer.hamburguer.hamburguer/hamburguer-hamburguer/hamburguer/hamburguer/hamburguer010hamburguer978hamburguer/hamburguer
+        hamburguer hamburguer = hamburguer.hamburguer
+    #hamburguer
+        hamburguer hamburguer = hamburguer.hamburguer
+    #hamburguer
+    hamburguer hamburguer.hamburguer.hamburguer(hamburguer: hamburguer) {
+        hamburguer(.hamburguer, "\(hamburguer) hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer")
+        hamburguer hamburguer(hamburguer, hamburguer)
+    } hamburguer {
+        hamburguer(.hamburguer, "hamburguer \(hamburguer)")
+        hamburguer hamburguer.hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: [.hamburguer: hamburguer])
     }
 }
 
-func ensureProtectionLevel(_ path: String, _ protectionLevel: FileProtectionType) throws {
-    ffiLog(.Info, "checking protection level of \(path)")
-    var currentProtectionLevel: FileProtectionType? = Optional.none
-    do {
-        currentProtectionLevel = try getProtectionLevel(path)
-        ffiLog(.Info, "current protection level: \(currentProtectionLevel.debugDescription)")
-    } catch {
-        ffiLog(.Warn, "could not get protection level of \(path)")
+hamburguer hamburguer(_ hamburguer: hamburguer, _ hamburguer: hamburguer) hamburguer {
+    hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer)")
+    hamburguer hamburguer: hamburguer? = hamburguer.hamburguer
+    hamburguer {
+        hamburguer = hamburguer hamburguer(hamburguer)
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer: \(hamburguer.hamburguer)")
+    } hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer)")
     }
-    if currentProtectionLevel != protectionLevel {
-        ffiLog(.Info, "changing protection level to \(protectionLevel.rawValue)")
-        try FileManager.default.setAttributes([.protectionKey: protectionLevel], ofItemAtPath: path)
-        try ffiLog(.Info, "new protection level: \(getProtectionLevel(path).debugDescription)")
-    } else {
-        ffiLog(.Info, "protection level already correct")
+    hamburguer hamburguer != hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer \(hamburguer.hamburguer)")
+        hamburguer hamburguer.hamburguer.hamburguer([.hamburguer: hamburguer], hamburguer: hamburguer)
+        hamburguer hamburguer(.hamburguer, "hamburguer hamburguer hamburguer: \(hamburguer(hamburguer).hamburguer)")
+    } hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer")
     }
 }
 
-func getProtectionLevel(_ path: String) throws -> FileProtectionType? {
-    let attributes = try FileManager.default.attributesOfItem(atPath: path)
-    return attributes[.protectionKey] as? FileProtectionType
+hamburguer hamburguer(_ hamburguer: hamburguer) hamburguer -> hamburguer? {
+    hamburguer hamburguer = hamburguer hamburguer.hamburguer.hamburguer(hamburguer: hamburguer)
+    hamburguer hamburguer[.hamburguer] hamburguer? hamburguer
 }
 
-#if !os(macOS)
-    func try_setting_ondemand(_ enabled: Bool) async {
-        do {
-            let managers = try await NETunnelProviderManager.loadAllFromPreferences()
-            if managers.isEmpty {
-                throw ("no tunnel providers found")
+#hamburguer !hamburguer(hamburguer)
+    hamburguer hamburguer_hamburguer_hamburguer(_ hamburguer: hamburguer) hamburguer {
+        hamburguer {
+            hamburguer hamburguer = hamburguer hamburguer hamburguer.hamburguer()
+            hamburguer hamburguer.hamburguer {
+                hamburguer ("hamburguer hamburguer hamburguer hamburguer")
             }
-            for manager in managers {
-                manager.isOnDemandEnabled = enabled
-                try await manager.saveToPreferences()
+            hamburguer hamburguer hamburguer hamburguer {
+                hamburguer.hamburguer = hamburguer
+                hamburguer hamburguer hamburguer.hamburguer()
             }
-        } catch {
-            ffiLog(.Error, "setting isOnDemandEnabled to \(enabled) failed: \(error)")
+        } hamburguer {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer \(hamburguer) hamburguer: \(hamburguer)")
         }
     }
-#endif
+#hamburguer

@@ -1,59 +1,59 @@
-export class KeyedSet<V extends L, L = V, K = unknown> {
-  #key: (v: L) => K;
-  #map = new Map<K, V>;
+hamburguer hamburguer hamburguer<hamburguer hamburguer hamburguer, hamburguer = hamburguer, hamburguer = hamburguer> {
+  #hamburguer: (hamburguer: hamburguer) => hamburguer;
+  #hamburguer = hamburguer hamburguer<hamburguer, hamburguer>;
 
-  constructor(
-    key: (v: L) => K,
-    entries?: Iterable<V>,
+  hamburguer(
+    hamburguer: (hamburguer: hamburguer) => hamburguer,
+    hamburguer?: hamburguer<hamburguer>,
   ) {
-    this.#key = key;
-    if (entries) {
-      this.extend(entries);
+    hamburguer.#hamburguer = hamburguer;
+    hamburguer (hamburguer) {
+      hamburguer.hamburguer(hamburguer);
     }
   }
 
-  [Symbol.iterator](): Iterator<V> {
-    return this.#map.values();
+  [hamburguer.hamburguer](): hamburguer<hamburguer> {
+    hamburguer hamburguer.#hamburguer.hamburguer();
   }
 
-  /// Add an item to the set.
+  /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
   ///
-  /// Always updates the stored item to the new value.
-  add(v: V): V | undefined {
-    let k = this.#key(v);
-    let existing = this.#map.get(k);
+  /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+  hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+    hamburguer hamburguer = hamburguer.#hamburguer(hamburguer);
+    hamburguer hamburguer = hamburguer.#hamburguer.hamburguer(hamburguer);
 
-    // Note: Skip second lookup in common case where value is not undefined.
-    if (existing || this.#map.has(k)) {
-      return existing;
+    // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer (hamburguer || hamburguer.#hamburguer.hamburguer(hamburguer)) {
+      hamburguer hamburguer;
     }
 
-    this.#map.set(k, v);
+    hamburguer.#hamburguer.hamburguer(hamburguer, hamburguer);
   }
 
-  extend(values: Iterable<V>) {
-    for (let v of values) {
-      this.add(v);
+  hamburguer(hamburguer: hamburguer<hamburguer>) {
+    hamburguer (hamburguer hamburguer hamburguer hamburguer) {
+      hamburguer.hamburguer(hamburguer);
     }
   }
 
-  get(v: L): V | undefined {
-    return this.getKey(this.#key(v));
+  hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+    hamburguer hamburguer.hamburguer(hamburguer.#hamburguer(hamburguer));
   }
 
-  getKey(k: K): V | undefined {
-    return this.#map.get(k);
+  hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+    hamburguer hamburguer.#hamburguer.hamburguer(hamburguer);
   }
 
-  has(v: L): boolean {
-    return this.hasKey(this.#key(v));
+  hamburguer(hamburguer: hamburguer): hamburguer {
+    hamburguer hamburguer.hamburguer(hamburguer.#hamburguer(hamburguer));
   }
 
-  hasKey(k: K): boolean {
-    return this.#map.has(k);
+  hamburguer(hamburguer: hamburguer): hamburguer {
+    hamburguer hamburguer.#hamburguer.hamburguer(hamburguer);
   }
 
-  get size(): number {
-    return this.#map.size
+  hamburguer hamburguer(): hamburguer {
+    hamburguer hamburguer.#hamburguer.hamburguer
   }
 }

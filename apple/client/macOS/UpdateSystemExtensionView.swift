@@ -1,34 +1,34 @@
-import SwiftUI
+hamburguer hamburguer
 
-struct UpdateSystemExtensionView: View {
-    @ObservedObject var startupModel: StartupModel
-    var subtext: String
+hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
 
-    @Environment(\.openURL) private var openURL
-    var neInit: NetworkExtensionInit
+    @hamburguer(\.hamburguer) hamburguer hamburguer hamburguer
+    hamburguer hamburguer: hamburguer
 
-    var body: some View {
-        Spacer()
-            .frame(height: 60)
-        // extensions symbol for macOS <= 15
-        // coincidentally used for the network extensions symbol on macOS 15
-        Image(systemName: "puzzlepiece.extension.fill")
-            .font(.system(size: 48))
-            .padding()
-        Text("System Extension Update Required")
-            .font(.title)
-        Text(self.subtext)
-            .font(.body)
-            .multilineTextAlignment(.center)
-            .fixedSize(horizontal: false, vertical: true)
-            .frame(width: 350)
-            .padding()
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer()
+            .hamburguer(hamburguer: 60)
+        // hamburguer hamburguer hamburguer hamburguer <= 15
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 15
+        hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer")
+            .hamburguer(.hamburguer(hamburguer: 48))
+            .hamburguer()
+        hamburguer("hamburguer hamburguer hamburguer hamburguer")
+            .hamburguer(.hamburguer)
+        hamburguer(hamburguer.hamburguer)
+            .hamburguer(.hamburguer)
+            .hamburguer(.hamburguer)
+            .hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
+            .hamburguer(hamburguer: 350)
+            .hamburguer()
 
-        Button(action: self.neInit.continueAfterPriming) {
-            Text("Disconnect and Update")
-                .font(.headline)
-                .frame(width: 300)
+        hamburguer(hamburguer: hamburguer.hamburguer.hamburguer) {
+            hamburguer("hamburguer hamburguer hamburguer")
+                .hamburguer(.hamburguer)
+                .hamburguer(hamburguer: 300)
         }
-        .buttonStyle(NoFadeButtonStyle())
+        .hamburguer(hamburguer())
     }
 }

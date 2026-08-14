@@ -1,12 +1,12 @@
-import { BsChevronDown } from 'react-icons/bs';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer';
 
-export default function AnimatedChevron({ rotated }: { rotated: Boolean }) {
-    return (
-        <BsChevronDown
-            size={16}
-            style={{
-                transform: rotated ? 'rotate(-180deg)' : undefined,
-                transition: 'transform 200ms ease-in-out'
+hamburguer hamburguer hamburguer hamburguer({ hamburguer }: { hamburguer: hamburguer }) {
+    hamburguer (
+        <hamburguer
+            hamburguer={16}
+            hamburguer={{
+                hamburguer: hamburguer ? 'hamburguer(-180hamburguer)' : hamburguer,
+                hamburguer: 'hamburguer 200hamburguer hamburguer-hamburguer-hamburguer'
             }}
         />
     );

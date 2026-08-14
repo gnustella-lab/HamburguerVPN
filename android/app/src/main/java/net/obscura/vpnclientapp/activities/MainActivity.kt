@@ -1,206 +1,206 @@
-package net.obscura.vpnclientapp.activities
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.Manifest
-import android.content.ComponentName
-import android.content.Intent
-import android.content.ServiceConnection
-import android.content.SharedPreferences
-import android.content.pm.PackageManager
-import android.content.res.Configuration
-import android.net.VpnService
-import android.os.Build
-import android.os.Bundle
-import android.os.IBinder
-import androidx.activity.addCallback
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
-import androidx.core.view.WindowCompat
-import net.obscura.vpnclientapp.R
-import net.obscura.vpnclientapp.helpers.logDebug
-import net.obscura.vpnclientapp.helpers.requireUIProcess
-import net.obscura.vpnclientapp.preferences.Preferences
-import net.obscura.vpnclientapp.services.IObscuraVpnService
-import net.obscura.vpnclientapp.services.ObscuraVpnService
-import net.obscura.vpnclientapp.ui.ObscuraUI
-import net.obscura.vpnclientapp.ui.OsStatus
-import net.obscura.vpnclientapp.ui.commands.SetColorScheme
+hamburguer hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
-  private class VpnServiceConnection(
-      val activity: MainActivity,
-  ) : ServiceConnection {
-    override fun onServiceConnected(
-        name: ComponentName?,
-        service: IBinder?,
+hamburguer hamburguer : hamburguer(), hamburguer.hamburguer {
+  hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer,
+  ) : hamburguer {
+    hamburguer hamburguer hamburguer(
+        hamburguer: hamburguer?,
+        hamburguer: hamburguer?,
     ) {
-      logDebug("onServiceConnected $name $service")
+      hamburguer("hamburguer $hamburguer $hamburguer")
 
-      activity.ui.onCreate(IObscuraVpnService.Stub.asInterface(service), activity.osStatus)
+      hamburguer.hamburguer.hamburguer(hamburguer.hamburguer.hamburguer(hamburguer), hamburguer.hamburguer)
     }
 
-    override fun onServiceDisconnected(name: ComponentName?) {
-      logDebug("onServiceDisconnected $name")
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer?) {
+      hamburguer("hamburguer $hamburguer")
 
-      activity.ui.onDestroy()
+      hamburguer.hamburguer.hamburguer()
 
-      if (activity.vpnServiceConnection === this) {
-        activity.vpnServiceConnection = null
+      hamburguer (hamburguer.hamburguer === hamburguer) {
+        hamburguer.hamburguer = hamburguer
       }
     }
   }
 
-  private lateinit var preferences: Preferences
-  private lateinit var osStatus: OsStatus
+  hamburguer hamburguer hamburguer hamburguer: hamburguer
+  hamburguer hamburguer hamburguer hamburguer: hamburguer
 
-  private lateinit var ui: ObscuraUI
+  hamburguer hamburguer hamburguer hamburguer: hamburguer
 
-  private var vpnServiceConnection: VpnServiceConnection? = null
+  hamburguer hamburguer hamburguer: hamburguer? = hamburguer
 
-    private val vpnPermissionRequestLauncher: ActivityResultLauncher<Intent> = this.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        logDebug("VPN start activity result: $result")
-        if (result.resultCode == RESULT_OK) {
-            this.startVpnService()
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer> = hamburguer.hamburguer(hamburguer.hamburguer()) { hamburguer ->
+        hamburguer("hamburguer hamburguer hamburguer hamburguer: $hamburguer")
+        hamburguer (hamburguer.hamburguer == hamburguer_hamburguer) {
+            hamburguer.hamburguer()
         }
     }
-    private val notificationPermissionRequestLauncher: ActivityResultLauncher<String> = this.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-        // We don't actually care if we're granted permission, since this is
-        // just the user's preference between "classic" foreground service
-        // notifications vs. the modern Task Manager.
-        logDebug("notification permission request activity result: $isGranted")
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer> = hamburguer.hamburguer(hamburguer.hamburguer()) { hamburguer ->
+        // hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer "hamburguer" hamburguer hamburguer
+        // hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer.
+        hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer: $hamburguer")
     }
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer?) {
+    hamburguer.hamburguer(hamburguer)
 
-    requireUIProcess()
+    hamburguer()
 
-        // Edge-to-edge is the future for Android
-        // https://developer.android.com/develop/ui/views/layout/edge-to-edge
-        WindowCompat.enableEdgeToEdge(this.window)
+        // hamburguer-hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer-hamburguer-hamburguer
+        hamburguer.hamburguer(hamburguer.hamburguer)
 
-    setContentView(R.layout.activity_main)
+    hamburguer(hamburguer.hamburguer.hamburguer_hamburguer)
 
-    ui = findViewById(R.id.ui)
+    hamburguer = hamburguer(hamburguer.hamburguer.hamburguer)
 
-    onBackPressedDispatcher.addCallback {
-      if (ui.canGoBack) {
-        ui.goBack()
-      } else {
-        isEnabled = false
-        onBackPressedDispatcher.onBackPressed()
-        isEnabled = true
+    hamburguer.hamburguer {
+      hamburguer (hamburguer.hamburguer) {
+        hamburguer.hamburguer()
+      } hamburguer {
+        hamburguer = hamburguer
+        hamburguer.hamburguer()
+        hamburguer = hamburguer
       }
     }
 
-    osStatus = OsStatus(this)
-    preferences = Preferences(this).apply { registerListener(this@MainActivity) }
-    vpnServiceConnection =
-        VpnServiceConnection(this).also {
-          bindService(
-              Intent(this, ObscuraVpnService::class.java),
-              it,
-              BIND_AUTO_CREATE or BIND_IMPORTANT,
+    hamburguer = hamburguer(hamburguer)
+    hamburguer = hamburguer(hamburguer).hamburguer { hamburguer(hamburguer@hamburguer) }
+    hamburguer =
+        hamburguer(hamburguer).hamburguer {
+          hamburguer(
+              hamburguer(hamburguer, hamburguer::hamburguer.hamburguer),
+              hamburguer,
+              hamburguer_hamburguer_hamburguer hamburguer hamburguer_hamburguer,
           )
         }
 
-    applyColorScheme()
+    hamburguer()
   }
 
-  override fun onStart() {
-    super.onStart()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
 
-    osStatus.registerCallbacks()
-    osStatus.update()
+    hamburguer.hamburguer()
+    hamburguer.hamburguer()
   }
 
-  override fun onNewIntent(intent: Intent) {
-    super.onNewIntent(intent)
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer.hamburguer(hamburguer)
 
-    intent.data?.let { uri -> this.ui.handleObscuraUri(uri) }
+    hamburguer.hamburguer?.hamburguer { hamburguer -> hamburguer.hamburguer.hamburguer(hamburguer) }
   }
 
-  override fun onResume() {
-    super.onResume()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
 
-    ui.onResume()
+    hamburguer.hamburguer()
   }
 
-    fun startVpnService() {
-        logDebug("starting VPN service")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-            && ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS,
-            ) != PackageManager.PERMISSION_GRANTED
+    hamburguer hamburguer() {
+        hamburguer("hamburguer hamburguer hamburguer")
+        hamburguer (hamburguer.hamburguer.hamburguer_hamburguer >= hamburguer.hamburguer_hamburguer.hamburguer
+            && hamburguer.hamburguer(
+                hamburguer,
+                hamburguer.hamburguer.hamburguer_hamburguer,
+            ) != hamburguer.hamburguer_hamburguer
         ) {
-            this.notificationPermissionRequestLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            hamburguer.hamburguer.hamburguer(hamburguer.hamburguer.hamburguer_hamburguer)
         }
-        this.startForegroundService(Intent(this, ObscuraVpnService::class.java))
+        hamburguer.hamburguer(hamburguer(hamburguer, hamburguer::hamburguer.hamburguer))
     }
 
-    // TODO: https://linear.app/soveng/issue/OBS-3192/onpostresume-is-the-wrong-place-to-start-the-vpnservice
-    override fun onPostResume() {
-        super.onPostResume()
+    // hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3192/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+    hamburguer hamburguer hamburguer() {
+        hamburguer.hamburguer()
 
-        logDebug("onPostResume")
+        hamburguer("hamburguer")
 
-        // TODO: https://linear.app/soveng/issue/OBS-3193/vpnserviceprepare-isnt-handled-exhaustively
-        val vpnIntent = VpnService.prepare(this)
-        if (vpnIntent == null) {
-            // We already have VPN permission
-            this.startVpnService()
-        } else {
-            // Request VPN permission
-            this.vpnPermissionRequestLauncher.launch(vpnIntent)
+        // hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3193/hamburguer-hamburguer-hamburguer-hamburguer
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer)
+        hamburguer (hamburguer == hamburguer) {
+            // hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer.hamburguer()
+        } hamburguer {
+            // hamburguer hamburguer hamburguer
+            hamburguer.hamburguer.hamburguer(hamburguer)
         }
     }
 
-  override fun onPause() {
-    super.onPause()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
 
-    ui.onPause()
+    hamburguer.hamburguer()
   }
 
-  override fun onStop() {
-    super.onStop()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
 
-    osStatus.deregisterCallbacks()
-    osStatus.update()
+    hamburguer.hamburguer()
+    hamburguer.hamburguer()
   }
 
-  override fun onDestroy() {
-    super.onDestroy()
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer()
 
-    preferences.unregisterListener(this)
-    vpnServiceConnection?.let { unbindService(it) }
+    hamburguer.hamburguer(hamburguer)
+    hamburguer?.hamburguer { hamburguer(hamburguer) }
   }
 
-  override fun onConfigurationChanged(newConfig: Configuration) {
-    super.onConfigurationChanged(newConfig)
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer.hamburguer(hamburguer)
 
-    logDebug("configuration changed: $newConfig")
+    hamburguer("hamburguer hamburguer: $hamburguer")
 
-    this.ui.invalidate()
+    hamburguer.hamburguer.hamburguer()
   }
 
-  override fun onSharedPreferenceChanged(
-      sharedPreferences: SharedPreferences?,
-      key: String?,
+  hamburguer hamburguer hamburguer(
+      hamburguer: hamburguer?,
+      hamburguer: hamburguer?,
   ) {
-    if (key == "color-scheme") {
-      applyColorScheme()
+    hamburguer (hamburguer == "hamburguer-hamburguer") {
+      hamburguer()
     }
   }
 
-  private fun applyColorScheme() {
-    AppCompatDelegate.setDefaultNightMode(
-        when (preferences.colorScheme) {
-          SetColorScheme.ColorScheme.Auto -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-          SetColorScheme.ColorScheme.Dark -> AppCompatDelegate.MODE_NIGHT_YES
-          SetColorScheme.ColorScheme.Light -> AppCompatDelegate.MODE_NIGHT_NO
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer(
+        hamburguer (hamburguer.hamburguer) {
+          hamburguer.hamburguer.hamburguer -> hamburguer.hamburguer_hamburguer_hamburguer_hamburguer
+          hamburguer.hamburguer.hamburguer -> hamburguer.hamburguer_hamburguer_hamburguer
+          hamburguer.hamburguer.hamburguer -> hamburguer.hamburguer_hamburguer_hamburguer
         },
     )
   }

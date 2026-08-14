@@ -1,38 +1,38 @@
-use clap::Parser;
-use obscuravpn_api::cmd::ListRelays;
-use obscuravpn_api::types::AccountId;
-use obscuravpn_client::client_state::ClientState;
-use obscuravpn_client::relay_selection::race_relay_handshakes;
-use std::sync::Arc;
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::hamburguer_hamburguer_hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-#[derive(Parser, Debug, PartialEq)]
-#[command(author, version, about, long_about = None)]
-#[command(propagate_version = true)]
-struct Args {
-    #[clap(long)]
-    base_url: Option<String>,
-    #[clap(long)]
-    account_no: Option<String>,
+#[hamburguer(hamburguer, hamburguer, hamburguer)]
+#[hamburguer(hamburguer, hamburguer, hamburguer, hamburguer_hamburguer = hamburguer)]
+#[hamburguer(hamburguer_hamburguer = hamburguer)]
+hamburguer hamburguer {
+    #[hamburguer(hamburguer)]
+    hamburguer_hamburguer: hamburguer<hamburguer>,
+    #[hamburguer(hamburguer)]
+    hamburguer_hamburguer: hamburguer<hamburguer>,
 }
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::fmt::init();
+#[hamburguer::hamburguer]
+hamburguer hamburguer hamburguer() -> hamburguer<(), hamburguer<hamburguer hamburguer::hamburguer::hamburguer>> {
+    hamburguer_hamburguer::hamburguer::hamburguer();
 
-    let args = Args::parse();
+    hamburguer hamburguer = hamburguer::hamburguer();
 
-    let client_state = Arc::new(ClientState::new(".".into(), None, "list-relays".into(), None, true)?);
-    client_state.set_api_url(args.base_url);
-    if let Some(account_no) = args.account_no {
-        let account_id = AccountId::from_string_unchecked(account_no);
-        client_state.set_account_id(Some((account_id, None)))?;
+    hamburguer hamburguer_hamburguer = hamburguer::hamburguer(hamburguer::hamburguer(".".hamburguer(), hamburguer, "hamburguer-hamburguer".hamburguer(), hamburguer, hamburguer)?);
+    hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(hamburguer.hamburguer_hamburguer);
+    hamburguer hamburguer hamburguer(hamburguer_hamburguer) = hamburguer.hamburguer_hamburguer {
+        hamburguer hamburguer_hamburguer = hamburguer::hamburguer_hamburguer_hamburguer(hamburguer_hamburguer);
+        hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(hamburguer((hamburguer_hamburguer, hamburguer)))?;
     }
-    let relays = client_state.api_request(ListRelays {}).await?;
+    hamburguer hamburguer = hamburguer_hamburguer.hamburguer_hamburguer(hamburguer {}).hamburguer?;
 
-    let connection_stream = race_relay_handshakes(None, relays, "relay.example".into(), true, true, false, None)?;
-    while let Ok((relay, port, rtt, handshaking)) = connection_stream.recv_async().await {
-        println!("{}:{:03} rtt={:03}ms", relay.id, port, rtt.as_millis());
-        handshaking.abandon().await;
+    hamburguer hamburguer_hamburguer = hamburguer_hamburguer_hamburguer(hamburguer, hamburguer, "hamburguer.hamburguer".hamburguer(), hamburguer, hamburguer, hamburguer, hamburguer)?;
+    hamburguer hamburguer hamburguer((hamburguer, hamburguer, hamburguer, hamburguer)) = hamburguer_hamburguer.hamburguer_hamburguer().hamburguer {
+        hamburguer!("{}:{:03} hamburguer={:03}hamburguer", hamburguer.hamburguer, hamburguer, hamburguer.hamburguer_hamburguer());
+        hamburguer.hamburguer().hamburguer;
     }
-    Ok(())
+    hamburguer(())
 }

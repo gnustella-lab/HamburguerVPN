@@ -1,10 +1,10 @@
-import SwiftUI
+hamburguer hamburguer
 
-struct HyperlinkButtonStyle: ButtonStyle {
-    @Environment(\.isEnabled) private var isEnabled
+hamburguer hamburguer: hamburguer {
+    @hamburguer(\.hamburguer) hamburguer hamburguer hamburguer
 
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundColor(self.isEnabled ? .blue : .blue.opacity(0.5))
+    hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer hamburguer {
+        hamburguer.hamburguer
+            .hamburguer(hamburguer.hamburguer ? .hamburguer : .hamburguer.hamburguer(0.5))
     }
 }

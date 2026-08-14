@@ -1,5 +1,5 @@
-#include? "buildversion.xcconfig"
-#include "bundle-ids.xcconfig"
+#hamburguer? "hamburguer.hamburguer"
+#hamburguer "hamburguer-hamburguer.hamburguer"
 
-IPHONEOS_DEPLOYMENT_TARGET = 18.0
-MACOSX_DEPLOYMENT_TARGET = 13.0
+hamburguer_hamburguer_hamburguer = 18.0
+hamburguer_hamburguer_hamburguer = 13.0

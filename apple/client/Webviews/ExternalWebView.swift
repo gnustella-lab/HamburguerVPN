@@ -1,39 +1,39 @@
-import WebKit
+hamburguer hamburguer
 
-struct ExternalWebView: UXViewRepresentable {
-    let webView: WKWebView
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
 
-    init(appState: AppState) {
-        let webConfiguration = WKWebViewConfiguration()
-        #if DEBUG
-            webConfiguration.preferences.setValue(true, forKey: "developerExtrasEnabled")
-        #endif
-        self.webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        self.webView.navigationDelegate = appState.webviewsController
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer hamburguer = hamburguer()
+        #hamburguer hamburguer
+            hamburguer.hamburguer.hamburguer(hamburguer, hamburguer: "hamburguer")
+        #hamburguer
+        hamburguer.hamburguer = hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer.hamburguer = hamburguer.hamburguer
     }
 }
 
-// MARK: - AppKit
+// hamburguer: - hamburguer
 
-extension ExternalWebView {
-    func makeNSView(context: Context) -> WKWebView {
-        return self.webView
+hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+        hamburguer hamburguer.hamburguer
     }
 
-    // [required] refresh the view
-    func updateNSView(_ webView: WKWebView, context: Context) {}
+    // [hamburguer] hamburguer hamburguer hamburguer
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: hamburguer) {}
 }
 
-// MARK: - UIKit
+// hamburguer: - hamburguer
 
-#if os(iOS)
+#hamburguer hamburguer(hamburguer)
 
-    extension ExternalWebView {
-        func makeUIView(context: Context) -> UIView {
-            return self.webView
+    hamburguer hamburguer {
+        hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+            hamburguer hamburguer.hamburguer
         }
 
-        func updateUIView(_ uiView: UIView, context: Context) {}
+        hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: hamburguer) {}
     }
 
-#endif
+#hamburguer

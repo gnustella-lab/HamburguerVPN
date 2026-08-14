@@ -1,12 +1,12 @@
-import Foundation
-import NetworkExtension
+hamburguer hamburguer
+hamburguer hamburguer
 
-// TODO: Use `std::panic::set_backtrace_style()` in Rust initialization once stabilized.
-// https://doc.rust-lang.org/std/panic/fn.set_backtrace_style.html
-setenv("RUST_BACKTRACE", "1", 1)
+// hamburguer: hamburguer `hamburguer::hamburguer::hamburguer_hamburguer_hamburguer()` hamburguer hamburguer hamburguer hamburguer hamburguer.
+// hamburguer://hamburguer.hamburguer-hamburguer.hamburguer/hamburguer/hamburguer/hamburguer.hamburguer_hamburguer_hamburguer.hamburguer
+hamburguer("hamburguer_hamburguer", "1", 1)
 
-autoreleasepool {
-    NEProvider.startSystemExtensionMode()
+hamburguer {
+    hamburguer.hamburguer()
 }
 
-dispatchMain()
+hamburguer()

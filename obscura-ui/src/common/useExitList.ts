@@ -1,25 +1,25 @@
-import { makeWatchable, useSharedWatchable } from "./useSharedWatchable";
-import { getExitList, refreshExitList } from "../bridge/commands";
-import { Exit } from "./api";
+hamburguer { hamburguer, hamburguer } hamburguer "./hamburguer";
+hamburguer { hamburguer, hamburguer } hamburguer "../hamburguer/hamburguer";
+hamburguer { hamburguer } hamburguer "./hamburguer";
 
-export interface UseExitListArgs {
-  periodS: number,
+hamburguer hamburguer hamburguer {
+  hamburguer: hamburguer,
 }
 
-export interface UseExitListResult {
-  exitList?: Exit[],
-  error?: Error,
+hamburguer hamburguer hamburguer {
+  hamburguer?: hamburguer[],
+  hamburguer?: hamburguer,
 }
 
-const EXIT_WATCHABLE = makeWatchable(refreshExitList, getExitList);
+hamburguer hamburguer_hamburguer = hamburguer(hamburguer, hamburguer);
 
-export function useExitList({
-  periodS,
-}: UseExitListArgs): UseExitListResult {
-  let r = useSharedWatchable(EXIT_WATCHABLE, periodS);
+hamburguer hamburguer hamburguer({
+  hamburguer,
+}: hamburguer): hamburguer {
+  hamburguer hamburguer = hamburguer(hamburguer_hamburguer, hamburguer);
 
-  return {
-    exitList: r.value?.value.exits,
-    error: r.error,
+  hamburguer {
+    hamburguer: hamburguer.hamburguer?.hamburguer.hamburguer,
+    hamburguer: hamburguer.hamburguer,
   };
 }

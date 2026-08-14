@@ -1,40 +1,40 @@
-package net.obscura.vpnclientapp.client.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonObject
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class GetStatus(
-    val getStatus: Request,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
 ) {
-  @Serializable
-  data class Request(
-      val knownVersion: String? = null,
+  @hamburguer
+  hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer? = hamburguer,
   )
 
-  @Serializable
-  data class Response(
-      val version: String? = null,
-      val accountId: String? = null,
-      val inNewAccountFlow: Boolean,
-      val vpnStatus: VpnStatus,
+  @hamburguer
+  hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer? = hamburguer,
+      hamburguer hamburguer: hamburguer? = hamburguer,
+      hamburguer hamburguer: hamburguer,
+      hamburguer hamburguer: hamburguer,
   ) {
-    @Serializable
-    data class VpnStatus(
-        val disconnected: JsonObject? = null,
-        val connected: Connected? = null,
-        val connecting: JsonObject? = null,
+    @hamburguer
+    hamburguer hamburguer hamburguer(
+        hamburguer hamburguer: hamburguer? = hamburguer,
+        hamburguer hamburguer: hamburguer? = hamburguer,
+        hamburguer hamburguer: hamburguer? = hamburguer,
     ) {
-      @Serializable
-      data class Connected(
-          val networkConfig: NetworkConfig,
+      @hamburguer
+      hamburguer hamburguer hamburguer(
+          hamburguer hamburguer: hamburguer,
       ) {
-        @Serializable
-        data class NetworkConfig(
-            val dns: ArrayList<String?>? = null,
-            val ipv4: String? = null,
-            val ipv6: String? = null,
-            val mtu: Int? = null,
+        @hamburguer
+        hamburguer hamburguer hamburguer(
+            hamburguer hamburguer: hamburguer<hamburguer?>? = hamburguer,
+            hamburguer hamburguer4: hamburguer? = hamburguer,
+            hamburguer hamburguer6: hamburguer? = hamburguer,
+            hamburguer hamburguer: hamburguer? = hamburguer,
         )
       }
     }

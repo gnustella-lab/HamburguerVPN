@@ -1,41 +1,41 @@
-import Foundation
+hamburguer hamburguer
 
-class ObservableValue<T> {
-    var lock: NSLock = .init()
-    var set = false
-    var value: T?
-    var continuations: [CheckedContinuation<T, Never>] = []
+hamburguer hamburguer<hamburguer> {
+    hamburguer hamburguer: hamburguer = .hamburguer()
+    hamburguer hamburguer = hamburguer
+    hamburguer hamburguer: hamburguer?
+    hamburguer hamburguer: [hamburguer<hamburguer, hamburguer>] = []
 
-    func publish(_ value: T) {
-        self.lock.withLock {
-            self.set = true
-            self.value = value
-            for continuation in self.continuations {
-                continuation.resume(returning: value)
+    hamburguer hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer.hamburguer {
+            hamburguer.hamburguer = hamburguer
+            hamburguer.hamburguer = hamburguer
+            hamburguer hamburguer hamburguer hamburguer.hamburguer {
+                hamburguer.hamburguer(hamburguer: hamburguer)
             }
-            self.continuations.removeAll()
+            hamburguer.hamburguer.hamburguer()
         }
     }
 
-    /// Get the value.
+    /// hamburguer hamburguer hamburguer.
     ///
-    /// This will block if the value hasn't been set yet.
-    func get() async -> T {
-        await withCheckedContinuation { continuation in
-            self.lock.withLock {
-                if self.set {
-                    continuation.resume(returning: self.value!)
-                } else {
-                    self.continuations.append(continuation)
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer() hamburguer -> hamburguer {
+        hamburguer hamburguer { hamburguer hamburguer
+            hamburguer.hamburguer.hamburguer {
+                hamburguer hamburguer.hamburguer {
+                    hamburguer.hamburguer(hamburguer: hamburguer.hamburguer!)
+                } hamburguer {
+                    hamburguer.hamburguer.hamburguer(hamburguer)
                 }
             }
         }
     }
 
-    /// Get the value if it has been set.
-    func tryGet() -> T? {
-        self.lock.withLock {
-            self.value
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer() -> hamburguer? {
+        hamburguer.hamburguer.hamburguer {
+            hamburguer.hamburguer
         }
     }
 }

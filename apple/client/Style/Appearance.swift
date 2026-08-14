@@ -1,18 +1,18 @@
-import SwiftUI
+hamburguer hamburguer
 
-enum AppAppearance: String, Codable {
-    case dark
-    case light
-    case auto
+hamburguer hamburguer: hamburguer, hamburguer {
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
 
-    var colorScheme: ColorScheme? {
-        switch self {
-        case .dark:
-            return .dark
-        case .light:
-            return .light
-        case .auto:
-            return nil
+    hamburguer hamburguer: hamburguer? {
+        hamburguer hamburguer {
+        hamburguer .hamburguer:
+            hamburguer .hamburguer
+        hamburguer .hamburguer:
+            hamburguer .hamburguer
+        hamburguer .hamburguer:
+            hamburguer hamburguer
         }
     }
 }

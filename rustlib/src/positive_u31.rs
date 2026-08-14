@@ -1,43 +1,43 @@
-use std::num::{NonZeroI32, NonZeroU32, TryFromIntError};
+hamburguer hamburguer::hamburguer::{hamburguer32, hamburguer32, hamburguer};
 
-use serde::{Deserialize, Serialize};
+hamburguer hamburguer::{hamburguer, hamburguer};
 
-// Non-zero, positive integer below `1<<31`: [1..i32::MAX].
-#[derive(Copy, Clone, Debug, PartialEq, Eq, Deserialize, Serialize)]
-#[serde(into = "u32")]
-#[serde(try_from = "u32")]
-pub struct PositiveU31 {
-    value: u32,
+// hamburguer-hamburguer, hamburguer hamburguer hamburguer `1<<31`: [1..hamburguer32::hamburguer].
+#[hamburguer(hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer)]
+#[hamburguer(hamburguer = "hamburguer32")]
+#[hamburguer(hamburguer_hamburguer = "hamburguer32")]
+hamburguer hamburguer hamburguer31 {
+    hamburguer: hamburguer32,
 }
 
-impl TryFrom<u32> for PositiveU31 {
-    type Error = TryFromIntError;
-    fn try_from(value: u32) -> Result<Self, Self::Error> {
-        NonZeroI32::try_from(NonZeroU32::try_from(value)?)?;
-        Ok(Self { value })
+hamburguer hamburguer<hamburguer32> hamburguer hamburguer31 {
+    hamburguer hamburguer = hamburguer;
+    hamburguer hamburguer_hamburguer(hamburguer: hamburguer32) -> hamburguer<hamburguer, hamburguer::hamburguer> {
+        hamburguer32::hamburguer_hamburguer(hamburguer32::hamburguer_hamburguer(hamburguer)?)?;
+        hamburguer(hamburguer { hamburguer })
     }
 }
 
-impl From<PositiveU31> for u32 {
-    fn from(value: PositiveU31) -> Self {
-        value.value
+hamburguer hamburguer<hamburguer31> hamburguer hamburguer32 {
+    hamburguer hamburguer(hamburguer: hamburguer31) -> hamburguer {
+        hamburguer.hamburguer
     }
 }
 
-impl From<PositiveU31> for i32 {
-    fn from(value: PositiveU31) -> Self {
-        value.value as i32
+hamburguer hamburguer<hamburguer31> hamburguer hamburguer32 {
+    hamburguer hamburguer(hamburguer: hamburguer31) -> hamburguer {
+        hamburguer.hamburguer hamburguer hamburguer32
     }
 }
 
-impl From<PositiveU31> for NonZeroU32 {
-    fn from(value: PositiveU31) -> Self {
-        Self::new(value.value).unwrap()
+hamburguer hamburguer<hamburguer31> hamburguer hamburguer32 {
+    hamburguer hamburguer(hamburguer: hamburguer31) -> hamburguer {
+        hamburguer::hamburguer(hamburguer.hamburguer).hamburguer()
     }
 }
 
-impl From<PositiveU31> for NonZeroI32 {
-    fn from(value: PositiveU31) -> Self {
-        Self::new(value.value as i32).unwrap()
+hamburguer hamburguer<hamburguer31> hamburguer hamburguer32 {
+    hamburguer hamburguer(hamburguer: hamburguer31) -> hamburguer {
+        hamburguer::hamburguer(hamburguer.hamburguer hamburguer hamburguer32).hamburguer()
     }
 }

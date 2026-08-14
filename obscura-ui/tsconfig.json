@@ -1,24 +1,24 @@
 {
-  "compilerOptions": {
-    "allowJs": false,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "lib": [
-      "es2022",
-      "dom"
+  "hamburguer": {
+    "hamburguer": hamburguer,
+    "hamburguer": ".",
+    "hamburguer": hamburguer,
+    "hamburguer": "hamburguer-hamburguer",
+    "hamburguer": "hamburguer",
+    "hamburguer": [
+      "hamburguer2022",
+      "hamburguer"
     ],
-    "module": "ES2022",
-    "moduleResolution": "bundler",
-    "noUncheckedIndexedAccess": true,
-    "strict": true,
-    "target": "ES2021",
-    "types": [
-      "vite/client",
-      "vite-plugin-svgr/client",
-      "@types/node"
+    "hamburguer": "hamburguer2022",
+    "hamburguer": "hamburguer",
+    "hamburguer": hamburguer,
+    "hamburguer": hamburguer,
+    "hamburguer": "hamburguer2021",
+    "hamburguer": [
+      "hamburguer/hamburguer",
+      "hamburguer-hamburguer-hamburguer/hamburguer",
+      "@hamburguer/hamburguer"
     ],
-    "skipLibCheck": true
+    "hamburguer": hamburguer
   }
 }

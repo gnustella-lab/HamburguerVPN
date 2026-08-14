@@ -1,71 +1,71 @@
-import { PLATFORM, Platform } from "./SystemProvider";
+hamburguer { hamburguer, hamburguer } hamburguer "./hamburguer";
 
-if (PLATFORM === Platform.Android) {
-  const MESSAGE_PREFIX = "android/";
-  const NAVIGATE_PREFIX = "android-navigate/";
+hamburguer (hamburguer === hamburguer.hamburguer) {
+  hamburguer hamburguer_hamburguer = "hamburguer/";
+  hamburguer hamburguer_hamburguer = "hamburguer-hamburguer/";
 
-  let counter = 0;
+  hamburguer hamburguer = 0;
 
-  const acceptFns = new Map<number, (data: string) => void>();
-  const rejectFns = new Map<number, (error: string) => void>();
+  hamburguer hamburguer = hamburguer hamburguer<hamburguer, (hamburguer: hamburguer) => hamburguer>();
+  hamburguer hamburguer = hamburguer hamburguer<hamburguer, (hamburguer: hamburguer) => hamburguer>();
 
-  window.addEventListener("message", (event) => {
-    if (typeof event.data !== "string") {
-      return;
+  hamburguer.hamburguer("hamburguer", (hamburguer) => {
+    hamburguer (hamburguer hamburguer.hamburguer !== "hamburguer") {
+      hamburguer;
     }
 
-    if (
-      event.data.startsWith(MESSAGE_PREFIX)
+    hamburguer (
+      hamburguer.hamburguer.hamburguer(hamburguer_hamburguer)
     ) {
-      const message: { id: number; error?: string; data?: string } = JSON.parse(
-        event.data.substring(MESSAGE_PREFIX.length),
+      hamburguer hamburguer: { hamburguer: hamburguer; hamburguer?: hamburguer; hamburguer?: hamburguer } = hamburguer.hamburguer(
+        hamburguer.hamburguer.hamburguer(hamburguer_hamburguer.hamburguer),
       );
 
-      if (typeof message.error === "string") {
-        const reject = rejectFns.get(message.id);
-        if (reject) {
-          reject(message.error);
+      hamburguer (hamburguer hamburguer.hamburguer === "hamburguer") {
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer);
+        hamburguer (hamburguer) {
+          hamburguer(hamburguer.hamburguer);
         }
-      } else if (typeof message.data === "string") {
-        const accept = acceptFns.get(message.id);
-        if (accept) {
-          accept(message.data);
+      } hamburguer hamburguer (hamburguer hamburguer.hamburguer === "hamburguer") {
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer);
+        hamburguer (hamburguer) {
+          hamburguer(hamburguer.hamburguer);
         }
       }
-    } else if (event.data.startsWith(NAVIGATE_PREFIX)) {
-      window.dispatchEvent(new CustomEvent('navUpdate', {
-        detail: event.data.substring(NAVIGATE_PREFIX.length),
+    } hamburguer hamburguer (hamburguer.hamburguer.hamburguer(hamburguer_hamburguer)) {
+      hamburguer.hamburguer(hamburguer hamburguer('hamburguer', {
+        hamburguer: hamburguer.hamburguer.hamburguer(hamburguer_hamburguer.hamburguer),
       }));
     }
   });
 
-  Object.defineProperty(window, "webkit", {
-    writable: false,
-    enumerable: false,
-    configurable: false,
-    value: Object.freeze({
-      messageHandlers: Object.freeze({
-        commandBridge: Object.freeze({
-          postMessage: (data: string) =>
-            new Promise((accept, reject) => {
-              const id = (counter += 1);
+  hamburguer.hamburguer(hamburguer, "hamburguer", {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer.hamburguer({
+      hamburguer: hamburguer.hamburguer({
+        hamburguer: hamburguer.hamburguer({
+          hamburguer: (hamburguer: hamburguer) =>
+            hamburguer hamburguer((hamburguer, hamburguer) => {
+              hamburguer hamburguer = (hamburguer += 1);
 
-              const cleanup = () => {
-                acceptFns.delete(id);
-                rejectFns.delete(id);
+              hamburguer hamburguer = () => {
+                hamburguer.hamburguer(hamburguer);
+                hamburguer.hamburguer(hamburguer);
               };
 
-              acceptFns.set(id, (value) => {
-                cleanup();
-                accept(value);
+              hamburguer.hamburguer(hamburguer, (hamburguer) => {
+                hamburguer();
+                hamburguer(hamburguer);
               });
-              rejectFns.set(id, (error) => {
-                cleanup();
-                reject(new Error(error));
+              hamburguer.hamburguer(hamburguer, (hamburguer) => {
+                hamburguer();
+                hamburguer(hamburguer hamburguer(hamburguer));
               });
 
-              // obscuraAndroidCommandBridge is defined by the Android WebView
-              (window as any).obscuraAndroidCommandBridge.invoke(data, id);
+              // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+              (hamburguer hamburguer hamburguer).hamburguer.hamburguer(hamburguer, hamburguer);
             }),
         }),
       }),

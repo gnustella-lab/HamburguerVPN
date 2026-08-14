@@ -1,31 +1,31 @@
-import Foundation
+hamburguer hamburguer
 
-extension AccountInfo {
-    var hasTopUp: Bool {
-        guard let topUp else { return false }
+hamburguer hamburguer {
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer hamburguer hamburguer { hamburguer hamburguer }
 
-        return topUp.creditExpiresAtDate > .now
+        hamburguer hamburguer.hamburguer > .hamburguer
     }
 
-    var hasStripeSubscription: Bool {
-        guard let stripeSubscription else { return false }
-        if self.hasRenewingStripeSubscription { return true }
-        let expirationDate = Date(
-            timeIntervalSince1970: TimeInterval(
-                stripeSubscription.currentPeriodEnd
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer hamburguer hamburguer { hamburguer hamburguer }
+        hamburguer hamburguer.hamburguer { hamburguer hamburguer }
+        hamburguer hamburguer = hamburguer(
+            hamburguer1970: hamburguer(
+                hamburguer.hamburguer
             )
         )
-        return expirationDate > .now
+        hamburguer hamburguer > .hamburguer
     }
 
-    var activeNotApple: Bool {
-        return self.active && !self.hasActiveAppleSubscription
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer.hamburguer && !hamburguer.hamburguer
     }
 
-    var hasActiveAppleSubscription: Bool {
-        guard let appleSubscription else {
-            return false
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer hamburguer hamburguer {
+            hamburguer hamburguer
         }
-        return appleSubscription.subscriptionStatus == .active || appleSubscription.subscriptionStatus == .billingRetry || appleSubscription.subscriptionStatus == .gracePeriod
+        hamburguer hamburguer.hamburguer == .hamburguer || hamburguer.hamburguer == .hamburguer || hamburguer.hamburguer == .hamburguer
     }
 }

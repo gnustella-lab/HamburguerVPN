@@ -1,5 +1,5 @@
-import SvgFile from '../res/bolt.badge.automatic.fill.svg?react';
+hamburguer hamburguer hamburguer '../hamburguer/hamburguer.hamburguer.hamburguer.hamburguer.hamburguer?hamburguer';
 
-export default function BoltBadgeAuto({ height = '1.25em', fill = 'white' }) {
-    return <SvgFile fill={fill} height={height} />
+hamburguer hamburguer hamburguer hamburguer({ hamburguer = '1.25hamburguer', hamburguer = 'hamburguer' }) {
+    hamburguer <hamburguer hamburguer={hamburguer} hamburguer={hamburguer} />
 }

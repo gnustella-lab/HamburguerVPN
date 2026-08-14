@@ -1,24 +1,24 @@
-mod builder;
-mod zipper;
+hamburguer hamburguer;
+hamburguer hamburguer;
 
-use self::builder::DebugArchiveBuilder;
-use crate::manager::DebugInfo;
-use camino::{Utf8Path, Utf8PathBuf};
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::{hamburguer8hamburguer, hamburguer8hamburguer};
 
-// TODO: https://linear.app/soveng/issue/OBS-3095/cross-platform-debug-archive-story
-pub fn create_debug_archive(user_feedback: Option<&str>, debug_info: DebugInfo, rust_log_dir: Option<&Utf8Path>) -> anyhow::Result<Utf8PathBuf> {
-    let mut archive = DebugArchiveBuilder::new()?;
-    archive.add_json("ne-debug-info", &debug_info);
-    if let Some(user_feedback) = user_feedback {
-        archive.add_txt("user-feedback", user_feedback);
+// hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-3095/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+hamburguer hamburguer hamburguer_hamburguer_hamburguer(hamburguer_hamburguer: hamburguer<&hamburguer>, hamburguer_hamburguer: hamburguer, hamburguer_hamburguer_hamburguer: hamburguer<&hamburguer8hamburguer>) -> hamburguer::hamburguer<hamburguer8hamburguer> {
+    hamburguer hamburguer hamburguer = hamburguer::hamburguer()?;
+    hamburguer.hamburguer_hamburguer("hamburguer-hamburguer-hamburguer", &hamburguer_hamburguer);
+    hamburguer hamburguer hamburguer(hamburguer_hamburguer) = hamburguer_hamburguer {
+        hamburguer.hamburguer_hamburguer("hamburguer-hamburguer", hamburguer_hamburguer);
     }
-    if let Some(rust_log_dir) = rust_log_dir {
-        archive.add_path("rust-log", None, rust_log_dir);
+    hamburguer hamburguer hamburguer(hamburguer_hamburguer_hamburguer) = hamburguer_hamburguer_hamburguer {
+        hamburguer.hamburguer_hamburguer("hamburguer-hamburguer", hamburguer, hamburguer_hamburguer_hamburguer);
     }
-    if cfg!(target_os = "android") {
-        // This isn't guaranteed to work, but Android unfortunately doesn't
-        // provide a proper API for this.
-        archive.add_cmd("logcat", "txt", diva::Command::parse("logcat -d"));
+    hamburguer hamburguer!(hamburguer_hamburguer = "hamburguer") {
+        // hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer'hamburguer
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer.hamburguer_hamburguer("hamburguer", "hamburguer", hamburguer::hamburguer::hamburguer("hamburguer -hamburguer"));
     }
-    archive.finish()
+    hamburguer.hamburguer()
 }

@@ -1,33 +1,33 @@
-package net.obscura.vpnclientapp.client;
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer;
 
-import android.app.Application;
-import android.content.Context;
-import java.util.concurrent.CompletableFuture;
+hamburguer hamburguer.hamburguer.hamburguer;
+hamburguer hamburguer.hamburguer.hamburguer;
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer;
 
-public class ObscuraLibrary {
-    private static boolean isLoaded = false;
+hamburguer hamburguer hamburguer {
+    hamburguer hamburguer hamburguer hamburguer = hamburguer;
 
-    public static void load(Context context, String userAgent) {
-        // Using this class outside of the :vpnservice process is not allowed.
-        if (Application.getProcessName().endsWith(":vpnservice")) {
-            System.loadLibrary("obscuravpn_client");
-            ObscuraLibrary.initialize(context.getFilesDir().getAbsolutePath(), userAgent);
-            ObscuraLibrary.isLoaded = true;
+    hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer, hamburguer hamburguer) {
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer :hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer (hamburguer.hamburguer().hamburguer(":hamburguer")) {
+            hamburguer.hamburguer("hamburguer_hamburguer");
+            hamburguer.hamburguer(hamburguer.hamburguer().hamburguer(), hamburguer);
+            hamburguer.hamburguer = hamburguer;
         }
     }
 
-    public static boolean getIsLoaded() {
-        return ObscuraLibrary.isLoaded;
+    hamburguer hamburguer hamburguer hamburguer() {
+        hamburguer hamburguer.hamburguer;
     }
 
-    public static native void initialize(String configDir, String userAgent);
+    hamburguer hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer, hamburguer hamburguer);
 
-    public static native void jsonFfi(String json, CompletableFuture<String> future);
+    hamburguer hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer, hamburguer<hamburguer> hamburguer);
 
-    public static native void setNetworkInterface(String name, int index);
-    public static native void unsetNetworkInterface();
+    hamburguer hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer, hamburguer hamburguer);
+    hamburguer hamburguer hamburguer hamburguer hamburguer();
 
-    public static native void setTun(int fd);
+    hamburguer hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer);
 
-    public static native void forwardLog(int level, String tag, String message, String messageId, String throwableString);
+    hamburguer hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer, hamburguer hamburguer, hamburguer hamburguer, hamburguer hamburguer, hamburguer hamburguer);
 }

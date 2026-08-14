@@ -1,13 +1,13 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import kotlinx.serialization.Serializable
+hamburguer hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class SetFeatureFlag(
-    val flag: String?,
-    val active: Boolean?,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer?,
+    hamburguer hamburguer: hamburguer?,
 ) {
-  fun run(): Any {
-    TODO()
+  hamburguer hamburguer(): hamburguer {
+    hamburguer()
   }
 }

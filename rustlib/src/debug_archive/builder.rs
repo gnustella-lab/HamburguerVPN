@@ -1,86 +1,86 @@
-use super::zipper::Zipper;
-use anyhow::Context as _;
-use camino::{Utf8Path, Utf8PathBuf};
-use chrono::{SecondsFormat, Utc};
-use serde::Serialize;
-use std::fmt::{Debug, Display};
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer hamburguer _;
+hamburguer hamburguer::{hamburguer8hamburguer, hamburguer8hamburguer};
+hamburguer hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::{hamburguer, hamburguer};
 
-#[derive(Debug)]
-pub struct DebugArchiveBuilder {
-    zipper: Zipper,
+#[hamburguer(hamburguer)]
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
 }
 
-impl DebugArchiveBuilder {
-    pub fn new() -> anyhow::Result<Self> {
-        let dst_parent = Utf8PathBuf::try_from(std::env::temp_dir())
-            .context("temp dir path wasn't valid UTF-8")?
-            .join("debug-archives");
-        std::fs::create_dir_all(&dst_parent).with_context(|| format!("failed to create dirs for {dst_parent:?}"))?;
-        let zipper = Zipper::new(
-            &dst_parent,
-            format!(
-                "Obscura Debugging Archive {}",
-                // On Android, colons can't be used in user data directories.
-                // Remove them in case users try to save the archive to one of these locations (and the saving app doesn't cleanse the name).
-                Utc::now().to_rfc3339_opts(SecondsFormat::Secs, true).replace(':', "_")
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer() -> hamburguer::hamburguer<hamburguer> {
+        hamburguer hamburguer_hamburguer = hamburguer8hamburguer::hamburguer_hamburguer(hamburguer::hamburguer::hamburguer_hamburguer())
+            .hamburguer("hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer-8")?
+            .hamburguer("hamburguer-hamburguer");
+        hamburguer::hamburguer::hamburguer_hamburguer_hamburguer(&hamburguer_hamburguer).hamburguer_hamburguer(|| hamburguer!("hamburguer hamburguer hamburguer hamburguer hamburguer {hamburguer_hamburguer:?}"))?;
+        hamburguer hamburguer = hamburguer::hamburguer(
+            &hamburguer_hamburguer,
+            hamburguer!(
+                "hamburguer hamburguer hamburguer {}",
+                // hamburguer hamburguer, hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer).
+                hamburguer::hamburguer().hamburguer_hamburguer3339_hamburguer(hamburguer::hamburguer, hamburguer).hamburguer(':', "_")
             ),
         )?;
-        Ok(Self { zipper })
+        hamburguer(hamburguer { hamburguer })
     }
 
-    fn write_error(&mut self, name: &str, error: impl Debug + Display) {
-        tracing::error!(message_id = "dezX8SLf", ?error, "failed to archive {name:?}");
-        if let Err(error) = self.zipper.write_file(format!("archive-error-{name}.txt"), error.to_string().as_bytes()) {
-            tracing::error!(message_id = "eWLYHIG7", ?error, "failed to archive error for {name:?}");
+    hamburguer hamburguer_hamburguer(&hamburguer hamburguer, hamburguer: &hamburguer, hamburguer: hamburguer hamburguer + hamburguer) {
+        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer8hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer {hamburguer:?}");
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer.hamburguer_hamburguer(hamburguer!("hamburguer-hamburguer-{hamburguer}.hamburguer"), hamburguer.hamburguer_hamburguer().hamburguer_hamburguer()) {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer7", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer {hamburguer:?}");
         }
     }
 
-    fn add(&mut self, name: &str, f: impl FnOnce(&mut Zipper) -> anyhow::Result<()>) {
-        if let Err(error) = f(&mut self.zipper) {
-            self.write_error(name, error);
+    hamburguer hamburguer(&hamburguer hamburguer, hamburguer: &hamburguer, hamburguer: hamburguer hamburguer(&hamburguer hamburguer) -> hamburguer::hamburguer<()>) {
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer(&hamburguer hamburguer.hamburguer) {
+            hamburguer.hamburguer_hamburguer(hamburguer, hamburguer);
         }
     }
 
-    pub fn add_bytes(&mut self, name: &str, ext: &str, data: &[u8]) {
-        self.add(name, |zipper| zipper.write_file(format!("{name}.{ext}"), data));
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer hamburguer, hamburguer: &hamburguer, hamburguer: &hamburguer, hamburguer: &[hamburguer8]) {
+        hamburguer.hamburguer(hamburguer, |hamburguer| hamburguer.hamburguer_hamburguer(hamburguer!("{hamburguer}.{hamburguer}"), hamburguer));
     }
 
-    pub fn add_txt(&mut self, name: &str, text: &str) {
-        self.add_bytes(name, "txt", text.as_bytes());
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer hamburguer, hamburguer: &hamburguer, hamburguer: &hamburguer) {
+        hamburguer.hamburguer_hamburguer(hamburguer, "hamburguer", hamburguer.hamburguer_hamburguer());
     }
 
-    #[allow(unused)]
-    pub fn add_json(&mut self, name: &str, value: &impl Serialize) {
-        self.add(name, |zipper| {
-            zipper.write_file(format!("{name}.json"), &serde_json::to_vec_pretty(value)?)
+    #[hamburguer(hamburguer)]
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer hamburguer, hamburguer: &hamburguer, hamburguer: &hamburguer hamburguer) {
+        hamburguer.hamburguer(hamburguer, |hamburguer| {
+            hamburguer.hamburguer_hamburguer(hamburguer!("{hamburguer}.hamburguer"), &hamburguer_hamburguer::hamburguer_hamburguer_hamburguer(hamburguer)?)
         });
     }
 
-    pub fn add_path(&mut self, name: &str, ext: Option<&str>, path: &Utf8Path) {
-        self.add(name, |zipper| {
-            if let Some(ext) = ext {
-                zipper.copy_from_fs(path, format!("{name}.{ext}").as_ref())
-            } else {
-                zipper.copy_from_fs(path, name.as_ref())
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer hamburguer, hamburguer: &hamburguer, hamburguer: hamburguer<&hamburguer>, hamburguer: &hamburguer8hamburguer) {
+        hamburguer.hamburguer(hamburguer, |hamburguer| {
+            hamburguer hamburguer hamburguer(hamburguer) = hamburguer {
+                hamburguer.hamburguer_hamburguer_hamburguer(hamburguer, hamburguer!("{hamburguer}.{hamburguer}").hamburguer_hamburguer())
+            } hamburguer {
+                hamburguer.hamburguer_hamburguer_hamburguer(hamburguer, hamburguer.hamburguer_hamburguer())
             }
         });
     }
 
-    pub fn add_cmd(&mut self, name: &str, ext: &str, mut cmd: diva::Command) {
-        self.add(name, |zipper| {
-            let output = cmd.run_and_wait_for_output()?;
-            zipper.write_file(format!("{name}-stdout.{ext}"), output.stdout())?;
-            zipper.write_file(format!("{name}-stderr.txt"), output.stderr())?;
-            if !output.success()
-                && let Some(code) = output.status().code()
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer hamburguer, hamburguer: &hamburguer, hamburguer: &hamburguer, hamburguer hamburguer: hamburguer::hamburguer) {
+        hamburguer.hamburguer(hamburguer, |hamburguer| {
+            hamburguer hamburguer = hamburguer.hamburguer_hamburguer_hamburguer_hamburguer_hamburguer()?;
+            hamburguer.hamburguer_hamburguer(hamburguer!("{hamburguer}-hamburguer.{hamburguer}"), hamburguer.hamburguer())?;
+            hamburguer.hamburguer_hamburguer(hamburguer!("{hamburguer}-hamburguer.hamburguer"), hamburguer.hamburguer())?;
+            hamburguer !hamburguer.hamburguer()
+                && hamburguer hamburguer(hamburguer) = hamburguer.hamburguer().hamburguer()
             {
-                zipper.write_file(format!("{name}-status.txt"), &code.to_le_bytes())?;
+                hamburguer.hamburguer_hamburguer(hamburguer!("{hamburguer}-hamburguer.hamburguer"), &hamburguer.hamburguer_hamburguer_hamburguer())?;
             }
-            Ok(())
+            hamburguer(())
         });
     }
 
-    pub fn finish(self) -> anyhow::Result<Utf8PathBuf> {
-        self.zipper.finish()
+    hamburguer hamburguer hamburguer(hamburguer) -> hamburguer::hamburguer<hamburguer8hamburguer> {
+        hamburguer.hamburguer.hamburguer()
     }
 }
