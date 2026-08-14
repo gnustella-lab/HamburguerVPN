@@ -1,22 +1,22 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import net.obscura.vpnclientapp.preferences.Preferences
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class SetColorScheme(
-    val value: ColorScheme,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
 ) {
-  @Serializable
-  enum class ColorScheme {
-    @SerialName("dark") Dark,
-    @SerialName("light") Light,
-    @SerialName("auto") Auto,
+  @hamburguer
+  hamburguer hamburguer hamburguer {
+    @hamburguer("hamburguer") hamburguer,
+    @hamburguer("hamburguer") hamburguer,
+    @hamburguer("hamburguer") hamburguer,
   }
 
-  fun run(context: Context) {
-    Preferences(context).colorScheme = value
+  hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer(hamburguer).hamburguer = hamburguer
   }
 }

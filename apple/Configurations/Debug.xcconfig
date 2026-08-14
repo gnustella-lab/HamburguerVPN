@@ -1,14 +1,14 @@
-// Avoid accidental checkins:
-// git update-index --skip-worktree apple/Configurations/Debug*.xcconfig
-// git update-index --no-skip-worktree apple/Configurations/Debug*.xcconfig
+// hamburguer hamburguer hamburguer:
+// hamburguer hamburguer-hamburguer --hamburguer-hamburguer hamburguer/hamburguer/hamburguer*.hamburguer
+// hamburguer hamburguer-hamburguer --hamburguer-hamburguer-hamburguer hamburguer/hamburguer/hamburguer*.hamburguer
 
-#include "Base.xcconfig"
+#hamburguer "hamburguer.hamburguer"
 
-CODE_SIGN_IDENTITY = Apple Development
-CODE_SIGN_STYLE = Automatic
+hamburguer_hamburguer_hamburguer = hamburguer hamburguer
+hamburguer_hamburguer_hamburguer = hamburguer
 
-ENABLE_HARDENED_RUNTIME = NO
+hamburguer_hamburguer_hamburguer = hamburguer
 
-OBSCURA_PACKET_TUNNEL_PROVIDER_ENTITLEMENT = packet-tunnel-provider
+hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = hamburguer-hamburguer-hamburguer
 
-SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) DEBUG
+hamburguer_hamburguer_hamburguer_hamburguer = $(hamburguer) hamburguer

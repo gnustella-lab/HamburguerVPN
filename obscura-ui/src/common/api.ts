@@ -1,177 +1,177 @@
-import { getCountryData, ICountryData, TContinentCode, TCountryCode } from "countries-list";
-import { useEffect, useReducer } from 'react';
-import { AccountId } from "./accountUtils";
-import { AccountStatus } from './appContext';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer } hamburguer "hamburguer-hamburguer";
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer } hamburguer "./hamburguer";
+hamburguer { hamburguer } hamburguer './hamburguer';
 
-export interface Exit {
-    id: string,
-    country_code: string, // lowercase TCountryCode
-    city_code: string,
-    city_name: string,
-    provider_id: string,
-    provider_url: string,
-    provider_name: string,
-    provider_homepage_url: string,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer, // hamburguer hamburguer
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
 }
 
-export function getContinent(countryData: ICountryData): TContinentCode {
-  if (countryData.iso2 === 'MX') return 'SA';
-  return countryData.continent;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (hamburguer.hamburguer2 === 'hamburguer') hamburguer 'hamburguer';
+  hamburguer hamburguer.hamburguer;
 }
 
-export function getCountry(country_code: string): ICountryData {
-  return getCountryData(country_code.toUpperCase() as TCountryCode);
+hamburguer hamburguer hamburguer(hamburguer_hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer(hamburguer_hamburguer.hamburguer() hamburguer hamburguer);
 }
 
-export function getExitCountry(exit: Exit): ICountryData {
-  if (exit.country_code.length !== 2) {
-    console.warn(`Exit ${exit.id} (${exit.city_name}) does not have a country code of length 2 (got ${exit.country_code})`);
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (hamburguer.hamburguer_hamburguer.hamburguer !== 2) {
+    hamburguer.hamburguer(`hamburguer ${hamburguer.hamburguer} (${hamburguer.hamburguer_hamburguer}) hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 2 (hamburguer ${hamburguer.hamburguer_hamburguer})`);
   }
-  return getCountry(exit.country_code);
+  hamburguer hamburguer(hamburguer.hamburguer_hamburguer);
 }
 
-export interface AccountInfo {
-    id: AccountId,
-    active: boolean,
-    top_up: TopUpInfo | null,
-    subscription: SubscriptionInfo | null,
-    apple_subscription: AppleSubscriptionInfo | null,
-    auto_renews: number | null,
-    current_expiry: number | null,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer | hamburguer,
+    hamburguer: hamburguer | hamburguer,
+    hamburguer_hamburguer: hamburguer | hamburguer,
+    hamburguer_hamburguer: hamburguer | hamburguer,
+    hamburguer_hamburguer: hamburguer | hamburguer,
 }
 
-export interface TopUpInfo {
-    credit_expires_at: number,
+hamburguer hamburguer hamburguer {
+    hamburguer_hamburguer_hamburguer: hamburguer,
 }
 
-export function hasCredit(accountInfo: AccountInfo | undefined): boolean {
-    const expires = accountInfo?.top_up?.credit_expires_at || 0;
-    return new Date(expires * 1000).getTime() > new Date().getTime();
+hamburguer hamburguer hamburguer(hamburguer: hamburguer | hamburguer): hamburguer {
+    hamburguer hamburguer = hamburguer?.hamburguer_hamburguer?.hamburguer_hamburguer_hamburguer || 0;
+    hamburguer hamburguer hamburguer(hamburguer * 1000).hamburguer() > hamburguer hamburguer().hamburguer();
 }
 
-export interface SubscriptionInfo {
-    status: SubscriptionStatus,
-    current_period_start: number,
-    current_period_end: number,
-    cancel_at_period_end: boolean,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer_hamburguer: hamburguer,
 }
 
-// returns if a subscription is active, regardless about renewal status
-export function hasActiveSubscription(account: AccountInfo): boolean {
-    if (account.subscription?.status === SubscriptionStatus.ACTIVE
-        || account.subscription?.status === SubscriptionStatus.TRIALING) {
-        return true;
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+    hamburguer (hamburguer.hamburguer?.hamburguer === hamburguer.hamburguer
+        || hamburguer.hamburguer?.hamburguer === hamburguer.hamburguer) {
+        hamburguer hamburguer;
     }
-    if (account.apple_subscription?.status === AppleSubscriptionStatus.ACTIVE
-        && account.apple_subscription.renewal_date > new Date().getTime()) {
-      return true;
+    hamburguer (hamburguer.hamburguer_hamburguer?.hamburguer === hamburguer.hamburguer
+        && hamburguer.hamburguer_hamburguer.hamburguer_hamburguer > hamburguer hamburguer().hamburguer()) {
+      hamburguer hamburguer;
     }
-    return false;
+    hamburguer hamburguer;
 }
 
-export function isRenewing(account: AccountInfo): boolean {
-  return account.auto_renews !== null;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer.hamburguer_hamburguer !== hamburguer;
 }
 
-/// Returns the end of the current payment period.
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 ///
-/// Note that if the account has a renewing subscription it can stay active for longer.
-export function paidUntil(account: AccountInfo): Date | null {
-  const autoRenewDate = account.auto_renews || 0;
-  const currentExpiry = account.current_expiry || 0;
-  const maxExpiry = Math.max(autoRenewDate, currentExpiry);
-  return maxExpiry > 0 ? new Date(maxExpiry * 1000) : null;
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+  hamburguer hamburguer = hamburguer.hamburguer_hamburguer || 0;
+  hamburguer hamburguer = hamburguer.hamburguer_hamburguer || 0;
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer, hamburguer);
+  hamburguer hamburguer > 0 ? hamburguer hamburguer(hamburguer * 1000) : hamburguer;
 }
 
-export function activeAppleSubscription(account: AccountInfo): boolean {
-  return (
-    account.active && account.apple_subscription !== null &&
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (
+    hamburguer.hamburguer && hamburguer.hamburguer_hamburguer !== hamburguer &&
       (
-        account.apple_subscription.status === AppleSubscriptionStatus.ACTIVE ||
-        account.apple_subscription.status === AppleSubscriptionStatus.GRACE_PERIOD
+        hamburguer.hamburguer_hamburguer.hamburguer === hamburguer.hamburguer ||
+        hamburguer.hamburguer_hamburguer.hamburguer === hamburguer.hamburguer_hamburguer
       )
   );
 }
 
-export function accountIsExpired(accountInfo: AccountInfo): boolean {
-  if (accountInfo.auto_renews) return false;
-  return (accountInfo.active && accountInfo.current_expiry) ?
-    new Date(accountInfo.current_expiry * 1000).getTime() < new Date().getTime() :
-    true;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (hamburguer.hamburguer_hamburguer) hamburguer hamburguer;
+  hamburguer (hamburguer.hamburguer && hamburguer.hamburguer_hamburguer) ?
+    hamburguer hamburguer(hamburguer.hamburguer_hamburguer * 1000).hamburguer() < hamburguer hamburguer().hamburguer() :
+    hamburguer;
 }
 
-// TimeRemaining is represented in parts of a whole
-export interface TimeRemaining {
-    days: number;
-    hours: number;
-    minutes: number;
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer;
+    hamburguer: hamburguer;
+    hamburguer: hamburguer;
 }
 
-/// Returns a human representation of the time left on an account.
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 ///
-/// Note that there is funny rounding on this number, it MUST NOT be used for computation.
-export function accountTimeRemaining(account: AccountInfo): TimeRemaining {
-  const expiry = paidUntil(account);
-  const remainingMs = expiry !== null ? expiry.getTime() - Date.now() : 0;
-  let remainingSeconds = Math.floor(remainingMs / 1000);
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer = hamburguer(hamburguer);
+  hamburguer hamburguer = hamburguer !== hamburguer ? hamburguer.hamburguer() - hamburguer.hamburguer() : 0;
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer / 1000);
 
-  const days = Math.floor(remainingMs / 1000 / 3600 / 24);
-  remainingSeconds -= days * 86400;
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer / 1000 / 3600 / 24);
+  hamburguer -= hamburguer * 86400;
 
-  const hours = Math.floor(remainingSeconds / 3600);
-  remainingSeconds -= hours * 3600;
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer / 3600);
+  hamburguer -= hamburguer * 3600;
 
-  const minutes = Math.floor(remainingSeconds / 60);
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer / 60);
 
-  return { days, hours, minutes };
+  hamburguer { hamburguer, hamburguer, hamburguer };
 }
 
-/// https://docs.stripe.com/api/subscriptions/object#subscription_object-status
-export const enum SubscriptionStatus {
-    ACTIVE = "active",
-    CANCELED = "canceled",
-    INCOMPLETE = "incomplete",
-    INCOMPLETE_EXPIRED = "incomplete_expired",
-    PAST_DUE = "past_due",
-    PAUSED = "paused",
-    TRIALING = "trialing",
-    UNPAID = "unpaid",
+/// hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer#hamburguer_hamburguer-hamburguer
+hamburguer hamburguer hamburguer hamburguer {
+    hamburguer = "hamburguer",
+    hamburguer = "hamburguer",
+    hamburguer = "hamburguer",
+    hamburguer_hamburguer = "hamburguer_hamburguer",
+    hamburguer_hamburguer = "hamburguer_hamburguer",
+    hamburguer = "hamburguer",
+    hamburguer = "hamburguer",
+    hamburguer = "hamburguer",
 }
 
-// https://developer.apple.com/documentation/appstoreserverapi/status
-export const enum AppleSubscriptionStatus {
-    ACTIVE = 1,
-    EXPIRED = 2,
-    BILLING_RETRY = 3,
-    GRACE_PERIOD = 4,
-    REVOKED = 5,
+// hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer
+hamburguer hamburguer hamburguer hamburguer {
+    hamburguer = 1,
+    hamburguer = 2,
+    hamburguer_hamburguer = 3,
+    hamburguer_hamburguer = 4,
+    hamburguer = 5,
 }
 
-export interface AppleSubscriptionInfo {
-    status: AppleSubscriptionStatus,
-    auto_renew_status: boolean,
-    renewal_date: number,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
 }
 
-export function hasAppleSubscription(accountInfo: AccountInfo | undefined): boolean {
-    const status = accountInfo?.apple_subscription?.status;
-    return status === AppleSubscriptionStatus.ACTIVE
-      || status === AppleSubscriptionStatus.GRACE_PERIOD;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer | hamburguer): hamburguer {
+    hamburguer hamburguer = hamburguer?.hamburguer_hamburguer?.hamburguer;
+    hamburguer hamburguer === hamburguer.hamburguer
+      || hamburguer === hamburguer.hamburguer_hamburguer;
 }
 
 /**
- * Force the component to re-render when an account is expected to expire
+ * hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
  */
-export function useReRenderWhenExpired(account: AccountStatus | null) {
-  const [, forceUpdate] = useReducer(x => x + 1, 0);
+hamburguer hamburguer hamburguer(hamburguer: hamburguer | hamburguer) {
+  hamburguer [, hamburguer] = hamburguer(hamburguer => hamburguer + 1, 0);
 
-  useEffect(() => {
-    if (account !== null) {
-      const expiryDate = paidUntil(account.account_info);
-      if (expiryDate !== null && !accountIsExpired(account.account_info)) {
-        const timeoutId = setTimeout(forceUpdate, expiryDate.getTime() - (new Date()).getTime());
-        return () => clearTimeout(timeoutId);
+  hamburguer(() => {
+    hamburguer (hamburguer !== hamburguer) {
+      hamburguer hamburguer = hamburguer(hamburguer.hamburguer_hamburguer);
+      hamburguer (hamburguer !== hamburguer && !hamburguer(hamburguer.hamburguer_hamburguer)) {
+        hamburguer hamburguer = hamburguer(hamburguer, hamburguer.hamburguer() - (hamburguer hamburguer()).hamburguer());
+        hamburguer () => hamburguer(hamburguer);
       }
     }
-  }, [account?.last_updated_sec]);
+  }, [hamburguer?.hamburguer_hamburguer_hamburguer]);
 }

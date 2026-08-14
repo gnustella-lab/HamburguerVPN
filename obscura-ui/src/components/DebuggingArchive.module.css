@@ -1,32 +1,32 @@
-.card {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+.hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-0), hamburguer(--hamburguer-hamburguer-hamburguer-6));
 }
 
-.havingTroubleTitle {
-    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+.hamburguer {
+    hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-7), hamburguer(--hamburguer-hamburguer-hamburguer-3));
 }
 
-.debugLabel {
-    background-color: light-dark(white, var(--mantine-color-dark-8));
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    max-width: 155px;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer, hamburguer(--hamburguer-hamburguer-hamburguer-8));
+    hamburguer: hamburguer;
+    hamburguer: 16hamburguer;
+    hamburguer: 16hamburguer;
+    hamburguer-hamburguer: 155hamburguer;
 }
 
-.debugLabelHandheld {
-    @media (orientation: portrait) {
-        position: relative;
-        right: auto;
-        top: 50px;
-        bottom: auto;
-        max-width: 170px;
-        text-align: center;
+.hamburguer {
+    @hamburguer (hamburguer: hamburguer) {
+        hamburguer: hamburguer;
+        hamburguer: hamburguer;
+        hamburguer: 50hamburguer;
+        hamburguer: hamburguer;
+        hamburguer-hamburguer: 170hamburguer;
+        hamburguer-hamburguer: hamburguer;
     }
 
-    @media (orientation: landscape) {
-        top: 16px;
-        right: 16px;
-        bottom: auto;
+    @hamburguer (hamburguer: hamburguer) {
+        hamburguer: 16hamburguer;
+        hamburguer: 16hamburguer;
+        hamburguer: hamburguer;
     }
 }

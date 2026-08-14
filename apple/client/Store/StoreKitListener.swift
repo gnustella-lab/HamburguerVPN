@@ -1,51 +1,51 @@
-import os
-import StoreKit
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "StoreKitListener")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-/// Apple wants us to start listening "as soon as your app launches":
-/// https://developer.apple.com/documentation/storekit/transaction/updates
-class StoreKitListener {
-    private let purchaseIntentsListener: Task<Void, Error>
-    private let transactionUpdatesListener: Task<Void, Error>
-    private let storefrontUpdatesListener: Task<Void, Error>
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer":
+/// hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer, hamburguer>
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer, hamburguer>
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer, hamburguer>
 
-    init(appState: AppState) {
-        self.purchaseIntentsListener = Task.detached {
-            for await purchaseIntent in PurchaseIntent.intents {
-                do {
-                    _ = try await appState.purchase(product: purchaseIntent.product)
-                } catch {
-                    logger.error("failed to honor purchase intent: \(error, privacy: .public)")
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer.hamburguer {
+            hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer {
+                hamburguer {
+                    _ = hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer.hamburguer)
+                } hamburguer {
+                    hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
                 }
             }
         }
-        self.transactionUpdatesListener = Task.detached {
-            // `updates` is for transactions that happen outside the app or on
-            // other devices, and also receives queued unfinished transactions
-            // once at launch.
-            for await result in Transaction.updates {
-                if case .verified(let transaction) = result {
-                    // We don't really have a concept of "undelivered"
-                    // transactions, so if any transactions are somehow left
-                    // unfinished we should just mark them as finished.
-                    await transaction.finish()
+        hamburguer.hamburguer = hamburguer.hamburguer {
+            // `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            // hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            // hamburguer hamburguer hamburguer.
+            hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer {
+                hamburguer hamburguer .hamburguer(hamburguer hamburguer) = hamburguer {
+                    // hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer"
+                    // hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+                    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                    hamburguer hamburguer.hamburguer()
                 }
-                await appState.storeKitModel.updatePurchases()
+                hamburguer hamburguer.hamburguer.hamburguer()
             }
         }
-        self.storefrontUpdatesListener = Task.detached {
-            // "The storefront value can change at any time."
-            // https://developer.apple.com/documentation/storekit/storefront/updates
-            for await storefront in Storefront.updates {
-                await appState.storeKitModel.updateStorefront(storefront)
+        hamburguer.hamburguer = hamburguer.hamburguer {
+            // "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer."
+            // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer
+            hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer {
+                hamburguer hamburguer.hamburguer.hamburguer(hamburguer)
             }
         }
     }
 
-    deinit {
-        self.purchaseIntentsListener.cancel()
-        self.transactionUpdatesListener.cancel()
-        self.storefrontUpdatesListener.cancel()
+    hamburguer {
+        hamburguer.hamburguer.hamburguer()
+        hamburguer.hamburguer.hamburguer()
+        hamburguer.hamburguer.hamburguer()
     }
 }

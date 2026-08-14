@@ -1,24 +1,24 @@
-import OSLog
-import SwiftUI
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "App")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-@main
-struct iOSClientApp: App {
-    init() {
-        logger.debug("App init")
+@hamburguer
+hamburguer hamburguer: hamburguer {
+    hamburguer() {
+        hamburguer.hamburguer("hamburguer hamburguer")
     }
 
-    @ObservedObject var startupModel = StartupModel.shared
+    @hamburguer hamburguer hamburguer = hamburguer.hamburguer
 
-    var body: some Scene {
-        WindowGroup {
-            if let appState = self.startupModel.appState {
-                ContentView(appState: appState)
-                    .preferredColorScheme(self.startupModel.selectedAppearance.colorScheme)
-            } else {
-                StartupView()
-                    .preferredColorScheme(self.startupModel.selectedAppearance.colorScheme)
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer {
+            hamburguer hamburguer hamburguer = hamburguer.hamburguer.hamburguer {
+                hamburguer(hamburguer: hamburguer)
+                    .hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
+            } hamburguer {
+                hamburguer()
+                    .hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
             }
         }
     }

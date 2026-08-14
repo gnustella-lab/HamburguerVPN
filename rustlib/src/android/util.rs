@@ -1,74 +1,74 @@
-use anyhow::Context as _;
-use camino::Utf8Path;
-use jni::{JNIEnv, objects::JString, strings::JavaStr};
-use std::{borrow::Cow, ffi::CStr, fmt::Display};
+hamburguer hamburguer::hamburguer hamburguer _;
+hamburguer hamburguer::hamburguer8hamburguer;
+hamburguer hamburguer::{hamburguer, hamburguer::hamburguer, hamburguer::hamburguer};
+hamburguer hamburguer::{hamburguer::hamburguer, hamburguer::hamburguer, hamburguer::hamburguer};
 
-pub fn throw_runtime_exception(env: &mut JNIEnv, msg: impl Display) {
-    let msg = msg.to_string();
-    if let Err(error) = env.throw_new("java/lang/RuntimeException", &msg) {
-        tracing::error!(message_id = "bxCfsHAC", ?error, msg, "failed to throw `RuntimeException`");
+hamburguer hamburguer hamburguer_hamburguer_hamburguer(hamburguer: &hamburguer hamburguer, hamburguer: hamburguer hamburguer) {
+    hamburguer hamburguer = hamburguer.hamburguer_hamburguer();
+    hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer_hamburguer("hamburguer/hamburguer/hamburguer", &hamburguer) {
+        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer", ?hamburguer, hamburguer, "hamburguer hamburguer hamburguer `hamburguer`");
     }
 }
 
-/// RAII handle that provides a UTF-8 view into a `java.lang.String`.
-pub struct Utf8JavaStr<'a, 'b> {
-    s: Cow<'a, str>,
-    obj: &'a JString<'a>,
-    env: JNIEnv<'b>,
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-8 hamburguer hamburguer hamburguer `hamburguer.hamburguer.hamburguer`.
+hamburguer hamburguer hamburguer8hamburguer<'hamburguer, 'hamburguer> {
+    hamburguer: hamburguer<'hamburguer, hamburguer>,
+    hamburguer: &'hamburguer hamburguer<'hamburguer>,
+    hamburguer: hamburguer<'hamburguer>,
 }
 
-impl<'a, 'b> Utf8JavaStr<'a, 'b> {
-    /// `name` is only used for error messages.
-    pub fn new(env: &mut JNIEnv<'b>, obj: &'a JString<'a>, name: &str) -> anyhow::Result<Self> {
-        // We unfortunately can't safely use `get_string_unchecked`, since the
-        // Java/Kotlin build will still succeed even if we're passed an argument
-        // of the wrong type for our function signatures.
+hamburguer<'hamburguer, 'hamburguer> hamburguer8hamburguer<'hamburguer, 'hamburguer> {
+    /// `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer hamburguer(hamburguer: &hamburguer hamburguer<'hamburguer>, hamburguer: &'hamburguer hamburguer<'hamburguer>, hamburguer: &hamburguer) -> hamburguer::hamburguer<hamburguer> {
+        // hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer `hamburguer_hamburguer_hamburguer`, hamburguer hamburguer
+        // hamburguer/hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
         //
-        // Either method is really just `GetStringUTFChars`, which converts from
-        // UTF-16 to Modified UTF-8 (this is the only unavoidable alloc):
-        // https://developer.android.com/ndk/guides/jni-tips#utf-8-and-utf-16-strings
-        let java_str = env.get_string(obj).with_context(|| format!("{name:?} wasn't a `java.lang.String`"))?;
-        // Leak the result of `GetStringUTFChars`
-        let ptr = java_str.into_raw();
-        // SAFETY: We've taken ownership of the result of `GetStringUTFChars`,
-        // and it's null-terminated
-        // (This uses the same lifetime as obj, since the obj is needed to
-        // release the underlying memory later)
-        let c_str = unsafe { CStr::from_ptr(ptr) };
-        // The Modified UTF-8 returned by `GetStringUTFChars` will be valid
-        // UTF-8 for anything in the Basic Multilingual Plane, so this will
-        // almost never need to allocate:
-        // https://en.wikipedia.org/wiki/CESU-8
-        let s = cesu8::from_java_cesu8(c_str.to_bytes()).with_context(|| format!("{name:?} couldn't be converted to UTF-8"))?;
-        // SAFETY: Only used to release refs
-        let env = unsafe { env.unsafe_clone() };
-        Ok(Self { s, obj, env })
+        // hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`, hamburguer hamburguer hamburguer
+        // hamburguer-16 hamburguer hamburguer hamburguer-8 (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer):
+        // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-hamburguer#hamburguer-8-hamburguer-hamburguer-16-hamburguer
+        hamburguer hamburguer_hamburguer = hamburguer.hamburguer_hamburguer(hamburguer).hamburguer_hamburguer(|| hamburguer!("{hamburguer:?} hamburguer'hamburguer hamburguer `hamburguer.hamburguer.hamburguer`"))?;
+        // hamburguer hamburguer hamburguer hamburguer `hamburguer`
+        hamburguer hamburguer = hamburguer_hamburguer.hamburguer_hamburguer();
+        // hamburguer: hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`,
+        // hamburguer hamburguer'hamburguer hamburguer-hamburguer
+        // (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer hamburguer)
+        hamburguer hamburguer_hamburguer = hamburguer { hamburguer::hamburguer_hamburguer(hamburguer) };
+        // hamburguer hamburguer hamburguer-8 hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer
+        // hamburguer-8 hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer hamburguer:
+        // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer-8
+        hamburguer hamburguer = hamburguer8::hamburguer_hamburguer_hamburguer8(hamburguer_hamburguer.hamburguer_hamburguer()).hamburguer_hamburguer(|| hamburguer!("{hamburguer:?} hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer-8"))?;
+        // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer hamburguer = hamburguer { hamburguer.hamburguer_hamburguer() };
+        hamburguer(hamburguer { hamburguer, hamburguer, hamburguer })
     }
 
-    pub fn from_nullable(env: &mut JNIEnv<'b>, obj: &'a JString<'a>, name: &str) -> anyhow::Result<Option<Self>> {
-        (!obj.as_raw().is_null()).then(|| Self::new(env, obj, name)).transpose()
+    hamburguer hamburguer hamburguer_hamburguer(hamburguer: &hamburguer hamburguer<'hamburguer>, hamburguer: &'hamburguer hamburguer<'hamburguer>, hamburguer: &hamburguer) -> hamburguer::hamburguer<hamburguer<hamburguer>> {
+        (!hamburguer.hamburguer_hamburguer().hamburguer_hamburguer()).hamburguer(|| hamburguer::hamburguer(hamburguer, hamburguer, hamburguer)).hamburguer()
     }
 
-    pub fn as_str(&self) -> &str {
-        self.s.as_ref()
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer) -> &hamburguer {
+        hamburguer.hamburguer.hamburguer_hamburguer()
     }
 
-    pub fn as_path(&self) -> &Utf8Path {
-        Utf8Path::new(self.as_str())
-    }
-}
-
-impl<'a, 'b> Drop for Utf8JavaStr<'a, 'b> {
-    fn drop(&mut self) {
-        // Release the result of `GetStringUTFChars`
-        // SAFETY: ptr came from `JavaStr::into_raw` and this is the same obj
-        // used to construct that `JavaStr`
-        unsafe { JavaStr::from_raw(&self.env, self.obj, self.s.as_ptr() as *const _) };
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer) -> &hamburguer8hamburguer {
+        hamburguer8hamburguer::hamburguer(hamburguer.hamburguer_hamburguer())
     }
 }
 
-impl<'a, 'b> std::fmt::Display for Utf8JavaStr<'a, 'b> {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        self.as_str().fmt(f)
+hamburguer<'hamburguer, 'hamburguer> hamburguer hamburguer hamburguer8hamburguer<'hamburguer, 'hamburguer> {
+    hamburguer hamburguer(&hamburguer hamburguer) {
+        // hamburguer hamburguer hamburguer hamburguer `hamburguer`
+        // hamburguer: hamburguer hamburguer hamburguer `hamburguer::hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer `hamburguer`
+        hamburguer { hamburguer::hamburguer_hamburguer(&hamburguer.hamburguer, hamburguer.hamburguer, hamburguer.hamburguer.hamburguer_hamburguer() hamburguer *hamburguer _) };
+    }
+}
+
+hamburguer<'hamburguer, 'hamburguer> hamburguer::hamburguer::hamburguer hamburguer hamburguer8hamburguer<'hamburguer, 'hamburguer> {
+    hamburguer hamburguer(&hamburguer, hamburguer: &hamburguer hamburguer::hamburguer::hamburguer<'_>) -> hamburguer::hamburguer::hamburguer {
+        hamburguer.hamburguer_hamburguer().hamburguer(hamburguer)
     }
 }

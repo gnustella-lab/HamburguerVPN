@@ -1,346 +1,346 @@
-import Foundation
-import Network
-import NetworkExtension
-import OSLog
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "PacketTunnelProvider")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-enum TunnelProviderInitStatus {
-    case checking
-    case blockingBeforePermissionPopup
-    case waitingForUserPermissionApproval
-    case waitingForUserStopOtherTunnelApproval(manager: NETunnelProviderManager)
-    case configuring
-    case testingCommunication
-    case permissionDenied
-    case unexpectedError
+hamburguer hamburguer {
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer(hamburguer: hamburguer)
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
 }
 
-enum TunnelProviderInitEvent {
-    case status(TunnelProviderInitStatus)
-    case done(NETunnelProviderManager, NeStatus)
+hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer)
+    hamburguer hamburguer(hamburguer, hamburguer)
 }
 
-class TunnelProviderInit {
-    var continuation: AsyncStream<TunnelProviderInitEvent>.Continuation?
+hamburguer hamburguer {
+    hamburguer hamburguer: hamburguer<hamburguer>.hamburguer?
 
-    func start() -> AsyncStream<TunnelProviderInitEvent> {
-        return AsyncStream<TunnelProviderInitEvent> { continuation in
-            self.continuation = continuation
-            self.update(.checking)
-            Task {
-                guard let managers = await Self.loadManagers() else {
-                    self.update(.unexpectedError)
-                    return
+    hamburguer hamburguer() -> hamburguer<hamburguer> {
+        hamburguer hamburguer<hamburguer> { hamburguer hamburguer
+            hamburguer.hamburguer = hamburguer
+            hamburguer.hamburguer(.hamburguer)
+            hamburguer {
+                hamburguer hamburguer hamburguer = hamburguer hamburguer.hamburguer() hamburguer {
+                    hamburguer.hamburguer(.hamburguer)
+                    hamburguer
                 }
-                if managers.count > 1 {
-                    for manager in managers[1...] {
-                        do {
-                            logger.log("Removing extra tunnel provider: \(manager.localizedDescription ?? "nil", privacy: .public)")
-                            try await manager.removeFromPreferences()
-                        } catch {
-                            logger.error("error removing extra tunnel provider: \(error)")
-                            self.update(.unexpectedError)
-                            return
+                hamburguer hamburguer.hamburguer > 1 {
+                    hamburguer hamburguer hamburguer hamburguer[1...] {
+                        hamburguer {
+                            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer.hamburguer ?? "hamburguer", hamburguer: .hamburguer)")
+                            hamburguer hamburguer hamburguer.hamburguer()
+                        } hamburguer {
+                            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
+                            hamburguer.hamburguer(.hamburguer)
+                            hamburguer
                         }
                     }
                 }
-                if managers.isEmpty {
-                    // There are no managers, we will get a permission prompt when we add one. Wait for a call to `continueAfterPermissionPriming()`, so we can prepare the user for the popup.
-                    self.update(.blockingBeforePermissionPopup)
-                } else {
-                    // There already is a manager we can use, no permission promp will be shown, continue automatically.
-                    self.continueAfterPermissionPriming()
+                hamburguer hamburguer.hamburguer {
+                    // hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer()`, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                    hamburguer.hamburguer(.hamburguer)
+                } hamburguer {
+                    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer.
+                    hamburguer.hamburguer()
                 }
             }
         }
     }
 
-    func continueAfterPermissionPriming() {
-        Task {
-            guard let managers = await Self.loadManagers() else {
-                self.update(.unexpectedError)
-                return
+    hamburguer hamburguer() {
+        hamburguer {
+            hamburguer hamburguer hamburguer = hamburguer hamburguer.hamburguer() hamburguer {
+                hamburguer.hamburguer(.hamburguer)
+                hamburguer
             }
 
-            var askedForUserApproval = false
-            if managers.isEmpty {
-                self.update(.waitingForUserPermissionApproval)
-                askedForUserApproval = true
-            } else {
-                self.update(.configuring)
+            hamburguer hamburguer = hamburguer
+            hamburguer hamburguer.hamburguer {
+                hamburguer.hamburguer(.hamburguer)
+                hamburguer = hamburguer
+            } hamburguer {
+                hamburguer.hamburguer(.hamburguer)
             }
 
-            let manager = switch managers.first {
-            case .some(let manager): manager
-            case .none: NETunnelProviderManager()
+            hamburguer hamburguer = hamburguer hamburguer.hamburguer {
+            hamburguer .hamburguer(hamburguer hamburguer): hamburguer
+            hamburguer .hamburguer: hamburguer()
             }
 
-            manager.onDemandRules = [NEOnDemandRuleConnect()]
+            hamburguer.hamburguer = [hamburguer()]
 
-            let proto = NETunnelProviderProtocol()
-            proto.providerBundleIdentifier = networkExtensionBundleID()
-            proto.serverAddress = "obscura.net"
-            proto.includeAllNetworks = manager.protocolConfiguration?.includeAllNetworks ?? false
-            manager.protocolConfiguration = proto
+            hamburguer hamburguer = hamburguer()
+            hamburguer.hamburguer = hamburguer()
+            hamburguer.hamburguer = "hamburguer.hamburguer"
+            hamburguer.hamburguer = hamburguer.hamburguer?.hamburguer ?? hamburguer
+            hamburguer.hamburguer = hamburguer
 
-            do {
-                if askedForUserApproval {
-                    manager.isEnabled = true
+            hamburguer {
+                hamburguer hamburguer {
+                    hamburguer.hamburguer = hamburguer
                 }
-                try await manager.saveToPreferences()
-            } catch {
-                logger.error("error saving tunnel provider to preferences early: \(error)")
-                if (error as NSError).domain == NEVPNErrorDomain {
-                    switch NEVPNError.Code(rawValue: (error as NSError).code) {
-                    case .configurationReadWriteFailed:
-                        self.update(.permissionDenied)
-                    default:
-                        self.update(.unexpectedError)
+                hamburguer hamburguer hamburguer.hamburguer()
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
+                hamburguer (hamburguer hamburguer hamburguer).hamburguer == hamburguer {
+                    hamburguer hamburguer.hamburguer(hamburguer: (hamburguer hamburguer hamburguer).hamburguer) {
+                    hamburguer .hamburguer:
+                        hamburguer.hamburguer(.hamburguer)
+                    hamburguer:
+                        hamburguer.hamburguer(.hamburguer)
                     }
                 }
-                return
+                hamburguer
             }
 
-            if manager.isEnabled {
-                self.continueAfterStopOtherTunnelPriming(manager)
-            } else {
-                logger.info("tunnel provider is not enabled, asking for permission to enable (which kills other tunnels)")
-                self.update(.waitingForUserStopOtherTunnelApproval(manager: manager))
+            hamburguer hamburguer.hamburguer {
+                hamburguer.hamburguer(hamburguer)
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer)")
+                hamburguer.hamburguer(.hamburguer(hamburguer: hamburguer))
             }
         }
     }
 
-    func continueAfterStopOtherTunnelPriming(_ manager: NETunnelProviderManager) {
-        Task {
-            do {
-                if !manager.isEnabled {
-                    logger.info("enabling tunnel provider")
-                    manager.isEnabled = true
-                    try await manager.saveToPreferences()
+    hamburguer hamburguer(_ hamburguer: hamburguer) {
+        hamburguer {
+            hamburguer {
+                hamburguer !hamburguer.hamburguer {
+                    hamburguer.hamburguer("hamburguer hamburguer hamburguer")
+                    hamburguer.hamburguer = hamburguer
+                    hamburguer hamburguer hamburguer.hamburguer()
                 }
-            } catch {
-                logger.error("error saving tunnel provider to preferences after late enablement: \(error)")
-                self.update(.unexpectedError)
-                return
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
+                hamburguer.hamburguer(.hamburguer)
+                hamburguer
             }
 
-            do {
-                try await manager.loadFromPreferences()
-            } catch {
-                logger.error("error loading tunnel provider from preferences: \(error)")
-                self.update(.unexpectedError)
-                return
+            hamburguer {
+                hamburguer hamburguer hamburguer.hamburguer()
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
+                hamburguer.hamburguer(.hamburguer)
+                hamburguer
             }
 
-            self.update(.testingCommunication)
+            hamburguer.hamburguer(.hamburguer)
 
-            var pingFailures = 0
-            while true {
-                do {
-                    let status = try await getNeStatus(
-                        manager,
-                        knownVersion: nil,
-                        attemptTimeout: .seconds(10),
-                        maxAttempts: 3
+            hamburguer hamburguer = 0
+            hamburguer hamburguer {
+                hamburguer {
+                    hamburguer hamburguer = hamburguer hamburguer hamburguer(
+                        hamburguer,
+                        hamburguer: hamburguer,
+                        hamburguer: .hamburguer(10),
+                        hamburguer: 3
                     )
-                    self.done(manager, status)
-                    return
-                } catch {
-                    logger.error("Ping error: \(error, privacy: .public)")
+                    hamburguer.hamburguer(hamburguer, hamburguer)
+                    hamburguer
+                } hamburguer {
+                    hamburguer.hamburguer("hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
                 }
 
-                pingFailures += 1
-                if pingFailures > 2 {
-                    logger.error("Failed to reach tunnel provider.")
-                    self.update(.unexpectedError)
-                    return
+                hamburguer += 1
+                hamburguer hamburguer > 2 {
+                    hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer.")
+                    hamburguer.hamburguer(.hamburguer)
+                    hamburguer
                 }
 
-                do {
-                    logger.log("Forcing network extension init")
-                    try manager.connection.startVPNTunnel(options: ["dontStartTunnel": NSString(string: "")])
-                } catch {
-                    logger.error("Forced network extension init failed: \(error)")
+                hamburguer {
+                    hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer")
+                    hamburguer hamburguer.hamburguer.hamburguer(hamburguer: ["hamburguer": hamburguer(hamburguer: "")])
+                } hamburguer {
+                    hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
                 }
             }
         }
     }
 
-    private func update(_ status: TunnelProviderInitStatus) {
-        logger.log("TunnelProviderInit status: \(debugFormat(status), privacy: .public)")
-        if let cont = self.continuation {
-            cont.yield(.status(status))
+    hamburguer hamburguer hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer("hamburguer hamburguer: \(hamburguer(hamburguer), hamburguer: .hamburguer)")
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer.hamburguer(.hamburguer(hamburguer))
         }
     }
 
-    private func done(_ manager: NETunnelProviderManager, _ status: NeStatus) {
-        if let cont = self.continuation {
-            cont.yield(.done(manager, status))
-            cont.finish()
+    hamburguer hamburguer hamburguer(_ hamburguer: hamburguer, _ hamburguer: hamburguer) {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer.hamburguer(.hamburguer(hamburguer, hamburguer))
+            hamburguer.hamburguer()
         }
     }
 
-    private static func loadManagers() async -> [NETunnelProviderManager]? {
-        do {
-            let managers: [NETunnelProviderManager] = try await NETunnelProviderManager.loadAllFromPreferences()
-            return managers
-        } catch {
-            logger.error("loading all tunnel providers from preferences failed with error: \(error)")
-            return .none
+    hamburguer hamburguer hamburguer hamburguer() hamburguer -> [hamburguer]? {
+        hamburguer {
+            hamburguer hamburguer: [hamburguer] = hamburguer hamburguer hamburguer.hamburguer()
+            hamburguer hamburguer
+        } hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer)")
+            hamburguer .hamburguer
         }
     }
 }
 
-func neLogin(_ manager: NETunnelProviderManager,
-             accountId: String,
-             attemptTimeout: Duration? = nil,
-             maxAttempts: UInt = 10) async throws
+hamburguer hamburguer(_ hamburguer: hamburguer,
+             hamburguer: hamburguer,
+             hamburguer: hamburguer? = hamburguer,
+             hamburguer: hamburguer = 10) hamburguer hamburguer
 {
-    _ = try await runNeJsonCommand(manager, NeManagerCmd.login(accountId: accountId, validate: false).json(), name: "login", attemptTimeout: attemptTimeout, maxAttempts: maxAttempts)
+    _ = hamburguer hamburguer hamburguer(hamburguer, hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer).hamburguer(), hamburguer: "hamburguer", hamburguer: hamburguer, hamburguer: hamburguer)
 }
 
-func getNeStatus(
-    _ manager: NETunnelProviderManager,
-    knownVersion: UUID?,
-    attemptTimeout: Duration? = nil,
-    maxAttempts: UInt = 10
-) async throws -> NeStatus {
-    try await runNeCommand(manager, NeManagerCmd.getStatus(knownVersion: knownVersion), attemptTimeout: attemptTimeout, maxAttempts: maxAttempts)
+hamburguer hamburguer(
+    _ hamburguer: hamburguer,
+    hamburguer: hamburguer?,
+    hamburguer: hamburguer? = hamburguer,
+    hamburguer: hamburguer = 10
+) hamburguer hamburguer -> hamburguer {
+    hamburguer hamburguer hamburguer(hamburguer, hamburguer.hamburguer(hamburguer: hamburguer), hamburguer: hamburguer, hamburguer: hamburguer)
 }
 
-func getAccountInfo(
-    _ manager: NETunnelProviderManager,
-    attemptTimeout: Duration? = nil,
-    maxAttempts: UInt = 10
-) async throws -> AccountInfo {
-    return try await runNeCommand(manager, NeManagerCmd.apiGetAccountInfo, attemptTimeout: attemptTimeout, maxAttempts: maxAttempts)
+hamburguer hamburguer(
+    _ hamburguer: hamburguer,
+    hamburguer: hamburguer? = hamburguer,
+    hamburguer: hamburguer = 10
+) hamburguer hamburguer -> hamburguer {
+    hamburguer hamburguer hamburguer hamburguer(hamburguer, hamburguer.hamburguer, hamburguer: hamburguer, hamburguer: hamburguer)
 }
 
-func getExitList(_ manager: NETunnelProviderManager,
-                 knownVersion: String?,
-                 attemptTimeout: Duration? = nil,
-                 maxAttempts: UInt = 10) async throws -> CachedValue<ExitList>
+hamburguer hamburguer(_ hamburguer: hamburguer,
+                 hamburguer: hamburguer?,
+                 hamburguer: hamburguer? = hamburguer,
+                 hamburguer: hamburguer = 10) hamburguer hamburguer -> hamburguer<hamburguer>
 {
-    return try await runNeCommand(manager, NeManagerCmd.getExitList(knownVersion: knownVersion), attemptTimeout: attemptTimeout, maxAttempts: maxAttempts)
+    hamburguer hamburguer hamburguer hamburguer(hamburguer, hamburguer.hamburguer(hamburguer: hamburguer), hamburguer: hamburguer, hamburguer: hamburguer)
 }
 
-func refreshExitList(_ manager: NETunnelProviderManager,
-                     freshness: TimeInterval,
-                     attemptTimeout: Duration? = nil,
-                     maxAttempts: UInt = 10) async throws -> CachedValue<ExitList>
+hamburguer hamburguer(_ hamburguer: hamburguer,
+                     hamburguer: hamburguer,
+                     hamburguer: hamburguer? = hamburguer,
+                     hamburguer: hamburguer = 10) hamburguer hamburguer -> hamburguer<hamburguer>
 {
-    return try await runNeCommand(manager, NeManagerCmd.refreshExitList(freshness: freshness), attemptTimeout: attemptTimeout, maxAttempts: maxAttempts)
+    hamburguer hamburguer hamburguer hamburguer(hamburguer, hamburguer.hamburguer(hamburguer: hamburguer), hamburguer: hamburguer, hamburguer: hamburguer)
 }
 
-struct CachedValue<T: Codable>: Codable {
-    var version: String
-    var last_updated: TimeInterval
-    var value: T
+hamburguer hamburguer<hamburguer: hamburguer>: hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
 }
 
-struct ExitList: Codable {
-    var exits: [OneExit]
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: [hamburguer]
 }
 
-struct CityExit: Hashable {
-    var city_code: String
-    var country_code: String
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
 }
 
-struct OneExit: Codable {
-    var id: String
-    var city_code: String
-    var country_code: String
-    var city_name: String
-    var provider_id: String
-    var provider_url: String
-    var provider_name: String
-    var provider_homepage_url: String
-    var datacenter_id: UInt32
-    var tier: UInt8
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer_hamburguer: hamburguer
+    hamburguer hamburguer_hamburguer: hamburguer32
+    hamburguer hamburguer: hamburguer8
 }
 
-func getCityNames(_ manager: NETunnelProviderManager, knownVersion: String?) async throws -> (cityNames: [CityExit: String], version: String) {
-    let cachedValue = try await getExitList(manager, knownVersion: knownVersion)
-    var newCityNames: [CityExit: String] = [:]
-    for exit in cachedValue.value.exits {
-        newCityNames[CityExit(city_code: exit.city_code, country_code: exit.country_code)] = exit.city_name
+hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: hamburguer?) hamburguer hamburguer -> (hamburguer: [hamburguer: hamburguer], hamburguer: hamburguer) {
+    hamburguer hamburguer = hamburguer hamburguer hamburguer(hamburguer, hamburguer: hamburguer)
+    hamburguer hamburguer: [hamburguer: hamburguer] = [:]
+    hamburguer hamburguer hamburguer hamburguer.hamburguer.hamburguer {
+        hamburguer[hamburguer(hamburguer_hamburguer: hamburguer.hamburguer_hamburguer, hamburguer_hamburguer: hamburguer.hamburguer_hamburguer)] = hamburguer.hamburguer_hamburguer
     }
-    return (cityNames: newCityNames, version: cachedValue.version)
+    hamburguer (hamburguer: hamburguer, hamburguer: hamburguer.hamburguer)
 }
 
-func runNeCommand<T: Codable>(
-    _ manager: NETunnelProviderManager,
-    _ cmd: NeManagerCmd,
-    attemptTimeout: Duration? = .seconds(10),
-    maxAttempts: UInt = 10
-) async throws(String) -> T {
-    return try T(json: await runNeJsonCommand(manager, cmd.json(), name: getEnumCaseName(for: cmd), attemptTimeout: attemptTimeout, maxAttempts: maxAttempts))
+hamburguer hamburguer<hamburguer: hamburguer>(
+    _ hamburguer: hamburguer,
+    _ hamburguer: hamburguer,
+    hamburguer: hamburguer? = .hamburguer(10),
+    hamburguer: hamburguer = 10
+) hamburguer hamburguer(hamburguer) -> hamburguer {
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer hamburguer(hamburguer, hamburguer.hamburguer(), hamburguer: hamburguer(hamburguer: hamburguer), hamburguer: hamburguer, hamburguer: hamburguer))
 }
 
-func runNeJsonCommand(
-    _ manager: NETunnelProviderManager,
-    _ jsonCmd: String,
-    name: String?,
-    attemptTimeout: Duration?,
-    maxAttempts: UInt = 10
-) async throws(String) -> String {
-    var result: NeManagerCmdResult
-    do {
-        let resultJson = try await manager.sendAppMessage(
-            jsonCmd.data(using: .utf8)!,
-            maxAttempts: maxAttempts, attemptTimeout: attemptTimeout
+hamburguer hamburguer(
+    _ hamburguer: hamburguer,
+    _ hamburguer: hamburguer,
+    hamburguer: hamburguer?,
+    hamburguer: hamburguer?,
+    hamburguer: hamburguer = 10
+) hamburguer hamburguer(hamburguer) -> hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer {
+        hamburguer hamburguer = hamburguer hamburguer hamburguer.hamburguer(
+            hamburguer.hamburguer(hamburguer: .hamburguer8)!,
+            hamburguer: hamburguer, hamburguer: hamburguer
         )
-        result = try NeManagerCmdResult(json: resultJson)
-    } catch {
-        logger.error("could not run ne command \(name, privacy: .public): \(error, privacy: .public)")
-        result = .error(errorCodeOther)
+        hamburguer = hamburguer hamburguer(hamburguer: hamburguer)
+    } hamburguer {
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer): \(hamburguer, hamburguer: .hamburguer)")
+        hamburguer = .hamburguer(hamburguer)
     }
-    switch result {
-    case .ok_json(let ok):
-        logger.debug("ne command \(name, privacy: .public) success")
-        return ok
-    case .error(let error):
-        logger.debug("ne command \(name, privacy: .public) error: \(error, privacy: .public)")
-        throw error
+    hamburguer hamburguer {
+    hamburguer .hamburguer_hamburguer(hamburguer hamburguer):
+        hamburguer.hamburguer("hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer) hamburguer")
+        hamburguer hamburguer
+    hamburguer .hamburguer(hamburguer hamburguer):
+        hamburguer.hamburguer("hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer) hamburguer: \(hamburguer, hamburguer: .hamburguer)")
+        hamburguer hamburguer
     }
 }
 
-extension NETunnelProviderManager {
-    // TODO: Merge into runNeCommand without retry logic once we are confident that the UI handles errors and necessary retries for all commands nicely.
-    func sendAppMessage(
-        _ msg: Data,
-        maxAttempts: UInt,
-        attemptTimeout: Duration?
-    ) async throws -> Data {
-        guard let connection = self.connection as? NETunnelProviderSession else {
-            throw "NETunnelProviderManager.connection is not a NETunnelProviderSession, got \(debugFormat(self.connection))"
+hamburguer hamburguer {
+    // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer(
+        _ hamburguer: hamburguer,
+        hamburguer: hamburguer,
+        hamburguer: hamburguer?
+    ) hamburguer hamburguer -> hamburguer {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer? hamburguer hamburguer {
+            hamburguer "hamburguer.hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer \(hamburguer(hamburguer.hamburguer))"
         }
 
-        for attempt in 0 ..< maxAttempts {
-            let clock = SuspendingClock.now
-            let response = try? await withTimeout(attemptTimeout) {
-                await withCheckedContinuation { continuation in
-                    do {
-                        logger.debug("calling sendProviderMessage")
-                        try connection.sendProviderMessage(msg) { response in
-                            logger.debug("sendProviderMessage returned")
-                            continuation.resume(returning: response)
+        hamburguer hamburguer hamburguer 0 ..< hamburguer {
+            hamburguer hamburguer = hamburguer.hamburguer
+            hamburguer hamburguer = hamburguer? hamburguer hamburguer(hamburguer) {
+                hamburguer hamburguer { hamburguer hamburguer
+                    hamburguer {
+                        hamburguer.hamburguer("hamburguer hamburguer")
+                        hamburguer hamburguer.hamburguer(hamburguer) { hamburguer hamburguer
+                            hamburguer.hamburguer("hamburguer hamburguer")
+                            hamburguer.hamburguer(hamburguer: hamburguer)
                         }
-                    } catch {
-                        logger.warning("sendProviderMessage failed: \(error, privacy: .public)")
-                        continuation.resume(returning: .none)
+                    } hamburguer {
+                        hamburguer.hamburguer("hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
+                        hamburguer.hamburguer(hamburguer: .hamburguer)
                     }
                 }
             }
-            if let response = response {
-                return response
+            hamburguer hamburguer hamburguer = hamburguer {
+                hamburguer hamburguer
             }
-            let latency = SuspendingClock.now - clock
-            logger.log("sendProviderMessage message failed or lost after \(latency, privacy: .public), attempt: \(attempt, privacy: .public)")
-            try await Task.sleep(seconds: 1.0)
+            hamburguer hamburguer = hamburguer.hamburguer - hamburguer
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer), hamburguer: \(hamburguer, hamburguer: .hamburguer)")
+            hamburguer hamburguer hamburguer.hamburguer(hamburguer: 1.0)
         }
-        throw "sendProviderMessage message lost repeatedly"
+        hamburguer "hamburguer hamburguer hamburguer hamburguer"
     }
 }

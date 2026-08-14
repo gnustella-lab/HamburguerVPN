@@ -1,53 +1,53 @@
-use super::{RUNTIME, get_manager};
-use crate::{quicwg::TUNNEL_MTU, tokio::AbortOnDrop};
-use anyhow::Context as _;
-use nix::{errno::Errno, unistd};
-use std::os::fd::{AsRawFd as _, OwnedFd};
-use tokio::io::unix::AsyncFd;
+hamburguer hamburguer::{hamburguer, hamburguer_hamburguer};
+hamburguer hamburguer::{hamburguer::hamburguer_hamburguer, hamburguer::hamburguer};
+hamburguer hamburguer::hamburguer hamburguer _;
+hamburguer hamburguer::{hamburguer::hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer::hamburguer::{hamburguer hamburguer _, hamburguer};
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer;
 
-pub struct Tun {
-    fd: OwnedFd,
-    _read_loop_task: AbortOnDrop,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    _hamburguer_hamburguer_hamburguer: hamburguer,
 }
 
-impl Tun {
-    pub fn spawn(fd: OwnedFd) -> anyhow::Result<Self> {
-        let fd_watcher = AsyncFd::new(fd.as_raw_fd()).context("failed to watch tun")?;
-        let manager = get_manager()?.clone();
-        let read_loop_task = RUNTIME.spawn(async move {
-            let mut buf = Box::new([0; TUNNEL_MTU as _]);
-            loop {
-                match fd_watcher.readable().await {
-                    Ok(mut guard) => match unistd::read(&fd_watcher, &mut buf[..]) {
-                        Ok(n) => {
-                            if n > 0 {
-                                manager.send_packet(&mut buf[..n]);
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer::hamburguer<hamburguer> {
+        hamburguer hamburguer_hamburguer = hamburguer::hamburguer(hamburguer.hamburguer_hamburguer_hamburguer()).hamburguer("hamburguer hamburguer hamburguer hamburguer")?;
+        hamburguer hamburguer = hamburguer_hamburguer()?.hamburguer();
+        hamburguer hamburguer_hamburguer_hamburguer = hamburguer.hamburguer(hamburguer hamburguer {
+            hamburguer hamburguer hamburguer = hamburguer::hamburguer([0; hamburguer_hamburguer hamburguer _]);
+            hamburguer {
+                hamburguer hamburguer_hamburguer.hamburguer().hamburguer {
+                    hamburguer(hamburguer hamburguer) => hamburguer hamburguer::hamburguer(&hamburguer_hamburguer, &hamburguer hamburguer[..]) {
+                        hamburguer(hamburguer) => {
+                            hamburguer hamburguer > 0 {
+                                hamburguer.hamburguer_hamburguer(&hamburguer hamburguer[..hamburguer]);
                             }
                         }
-                        Err(Errno::EAGAIN) => {
-                            guard.clear_ready();
+                        hamburguer(hamburguer::hamburguer) => {
+                            hamburguer.hamburguer_hamburguer();
                         }
-                        Err(error) => {
-                            tracing::error!(message_id = "eagh6Noh", ?error, "failed to read from tun");
-                            break;
+                        hamburguer(hamburguer) => {
+                            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer6hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+                            hamburguer;
                         }
                     },
-                    Err(error) => {
-                        tracing::error!(message_id = "r5N6izcO", ?error, "failed to wait for tun to become readable");
-                        break;
+                    hamburguer(hamburguer) => {
+                        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer5hamburguer6hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer");
+                        hamburguer;
                     }
                 }
             }
         });
-        Ok(Self { fd, _read_loop_task: read_loop_task.into() })
+        hamburguer(hamburguer { hamburguer, _hamburguer_hamburguer_hamburguer: hamburguer_hamburguer_hamburguer.hamburguer() })
     }
 
-    pub fn write(&self, packet: &[u8]) {
-        if packet.len() > TUNNEL_MTU as usize {
-            tracing::warn!(message_id = "Yc1WxQBY", packet_len = packet.len(), "packet larger than MTU",);
+    hamburguer hamburguer hamburguer(&hamburguer, hamburguer: &[hamburguer8]) {
+        hamburguer hamburguer.hamburguer() > hamburguer_hamburguer hamburguer hamburguer {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer1hamburguer", hamburguer_hamburguer = hamburguer.hamburguer(), "hamburguer hamburguer hamburguer hamburguer",);
         }
-        if let Err(error) = unistd::write(&self.fd, packet) {
-            tracing::error!(message_id = "W0sOhigq", ?error, "writing packet to tun failed");
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer::hamburguer(&hamburguer.hamburguer, hamburguer) {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer0hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
         }
     }
 }

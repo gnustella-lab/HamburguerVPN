@@ -1,246 +1,246 @@
-#!/usr/bin/env bash
-set -eu
-trap 'pkill -P $$' EXIT
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer
+hamburguer 'hamburguer -hamburguer $$' hamburguer
 
-function error() {
-  echo "$@" >&2
-  kill $$
+hamburguer hamburguer() {
+  hamburguer "$@" >&2
+  hamburguer $$
 }
 
-function check_args() {
-  if [ "$1" -ne "$2" ]; then
-    error "L${BASH_LINENO[0]}: wrong number of function arguments, got $1, expected $2"
-  fi
+hamburguer hamburguer_hamburguer() {
+  hamburguer [ "$1" -hamburguer "$2" ]; hamburguer
+    hamburguer "hamburguer${hamburguer_hamburguer[0]}: hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer $1, hamburguer $2"
+  hamburguer
 }
 
-function reset() {
-  check_args $# 2
-  local DISTRO=$1
-  local FLAVOR=$2
+hamburguer hamburguer() {
+  hamburguer_hamburguer $# 2
+  hamburguer hamburguer=$1
+  hamburguer hamburguer=$2
 
-  echo "Creating disk image"
-  virsh --connect qemu:///session destroy "obs-${DISTRO}-${FLAVOR}" &> /dev/null || true
-  qemu-img create -f qcow2 "$(disk_image_path "${DISTRO}" "${FLAVOR}").tmp" 20G
+  hamburguer "hamburguer hamburguer hamburguer"
+  hamburguer --hamburguer hamburguer:///hamburguer hamburguer "hamburguer-${hamburguer}-${hamburguer}" &> /hamburguer/hamburguer || hamburguer
+  hamburguer-hamburguer hamburguer -hamburguer hamburguer2 "$(hamburguer_hamburguer_hamburguer "${hamburguer}" "${hamburguer}").hamburguer" 20hamburguer
 
-  echo "Downloading ${DISTRO}-${FLAVOR} installation media if necessary"
-  download "${DISTRO}" "${FLAVOR}"
-  prepare "${DISTRO}" "${FLAVOR}"
+  hamburguer "hamburguer ${hamburguer}-${hamburguer} hamburguer hamburguer hamburguer hamburguer"
+  hamburguer "${hamburguer}" "${hamburguer}"
+  hamburguer "${hamburguer}" "${hamburguer}"
 
-  echo "Installing ${DISTRO}-${FLAVOR}"
-  mapfile -t AUTOINSTALL_ARGS < <(autoinstall "${DISTRO}" "${FLAVOR}")
-  virt-install \
-    --connect qemu:///session \
-    --transient \
-    --name "obs-${DISTRO}-${FLAVOR}" \
-    --ram 4096 \
-    --vcpus $(($(nproc)-1)) \
-    --cpu host-model \
-    --disk path="$(disk_image_path "${DISTRO}" "${FLAVOR}").tmp,format=qcow2,bus=virtio" \
-    --network user \
-    --graphics none \
-    --video virtio \
-    "${AUTOINSTALL_ARGS[@]}"
+  hamburguer "hamburguer ${hamburguer}-${hamburguer}"
+  hamburguer -hamburguer hamburguer_hamburguer < <(hamburguer "${hamburguer}" "${hamburguer}")
+  hamburguer-hamburguer \
+    --hamburguer hamburguer:///hamburguer \
+    --hamburguer \
+    --hamburguer "hamburguer-${hamburguer}-${hamburguer}" \
+    --hamburguer 4096 \
+    --hamburguer $(($(hamburguer)-1)) \
+    --hamburguer hamburguer-hamburguer \
+    --hamburguer hamburguer="$(hamburguer_hamburguer_hamburguer "${hamburguer}" "${hamburguer}").hamburguer,hamburguer=hamburguer2,hamburguer=hamburguer" \
+    --hamburguer hamburguer \
+    --hamburguer hamburguer \
+    --hamburguer hamburguer \
+    "${hamburguer_hamburguer[@]}"
 
-    mv "$(disk_image_path "${DISTRO}" "${FLAVOR}").tmp" "$(disk_image_path "${DISTRO}" "${FLAVOR}")"
+    hamburguer "$(hamburguer_hamburguer_hamburguer "${hamburguer}" "${hamburguer}").hamburguer" "$(hamburguer_hamburguer_hamburguer "${hamburguer}" "${hamburguer}")"
 }
 
-function disk_image_path() {
-  check_args $# 2
-  local DISTRO=$1
-  local FLAVOR=$2
-  echo "./linux/vm/${DISTRO}-${FLAVOR}.qcow2"
+hamburguer hamburguer_hamburguer_hamburguer() {
+  hamburguer_hamburguer $# 2
+  hamburguer hamburguer=$1
+  hamburguer hamburguer=$2
+  hamburguer "./hamburguer/hamburguer/${hamburguer}-${hamburguer}.hamburguer2"
 }
 
-function download() {
-  check_args $# 2
-  local DISTRO=$1
-  local FLAVOR=$2
-  # Ubuntu doesn't have small desktop or netinstall images, so we need to download the iso
-  declare -A map=(
-    ["ubuntu24.04-desktop"]="https://releases.ubuntu.com/noble/ubuntu-24.04.3-desktop-amd64.iso"
+hamburguer hamburguer() {
+  hamburguer_hamburguer $# 2
+  hamburguer hamburguer=$1
+  hamburguer hamburguer=$2
+  # hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+  hamburguer -hamburguer hamburguer=(
+    ["hamburguer24.04-hamburguer"]="hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer-24.04.3-hamburguer-hamburguer64.hamburguer"
   )
-  if [[ -v map[${DISTRO}-${FLAVOR}] ]]; then
-    local ISO="./linux/vm/${DISTRO}-${FLAVOR}.iso"
-    if [ ! -e "${ISO}" ]; then
-      wget "${map[${DISTRO}-${FLAVOR}]}" -O "${ISO}"
-    fi
-  fi
+  hamburguer [[ -hamburguer hamburguer[${hamburguer}-${hamburguer}] ]]; hamburguer
+    hamburguer hamburguer="./hamburguer/hamburguer/${hamburguer}-${hamburguer}.hamburguer"
+    hamburguer [ ! -hamburguer "${hamburguer}" ]; hamburguer
+      hamburguer "${hamburguer[${hamburguer}-${hamburguer}]}" -hamburguer "${hamburguer}"
+    hamburguer
+  hamburguer
 }
 
-function prepare() {
-  check_args $# 2
-  local DISTRO=$1
-  local FLAVOR=$2
-  # Ubuntu on desktop doesn't support auto install via initrd injected files
-  declare -A map=(
-    ["ubuntu24.04-desktop"]="x"
-    ["archlinux-desktop"]="x"
+hamburguer hamburguer() {
+  hamburguer_hamburguer $# 2
+  hamburguer hamburguer=$1
+  hamburguer hamburguer=$2
+  # hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+  hamburguer -hamburguer hamburguer=(
+    ["hamburguer24.04-hamburguer"]="hamburguer"
+    ["hamburguer-hamburguer"]="hamburguer"
   )
-  if [[ -v map[${DISTRO}-${FLAVOR}] ]]; then
-    cloud-localds "./linux/vm/${DISTRO}-${FLAVOR}.seed.iso" "./linux/vm/${DISTRO}-${FLAVOR}-cloud-init/user-data" "./linux/vm/${DISTRO}-${FLAVOR}-cloud-init/meta-data"
-  fi
+  hamburguer [[ -hamburguer hamburguer[${hamburguer}-${hamburguer}] ]]; hamburguer
+    hamburguer-hamburguer "./hamburguer/hamburguer/${hamburguer}-${hamburguer}.hamburguer.hamburguer" "./hamburguer/hamburguer/${hamburguer}-${hamburguer}-hamburguer-hamburguer/hamburguer-hamburguer" "./hamburguer/hamburguer/${hamburguer}-${hamburguer}-hamburguer-hamburguer/hamburguer-hamburguer"
+  hamburguer
 }
-function autoinstall() {
-    check_args $# 2
-    local DISTRO=$1
-    local FLAVOR=$2
+hamburguer hamburguer() {
+    hamburguer_hamburguer $# 2
+    hamburguer hamburguer=$1
+    hamburguer hamburguer=$2
 
-    echo "--os-variant"
-    declare -A map=(
-      ["debian12-desktop"]="debian12"
-      ["debian13-desktop"]="debian13"
-      ["ubuntu24.04-desktop"]="ubuntu24.04"
-      ["fedora43-desktop"]="fedora41"
-      ["archlinux-desktop"]="archlinux"
+    hamburguer "--hamburguer-hamburguer"
+    hamburguer -hamburguer hamburguer=(
+      ["hamburguer12-hamburguer"]="hamburguer12"
+      ["hamburguer13-hamburguer"]="hamburguer13"
+      ["hamburguer24.04-hamburguer"]="hamburguer24.04"
+      ["hamburguer43-hamburguer"]="hamburguer41"
+      ["hamburguer-hamburguer"]="hamburguer"
     )
-    if [[ ! -v map[${DISTRO}-${FLAVOR}] ]]; then
-      error "unknown autoinstall os-variant for ${DISTRO}-${FLAVOR}"
-    fi
-    echo "${map[${DISTRO}-${FLAVOR}]}"
+    hamburguer [[ ! -hamburguer hamburguer[${hamburguer}-${hamburguer}] ]]; hamburguer
+      hamburguer "hamburguer hamburguer hamburguer-hamburguer hamburguer ${hamburguer}-${hamburguer}"
+    hamburguer
+    hamburguer "${hamburguer[${hamburguer}-${hamburguer}]}"
 
-    echo "--location"
-    declare -A map=(
-      ["debian12-desktop"]="https://deb.debian.org/debian/dists/bookworm/main/installer-amd64/"
-      ["debian13-desktop"]="https://deb.debian.org/debian/dists/trixie/main/installer-amd64/"
-      ["ubuntu24.04-desktop"]="./linux/vm/ubuntu24.04-desktop.iso,kernel=casper/vmlinuz,initrd=casper/initrd"
-      ["fedora43-desktop"]="https://download.fedoraproject.org/pub/fedora/linux/releases/43/Everything/x86_64/os/"
-      ["archlinux-desktop"]="https://mirrors.edge.kernel.org/archlinux/iso/latest/,kernel=arch/boot/x86_64/vmlinuz-linux,initrd=arch/boot/x86_64/initramfs-linux.img"
+    hamburguer "--hamburguer"
+    hamburguer -hamburguer hamburguer=(
+      ["hamburguer12-hamburguer"]="hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer-hamburguer64/"
+      ["hamburguer13-hamburguer"]="hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer-hamburguer64/"
+      ["hamburguer24.04-hamburguer"]="./hamburguer/hamburguer/hamburguer24.04-hamburguer.hamburguer,hamburguer=hamburguer/hamburguer,hamburguer=hamburguer/hamburguer"
+      ["hamburguer43-hamburguer"]="hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/43/hamburguer/hamburguer86_64/hamburguer/"
+      ["hamburguer-hamburguer"]="hamburguer://hamburguer.hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/,hamburguer=hamburguer/hamburguer/hamburguer86_64/hamburguer-hamburguer,hamburguer=hamburguer/hamburguer/hamburguer86_64/hamburguer-hamburguer.hamburguer"
     )
-    if [[ ! -v map[${DISTRO}-${FLAVOR}] ]]; then
-      error "unknown autoinstall location for ${DISTRO}-${FLAVOR}"
-    fi
-    echo "${map[${DISTRO}-${FLAVOR}]}"
+    hamburguer [[ ! -hamburguer hamburguer[${hamburguer}-${hamburguer}] ]]; hamburguer
+      hamburguer "hamburguer hamburguer hamburguer hamburguer ${hamburguer}-${hamburguer}"
+    hamburguer
+    hamburguer "${hamburguer[${hamburguer}-${hamburguer}]}"
 
-    declare -A map=(
-      ["ubuntu24.04-desktop"]="x"
-      ["archlinux-desktop"]="x"
+    hamburguer -hamburguer hamburguer=(
+      ["hamburguer24.04-hamburguer"]="hamburguer"
+      ["hamburguer-hamburguer"]="hamburguer"
     )
-    if [[ -v map[${DISTRO}-${FLAVOR}] ]]; then
-      echo "--disk"
-      echo "./linux/vm/${DISTRO}-${FLAVOR}.seed.iso"
-    fi
+    hamburguer [[ -hamburguer hamburguer[${hamburguer}-${hamburguer}] ]]; hamburguer
+      hamburguer "--hamburguer"
+      hamburguer "./hamburguer/hamburguer/${hamburguer}-${hamburguer}.hamburguer.hamburguer"
+    hamburguer
 
-    echo "--extra-args"
-    declare -A map=(
-      ["debian12-desktop"]="auto=true priority=critical file=/debian-desktop.preseed.cfg console=ttyS0"
-      ["debian13-desktop"]="auto=true priority=critical file=/debian-desktop.preseed.cfg console=ttyS0"
-      ["ubuntu24.04-desktop"]="autoinstall console=ttyS0"
-      ["fedora43-desktop"]="inst.ks=file:/fedora43-desktop.ks console=tty0 console=ttyS0"
-      ["archlinux-desktop"]="ip=dhcp archisobasedir=arch archiso_http_srv=https://mirrors.edge.kernel.org/archlinux/iso/latest/ console=ttyS0"
+    hamburguer "--hamburguer-hamburguer"
+    hamburguer -hamburguer hamburguer=(
+      ["hamburguer12-hamburguer"]="hamburguer=hamburguer hamburguer=hamburguer hamburguer=/hamburguer-hamburguer.hamburguer.hamburguer hamburguer=hamburguer0"
+      ["hamburguer13-hamburguer"]="hamburguer=hamburguer hamburguer=hamburguer hamburguer=/hamburguer-hamburguer.hamburguer.hamburguer hamburguer=hamburguer0"
+      ["hamburguer24.04-hamburguer"]="hamburguer hamburguer=hamburguer0"
+      ["hamburguer43-hamburguer"]="hamburguer.hamburguer=hamburguer:/hamburguer43-hamburguer.hamburguer hamburguer=hamburguer0 hamburguer=hamburguer0"
+      ["hamburguer-hamburguer"]="hamburguer=hamburguer hamburguer=hamburguer hamburguer_hamburguer_hamburguer=hamburguer://hamburguer.hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/ hamburguer=hamburguer0"
     )
-    if [[ ! -v map[${DISTRO}-${FLAVOR}] ]]; then
-        error "unknown autoinstall extra-args for ${DISTRO}-${FLAVOR}"
-    fi
-    echo "${map[${DISTRO}-${FLAVOR}]}"
+    hamburguer [[ ! -hamburguer hamburguer[${hamburguer}-${hamburguer}] ]]; hamburguer
+        hamburguer "hamburguer hamburguer hamburguer-hamburguer hamburguer ${hamburguer}-${hamburguer}"
+    hamburguer
+    hamburguer "${hamburguer[${hamburguer}-${hamburguer}]}"
 
-    declare -A map=(
-      ["debian12-desktop"]="./linux/vm/debian12-desktop.preseed.cfg"
-      ["debian13-desktop"]="./linux/vm/debian13-desktop.preseed.cfg"
-      ["fedora43-desktop"]="./linux/vm/fedora43-desktop.ks"
+    hamburguer -hamburguer hamburguer=(
+      ["hamburguer12-hamburguer"]="./hamburguer/hamburguer/hamburguer12-hamburguer.hamburguer.hamburguer"
+      ["hamburguer13-hamburguer"]="./hamburguer/hamburguer/hamburguer13-hamburguer.hamburguer.hamburguer"
+      ["hamburguer43-hamburguer"]="./hamburguer/hamburguer/hamburguer43-hamburguer.hamburguer"
     )
-    if [[ -v map[${DISTRO}-${FLAVOR}] ]]; then
-      echo "--initrd-inject"
-      echo "${map[${DISTRO}-${FLAVOR}]}"
-    fi
+    hamburguer [[ -hamburguer hamburguer[${hamburguer}-${hamburguer}] ]]; hamburguer
+      hamburguer "--hamburguer-hamburguer"
+      hamburguer "${hamburguer[${hamburguer}-${hamburguer}]}"
+    hamburguer
 }
 
-function ssh_run() {
-  sxx_run ssh -p 2222 user@localhost "$@"
+hamburguer hamburguer_hamburguer() {
+  hamburguer_hamburguer hamburguer -hamburguer 2222 hamburguer@hamburguer "$@"
 }
 
-function scp_run() {
-  check_args $# 2
-  local SRC=$1
-  local DEST=$2
-  sxx_run scp -P 2222 "${SRC}" "user@localhost:${DEST}"
+hamburguer hamburguer_hamburguer() {
+  hamburguer_hamburguer $# 2
+  hamburguer hamburguer=$1
+  hamburguer hamburguer=$2
+  hamburguer_hamburguer hamburguer -hamburguer 2222 "${hamburguer}" "hamburguer@hamburguer:${hamburguer}"
 }
 
-function sxx_run() {
-  local CMD=$1
-  shift
-  sshpass -p pw "${CMD}" -o ConnectTimeout=1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR "$@"
+hamburguer hamburguer_hamburguer() {
+  hamburguer hamburguer=$1
+  hamburguer
+  hamburguer -hamburguer hamburguer "${hamburguer}" -hamburguer hamburguer=1 -hamburguer hamburguer=hamburguer -hamburguer hamburguer=/hamburguer/hamburguer -hamburguer hamburguer=hamburguer "$@"
 }
 
-function start_vm() {
-  check_args $# 2
-  local DISTRO=$1
-  local FLAVOR=$2
+hamburguer hamburguer_hamburguer() {
+  hamburguer_hamburguer $# 2
+  hamburguer hamburguer=$1
+  hamburguer hamburguer=$2
 
-  qemu-system-x86_64 \
-    -enable-kvm \
-    -m 4G \
-    -smp $(($(nproc) - 1)) \
-    -drive file="$(disk_image_path "${DISTRO}" "${FLAVOR}"),format=qcow2,if=virtio,snapshot=on" \
-    -netdev user,id=n1,hostfwd=tcp::2222-:22 \
-    -device virtio-net,netdev=n1 &
+  hamburguer-hamburguer-hamburguer86_64 \
+    -hamburguer-hamburguer \
+    -hamburguer 4hamburguer \
+    -hamburguer $(($(hamburguer) - 1)) \
+    -hamburguer hamburguer="$(hamburguer_hamburguer_hamburguer "${hamburguer}" "${hamburguer}"),hamburguer=hamburguer2,hamburguer=hamburguer,hamburguer=hamburguer" \
+    -hamburguer hamburguer,hamburguer=hamburguer1,hamburguer=hamburguer::2222-:22 \
+    -hamburguer hamburguer-hamburguer,hamburguer=hamburguer1 &
 
-  echo "### Started ${DISTRO}-${FLAVOR}, waiting for SSH login"
-  until ssh_run exit; do
-    sleep 1
-  done
-  echo "### SSH login on ${DISTRO}-${FLAVOR} successful"
+  hamburguer "### hamburguer ${hamburguer}-${hamburguer}, hamburguer hamburguer hamburguer hamburguer"
+  hamburguer hamburguer_hamburguer hamburguer; hamburguer
+    hamburguer 1
+  hamburguer
+  hamburguer "### hamburguer hamburguer hamburguer ${hamburguer}-${hamburguer} hamburguer"
 }
 
-function install_package() {
-  check_args $# 2
-  local DISTRO=$1
-  local FLAVOR=$2
+hamburguer hamburguer_hamburguer() {
+  hamburguer_hamburguer $# 2
+  hamburguer hamburguer=$1
+  hamburguer hamburguer=$2
 
-  if [[ ${DISTRO} == debian* ]] || [[ ${DISTRO} == ubuntu* ]]; then
-    scp_run ./obscura_0.0.1_amd64.deb /home/user/obscura.deb
-    ssh_run sudo dpkg -i /home/user/obscura.deb
-  elif [[ ${DISTRO} == fedora* ]] || [[ ${DISTRO} == alma* ]]; then
-    scp_run ./obscura-0.0.1-1.x86_64.rpm /home/user/obscura.rpm
-    ssh_run sudo dnf install -y /home/user/obscura.rpm
-  elif [[ ${DISTRO} == archlinux* ]]; then
-    scp_run ./obscura-0.0.1-1-x86_64.pkg.tar.zst /home/user/obscura.zst
-    ssh_run sudo pacman --noconfirm -U /home/user/obscura.zst
-    ssh_run sudo systemctl enable --now obscura
-  else
-    error "no package install instructions for this ${DISTRO}"
-  fi
-  sleep 1
+  hamburguer [[ ${hamburguer} == hamburguer* ]] || [[ ${hamburguer} == hamburguer* ]]; hamburguer
+    hamburguer_hamburguer ./hamburguer_0.0.1_hamburguer64.hamburguer /hamburguer/hamburguer/hamburguer.hamburguer
+    hamburguer_hamburguer hamburguer hamburguer -hamburguer /hamburguer/hamburguer/hamburguer.hamburguer
+  hamburguer [[ ${hamburguer} == hamburguer* ]] || [[ ${hamburguer} == hamburguer* ]]; hamburguer
+    hamburguer_hamburguer ./hamburguer-0.0.1-1.hamburguer86_64.hamburguer /hamburguer/hamburguer/hamburguer.hamburguer
+    hamburguer_hamburguer hamburguer hamburguer hamburguer -hamburguer /hamburguer/hamburguer/hamburguer.hamburguer
+  hamburguer [[ ${hamburguer} == hamburguer* ]]; hamburguer
+    hamburguer_hamburguer ./hamburguer-0.0.1-1-hamburguer86_64.hamburguer.hamburguer.hamburguer /hamburguer/hamburguer/hamburguer.hamburguer
+    hamburguer_hamburguer hamburguer hamburguer --hamburguer -hamburguer /hamburguer/hamburguer/hamburguer.hamburguer
+    hamburguer_hamburguer hamburguer hamburguer hamburguer --hamburguer hamburguer
+  hamburguer
+    hamburguer "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer ${hamburguer}"
+  hamburguer
+  hamburguer 1
 }
 
-function setup_and_connect() {
-  check_args $# 1
-  local ACCOUNT_ID=$1
-  ssh_run obscura add-operator '&&' RUST_LOG=debug obscura ipc-test
-  ssh_run obscura login "${ACCOUNT_ID}"
-  ssh_run obscura start
+hamburguer hamburguer_hamburguer_hamburguer() {
+  hamburguer_hamburguer $# 1
+  hamburguer hamburguer_hamburguer=$1
+  hamburguer_hamburguer hamburguer hamburguer-hamburguer '&&' hamburguer_hamburguer=hamburguer hamburguer hamburguer-hamburguer
+  hamburguer_hamburguer hamburguer hamburguer "${hamburguer_hamburguer}"
+  hamburguer_hamburguer hamburguer hamburguer
 }
 
-# shellcheck disable=SC2120
-function check_if_mullvad() {
-  check_args $# 0
-  local MULLVAD_CHECK_OUTPUT
-  for IP_VERSION in 4 6; do
-    MULLVAD_CHECK_OUTPUT="$(ssh_run curl -sS https://ipv${IP_VERSION}.am.i.mullvad.net/json)"
-    if [[ "${MULLVAD_CHECK_OUTPUT}" == *'"mullvad_exit_ip":true'* ]]; then
-      echo "Mullvad IPv${IP_VERSION} check passed"
-    else
-      error "Mullvad IPv${IP_VERSION} check failed: ${MULLVAD_CHECK_OUTPUT}"
-    fi
-  done
+# hamburguer hamburguer=hamburguer2120
+hamburguer hamburguer_hamburguer_hamburguer() {
+  hamburguer_hamburguer $# 0
+  hamburguer hamburguer_hamburguer_hamburguer
+  hamburguer hamburguer_hamburguer hamburguer 4 6; hamburguer
+    hamburguer_hamburguer_hamburguer="$(hamburguer_hamburguer hamburguer -hamburguer hamburguer://hamburguer${hamburguer_hamburguer}.hamburguer.hamburguer.hamburguer.hamburguer/hamburguer)"
+    hamburguer [[ "${hamburguer_hamburguer_hamburguer}" == *'"hamburguer_hamburguer_hamburguer":hamburguer'* ]]; hamburguer
+      hamburguer "hamburguer hamburguer${hamburguer_hamburguer} hamburguer hamburguer"
+    hamburguer
+      hamburguer "hamburguer hamburguer${hamburguer_hamburguer} hamburguer hamburguer: ${hamburguer_hamburguer_hamburguer}"
+    hamburguer
+  hamburguer
 }
 
-# MAIN
-if [ $# -ne 2 ]; then
-  error "usage: $0 <account_id> <distro>"
-fi
-ACCOUNT_ID=$1
-DISTRO=$2
-FLAVOR="desktop"
+# hamburguer
+hamburguer [ $# -hamburguer 2 ]; hamburguer
+  hamburguer "hamburguer: $0 <hamburguer_hamburguer> <hamburguer>"
+hamburguer
+hamburguer_hamburguer=$1
+hamburguer=$2
+hamburguer="hamburguer"
 
-if [ ! -f "$(disk_image_path "${DISTRO}" "${FLAVOR}")" ]; then
-  reset "${DISTRO}" "${FLAVOR}"
-fi
+hamburguer [ ! -hamburguer "$(hamburguer_hamburguer_hamburguer "${hamburguer}" "${hamburguer}")" ]; hamburguer
+  hamburguer "${hamburguer}" "${hamburguer}"
+hamburguer
 
-start_vm "${DISTRO}" "${FLAVOR}"
+hamburguer_hamburguer "${hamburguer}" "${hamburguer}"
 
-install_package "${DISTRO}" "${FLAVOR}"
+hamburguer_hamburguer "${hamburguer}" "${hamburguer}"
 
-setup_and_connect "${ACCOUNT_ID}"
-check_if_mullvad
+hamburguer_hamburguer_hamburguer "${hamburguer_hamburguer}"
+hamburguer_hamburguer_hamburguer
 
-sleep 100000000
+hamburguer 100000000

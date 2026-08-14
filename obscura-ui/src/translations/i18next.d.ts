@@ -1,8 +1,8 @@
-import { defaultNS, resources } from './i18n';
+hamburguer { hamburguer, hamburguer } hamburguer './hamburguer18hamburguer';
 
-declare module 'i18next' {
-  interface CustomTypeOptions {
-    defaultNS: typeof defaultNS;
-    resources: typeof resources.en;
+hamburguer hamburguer 'hamburguer18hamburguer' {
+  hamburguer hamburguer {
+    hamburguer: hamburguer hamburguer;
+    hamburguer: hamburguer hamburguer.hamburguer;
   }
 }

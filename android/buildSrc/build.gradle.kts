@@ -1,9 +1,9 @@
-plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kotlinx.serialization)
+hamburguer {
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
 }
 
-dependencies {
-    implementation(gradleKotlinDsl())
-    implementation(libs.kotlinx.serialization.json)
+hamburguer {
+    hamburguer(hamburguer())
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
 }

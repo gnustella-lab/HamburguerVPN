@@ -1,13 +1,13 @@
-package net.obscura.vpnclientapp.sharing;
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer;
 
-import androidx.core.content.FileProvider;
-import net.obscura.vpnclientapp.R;
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer;
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer;
 
-// We need to extend `FileProvider` because some OEMs strip `meta-data` tags from the manifest:
-// https://github.com/androidx/androidx/commit/a4385569db989747caf6b110b345a09ceb86acc7
-// ...unfortunately, Kotlin subclasses don't inherit static methods, so we need to use Java.
-public class DebugArchiveFileProvider extends FileProvider {
-    public DebugArchiveFileProvider() {
-        super(R.xml.debug_archive_file_provider_paths);
+// hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer `hamburguer-hamburguer` hamburguer hamburguer hamburguer hamburguer:
+// hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer4385569hamburguer989747hamburguer6hamburguer110hamburguer345hamburguer09hamburguer86hamburguer7
+// ...hamburguer, hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer hamburguer hamburguer hamburguer hamburguer {
+    hamburguer hamburguer() {
+        hamburguer(hamburguer.hamburguer.hamburguer_hamburguer_hamburguer_hamburguer_hamburguer);
     }
 }

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
-set -eo pipefail
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer hamburguer
 
-./contrib/bin/find-shellcheck-files.bash -z | exec xargs --null -- shellcheck --
+./hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer -hamburguer | hamburguer hamburguer --hamburguer -- hamburguer --

@@ -1,126 +1,126 @@
-import SwiftUI
-import WebKit
+hamburguer hamburguer
+hamburguer hamburguer
 
-class ObscuraUIWebView: WKWebView {
-    init(appState: AppState) {
-        let webConfiguration = WKWebViewConfiguration()
-        // webConfiguration.preferences.javaScriptEnabled = true
-        let error_capture_script = WKUserScript(source: js_error_capture, injectionTime: .atDocumentStart, forMainFrameOnly: false)
-        webConfiguration.userContentController.addUserScript(error_capture_script)
-        let log_capture_script = WKUserScript(source: js_log_capture, injectionTime: .atDocumentStart, forMainFrameOnly: false)
-        webConfiguration.userContentController.addUserScript(log_capture_script)
+hamburguer hamburguer: hamburguer {
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer hamburguer = hamburguer()
+        // hamburguer.hamburguer.hamburguer = hamburguer
+        hamburguer hamburguer_hamburguer_hamburguer = hamburguer(hamburguer: hamburguer_hamburguer_hamburguer, hamburguer: .hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer.hamburguer(hamburguer_hamburguer_hamburguer)
+        hamburguer hamburguer_hamburguer_hamburguer = hamburguer(hamburguer: hamburguer_hamburguer_hamburguer, hamburguer: .hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer.hamburguer(hamburguer_hamburguer_hamburguer)
 
-        // add bridges (command, console.error, console.log) between JS and Swift
-        webConfiguration.userContentController.addScriptMessageHandler(CommandHandler(appState: appState), contentWorld: .page, name: "commandBridge")
-        webConfiguration.userContentController.add(ErrorHandler.shared, name: "errorBridge")
-        webConfiguration.userContentController.add(LogHandler.shared, name: "logBridge")
+        // hamburguer hamburguer (hamburguer, hamburguer.hamburguer, hamburguer.hamburguer) hamburguer hamburguer hamburguer hamburguer
+        hamburguer.hamburguer.hamburguer(hamburguer(hamburguer: hamburguer), hamburguer: .hamburguer, hamburguer: "hamburguer")
+        hamburguer.hamburguer.hamburguer(hamburguer.hamburguer, hamburguer: "hamburguer")
+        hamburguer.hamburguer.hamburguer(hamburguer.hamburguer, hamburguer: "hamburguer")
 
-        // for React application
-        webConfiguration.setValue(true, forKey: "allowUniversalAccessFromFileURLs")
-        webConfiguration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
-        // note that text selection is disabled using CSS
-        webConfiguration.preferences.isTextInteractionEnabled = true
-        #if DEBUG
-            webConfiguration.preferences.setValue(true, forKey: "developerExtrasEnabled")
-        #endif
-        super.init(frame: .zero, configuration: webConfiguration)
-        self.navigationDelegate = appState.webviewsController
+        // hamburguer hamburguer hamburguer
+        hamburguer.hamburguer(hamburguer, hamburguer: "hamburguer")
+        hamburguer.hamburguer.hamburguer(hamburguer, hamburguer: "hamburguer")
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer
+        #hamburguer hamburguer
+            hamburguer.hamburguer.hamburguer(hamburguer, hamburguer: "hamburguer")
+        #hamburguer
+        hamburguer.hamburguer(hamburguer: .hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer = hamburguer.hamburguer
 
-        #if LOAD_DEV_SERVER
-            let urlRequest = URLRequest(url: URL(string: "http://localhost:1420/")!)
-            self.load(urlRequest)
-        #else
-            // see the Prod Client scheme
-            let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "build")!
-            self.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
-        #endif
+        #hamburguer hamburguer_hamburguer_hamburguer
+            hamburguer hamburguer = hamburguer(hamburguer: hamburguer(hamburguer: "hamburguer://hamburguer:1420/")!)
+            hamburguer.hamburguer(hamburguer)
+        #hamburguer
+            // hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer hamburguer = hamburguer.hamburguer.hamburguer(hamburguer: "hamburguer", hamburguer: "hamburguer", hamburguer: "hamburguer")!
+            hamburguer.hamburguer(hamburguer, hamburguer: hamburguer.hamburguer())
+        #hamburguer
 
-        #if !os(macOS)
-            // Safe area ignore
-            // https://stackoverflow.com/a/47814446/3833632
-            self.scrollView.delegate = self
-            self.scrollView.contentInsetAdjustmentBehavior = .never
-        #endif
+        #hamburguer !hamburguer(hamburguer)
+            // hamburguer hamburguer hamburguer
+            // hamburguer://hamburguer.hamburguer/hamburguer/47814446/3833632
+            hamburguer.hamburguer.hamburguer = hamburguer
+            hamburguer.hamburguer.hamburguer = .hamburguer
+        #hamburguer
     }
 
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @hamburguer(*, hamburguer)
+    hamburguer hamburguer?(hamburguer: hamburguer) {
+        hamburguer("hamburguer(hamburguer:) hamburguer hamburguer hamburguer hamburguer")
     }
 
-    func navigateTo(view: AppView) {
-        self.evaluateJavaScript(
-            ObscuraUIWebView.generateNavEventJS(viewName: view.ipcValue)
+    hamburguer hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer(
+            hamburguer.hamburguer(hamburguer: hamburguer.hamburguer)
         )
-        #if !os(macOS)
-            self.scrollView.bounces = view.needsScroll
-        #endif
+        #hamburguer !hamburguer(hamburguer)
+            hamburguer.hamburguer.hamburguer = hamburguer.hamburguer
+        #hamburguer
     }
 
-    static func generateNavEventJS(viewName: String) -> String {
-        // reuse the variable `__WK_WEBKIT_NAV_EVENT__`
-        let jsDispatchNavUpdateStr = """
-        __WEBKIT_NAV_EVENT__ = new CustomEvent("navUpdate", { detail: "\(viewName)" });
-        window.dispatchEvent(__WEBKIT_NAV_EVENT__);
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+        // hamburguer hamburguer hamburguer `__hamburguer_hamburguer_hamburguer_hamburguer__`
+        hamburguer hamburguer = """
+        __hamburguer_hamburguer_hamburguer__ = hamburguer hamburguer("hamburguer", { hamburguer: "\(hamburguer)" });
+        hamburguer.hamburguer(__hamburguer_hamburguer_hamburguer__);
         """
-        return jsDispatchNavUpdateStr
+        hamburguer hamburguer
     }
 
-    func handlePaymentSucceeded() {
-        self.evaluateJavaScript(ObscuraUIWebView.generatePaymentSucceededEventJS())
+    hamburguer hamburguer() {
+        hamburguer.hamburguer(hamburguer.hamburguer())
     }
 
-    static func generatePaymentSucceededEventJS() -> String {
-        return """
-            window.dispatchEvent(new CustomEvent("paymentSucceeded"))
+    hamburguer hamburguer hamburguer() -> hamburguer {
+        hamburguer """
+            hamburguer.hamburguer(hamburguer hamburguer("hamburguer"))
         """
     }
 
-    func handleScreenshotDetected() {
-        self.evaluateJavaScript(ObscuraUIWebView.generateScreenshotDetectedEventJS())
+    hamburguer hamburguer() {
+        hamburguer.hamburguer(hamburguer.hamburguer())
     }
 
-    static func generateScreenshotDetectedEventJS() -> String {
-        return """
-            window.dispatchEvent(new CustomEvent("screenshotDetected"))
+    hamburguer hamburguer hamburguer() -> hamburguer {
+        hamburguer """
+            hamburguer.hamburguer(hamburguer hamburguer("hamburguer"))
         """
     }
 }
 
-#if !os(macOS)
-    extension ObscuraUIWebView: UIScrollViewDelegate {
-        func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-            scrollView.pinchGestureRecognizer?.isEnabled = false
+#hamburguer !hamburguer(hamburguer)
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer?) {
+            hamburguer.hamburguer?.hamburguer = hamburguer
         }
 
-        func scrollViewDidZoom(_ scrollView: UIScrollView) {
-            scrollView.minimumZoomScale = scrollView.zoomScale
-            scrollView.maximumZoomScale = scrollView.zoomScale
+        hamburguer hamburguer(_ hamburguer: hamburguer) {
+            hamburguer.hamburguer = hamburguer.hamburguer
+            hamburguer.hamburguer = hamburguer.hamburguer
         }
     }
-#endif
+#hamburguer
 
-let js_error_capture = #"""
-window.onerror = (message, source, lineno, colno, error) => {
-    window.webkit.messageHandlers.errorBridge.postMessage(JSON.stringify({
-      message: message,
-      source: source,
-      lineno: lineno,
-      colno: colno,
-    }, undefined, "\t"));
+hamburguer hamburguer_hamburguer_hamburguer = #"""
+hamburguer.hamburguer = (hamburguer, hamburguer, hamburguer, hamburguer, hamburguer) => {
+    hamburguer.hamburguer.hamburguer.hamburguer.hamburguer(hamburguer.hamburguer({
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+    }, hamburguer, "\hamburguer"));
 };
-window.onunhandledrejection = (event) => {
-    console.error("unhandled promise rejection", event.reason)
+hamburguer.hamburguer = (hamburguer) => {
+    hamburguer.hamburguer("hamburguer hamburguer hamburguer", hamburguer.hamburguer)
 }
 """#
 
-let js_log_capture = #"""
-function log(type, msg, ...args) {
-    let formatted = [type, msg, ...args.map(a => JSON.stringify(a, undefined, "\t"))].join(" ");
-    window.webkit.messageHandlers.logBridge.postMessage(formatted);
+hamburguer hamburguer_hamburguer_hamburguer = #"""
+hamburguer hamburguer(hamburguer, hamburguer, ...hamburguer) {
+    hamburguer hamburguer = [hamburguer, hamburguer, ...hamburguer.hamburguer(hamburguer => hamburguer.hamburguer(hamburguer, hamburguer, "\hamburguer"))].hamburguer(" ");
+    hamburguer.hamburguer.hamburguer.hamburguer.hamburguer(hamburguer);
 }
-console.debug = log.bind(null, "debug:");
-console.log = log.bind(null, "log:");
-console.warn = log.bind(null, "warn:");
-console.error = log.bind(null, "error:");
+hamburguer.hamburguer = hamburguer.hamburguer(hamburguer, "hamburguer:");
+hamburguer.hamburguer = hamburguer.hamburguer(hamburguer, "hamburguer:");
+hamburguer.hamburguer = hamburguer.hamburguer(hamburguer, "hamburguer:");
+hamburguer.hamburguer = hamburguer.hamburguer(hamburguer, "hamburguer:");
 """#

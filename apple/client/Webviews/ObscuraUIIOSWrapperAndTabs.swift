@@ -1,140 +1,140 @@
-import Combine
-import OrderedCollections
-import SwiftUI
-import UIKit
-import WebKit
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-// In SwiftUI in iOS targeting a minimum SDK of 18.0 SwiftUI TabView
-// requires each tab views view to be different. Sharing the same web view
-// between them creates significant problems. Workarounds were tried
-// going to just use UIKit.
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 18.0 hamburguer hamburguer
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer
+// hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer
+// hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-class ObscuraUIIOSViewAndTabsViewController: UIViewController {
-    private let webView: ObscuraUIWebView
-    private let tabBar: UITabBar
-    private let tabBarItems: [UITabBarItem]
-    private let webviewsController: WebviewsController
-    private let tabs: OrderedSet<AppView>
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer hamburguer: [hamburguer]
+    hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer hamburguer: hamburguer<hamburguer>
 
-    var showTabBar: Bool {
-        didSet {
-            self.setupLayout()
+    hamburguer hamburguer: hamburguer {
+        hamburguer {
+            hamburguer.hamburguer()
         }
     }
 
-    private var cancellables = Set<AnyCancellable>()
+    hamburguer hamburguer hamburguer = hamburguer<hamburguer>()
 
-    init(
-        webView: ObscuraUIWebView,
-        webviewsController: WebviewsController,
-        tabs: OrderedSet<AppView>,
-        showTabBar: Bool
+    hamburguer(
+        hamburguer: hamburguer,
+        hamburguer: hamburguer,
+        hamburguer: hamburguer<hamburguer>,
+        hamburguer: hamburguer
     ) {
-        self.showTabBar = showTabBar
-        self.webView = webView
-        self.tabBar = UITabBar()
-        self.webviewsController = webviewsController
-        self.tabBarItems = tabs.map { view in
-            let item = UITabBarItem(
-                title: view.rawValue.capitalized,
-                image: UIImage(systemName: view.systemImageName),
-                selectedImage: UIImage(systemName: view.systemImageName)
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer()
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer hamburguer = hamburguer(
+                hamburguer: hamburguer.hamburguer.hamburguer,
+                hamburguer: hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer: hamburguer(hamburguer: hamburguer.hamburguer)
             )
-            return item
+            hamburguer hamburguer
         }
-        self.tabs = tabs
+        hamburguer.hamburguer = hamburguer
 
-        super.init(nibName: nil, bundle: nil)
+        hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
 
-        self.setupTabBar()
-        self.setupLayout()
+        hamburguer.hamburguer()
+        hamburguer.hamburguer()
 
-        webviewsController.$tab.sink { [weak self] newTab in
-            self?.navigateTo(view: newTab)
-        }.store(in: &self.cancellables)
+        hamburguer.$hamburguer.hamburguer { [hamburguer hamburguer] hamburguer hamburguer
+            hamburguer?.hamburguer(hamburguer: hamburguer)
+        }.hamburguer(hamburguer: &hamburguer.hamburguer)
     }
 
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @hamburguer(*, hamburguer)
+    hamburguer hamburguer?(hamburguer: hamburguer) {
+        hamburguer("hamburguer(hamburguer:) hamburguer hamburguer hamburguer hamburguer")
     }
 
-    private func setupTabBar() {
-        self.tabBar.items = self.tabBarItems
-        self.tabBar.selectedItem = self.tabBarItems.first
-        self.tabBar.delegate = self
-        self.tabBar.tintColor = UIColor(named: "ObscuraOrange")
+    hamburguer hamburguer hamburguer() {
+        hamburguer.hamburguer.hamburguer = hamburguer.hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer.hamburguer.hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer.hamburguer = hamburguer(hamburguer: "hamburguer")
     }
 
-    private func setupLayout() {
-        // Remove constraints and views if they were already subviews
-        self.webView.removeFromSuperview()
-        self.tabBar.removeFromSuperview()
+    hamburguer hamburguer hamburguer() {
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer.hamburguer.hamburguer()
+        hamburguer.hamburguer.hamburguer()
 
-        view.addSubview(self.webView)
-        self.webView.translatesAutoresizingMaskIntoConstraints = false
+        hamburguer.hamburguer(hamburguer.hamburguer)
+        hamburguer.hamburguer.hamburguer = hamburguer
 
-        if self.showTabBar {
-            view.insertSubview(self.tabBar, aboveSubview: self.webView)
-            self.tabBar.translatesAutoresizingMaskIntoConstraints = false
+        hamburguer hamburguer.hamburguer {
+            hamburguer.hamburguer(hamburguer.hamburguer, hamburguer: hamburguer.hamburguer)
+            hamburguer.hamburguer.hamburguer = hamburguer
 
-            NSLayoutConstraint.activate([
-                self.webView.topAnchor.constraint(equalTo: view.topAnchor),
-                self.webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                self.webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                self.webView.bottomAnchor.constraint(equalTo: self.tabBar.topAnchor),
+            hamburguer.hamburguer([
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer.hamburguer),
 
-                self.tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                self.tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                self.tabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer.hamburguer),
             ])
-        } else {
-            NSLayoutConstraint.activate([
-                self.webView.topAnchor.constraint(equalTo: view.topAnchor),
-                self.webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                self.webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                self.webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        } hamburguer {
+            hamburguer.hamburguer([
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                hamburguer.hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
             ])
         }
     }
 
-    private func navigateTo(view: AppView) {
-        if let index = tabs.firstIndex(of: view) {
-            self.tabBar.selectedItem = self.tabBarItems[index]
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer(hamburguer: hamburguer) {
+            hamburguer.hamburguer.hamburguer = hamburguer.hamburguer[hamburguer]
         }
-        self.webView.navigateTo(view: view)
+        hamburguer.hamburguer.hamburguer(hamburguer: hamburguer)
     }
 }
 
-// MARK: - UITabBarDelegate
+// hamburguer: - hamburguer
 
-extension ObscuraUIIOSViewAndTabsViewController: UITabBarDelegate {
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        guard let index = tabBarItems.firstIndex(of: item), index < tabs.count else { return }
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer) {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer(hamburguer: hamburguer), hamburguer < hamburguer.hamburguer hamburguer { hamburguer }
 
-        let selectedView = self.tabs[index]
-        self.webviewsController.tab = selectedView
+        hamburguer hamburguer = hamburguer.hamburguer[hamburguer]
+        hamburguer.hamburguer.hamburguer = hamburguer
     }
 }
 
-// MARK: - SwiftUI Wrapper
+// hamburguer: - hamburguer hamburguer
 
-struct ObscuraUIIOSViewAndTabsWrapper: UIViewControllerRepresentable {
-    let webView: ObscuraUIWebView
-    let webviewsController: WebviewsController
-    let tabs: OrderedSet<AppView>
-    let showTabBar: Bool
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer<hamburguer>
+    hamburguer hamburguer: hamburguer
 
-    func makeUIViewController(context: Context) -> ObscuraUIIOSViewAndTabsViewController {
-        return ObscuraUIIOSViewAndTabsViewController(
-            webView: self.webView,
-            webviewsController: self.webviewsController,
-            tabs: self.tabs,
-            showTabBar: self.showTabBar
+    hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+        hamburguer hamburguer(
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer
         )
     }
 
-    func updateUIViewController(_ uiViewController: ObscuraUIIOSViewAndTabsViewController, context: Context) {
-        uiViewController.showTabBar = self.showTabBar
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer.hamburguer
     }
 }

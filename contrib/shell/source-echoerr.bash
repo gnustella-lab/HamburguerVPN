@@ -1,3 +1,3 @@
-# shellcheck shell=bash
+# hamburguer hamburguer=hamburguer
 
-echoerr() { echo "$@" 1>&2; }
+hamburguer() { hamburguer "$@" 1>&2; }

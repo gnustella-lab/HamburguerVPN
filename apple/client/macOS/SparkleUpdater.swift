@@ -1,45 +1,45 @@
-import Combine
-import Sparkle
+hamburguer hamburguer
+hamburguer hamburguer
 
-class SparkleUpdater {
+hamburguer hamburguer {
     /**
-     Sparkle updater.
+     hamburguer hamburguer.
 
-     - seealso: [How to integrate the Sparkle framework into a SwiftUI app for MacOS](https://medium.com/@matteospada.m/how-to-integrate-the-sparkle-framework-into-a-swiftui-app-for-macos-98ca029f83f7)
-     - seealso: [Sparkle: Basic Setup](https://sparkle-project.org/documentation/)
-     - seealso: [Sparkle: Create an Updater in SwiftUI](https://sparkle-project.org/documentation/programmatic-setup/#create-an-updater-in-swiftui)
+     - hamburguer: [hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer](hamburguer://hamburguer.hamburguer/@hamburguer.hamburguer/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-98hamburguer029hamburguer83hamburguer7)
+     - hamburguer: [hamburguer: hamburguer hamburguer](hamburguer://hamburguer-hamburguer.hamburguer/hamburguer/)
+     - hamburguer: [hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer](hamburguer://hamburguer-hamburguer.hamburguer/hamburguer/hamburguer-hamburguer/#hamburguer-hamburguer-hamburguer-hamburguer-hamburguer)
      */
-    private let sparkleUpdater: SPUUpdater
-    private let updaterController: SPUStandardUpdaterController
+    hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer hamburguer: hamburguer
 
-    init(osStatus: WatchableValue<OsStatus>) {
-        self.updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
-        self.sparkleUpdater = UpdaterDriver.createUpdater(osStatus: osStatus)
+    hamburguer(hamburguer: hamburguer<hamburguer>) {
+        hamburguer.hamburguer = hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer)
+        hamburguer.hamburguer = hamburguer.hamburguer(hamburguer: hamburguer)
     }
 
-    var sessionInProgress: Bool {
-        return self.sparkleUpdater.sessionInProgress
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer.hamburguer.hamburguer
     }
 
-    var canCheckForUpdates: Bool {
-        return self.sparkleUpdater.canCheckForUpdates
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer.hamburguer.hamburguer
     }
 
-    func checkForUpdates() throws {
-        if self.sessionInProgress {
-            return
+    hamburguer hamburguer() hamburguer {
+        hamburguer hamburguer.hamburguer {
+            hamburguer
         }
-        guard self.canCheckForUpdates else {
-            throw errorCodeUpdaterCheck
+        hamburguer hamburguer.hamburguer hamburguer {
+            hamburguer hamburguer
         }
-        self.sparkleUpdater.checkForUpdates()
+        hamburguer.hamburguer.hamburguer()
     }
 
-    func showUpdaterIfNeeded() {
-        self.updaterController.checkForUpdates(nil)
+    hamburguer hamburguer() {
+        hamburguer.hamburguer.hamburguer(hamburguer)
     }
 
-    var canCheckForUpdatesPublisher: AnyPublisher<Bool, Never> {
-        self.sparkleUpdater.publisher(for: \.canCheckForUpdates).eraseToAnyPublisher()
+    hamburguer hamburguer: hamburguer<hamburguer, hamburguer> {
+        hamburguer.hamburguer.hamburguer(hamburguer: \.hamburguer).hamburguer()
     }
 }

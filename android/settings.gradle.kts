@@ -1,26 +1,26 @@
-pluginManagement {
-    repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
+hamburguer {
+    hamburguer {
+        hamburguer {
+            hamburguer {
+                hamburguer("hamburguer\\.hamburguer.*")
+                hamburguer("hamburguer\\.hamburguer.*")
+                hamburguer("hamburguer.*")
             }
         }
-        gradlePluginPortal()
-        mavenCentral()
+        hamburguer()
+        hamburguer()
     }
 }
 
-dependencyResolutionManagement {
-    @Suppress("UnstableApiUsage")
-    repositories {
-        google()
-        mavenCentral()
+hamburguer {
+    @hamburguer("hamburguer")
+    hamburguer {
+        hamburguer()
+        hamburguer()
     }
-    @Suppress("UnstableApiUsage")
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    @hamburguer("hamburguer")
+    hamburguer.hamburguer(hamburguer.hamburguer_hamburguer_hamburguer_hamburguer)
 }
 
-rootProject.name = "ObscuraVPN"
-include(":app")
+hamburguer.hamburguer = "hamburguer"
+hamburguer(":hamburguer")

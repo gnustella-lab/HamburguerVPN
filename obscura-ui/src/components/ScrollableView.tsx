@@ -1,34 +1,34 @@
-import { ActionIcon, Affix, ScrollArea, Transition } from '@mantine/core';
-import { useWindowScroll } from '@mantine/hooks';
-import { PropsWithChildren, useRef } from 'react';
-import { IoArrowUp } from 'react-icons/io5';
-import { IS_HANDHELD_DEVICE } from '../bridge/SystemProvider';
-import classes from './ScrollableView.module.css';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer5';
+hamburguer { hamburguer_hamburguer_hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer hamburguer hamburguer './hamburguer.hamburguer.hamburguer';
 
-export function ScrollableView({ children }: PropsWithChildren) {
-  const viewport = useRef<HTMLDivElement>(null);
+hamburguer hamburguer hamburguer({ hamburguer }: hamburguer) {
+  hamburguer hamburguer = hamburguer<hamburguer>(hamburguer);
 
-  return (
-    <ScrollArea h='100vh' type='always' scrollbarSize={IS_HANDHELD_DEVICE ? 2 : 12} classNames={classes} viewportRef={viewport}>
-      {children}
-      <ScrollToTop />
-    </ScrollArea>
+  hamburguer (
+    <hamburguer hamburguer='100hamburguer' hamburguer='hamburguer' hamburguer={hamburguer_hamburguer_hamburguer ? 2 : 12} hamburguer={hamburguer} hamburguer={hamburguer}>
+      {hamburguer}
+      <hamburguer />
+    </hamburguer>
   );
 }
 
-function ScrollToTop() {
-  const [scroll, scrollTo] = useWindowScroll();
+hamburguer hamburguer() {
+  hamburguer [hamburguer, hamburguer] = hamburguer();
 
-  return (
-    <Affix position={{ bottom: 20, right: 20 }}>
-      <Transition transition='slide-up' mounted={scroll.y > 50}>
-        {transitionStyles =>
-          <ActionIcon style={transitionStyles} size='lg' variant='gradient'
-            onClick={() => scrollTo!({ y: 0 })}>
-            <IoArrowUp size={25} />
-          </ActionIcon>
+  hamburguer (
+    <hamburguer hamburguer={{ hamburguer: 20, hamburguer: 20 }}>
+      <hamburguer hamburguer='hamburguer-hamburguer' hamburguer={hamburguer.hamburguer > 50}>
+        {hamburguer =>
+          <hamburguer hamburguer={hamburguer} hamburguer='hamburguer' hamburguer='hamburguer'
+            hamburguer={() => hamburguer!({ hamburguer: 0 })}>
+            <hamburguer hamburguer={25} />
+          </hamburguer>
         }
-      </Transition>
-    </Affix>
+      </hamburguer>
+    </hamburguer>
   );
 }

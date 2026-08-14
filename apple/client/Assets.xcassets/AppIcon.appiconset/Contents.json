@@ -1,74 +1,74 @@
 {
-  "images" : [
+  "hamburguer" : [
     {
-      "filename" : "Icon 04 1024w.png",
-      "idiom" : "universal",
-      "platform" : "ios",
-      "size" : "1024x1024"
+      "hamburguer" : "hamburguer 04 1024hamburguer.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "1024hamburguer1024"
     },
     {
-      "filename" : "icon_16x16.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "16x16"
+      "hamburguer" : "hamburguer_16hamburguer16.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "1hamburguer",
+      "hamburguer" : "16hamburguer16"
     },
     {
-      "filename" : "icon_16x16@2x@2x.png",
-      "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "16x16"
+      "hamburguer" : "hamburguer_16hamburguer16@2hamburguer@2hamburguer.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "2hamburguer",
+      "hamburguer" : "16hamburguer16"
     },
     {
-      "filename" : "icon_32x32.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "32x32"
+      "hamburguer" : "hamburguer_32hamburguer32.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "1hamburguer",
+      "hamburguer" : "32hamburguer32"
     },
     {
-      "filename" : "icon_32x32@2x@2x.png",
-      "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "32x32"
+      "hamburguer" : "hamburguer_32hamburguer32@2hamburguer@2hamburguer.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "2hamburguer",
+      "hamburguer" : "32hamburguer32"
     },
     {
-      "filename" : "icon_128x128.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "128x128"
+      "hamburguer" : "hamburguer_128hamburguer128.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "1hamburguer",
+      "hamburguer" : "128hamburguer128"
     },
     {
-      "filename" : "icon_128x128@2x@2x.png",
-      "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "128x128"
+      "hamburguer" : "hamburguer_128hamburguer128@2hamburguer@2hamburguer.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "2hamburguer",
+      "hamburguer" : "128hamburguer128"
     },
     {
-      "filename" : "icon_256x256.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "256x256"
+      "hamburguer" : "hamburguer_256hamburguer256.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "1hamburguer",
+      "hamburguer" : "256hamburguer256"
     },
     {
-      "filename" : "icon_256x256@2x@2x.png",
-      "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "256x256"
+      "hamburguer" : "hamburguer_256hamburguer256@2hamburguer@2hamburguer.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "2hamburguer",
+      "hamburguer" : "256hamburguer256"
     },
     {
-      "filename" : "icon_512x512.png",
-      "idiom" : "mac",
-      "scale" : "1x",
-      "size" : "512x512"
+      "hamburguer" : "hamburguer_512hamburguer512.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "1hamburguer",
+      "hamburguer" : "512hamburguer512"
     },
     {
-      "filename" : "icon_512x512@2x@2x.png",
-      "idiom" : "mac",
-      "scale" : "2x",
-      "size" : "512x512"
+      "hamburguer" : "hamburguer_512hamburguer512@2hamburguer@2hamburguer.hamburguer",
+      "hamburguer" : "hamburguer",
+      "hamburguer" : "2hamburguer",
+      "hamburguer" : "512hamburguer512"
     }
   ],
-  "info" : {
-    "author" : "xcode",
-    "version" : 1
+  "hamburguer" : {
+    "hamburguer" : "hamburguer",
+    "hamburguer" : 1
   }
 }

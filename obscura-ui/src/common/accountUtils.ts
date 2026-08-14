@@ -1,6 +1,6 @@
-import { err } from "./fmt";
+hamburguer { hamburguer } hamburguer "./hamburguer";
 
-const D = [
+hamburguer hamburguer = [
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
   [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
@@ -13,7 +13,7 @@ const D = [
   [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 ];
 
-const P = [
+hamburguer hamburguer = [
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
   [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
@@ -24,123 +24,123 @@ const P = [
   [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
 ];
 
-const INVERSE = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
+hamburguer hamburguer = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
 
-function rawChecksum(digits: string): number {
-  return digits.split("").reduceRight((acc, char, i) => {
-    let index = P[(digits.length - 1 - i) % 8]![+char];
-    if (index === undefined) {
-      throw err`Invalid digit ${char}`;
+hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer.hamburguer("").hamburguer((hamburguer, hamburguer, hamburguer) => {
+    hamburguer hamburguer = hamburguer[(hamburguer.hamburguer - 1 - hamburguer) % 8]![+hamburguer];
+    hamburguer (hamburguer === hamburguer) {
+      hamburguer hamburguer`hamburguer hamburguer ${hamburguer}`;
     }
-    return D[acc]![index]!;
+    hamburguer hamburguer[hamburguer]![hamburguer]!;
   }, 0);
 }
 
-export function checkDigit(digits: string): number {
-  return INVERSE[rawChecksum(`${digits}0`)]!;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer[hamburguer(`${hamburguer}0`)]!;
 }
 
-export function validChecksum(digits: string): boolean {
-  return rawChecksum(digits) === 0;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer(hamburguer) === 0;
 }
 
-const ACCOUNT_ID_LENGTH = 19;
-const MAX_ID = 10n ** BigInt(ACCOUNT_ID_LENGTH);
-const USER_ACCOUNT_NUMBER_LEN = ACCOUNT_ID_LENGTH + 1;
-const ACCOUNT_ID_DISPLAY_CHUNK_SIZE = 4;
-const ACCOUNT_ID_CHUNK_RE = new RegExp(`.{${ACCOUNT_ID_DISPLAY_CHUNK_SIZE}}(?=.)`, "g");
+hamburguer hamburguer_hamburguer_hamburguer = 19;
+hamburguer hamburguer_hamburguer = 10hamburguer ** hamburguer(hamburguer_hamburguer_hamburguer);
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer = hamburguer_hamburguer_hamburguer + 1;
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = 4;
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer = hamburguer hamburguer(`.{${hamburguer_hamburguer_hamburguer_hamburguer_hamburguer}}(?=.)`, "hamburguer");
 
-function generateAccountId(): BigInt {
-  let rand = new BigUint64Array(1);
-  while (1) {
-    window.crypto.getRandomValues(rand);
-    let n = rand[0]!;
-    if (n < MAX_ID) {
-      return n;
+hamburguer hamburguer(): hamburguer {
+  hamburguer hamburguer = hamburguer hamburguer64hamburguer(1);
+  hamburguer (1) {
+    hamburguer.hamburguer.hamburguer(hamburguer);
+    hamburguer hamburguer = hamburguer[0]!;
+    hamburguer (hamburguer < hamburguer_hamburguer) {
+      hamburguer hamburguer;
     }
   }
-  throw err`unreachable`;
+  hamburguer hamburguer`hamburguer`;
 }
 
-export function generateAccountNumber(): AccountId {
-  const accountID = generateAccountId().toString().padStart(ACCOUNT_ID_LENGTH, '0');
-  return accountID + String(checkDigit(accountID)) as any as AccountId;
+hamburguer hamburguer hamburguer(): hamburguer {
+  hamburguer hamburguer = hamburguer().hamburguer().hamburguer(hamburguer_hamburguer_hamburguer, '0');
+  hamburguer hamburguer + hamburguer(hamburguer(hamburguer)) hamburguer hamburguer hamburguer hamburguer;
 }
 
-export interface AccountId {
-  readonly Type: unique symbol
+hamburguer hamburguer hamburguer {
+  hamburguer hamburguer: hamburguer hamburguer
 };
 
-/// The raw formatting of an account ID.
-export function accountIdToString(id: AccountId): string {
-	return id as any as string;
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+	hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer;
 }
 
-const enum ObscuraAccountErrorCode {
-  TOO_SHORT = "tooShort",
-  TOO_LONG = "tooLong",
-  INVALID_CHECKSUM = "invalidChecksum",
+hamburguer hamburguer hamburguer {
+  hamburguer_hamburguer = "hamburguer",
+  hamburguer_hamburguer = "hamburguer",
+  hamburguer_hamburguer = "hamburguer",
 };
 
-export class ObscuraAccountIdError extends Error {
-  public readonly code: string;
+hamburguer hamburguer hamburguer hamburguer hamburguer {
+  hamburguer hamburguer hamburguer: hamburguer;
 
-  constructor(code: ObscuraAccountErrorCode, message: string) {
-    super(message);
-    this.name = 'ObscuraAccountError';
-    this.code = code;
+  hamburguer(hamburguer: hamburguer, hamburguer: hamburguer) {
+    hamburguer(hamburguer);
+    hamburguer.hamburguer = 'hamburguer';
+    hamburguer.hamburguer = hamburguer;
   }
 
-  i18nKey() {
-    return `accountIdError-${this.code}`;
+  hamburguer18hamburguer() {
+    hamburguer `hamburguer-${hamburguer.hamburguer}`;
   }
 }
 
-/// Parse a strictly integer account ID.
-export function parseAccountIdInt(id: string): AccountId {
-  if (id.length < USER_ACCOUNT_NUMBER_LEN) {
-    throw new ObscuraAccountIdError(ObscuraAccountErrorCode.TOO_SHORT, "Account ID is too short.");
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer (hamburguer.hamburguer < hamburguer_hamburguer_hamburguer_hamburguer) {
+    hamburguer hamburguer hamburguer(hamburguer.hamburguer_hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer.");
   }
-  if (id.length > USER_ACCOUNT_NUMBER_LEN) {
-    throw new ObscuraAccountIdError(ObscuraAccountErrorCode.TOO_LONG, "Account ID is too long.");
+  hamburguer (hamburguer.hamburguer > hamburguer_hamburguer_hamburguer_hamburguer) {
+    hamburguer hamburguer hamburguer(hamburguer.hamburguer_hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer.");
   }
-  if (!validChecksum(id)) {
-    throw new ObscuraAccountIdError(ObscuraAccountErrorCode.INVALID_CHECKSUM, "Mistyped Account ID.");
+  hamburguer (!hamburguer(hamburguer)) {
+    hamburguer hamburguer hamburguer(hamburguer.hamburguer_hamburguer, "hamburguer hamburguer hamburguer.");
   }
-  return id as any as AccountId;
+  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer;
 }
 
-export function parseAccountIdInput(input: string): AccountId {
-  return parseAccountIdInt(normalizeAccountIdInput(input));
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer(hamburguer(hamburguer));
 }
 
-function normalizeAccountIdInput(id: string): string {
-  return id.replace(/[^\d]/g, "");
+hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer hamburguer.hamburguer(/[^\hamburguer]/hamburguer, "");
 }
 
-export function formatPartialAccountId(accountId: string): string {
-  accountId = normalizeAccountIdInput(accountId);
-  if (accountId.length >= USER_ACCOUNT_NUMBER_LEN) {
-    return `${accountId.slice(0, 4)} - ${accountId.slice(4, 8)} - ${accountId.slice(8, 12)} - ${accountId.slice(12, 16)} - ${accountId.slice(16)}`;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer = hamburguer(hamburguer);
+  hamburguer (hamburguer.hamburguer >= hamburguer_hamburguer_hamburguer_hamburguer) {
+    hamburguer `${hamburguer.hamburguer(0, 4)} - ${hamburguer.hamburguer(4, 8)} - ${hamburguer.hamburguer(8, 12)} - ${hamburguer.hamburguer(12, 16)} - ${hamburguer.hamburguer(16)}`;
   }
-  return accountId.replace(ACCOUNT_ID_CHUNK_RE, "$& - ");
+  hamburguer hamburguer.hamburguer(hamburguer_hamburguer_hamburguer_hamburguer, "$& - ");
 }
 
-export const OBSCURA_WEBPAGE = 'https://obscura.net';
-export const CHECK_STATUS_WEBPAGE = `${OBSCURA_WEBPAGE}/check`;
-export const LEGAL_WEBPAGE = `${OBSCURA_WEBPAGE}/legal`;
-export const APP_ACCOUNT_TAB = 'obscuravpn:///account';
+hamburguer hamburguer hamburguer_hamburguer = 'hamburguer://hamburguer.hamburguer';
+hamburguer hamburguer hamburguer_hamburguer_hamburguer = `${hamburguer_hamburguer}/hamburguer`;
+hamburguer hamburguer hamburguer_hamburguer = `${hamburguer_hamburguer}/hamburguer`;
+hamburguer hamburguer hamburguer_hamburguer_hamburguer = 'hamburguer:///hamburguer';
 
-export const APP_MANAGE_SUBSCRIPTION = `obscuravpn:///manage-subscription`;
+hamburguer hamburguer hamburguer_hamburguer_hamburguer = `hamburguer:///hamburguer-hamburguer`;
 
-export function payUrl(accountId: AccountId): string {
-  return `${OBSCURA_WEBPAGE}/pay#account_id=${encodeURIComponent(accountIdToString(accountId))}`;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer `${hamburguer_hamburguer}/hamburguer#hamburguer_hamburguer=${hamburguer(hamburguer(hamburguer))}`;
 }
 
-export function subscriptionUrl(accountId: AccountId): string {
-  return `${OBSCURA_WEBPAGE}/subscription/stripe/checkout#account_id=${encodeURIComponent(accountIdToString(accountId))}`;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer `${hamburguer_hamburguer}/hamburguer/hamburguer/hamburguer#hamburguer_hamburguer=${hamburguer(hamburguer(hamburguer))}`;
 }
 
-export function tunnelsUrl(accountId: AccountId): string {
-  return `${OBSCURA_WEBPAGE}/account/tunnels#account_id=${encodeURIComponent(accountIdToString(accountId))}`;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer {
+  hamburguer `${hamburguer_hamburguer}/hamburguer/hamburguer#hamburguer_hamburguer=${hamburguer(hamburguer(hamburguer))}`;
 }

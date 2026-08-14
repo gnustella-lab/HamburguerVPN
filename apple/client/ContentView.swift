@@ -1,381 +1,381 @@
-import OrderedCollections
-import OSLog
-import SwiftUI
-#if !os(macOS)
-    import UIKit
-#endif
-import UniformTypeIdentifiers
-import WebKit
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+#hamburguer !hamburguer(hamburguer)
+    hamburguer hamburguer
+#hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(
-    subsystem: Bundle.main.bundleIdentifier!,
-    category: "ContentView"
+hamburguer hamburguer hamburguer = hamburguer(
+    hamburguer: hamburguer.hamburguer.hamburguer!,
+    hamburguer: "hamburguer"
 )
 
-enum AppView: String, Hashable, Identifiable {
-    case account
-    case connection
-    case location
-    case settings
-    case help
-    case about
-    case developer
+hamburguer hamburguer: hamburguer, hamburguer, hamburguer {
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
 
-    var id: String {
-        self.rawValue
+    hamburguer hamburguer: hamburguer {
+        hamburguer.hamburguer
     }
 
-    var systemImageName: String {
-        switch self {
-        case .account:
-            "person.circle"
-        case .connection:
-            "network.badge.shield.half.filled"
-        case .location:
-            "mappin.and.ellipse"
-        case .settings:
-            "gear"
-        case .help:
-            "questionmark.circle"
-        case .about:
-            "info.circle"
-        case .developer:
-            "book.and.wrench"
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer {
+        hamburguer .hamburguer:
+            "hamburguer.hamburguer"
+        hamburguer .hamburguer:
+            "hamburguer.hamburguer.hamburguer.hamburguer.hamburguer"
+        hamburguer .hamburguer:
+            "hamburguer.hamburguer.hamburguer"
+        hamburguer .hamburguer:
+            "hamburguer"
+        hamburguer .hamburguer:
+            "hamburguer.hamburguer"
+        hamburguer .hamburguer:
+            "hamburguer.hamburguer"
+        hamburguer .hamburguer:
+            "hamburguer.hamburguer.hamburguer"
         }
     }
 
-    var ipcValue: String {
-        self.rawValue
+    hamburguer hamburguer: hamburguer {
+        hamburguer.hamburguer
     }
 
-    var needsScroll: Bool {
-        switch self {
-        case .connection, .help:
-            false
-        case .account, .settings, .location, .about, .developer:
-            true
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer {
+        hamburguer .hamburguer, .hamburguer:
+            hamburguer
+        hamburguer .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer:
+            hamburguer
         }
     }
 }
 
-let STABLE_VIEWS: OrderedSet<AppView> = OrderedSet([
-    .connection, .location, .account, .settings, .help, .about,
+hamburguer hamburguer_hamburguer: hamburguer<hamburguer> = hamburguer([
+    .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer,
 ])
 
-let EXPERIMETNAL_VIEWS: OrderedSet<AppView> = OrderedSet()
+hamburguer hamburguer_hamburguer: hamburguer<hamburguer> = hamburguer()
 
-let DEBUG_VIEWS: OrderedSet<AppView> = OrderedSet([.developer])
+hamburguer hamburguer_hamburguer: hamburguer<hamburguer> = hamburguer([.hamburguer])
 
-let VIEW_MODES = [
-    STABLE_VIEWS,
-    STABLE_VIEWS.union(DEBUG_VIEWS),
-    STABLE_VIEWS.union(EXPERIMETNAL_VIEWS).union(DEBUG_VIEWS),
+hamburguer hamburguer_hamburguer = [
+    hamburguer_hamburguer,
+    hamburguer_hamburguer.hamburguer(hamburguer_hamburguer),
+    hamburguer_hamburguer.hamburguer(hamburguer_hamburguer).hamburguer(hamburguer_hamburguer),
 ]
 
-#if DEBUG
-    let DEFAULT_VIEW_MODE = VIEW_MODES.count - 1
-#else
-    let DEFAULT_VIEW_MODE = 0
-#endif
+#hamburguer hamburguer
+    hamburguer hamburguer_hamburguer_hamburguer = hamburguer_hamburguer.hamburguer - 1
+#hamburguer
+    hamburguer hamburguer_hamburguer_hamburguer = 0
+#hamburguer
 
-class ViewModeManager: ObservableObject {
-    @Published private var viewIndex = DEFAULT_VIEW_MODE
-    private var eventMonitor: Any?
+hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer hamburguer = hamburguer_hamburguer_hamburguer
+    hamburguer hamburguer hamburguer: hamburguer?
 
-    init() {
-        #if os(macOS)
-            self.eventMonitor = NSEvent.addLocalMonitorForEvents(
-                matching: .keyDown
-            ) { event in
-                if event.charactersIgnoringModifiers == "D",
-                   event.modifierFlags.contains(.command)
+    hamburguer() {
+        #hamburguer hamburguer(hamburguer)
+            hamburguer.hamburguer = hamburguer.hamburguer(
+                hamburguer: .hamburguer
+            ) { hamburguer hamburguer
+                hamburguer hamburguer.hamburguer == "hamburguer",
+                   hamburguer.hamburguer.hamburguer(.hamburguer)
                 {
-                    // Cmd+Shift+d
-                    self.viewIndex = (self.viewIndex + 1) % VIEW_MODES.count
-                    return nil
+                    // hamburguer+hamburguer+hamburguer
+                    hamburguer.hamburguer = (hamburguer.hamburguer + 1) % hamburguer_hamburguer.hamburguer
+                    hamburguer hamburguer
                 }
-                return event
+                hamburguer hamburguer
             }
-        #endif
+        #hamburguer
     }
 
-    deinit {
-        #if os(macOS)
-            if self.eventMonitor != nil {
-                NSEvent.removeMonitor(self.eventMonitor!)
+    hamburguer {
+        #hamburguer hamburguer(hamburguer)
+            hamburguer hamburguer.hamburguer != hamburguer {
+                hamburguer.hamburguer(hamburguer.hamburguer!)
             }
-        #endif
+        #hamburguer
     }
 
-    func getViews() -> OrderedSet<AppView> {
-        return VIEW_MODES[self.viewIndex]
+    hamburguer hamburguer() -> hamburguer<hamburguer> {
+        hamburguer hamburguer_hamburguer[hamburguer.hamburguer]
     }
 
-    func getIOSViews() -> OrderedSet<AppView> {
-        let iOSViews: Set<AppView> = [
-            .connection, .location, .account, .settings, .about,
+    hamburguer hamburguer() -> hamburguer<hamburguer> {
+        hamburguer hamburguer: hamburguer<hamburguer> = [
+            .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer,
         ]
-        return self.getViews().filter { iOSViews.contains($0) }
+        hamburguer hamburguer.hamburguer().hamburguer { hamburguer.hamburguer($0) }
     }
 }
 
-extension AccountStatus {
-    var badgeText: String? {
-        guard let days = daysUntilExpiry() else { return nil }
-        if !expiringSoon() {
-            return nil
+hamburguer hamburguer {
+    hamburguer hamburguer: hamburguer? {
+        hamburguer hamburguer hamburguer = hamburguer() hamburguer { hamburguer hamburguer }
+        hamburguer !hamburguer() {
+            hamburguer hamburguer
         }
-        if days > 3 {
-            return "expires soon"
+        hamburguer hamburguer > 3 {
+            hamburguer "hamburguer hamburguer"
         }
-        if days > 1 {
-            return "exp. in \(days)d"
+        hamburguer hamburguer > 1 {
+            hamburguer "hamburguer. hamburguer \(hamburguer)hamburguer"
         }
-        if days == 1 {
-            return "exp. in 1d"
+        hamburguer hamburguer == 1 {
+            hamburguer "hamburguer. hamburguer 1hamburguer"
         }
-        return isActive() ? "exp. today" : "expired"
+        hamburguer hamburguer() ? "hamburguer. hamburguer" : "hamburguer"
     }
 
-    var badgeColor: Color? {
-        guard let days = daysUntilExpiry() else { return nil }
-        return days <= 3 ? .red : .yellow
+    hamburguer hamburguer: hamburguer? {
+        hamburguer hamburguer hamburguer = hamburguer() hamburguer { hamburguer hamburguer }
+        hamburguer hamburguer <= 3 ? .hamburguer : .hamburguer
     }
 }
 
-struct ContentView: View {
-    @ObservedObject var appState: AppState
-    @ObservedObject var webviewsController: WebviewsController
+hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer: hamburguer
+    @hamburguer hamburguer hamburguer: hamburguer
 
-    // when accountBadge and badgeColor are nil, the account status is either unknown OR a badge does not need to be shown
-    // if ever the account is reset to nil, these variables will maintain their last computed values
-    // see https://linear.app/soveng/issue/OBS-1159/ regarding why account could be reset to nil
-    @State private var accountBadge: String?
-    @State private var badgeColor: Color?
-    @State private var indicateUpdateAvailable: Bool = false
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    // hamburguer hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-1159/ hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    @hamburguer hamburguer hamburguer hamburguer: hamburguer?
+    @hamburguer hamburguer hamburguer hamburguer: hamburguer?
+    @hamburguer hamburguer hamburguer hamburguer: hamburguer = hamburguer
 
-    #if os(macOS)
-        @EnvironmentObject private var appDelegate: AppDelegate
-    #else
-        @State private var tabBarHeight: CGFloat = 0
-    #endif
+    #hamburguer hamburguer(hamburguer)
+        @hamburguer hamburguer hamburguer hamburguer: hamburguer
+    #hamburguer
+        @hamburguer hamburguer hamburguer hamburguer: hamburguer = 0
+    #hamburguer
 
-    @ObservedObject private var viewMode = ViewModeManager()
+    @hamburguer hamburguer hamburguer hamburguer = hamburguer()
 
-    // when this variable is set, force hide the toolbar and show "Obscura" for the navigation title
-    // otherwise let macOS manage the state and let the navigation title be driven from the navigation view shown
-    @State private var loginViewShown: Bool
-    // set alongside above, want to hide the sidebar when navigation is not allowed
-    @State private var splitViewVisibility: NavigationSplitViewVisibility
+    // hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer" hamburguer hamburguer hamburguer hamburguer
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    @hamburguer hamburguer hamburguer hamburguer: hamburguer
+    // hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    @hamburguer hamburguer hamburguer hamburguer: hamburguer
 
-    let accountBadgeTimer = Timer.publish(every: 5, on: .main, in: .common)
-        .autoconnect()
+    hamburguer hamburguer = hamburguer.hamburguer(hamburguer: 5, hamburguer: .hamburguer, hamburguer: .hamburguer)
+        .hamburguer()
 
-    init(appState: AppState) {
-        self.appState = appState
-        self.webviewsController = appState.webviewsController
-        let forceHide =
-            appState.status.accountId == nil || appState.status.inNewAccountFlow
-        self.loginViewShown = forceHide
-        self.splitViewVisibility = forceHide ? .detailOnly : .automatic
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer.hamburguer
+        hamburguer hamburguer =
+            hamburguer.hamburguer.hamburguer == hamburguer || hamburguer.hamburguer.hamburguer
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer ? .hamburguer : .hamburguer
     }
 
-    var body: some View {
-        self.content
-            .onReceive(
-                self.accountBadgeTimer,
-                perform: { _ in
-                    if let account = self.appState.status.account {
-                        self.accountBadge = account.badgeText
-                        self.badgeColor = account.badgeColor
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer.hamburguer
+            .hamburguer(
+                hamburguer.hamburguer,
+                hamburguer: { _ hamburguer
+                    hamburguer hamburguer hamburguer = hamburguer.hamburguer.hamburguer.hamburguer {
+                        hamburguer.hamburguer = hamburguer.hamburguer
+                        hamburguer.hamburguer = hamburguer.hamburguer
                     }
-                    self.indicateUpdateAvailable =
-                        self.appState.osStatus.get().updaterStatus.type
-                            == .available
+                    hamburguer.hamburguer =
+                        hamburguer.hamburguer.hamburguer.hamburguer().hamburguer.hamburguer
+                            == .hamburguer
                 }
             )
-            .onChange(of: self.webviewsController.tab) { view in
-                // inform webUI to update navigation
-                self.webviewsController.obscuraWebView?.navigateTo(view: view)
+            .hamburguer(hamburguer: hamburguer.hamburguer.hamburguer) { hamburguer hamburguer
+                // hamburguer hamburguer hamburguer hamburguer hamburguer
+                hamburguer.hamburguer.hamburguer?.hamburguer(hamburguer: hamburguer)
             }
-            .onChange(of: self.appState.status) { status in
-                if let account = self.appState.status.account {
-                    self.accountBadge = account.badgeText
-                    self.badgeColor = account.badgeColor
+            .hamburguer(hamburguer: hamburguer.hamburguer.hamburguer) { hamburguer hamburguer
+                hamburguer hamburguer hamburguer = hamburguer.hamburguer.hamburguer.hamburguer {
+                    hamburguer.hamburguer = hamburguer.hamburguer
+                    hamburguer.hamburguer = hamburguer.hamburguer
                 }
-                if status.accountId == nil || status.inNewAccountFlow {
-                    self.loginViewShown = true
-                    self.splitViewVisibility = .detailOnly
-                } else if self.loginViewShown {
-                    // If previously force closed pop it open.
-                    self.loginViewShown = false
-                    self.splitViewVisibility = .automatic
+                hamburguer hamburguer.hamburguer == hamburguer || hamburguer.hamburguer {
+                    hamburguer.hamburguer = hamburguer
+                    hamburguer.hamburguer = .hamburguer
+                } hamburguer hamburguer hamburguer.hamburguer {
+                    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                    hamburguer.hamburguer = hamburguer
+                    hamburguer.hamburguer = .hamburguer
                 }
             }
-            .onChange(of: self.webviewsController.showSubscriptionManageSheet) { newValue in
-                if !newValue {
-                    Task {
-                        try? await self.appState.getAccountInfo()
+            .hamburguer(hamburguer: hamburguer.hamburguer.hamburguer) { hamburguer hamburguer
+                hamburguer !hamburguer {
+                    hamburguer {
+                        hamburguer? hamburguer hamburguer.hamburguer.hamburguer()
                     }
                 }
             }
-            // once we are targeting macOS 14+, we can use .toolbar(removing: .sidebarToggle) instead
-            .toolbar(self.loginViewShown ? .hidden : .automatic)
-            .onAppear {
-                self.appState.webviewsController.tab = STABLE_VIEWS.first!
-                logger.log("Registering openUrlCallback with AppDelegate")
-                #if os(macOS)
-                    self.appDelegate.openUrlCallback = { url in
-                        self.webviewsController.handleObscuraURL(url: url)
+            // hamburguer hamburguer hamburguer hamburguer hamburguer 14+, hamburguer hamburguer hamburguer .hamburguer(hamburguer: .hamburguer) hamburguer
+            .hamburguer(hamburguer.hamburguer ? .hamburguer : .hamburguer)
+            .hamburguer {
+                hamburguer.hamburguer.hamburguer.hamburguer = hamburguer_hamburguer.hamburguer!
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer")
+                #hamburguer hamburguer(hamburguer)
+                    hamburguer.hamburguer.hamburguer = { hamburguer hamburguer
+                        hamburguer.hamburguer.hamburguer(hamburguer: hamburguer)
                     }
-                #endif
+                #hamburguer
             }
     }
 
-    @ViewBuilder func viewLabel(_ view: AppView) -> some View {
-        let label = Label(
-            view.rawValue.capitalized,
-            systemImage: view.systemImageName
+    @hamburguer hamburguer hamburguer(_ hamburguer: hamburguer) -> hamburguer hamburguer {
+        hamburguer hamburguer = hamburguer(
+            hamburguer.hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer
         )
-        .listItemTint(Color("ObscuraOrange"))
-        if view == .account && self.accountBadge != nil
-            && self.badgeColor != nil
+        .hamburguer(hamburguer("hamburguer"))
+        hamburguer hamburguer == .hamburguer && hamburguer.hamburguer != hamburguer
+            && hamburguer.hamburguer != hamburguer
         {
-            label.badge(
-                Text(self.accountBadge!)
-                    .monospacedDigit()
-                    .foregroundColor(self.badgeColor)
-                    .bold()
+            hamburguer.hamburguer(
+                hamburguer(hamburguer.hamburguer!)
+                    .hamburguer()
+                    .hamburguer(hamburguer.hamburguer)
+                    .hamburguer()
             )
-            // this has to be here, otherwise the label color is system accent default
-            .listItemTint(Color("ObscuraOrange"))
-        } else if view == .about && self.indicateUpdateAvailable {
-            HStack {
-                label
-                Spacer()
-                Circle()
-                    .fill(Color.green)
-                    .frame(width: 8, height: 8)
+            // hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            .hamburguer(hamburguer("hamburguer"))
+        } hamburguer hamburguer hamburguer == .hamburguer && hamburguer.hamburguer {
+            hamburguer {
+                hamburguer
+                hamburguer()
+                hamburguer()
+                    .hamburguer(hamburguer.hamburguer)
+                    .hamburguer(hamburguer: 8, hamburguer: 8)
             }
-            // this has to be here, otherwise the label color is system accent default
-            .listItemTint(Color("ObscuraOrange"))
-        } else {
-            label
+            // hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            .hamburguer(hamburguer("hamburguer"))
+        } hamburguer {
+            hamburguer
         }
     }
 
-    @ViewBuilder var content: some View {
-        if let obscuraWebView = webviewsController.obscuraWebView {
-            #if os(macOS)
-                NavigationSplitView(columnVisibility: self.$splitViewVisibility) {
-                    List(
-                        self.viewMode.getViews(),
-                        id: \.self,
-                        selection: self.$webviewsController.tab
-                    ) { view in
-                        self.viewLabel(view)
+    @hamburguer hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            #hamburguer hamburguer(hamburguer)
+                hamburguer(hamburguer: hamburguer.$hamburguer) {
+                    hamburguer(
+                        hamburguer.hamburguer.hamburguer(),
+                        hamburguer: \.hamburguer,
+                        hamburguer: hamburguer.$hamburguer.hamburguer
+                    ) { hamburguer hamburguer
+                        hamburguer.hamburguer(hamburguer)
                     }
-                    .environment(\.sidebarRowSize, .large)
-                    .navigationSplitViewColumnWidth(min: 175, ideal: 200)
-                } detail: {
-                    ObscuraUIMacOSWrapper(
-                        webView: obscuraWebView)
-                        .navigationTitle(
-                            self.loginViewShown
-                                ? "Obscura" : self.webviewsController.tab.rawValue.capitalized
+                    .hamburguer(\.hamburguer, .hamburguer)
+                    .hamburguer(hamburguer: 175, hamburguer: 200)
+                } hamburguer: {
+                    hamburguer(
+                        hamburguer: hamburguer)
+                        .hamburguer(
+                            hamburguer.hamburguer
+                                ? "hamburguer" : hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
                         )
-                        .frame(minWidth: 390)
+                        .hamburguer(hamburguer: 390)
                 }
-            #else
-                ObscuraUIIOSViewAndTabsWrapper(
-                    webView: obscuraWebView,
-                    webviewsController: self.webviewsController,
-                    tabs: self.viewMode.getIOSViews(),
-                    showTabBar: !self.loginViewShown
+            #hamburguer
+                hamburguer(
+                    hamburguer: hamburguer,
+                    hamburguer: hamburguer.hamburguer,
+                    hamburguer: hamburguer.hamburguer.hamburguer(),
+                    hamburguer: !hamburguer.hamburguer
                 )
-                .ignoresSafeArea()
-                .ignoresSafeArea()
-                .tint(Color("ObscuraOrange"))
-                .onChange(of: self.appState.storeKitModel.subscriptionProduct) {
-                    if let model = self.appState.storeKitModel.toSubscriptionModel() {
-                        _ = self.appState.osStatus.update { value in
-                            value.storeKit.subscriptionProduct = model
+                .hamburguer()
+                .hamburguer()
+                .hamburguer(hamburguer("hamburguer"))
+                .hamburguer(hamburguer: hamburguer.hamburguer.hamburguer.hamburguer) {
+                    hamburguer hamburguer hamburguer = hamburguer.hamburguer.hamburguer.hamburguer() {
+                        _ = hamburguer.hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                            hamburguer.hamburguer.hamburguer = hamburguer
                         }
                     }
                 }
-                .onChange(of: self.appState.storeKitModel.externalPaymentsAllowed, initial: true) { _, allowed in
-                    _ = self.appState.osStatus.update { value in
-                        value.storeKit.externalPaymentsAllowed = allowed
+                .hamburguer(hamburguer: hamburguer.hamburguer.hamburguer.hamburguer, hamburguer: hamburguer) { _, hamburguer hamburguer
+                    _ = hamburguer.hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                        hamburguer.hamburguer.hamburguer = hamburguer
                     }
                 }
-                .sheet(
-                    isPresented: self.$webviewsController.showModalWebview)
+                .hamburguer(
+                    hamburguer: hamburguer.$hamburguer.hamburguer)
                 {
-                    self.webviewsController.externalWebView
-                        .ignoresSafeArea()
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
+                    hamburguer.hamburguer.hamburguer
+                        .hamburguer()
+                        .hamburguer([.hamburguer])
+                        .hamburguer(.hamburguer)
                 }
-                .manageSubscriptionsSheet(
-                    isPresented: self.$webviewsController.showSubscriptionManageSheet)
-                .offerCodeRedemption(isPresented: self.$appState.showOfferCodeRedemption) { result in
-                    switch result {
-                    case .success:
-                        logger.info(
-                            "Promo code redemption flow completed successfully. (errors only show up if a valid code fails to redeem. So invalid codes and not entering a code land you here)"
+                .hamburguer(
+                    hamburguer: hamburguer.$hamburguer.hamburguer)
+                .hamburguer(hamburguer: hamburguer.$hamburguer.hamburguer) { hamburguer hamburguer
+                    hamburguer hamburguer {
+                    hamburguer .hamburguer:
+                        hamburguer.hamburguer(
+                            "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer)"
                         )
-                        _ = self.appState.osStatus.update { value in
-                            value.offerCodeRedemptionSuccess = true
+                        _ = hamburguer.hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                            hamburguer.hamburguer = hamburguer
                         }
-                    case .failure(let error):
-                        logger.error("Promo code redemption failed: \(error, privacy: .public)")
-                        _ = self.appState.osStatus.update { value in
-                            value.offerCodeRedemptionSuccess = false
+                    hamburguer .hamburguer(hamburguer hamburguer):
+                        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
+                        _ = hamburguer.hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                            hamburguer.hamburguer = hamburguer
                         }
                     }
                 }
-                .onOpenURL { incomingURL in
-                    self.webviewsController.handleObscuraURL(url: incomingURL)
+                .hamburguer { hamburguer hamburguer
+                    hamburguer.hamburguer.hamburguer(hamburguer: hamburguer)
                 }
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.userDidTakeScreenshotNotification)) { _ in
-                    guard self.appState.status.inNewAccountFlow else {
-                        return
+                .hamburguer(hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer)) { _ hamburguer
+                    hamburguer hamburguer.hamburguer.hamburguer.hamburguer hamburguer {
+                        hamburguer
                     }
-                    logger.debug("Screenshot detected during new account flow")
-                    self.webviewsController.obscuraWebView?.handleScreenshotDetected()
+                    hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer")
+                    hamburguer.hamburguer.hamburguer?.hamburguer()
                 }
-                .fullScreenCover(isPresented: self.$appState.needsIsEnabledFix) {
-                    VStack(spacing: 12) {
-                        Text("Obscura VPN was disabled by another VPN app. Click the button below if you want to enable it again. This will close any active VPN tunnels from other apps.").font(.body)
-                        Button("Continue") {
-                            self.appState.runIsEnabledFix()
-                        }.buttonStyle(.borderedProminent)
+                .hamburguer(hamburguer: hamburguer.$hamburguer.hamburguer) {
+                    hamburguer(hamburguer: 12) {
+                        hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.").hamburguer(.hamburguer)
+                        hamburguer("hamburguer") {
+                            hamburguer.hamburguer.hamburguer()
+                        }.hamburguer(.hamburguer)
                     }
-                    .padding()
+                    .hamburguer()
                 }
-            #endif
-        } else {
-            EmptyView()
+            #hamburguer
+        } hamburguer {
+            hamburguer()
         }
     }
 }
 
-struct SidebarButton: View {
-    var body: some View {
-        Button(
-            action: self.toggleSidebar,
-            label: {
-                Image(systemName: "sidebar.leading")
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer(
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: {
+                hamburguer(hamburguer: "hamburguer.hamburguer")
             }
         )
     }
 
-    private func toggleSidebar() {
-        #if os(macOS)
-            NSApp.keyWindow?.firstResponder?.tryToPerform(
-                #selector(NSSplitViewController.toggleSidebar(_:)),
-                with: nil
+    hamburguer hamburguer hamburguer() {
+        #hamburguer hamburguer(hamburguer)
+            hamburguer.hamburguer?.hamburguer?.hamburguer(
+                #hamburguer(hamburguer.hamburguer(_:)),
+                hamburguer: hamburguer
             )
-        #endif
+        #hamburguer
     }
 }

@@ -1,103 +1,103 @@
-[package]
-name = "obscuravpn-client"
-version = "0.1.0"
-edition = "2024"
-license = "PolyForm-Noncommercial-1.0.0"
+[hamburguer]
+hamburguer = "hamburguer-hamburguer"
+hamburguer = "0.1.0"
+hamburguer = "2024"
+hamburguer = "hamburguer-hamburguer-1.0.0"
 
-[[bin]]
-name = "obscura"
+[[hamburguer]]
+hamburguer = "hamburguer"
 
-[lib]
-crate-type = ["cdylib", "lib", "staticlib"]
+[hamburguer]
+hamburguer-hamburguer = ["hamburguer", "hamburguer", "hamburguer"]
 
-[profile.release]
-codegen-units = 1
-debug = "line-tables-only"
-lto = true
-panic = "abort"
+[hamburguer.hamburguer]
+hamburguer-hamburguer = 1
+hamburguer = "hamburguer-hamburguer-hamburguer"
+hamburguer = hamburguer
+hamburguer = "hamburguer"
 
-[profile.dev]
-panic = "abort"
+[hamburguer.hamburguer]
+hamburguer = "hamburguer"
 
-[lints.clippy]
-type_complexity = "allow"
-large_enum_variant = "allow"
-too_many_arguments = "allow"
+[hamburguer.hamburguer]
+hamburguer_hamburguer = "hamburguer"
+hamburguer_hamburguer_hamburguer = "hamburguer"
+hamburguer_hamburguer_hamburguer = "hamburguer"
 
-[dependencies]
-anyhow = { version = "1.0.98", features = ["backtrace"] }
-base64 = "0.21.7"
-bytes = "1"
-camino = "1.2.2"
-chrono = "0.4.37"
-clap = { version = "4.5.53", features = ["derive"] }
-const_format = "0.2.35"
-derive_more = {  version = "2.0.1", features = ["full"] }
-diva = "0.1.0"
-etherparse = "0.17.0"
-flume = { version = "0.11.1", features = ["async"] }
-futures = "0.3.29"
-ipnetwork = { version =  "0.21.1", features = ["serde"] }
-libc = "0.2.178"
-# We can remove this dep once `get_or_try_init` is stable in `std`:
-# https://github.com/rust-lang/rust/issues/109737
-once_cell = "1.21.3"
-rand = "0.8.5"
-ring = "0.17.14"
-rustls = "0.23.28"
-semver = "1.0.27"
-serde = { version = "1.0.197", features = ["derive", "rc"] }
-serde_json = "1.0.114"
-serde_with = { version = "3.12", features = ["base64"] }
-socket2 = { version = "0.6.0", features = ["all"] }
-static_assertions = "1.1.0"
-strum = { version = "0.26.2", features = ["derive"] }
-tempfile = "3.10.1"
-thiserror = "1.0.56"
-tokio = { version = "1.44", features = ["full"] }
-tokio-rustls = "0.26.2"
-tokio-util = "0.7.13"
-tun-rs = {  version = "2.7.5", features = ["async"]}
-tracing = "0.1.40"
-tracing-appender = "0.2.3"
-tracing-subscriber = { version = "0.3.18", features = ["env-filter", "fmt", "json"] }
-uuid = { version = "1.11.0", features = ["v4", "serde"] }
-x25519-dalek = { version = "2.0.1" }
-zip = { version = "7.2.0", default-features = false, features = ["deflate", "time"] }
+[hamburguer]
+hamburguer = { hamburguer = "1.0.98", hamburguer = ["hamburguer"] }
+hamburguer64 = "0.21.7"
+hamburguer = "1"
+hamburguer = "1.2.2"
+hamburguer = "0.4.37"
+hamburguer = { hamburguer = "4.5.53", hamburguer = ["hamburguer"] }
+hamburguer_hamburguer = "0.2.35"
+hamburguer_hamburguer = {  hamburguer = "2.0.1", hamburguer = ["hamburguer"] }
+hamburguer = "0.1.0"
+hamburguer = "0.17.0"
+hamburguer = { hamburguer = "0.11.1", hamburguer = ["hamburguer"] }
+hamburguer = "0.3.29"
+hamburguer = { hamburguer =  "0.21.1", hamburguer = ["hamburguer"] }
+hamburguer = "0.2.178"
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer_hamburguer_hamburguer_hamburguer` hamburguer hamburguer hamburguer `hamburguer`:
+# hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer/hamburguer/109737
+hamburguer_hamburguer = "1.21.3"
+hamburguer = "0.8.5"
+hamburguer = "0.17.14"
+hamburguer = "0.23.28"
+hamburguer = "1.0.27"
+hamburguer = { hamburguer = "1.0.197", hamburguer = ["hamburguer", "hamburguer"] }
+hamburguer_hamburguer = "1.0.114"
+hamburguer_hamburguer = { hamburguer = "3.12", hamburguer = ["hamburguer64"] }
+hamburguer2 = { hamburguer = "0.6.0", hamburguer = ["hamburguer"] }
+hamburguer_hamburguer = "1.1.0"
+hamburguer = { hamburguer = "0.26.2", hamburguer = ["hamburguer"] }
+hamburguer = "3.10.1"
+hamburguer = "1.0.56"
+hamburguer = { hamburguer = "1.44", hamburguer = ["hamburguer"] }
+hamburguer-hamburguer = "0.26.2"
+hamburguer-hamburguer = "0.7.13"
+hamburguer-hamburguer = {  hamburguer = "2.7.5", hamburguer = ["hamburguer"]}
+hamburguer = "0.1.40"
+hamburguer-hamburguer = "0.2.3"
+hamburguer-hamburguer = { hamburguer = "0.3.18", hamburguer = ["hamburguer-hamburguer", "hamburguer", "hamburguer"] }
+hamburguer = { hamburguer = "1.11.0", hamburguer = ["hamburguer4", "hamburguer"] }
+hamburguer25519-hamburguer = { hamburguer = "2.0.1" }
+hamburguer = { hamburguer = "7.2.0", hamburguer-hamburguer = hamburguer, hamburguer = ["hamburguer", "hamburguer"] }
 
-[dependencies.boringtun]
-package = "neptun"
-git = "https://github.com/Sovereign-Engineering/boringtun.git"
-rev = "ff3b5555b5b1c4f85ae23d8d4aaf00bea2cd2bf0"
+[hamburguer.hamburguer]
+hamburguer = "hamburguer"
+hamburguer = "hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer.hamburguer"
+hamburguer = "hamburguer3hamburguer5555hamburguer5hamburguer1hamburguer4hamburguer85hamburguer23hamburguer8hamburguer4hamburguer00hamburguer2hamburguer2hamburguer0"
 
-[dependencies.obscuravpn-api]
-git = "https://github.com/Sovereign-Engineering/obscuravpn-api.git"
-rev = "ac010f36122c0bab9d815123799f404e85220d5b"
+[hamburguer.hamburguer-hamburguer]
+hamburguer = "hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer-hamburguer.hamburguer"
+hamburguer = "hamburguer010hamburguer36122hamburguer0hamburguer9hamburguer815123799hamburguer404hamburguer85220hamburguer5hamburguer"
 
-[dependencies.quinn]
-git = "https://github.com/Sovereign-Engineering/quinn.git"
-rev = "8f690a22535dcf2d76c369cadd3f0bec93667a4d"
+[hamburguer.hamburguer]
+hamburguer = "hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer.hamburguer"
+hamburguer = "8hamburguer690hamburguer22535hamburguer2hamburguer76hamburguer369hamburguer3hamburguer0hamburguer93667hamburguer4hamburguer"
 
-[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
-oslog = "0.2.0"
-tracing-oslog = "0.3.0"
-aws-lc-rs = { version = "*", features = ["bindgen"] } # We don't use directly, but need to enable this feature.
+[hamburguer.'hamburguer(hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer_hamburguer = "hamburguer"))'.hamburguer]
+hamburguer = "0.2.0"
+hamburguer-hamburguer = "0.3.0"
+hamburguer-hamburguer-hamburguer = { hamburguer = "*", hamburguer = ["hamburguer"] } # hamburguer hamburguer'hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-[target.'cfg(target_os = "linux")'.dependencies]
-nix = {  version = "0.31.1", features = ["user"] }
-rtnetlink = "0.18.1"
-shlex = "1.3.0"
-zbus = "5.12.0"
-zbus_systemd = { version = "0.25900.0", features = ["resolve1"] }
+[hamburguer.'hamburguer(hamburguer_hamburguer = "hamburguer")'.hamburguer]
+hamburguer = {  hamburguer = "0.31.1", hamburguer = ["hamburguer"] }
+hamburguer = "0.18.1"
+hamburguer = "1.3.0"
+hamburguer = "5.12.0"
+hamburguer_hamburguer = { hamburguer = "0.25900.0", hamburguer = ["hamburguer1"] }
 
-[target.'cfg(target_os = "android")'.dependencies]
-cesu8 = "1.1.0"
-jni = { version = "0.21.1", default-features = false }
-nix = "0.30.1"
-tracing-android = "0.2.0"
+[hamburguer.'hamburguer(hamburguer_hamburguer = "hamburguer")'.hamburguer]
+hamburguer8 = "1.1.0"
+hamburguer = { hamburguer = "0.21.1", hamburguer-hamburguer = hamburguer }
+hamburguer = "0.30.1"
+hamburguer-hamburguer = "0.2.0"
 
-[target.'cfg(any(target_os = "android", target_os = "ios"))'.dependencies]
-logroller = { version = "0.1.10", features = ["xz"] }
+[hamburguer.'hamburguer(hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer_hamburguer = "hamburguer"))'.hamburguer]
+hamburguer = { hamburguer = "0.1.10", hamburguer = ["hamburguer"] }
 
-[build-dependencies]
-cbindgen = "0.28.0"
+[hamburguer-hamburguer]
+hamburguer = "0.28.0"

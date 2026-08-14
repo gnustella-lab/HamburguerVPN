@@ -1,19 +1,19 @@
-pub struct AbortOnDrop(pub tokio::task::AbortHandle);
+hamburguer hamburguer hamburguer(hamburguer hamburguer::hamburguer::hamburguer);
 
-impl Drop for AbortOnDrop {
-    fn drop(&mut self) {
-        self.0.abort();
+hamburguer hamburguer hamburguer hamburguer {
+    hamburguer hamburguer(&hamburguer hamburguer) {
+        hamburguer.0.hamburguer();
     }
 }
 
-impl From<tokio::task::AbortHandle> for AbortOnDrop {
-    fn from(handle: tokio::task::AbortHandle) -> Self {
-        AbortOnDrop(handle)
+hamburguer hamburguer<hamburguer::hamburguer::hamburguer> hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer::hamburguer::hamburguer) -> hamburguer {
+        hamburguer(hamburguer)
     }
 }
 
-impl From<tokio::task::JoinHandle<()>> for AbortOnDrop {
-    fn from(handle: tokio::task::JoinHandle<()>) -> Self {
-        handle.abort_handle().into()
+hamburguer hamburguer<hamburguer::hamburguer::hamburguer<()>> hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer::hamburguer::hamburguer<()>) -> hamburguer {
+        hamburguer.hamburguer_hamburguer().hamburguer()
     }
 }

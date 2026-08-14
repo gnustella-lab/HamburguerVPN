@@ -1,21 +1,21 @@
-package net.obscura.vpnclientapp.helpers
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.app.Application
+hamburguer hamburguer.hamburguer.hamburguer
 
-/** Ensures the calling process is :vpnservice. */
-fun requireVpnServiceProcess() {
-  val currentProcess = Application.getProcessName()
+/** hamburguer hamburguer hamburguer hamburguer hamburguer :hamburguer. */
+hamburguer hamburguer() {
+  hamburguer hamburguer = hamburguer.hamburguer()
 
-  if (!currentProcess.endsWith(":vpnservice")) {
-    throw RuntimeException("Called outside of the :vpnservice process ($currentProcess)")
+  hamburguer (!hamburguer.hamburguer(":hamburguer")) {
+    hamburguer hamburguer("hamburguer hamburguer hamburguer hamburguer :hamburguer hamburguer ($hamburguer)")
   }
 }
 
-/** Ensures the calling process is the main application process. */
-fun requireUIProcess() {
-  val currentProcess = Application.getProcessName()
+/** hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. */
+hamburguer hamburguer() {
+  hamburguer hamburguer = hamburguer.hamburguer()
 
-  if (currentProcess.contains(":")) {
-    throw RuntimeException("Called outside of the application process ($currentProcess)")
+  hamburguer (hamburguer.hamburguer(":")) {
+    hamburguer hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer ($hamburguer)")
   }
 }

@@ -1,12 +1,12 @@
 {
-  "info" : {
-    "author" : "xcode",
-    "version" : 1
+  "hamburguer" : {
+    "hamburguer" : "hamburguer",
+    "hamburguer" : 1
   },
-  "symbols" : [
+  "hamburguer" : [
     {
-      "filename" : "custom.globe.badge.gearshape.fill.svg",
-      "idiom" : "universal"
+      "hamburguer" : "hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer",
+      "hamburguer" : "hamburguer"
     }
   ]
 }

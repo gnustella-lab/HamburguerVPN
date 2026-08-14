@@ -1,14 +1,14 @@
-dependencyResolutionManagement {
-    @Suppress("UnstableApiUsage")
-    repositories {
-        google()
-        mavenCentral()
+hamburguer {
+    @hamburguer("hamburguer")
+    hamburguer {
+        hamburguer()
+        hamburguer()
     }
-    @Suppress("UnstableApiUsage")
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    versionCatalogs {
-        create("libs") {
-            from(files("../gradle/libs.versions.toml"))
+    @hamburguer("hamburguer")
+    hamburguer.hamburguer(hamburguer.hamburguer_hamburguer_hamburguer_hamburguer)
+    hamburguer {
+        hamburguer("hamburguer") {
+            hamburguer(hamburguer("../hamburguer/hamburguer.hamburguer.hamburguer"))
         }
     }
 }

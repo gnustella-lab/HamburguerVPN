@@ -1,75 +1,75 @@
-.container {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer;
+    hamburguer-hamburguer: hamburguer;
+    hamburguer-hamburguer: hamburguer;
 }
 
-.connectionProgressBarContainer {
-    width: 80%;
-    min-width: fit-content;
-    margin-bottom: var(--mantine-spacing-lg);
-    background-color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-dark-6)) !important;
+.hamburguer {
+    hamburguer: 80%;
+    hamburguer-hamburguer: hamburguer-hamburguer;
+    hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-8), hamburguer(--hamburguer-hamburguer-hamburguer-6)) !hamburguer;
 }
 
-.progress, .trafficVulnerableProgressBar {
-    background-color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-dark-3)) !important;
+.hamburguer, .hamburguer {
+    hamburguer-hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-4), hamburguer(--hamburguer-hamburguer-hamburguer-3)) !hamburguer;
 }
 
-.connectionProgressBarGroup {
-    justify-content: center !important;
+.hamburguer {
+    hamburguer-hamburguer: hamburguer !hamburguer;
 
-    @media (min-width: 600px) {
-        justify-content: space-between !important;
+    @hamburguer (hamburguer-hamburguer: 600hamburguer) {
+        hamburguer-hamburguer: hamburguer-hamburguer !hamburguer;
     }
 }
 
-.trafficVulnerableProgressBar {
-    width: calc(100vw * 0.33);
+.hamburguer {
+    hamburguer: hamburguer(100hamburguer * 0.33);
 
-    @media (min-width: 700px) {
-        width: 325px;
+    @hamburguer (hamburguer-hamburguer: 700hamburguer) {
+        hamburguer: 325hamburguer;
     }
 }
 
-.locationDividerCaption {
-    width: 28rem;
+.hamburguer {
+    hamburguer: 28hamburguer;
 }
 
-.subtitle {
-    color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-dark-2));
+.hamburguer {
+    hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-4), hamburguer(--hamburguer-hamburguer-hamburguer-2));
 }
 
-.checkMyConnection {
-    color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+.hamburguer {
+    hamburguer: hamburguer-hamburguer(hamburguer(--hamburguer-hamburguer-hamburguer-6), hamburguer(--hamburguer-hamburguer-hamburguer-5));
 }
 
-@media screen and (max-width: $mantine-breakpoint-xs) {
-    .container {
-        padding-top: env(safe-area-inset-top);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer(hamburguer-hamburguer-hamburguer-hamburguer);
+        hamburguer-hamburguer: hamburguer(hamburguer-hamburguer-hamburguer-hamburguer);
+        hamburguer-hamburguer: hamburguer(hamburguer-hamburguer-hamburguer-hamburguer);
     }
 
-    .connectionProgressBarContainer {
-        width: 85%;
+    .hamburguer {
+        hamburguer: 85%;
     }
 
-    .connectionProgressBarGroup {
-        gap: 0 !important;
+    .hamburguer {
+        hamburguer: 0 !hamburguer;
     }
 
-    .trafficVulnerable {
-        padding-left: var(--mantine-spacing-lg) !important;
-        padding-right: var(--mantine-spacing-lg) !important;
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer) !hamburguer;
+        hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer) !hamburguer;
     }
 
-    .locationDividerCaption {
-        width: 320px;
+    .hamburguer {
+        hamburguer: 320hamburguer;
     }
 }
 
-@media screen and (max-height: $mantine-breakpoint-xs) {
-    .connectionProgressBarContainer {
-        margin-bottom: var(--mantine-spacing-sm);
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer);
     }
 }

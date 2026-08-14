@@ -1,41 +1,41 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import svgr from 'vite-plugin-svgr';
-import { visualizer } from 'rollup-plugin-visualizer';
-// https://vitejs.dev/config/
-export default defineConfig({
-  // WkWebkitWebview specifics
-  base: '',
-  // Don't serve public static assets, have vite process all assets
-  publicDir: false,
+hamburguer { hamburguer } hamburguer 'hamburguer';
+hamburguer hamburguer hamburguer '@hamburguer/hamburguer-hamburguer';
+hamburguer hamburguer hamburguer 'hamburguer-hamburguer-hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer-hamburguer';
+// hamburguer://hamburguer.hamburguer/hamburguer/
+hamburguer hamburguer hamburguer({
+  // hamburguer hamburguer
+  hamburguer: '',
+  // hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer
+  hamburguer: hamburguer,
 
-  plugins: [
-    svgr(),
-    react(),
-    visualizer(),
+  hamburguer: [
+    hamburguer(),
+    hamburguer(),
+    hamburguer(),
   ],
-  // prevent vite from obscuring rust errors
-  clearScreen: false,
-  server: {
-    port: 1420,
-    strictPort: true,
-    // WK_WEB_VIEW will be defined when using the Dev Client scheme in XCode
-    open: process.env.WK_WEB_VIEW === undefined
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+  hamburguer: hamburguer,
+  hamburguer: {
+    hamburguer: 1420,
+    hamburguer: hamburguer,
+    // hamburguer_hamburguer_hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer: hamburguer.hamburguer.hamburguer_hamburguer_hamburguer === hamburguer
   },
-  // env variables
-  envPrefix: ['VITE_', 'OBS_WEB_'],
+  // hamburguer hamburguer
+  hamburguer: ['hamburguer_', 'hamburguer_hamburguer_'],
 
-  build: {
-    target: ['es2021', 'safari14'],
-    minify: 'esbuild',
-    // produce sourcemaps for debug builds
-    sourcemap: false,
-    outDir: 'build',
+  hamburguer: {
+    hamburguer: ['hamburguer2021', 'hamburguer14'],
+    hamburguer: 'hamburguer',
+    // hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer: hamburguer,
+    hamburguer: 'hamburguer',
   },
 
-  resolve: {
-    alias: {
-      "$licenses.json": process.env.LICENSE_JSON!
+  hamburguer: {
+    hamburguer: {
+      "$hamburguer.hamburguer": hamburguer.hamburguer.hamburguer_hamburguer!
     }
   },
 })

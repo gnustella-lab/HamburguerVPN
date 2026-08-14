@@ -1,11 +1,11 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import kotlinx.serialization.Serializable
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class ShareArchive(
-    val path: String,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
 ) {
-  fun run(context: Context) = shareDebugArchive(context, path, false)
+  hamburguer hamburguer(hamburguer: hamburguer) = hamburguer(hamburguer, hamburguer, hamburguer)
 }

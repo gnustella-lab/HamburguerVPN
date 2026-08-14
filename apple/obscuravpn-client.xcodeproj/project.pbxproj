@@ -1,314 +1,314 @@
-// !$*UTF8*$!
+// !$*hamburguer8*$!
 {
-	archiveVersion = 1;
-	classes = {
+	hamburguer = 1;
+	hamburguer = {
 	};
-	objectVersion = 54;
-	objects = {
+	hamburguer = 54;
+	hamburguer = {
 
-/* Begin PBXBuildFile section */
-		CA016413314BAAAB3AB4761B /* Cargo.toml in Sources */ = {isa = PBXBuildFile; fileRef = CAF9DEE597793EF4668187A5 /* Cargo.toml */; settings = {COMPILER_FLAGS = "--bin 'obscuravpn-client'"; }; };
-/* End PBXBuildFile section */
+/* hamburguer hamburguer hamburguer */
+		hamburguer016413314hamburguer3hamburguer4761hamburguer /* hamburguer.hamburguer hamburguer hamburguer */ = {hamburguer = hamburguer; hamburguer = hamburguer9hamburguer597793hamburguer4668187hamburguer5 /* hamburguer.hamburguer */; hamburguer = {hamburguer_hamburguer = "--hamburguer 'hamburguer-hamburguer'"; }; };
+/* hamburguer hamburguer hamburguer */
 
-/* Begin PBXBuildRule section */
-		CAF4DEE59779AC6C1400ACA8 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			dependencyFile = "$(DERIVED_FILE_DIR)/$(ARCHS)-$(EXECUTABLE_NAME).d";
-			filePatterns = "*/Cargo.toml";
-			fileType = pattern.proxy;
-			inputFiles = (
-				"$(SRCROOT)/xcodescripts/cargo-build-static-lib.bash",
+/* hamburguer hamburguer hamburguer */
+		hamburguer4hamburguer59779hamburguer6hamburguer1400hamburguer8 /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = hamburguer.hamburguer.hamburguer.hamburguer.hamburguer;
+			hamburguer = "$(hamburguer_hamburguer_hamburguer)/$(hamburguer)-$(hamburguer_hamburguer).hamburguer";
+			hamburguer = "*/hamburguer.hamburguer";
+			hamburguer = hamburguer.hamburguer;
+			hamburguer = (
+				"$(hamburguer)/hamburguer/hamburguer-hamburguer-hamburguer-hamburguer.hamburguer",
 			);
-			isEditable = 0;
-			name = "Cargo project build";
-			outputFiles = (
-				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_NAME)",
-				"$(TARGET_BUILD_DIR)/$(PUBLIC_HEADERS_FOLDER_PATH)/$(EXECUTABLE_NAME).h",
-				"$(TARGET_BUILD_DIR)/$(PUBLIC_HEADERS_FOLDER_PATH)/module.modulemap",
+			hamburguer = 0;
+			hamburguer = "hamburguer hamburguer hamburguer";
+			hamburguer = (
+				"$(hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer)",
+				"$(hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer).hamburguer",
+				"$(hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer_hamburguer_hamburguer)/hamburguer.hamburguer",
 			);
-			runOncePerArchitecture = 0;
-			script = "exec \"${SCRIPT_INPUT_FILE_0}\"\n";
+			hamburguer = 0;
+			hamburguer = "hamburguer \"${hamburguer_hamburguer_hamburguer_0}\"\hamburguer";
 		};
-/* End PBXBuildRule section */
+/* hamburguer hamburguer hamburguer */
 
-/* Begin PBXFileReference section */
-		C90161AC2BE01A9B005B14AF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		C90161AD2BE01A9B005B14AF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		C90161AE2BE01A9B005B14AF /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
-		CA0090E2379FFD96F1473BE9 /* libobscuravpn-client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libobscuravpn-client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA01272F0B60B8156098F4D0 /* obscuravpn-client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "obscuravpn-client"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAF9DEE597793EF4668187A5 /* Cargo.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cargo.toml; path = ../rustlib/Cargo.toml; sourceTree = "<group>"; };
-/* End PBXFileReference section */
+/* hamburguer hamburguer hamburguer */
+		hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */ = {hamburguer = hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = "<hamburguer>"; };
+		hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */ = {hamburguer = hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = "<hamburguer>"; };
+		hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */ = {hamburguer = hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = "<hamburguer>"; };
+		hamburguer0090hamburguer2379hamburguer96hamburguer1473hamburguer9 /* hamburguer-hamburguer.hamburguer */ = {hamburguer = hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = 0; hamburguer = "hamburguer-hamburguer.hamburguer"; hamburguer = hamburguer_hamburguer_hamburguer; };
+		hamburguer01272hamburguer0hamburguer60hamburguer8156098hamburguer4hamburguer0 /* hamburguer-hamburguer */ = {hamburguer = hamburguer; hamburguer = "hamburguer.hamburguer-hamburguer.hamburguer"; hamburguer = 0; hamburguer = "hamburguer-hamburguer"; hamburguer = hamburguer_hamburguer_hamburguer; };
+		hamburguer9hamburguer597793hamburguer4668187hamburguer5 /* hamburguer.hamburguer */ = {hamburguer = hamburguer; hamburguer = 4; hamburguer = hamburguer; hamburguer = hamburguer.hamburguer; hamburguer = ../hamburguer/hamburguer.hamburguer; hamburguer = "<hamburguer>"; };
+/* hamburguer hamburguer hamburguer */
 
-/* Begin PBXGroup section */
-		C90161AB2BE01A9B005B14AF /* Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				C90161AE2BE01A9B005B14AF /* Base.xcconfig */,
-				C90161AC2BE01A9B005B14AF /* Debug.xcconfig */,
-				C90161AD2BE01A9B005B14AF /* Release.xcconfig */,
+/* hamburguer hamburguer hamburguer */
+		hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = (
+				hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */,
+				hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */,
+				hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */,
 			);
-			path = Configurations;
-			sourceTree = "<group>";
+			hamburguer = hamburguer;
+			hamburguer = "<hamburguer>";
 		};
-		CAF0DEE59779D65BC3C892A8 = {
-			isa = PBXGroup;
-			children = (
-				C90161AB2BE01A9B005B14AF /* Configurations */,
-				CAF9DEE597793EF4668187A5 /* Cargo.toml */,
-				CAF1DEE5977922869D176AE5 /* Products */,
-				CAF2DEE5977998AF0B5890DB /* Frameworks */,
+		hamburguer0hamburguer59779hamburguer65hamburguer3hamburguer892hamburguer8 = {
+			hamburguer = hamburguer;
+			hamburguer = (
+				hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer */,
+				hamburguer9hamburguer597793hamburguer4668187hamburguer5 /* hamburguer.hamburguer */,
+				hamburguer1hamburguer5977922869hamburguer176hamburguer5 /* hamburguer */,
+				hamburguer2hamburguer5977998hamburguer0hamburguer5890hamburguer /* hamburguer */,
 			);
-			sourceTree = "<group>";
+			hamburguer = "<hamburguer>";
 		};
-		CAF1DEE5977922869D176AE5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CA0090E2379FFD96F1473BE9 /* libobscuravpn-client.a */,
-				CA01272F0B60B8156098F4D0 /* obscuravpn-client */,
+		hamburguer1hamburguer5977922869hamburguer176hamburguer5 /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = (
+				hamburguer0090hamburguer2379hamburguer96hamburguer1473hamburguer9 /* hamburguer-hamburguer.hamburguer */,
+				hamburguer01272hamburguer0hamburguer60hamburguer8156098hamburguer4hamburguer0 /* hamburguer-hamburguer */,
 			);
-			name = Products;
-			sourceTree = "<group>";
+			hamburguer = hamburguer;
+			hamburguer = "<hamburguer>";
 		};
-		CAF2DEE5977998AF0B5890DB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
+		hamburguer2hamburguer5977998hamburguer0hamburguer5890hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = (
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
+			hamburguer = hamburguer;
+			hamburguer = "<hamburguer>";
 		};
-/* End PBXGroup section */
+/* hamburguer hamburguer hamburguer */
 
-/* Begin PBXNativeTarget section */
-		CA0090E2379FB3AB1D86918A /* obscuravpn-client.a (static library) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CA0006912554B3AB1D86918A /* Build configuration list for PBXNativeTarget "obscuravpn-client.a (static library)" */;
-			buildPhases = (
-				C9CFB0122BE9A36D008B27D6 /* Run Script */,
+/* hamburguer hamburguer hamburguer */
+		hamburguer0090hamburguer2379hamburguer3hamburguer1hamburguer86918hamburguer /* hamburguer-hamburguer.hamburguer (hamburguer hamburguer) */ = {
+			hamburguer = hamburguer;
+			hamburguer = hamburguer0006912554hamburguer3hamburguer1hamburguer86918hamburguer /* hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer-hamburguer.hamburguer (hamburguer hamburguer)" */;
+			hamburguer = (
+				hamburguer9hamburguer0122hamburguer9hamburguer36hamburguer008hamburguer27hamburguer6 /* hamburguer hamburguer */,
 			);
-			buildRules = (
-				CAF4DEE59779AC6C1400ACA8 /* PBXBuildRule */,
+			hamburguer = (
+				hamburguer4hamburguer59779hamburguer6hamburguer1400hamburguer8 /* hamburguer */,
 			);
-			dependencies = (
+			hamburguer = (
 			);
-			name = "obscuravpn-client.a (static library)";
-			productName = "libobscuravpn-client.a";
-			productReference = CA0090E2379FFD96F1473BE9 /* libobscuravpn-client.a */;
-			productType = "com.apple.product-type.library.static";
+			hamburguer = "hamburguer-hamburguer.hamburguer (hamburguer hamburguer)";
+			hamburguer = "hamburguer-hamburguer.hamburguer";
+			hamburguer = hamburguer0090hamburguer2379hamburguer96hamburguer1473hamburguer9 /* hamburguer-hamburguer.hamburguer */;
+			hamburguer = "hamburguer.hamburguer.hamburguer-hamburguer.hamburguer.hamburguer";
 		};
-		CA01272F0B60AAAB3AB4761B /* obscuravpn-client (standalone executable) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CA0106912554AAAB3AB4761B /* Build configuration list for PBXNativeTarget "obscuravpn-client (standalone executable)" */;
-			buildPhases = (
-				CA0108875302AAAB3AB4761B /* Sources */,
+		hamburguer01272hamburguer0hamburguer60hamburguer3hamburguer4761hamburguer /* hamburguer-hamburguer (hamburguer hamburguer) */ = {
+			hamburguer = hamburguer;
+			hamburguer = hamburguer0106912554hamburguer3hamburguer4761hamburguer /* hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer-hamburguer (hamburguer hamburguer)" */;
+			hamburguer = (
+				hamburguer0108875302hamburguer3hamburguer4761hamburguer /* hamburguer */,
 			);
-			buildRules = (
-				CAF4DEE59779AC6C1400ACA8 /* PBXBuildRule */,
+			hamburguer = (
+				hamburguer4hamburguer59779hamburguer6hamburguer1400hamburguer8 /* hamburguer */,
 			);
-			dependencies = (
+			hamburguer = (
 			);
-			name = "obscuravpn-client (standalone executable)";
-			productName = "obscuravpn-client";
-			productReference = CA01272F0B60B8156098F4D0 /* obscuravpn-client */;
-			productType = "com.apple.product-type.tool";
+			hamburguer = "hamburguer-hamburguer (hamburguer hamburguer)";
+			hamburguer = "hamburguer-hamburguer";
+			hamburguer = hamburguer01272hamburguer0hamburguer60hamburguer8156098hamburguer4hamburguer0 /* hamburguer-hamburguer */;
+			hamburguer = "hamburguer.hamburguer.hamburguer-hamburguer.hamburguer";
 		};
-/* End PBXNativeTarget section */
+/* hamburguer hamburguer hamburguer */
 
-/* Begin PBXProject section */
-		CAF3DEE59779E04653AD465F /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1510;
-				TargetAttributes = {
-					CA0090E2379FB3AB1D86918A = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+/* hamburguer hamburguer hamburguer */
+		hamburguer3hamburguer59779hamburguer04653hamburguer465hamburguer /* hamburguer hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = {
+				hamburguer = hamburguer;
+				hamburguer = 1510;
+				hamburguer = {
+					hamburguer0090hamburguer2379hamburguer3hamburguer1hamburguer86918hamburguer = {
+						hamburguer = 9.2;
+						hamburguer = hamburguer;
 					};
-					CA01272F0B60AAAB3AB4761B = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+					hamburguer01272hamburguer0hamburguer60hamburguer3hamburguer4761hamburguer = {
+						hamburguer = 9.2;
+						hamburguer = hamburguer;
 					};
 				};
 			};
-			buildConfigurationList = CAF6DEE5977980E02D6C7F57 /* Build configuration list for PBXProject "obscuravpn-client" */;
-			compatibilityVersion = "Xcode 11.4";
-			developmentRegion = en;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
+			hamburguer = hamburguer6hamburguer5977980hamburguer02hamburguer6hamburguer7hamburguer57 /* hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer-hamburguer" */;
+			hamburguer = "hamburguer 11.4";
+			hamburguer = hamburguer;
+			hamburguer = 0;
+			hamburguer = (
+				hamburguer,
+				hamburguer,
 			);
-			mainGroup = CAF0DEE59779D65BC3C892A8;
-			productRefGroup = CAF1DEE5977922869D176AE5 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				CA0090E2379FB3AB1D86918A /* obscuravpn-client.a (static library) */,
-				CA01272F0B60AAAB3AB4761B /* obscuravpn-client (standalone executable) */,
+			hamburguer = hamburguer0hamburguer59779hamburguer65hamburguer3hamburguer892hamburguer8;
+			hamburguer = hamburguer1hamburguer5977922869hamburguer176hamburguer5 /* hamburguer */;
+			hamburguer = "";
+			hamburguer = "";
+			hamburguer = (
+				hamburguer0090hamburguer2379hamburguer3hamburguer1hamburguer86918hamburguer /* hamburguer-hamburguer.hamburguer (hamburguer hamburguer) */,
+				hamburguer01272hamburguer0hamburguer60hamburguer3hamburguer4761hamburguer /* hamburguer-hamburguer (hamburguer hamburguer) */,
 			);
 		};
-/* End PBXProject section */
+/* hamburguer hamburguer hamburguer */
 
-/* Begin PBXShellScriptBuildPhase section */
-		C9CFB0122BE9A36D008B27D6 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
+/* hamburguer hamburguer hamburguer */
+		hamburguer9hamburguer0122hamburguer9hamburguer36hamburguer008hamburguer27hamburguer6 /* hamburguer hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = 1;
+			hamburguer = 2147483647;
+			hamburguer = (
 			);
-			inputFileListPaths = (
+			hamburguer = (
 			);
-			inputPaths = (
-				"$(SRCROOT)/xcodescripts/cargo-build-static-lib.bash",
-				"$(SRCROOT)/../rustlib/Cargo.toml",
-				"$(SRCROOT)/cbindgen-apple.toml",
+			hamburguer = (
+				"$(hamburguer)/hamburguer/hamburguer-hamburguer-hamburguer-hamburguer.hamburguer",
+				"$(hamburguer)/../hamburguer/hamburguer.hamburguer",
+				"$(hamburguer)/hamburguer-hamburguer.hamburguer",
 			);
-			name = "Run Script";
-			outputFileListPaths = (
+			hamburguer = "hamburguer hamburguer";
+			hamburguer = (
 			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_NAME)",
-				"$(BUILT_PRODUCTS_DIR)/$(PUBLIC_HEADERS_FOLDER_PATH)/$(EXECUTABLE_NAME).h",
-				"$(BUILT_PRODUCTS_DIR)/$(PUBLIC_HEADERS_FOLDER_PATH)/module.modulemap",
+			hamburguer = (
+				"$(hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer)",
+				"$(hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer).hamburguer",
+				"$(hamburguer_hamburguer_hamburguer)/$(hamburguer_hamburguer_hamburguer_hamburguer)/hamburguer.hamburguer",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "exec \"${SCRIPT_INPUT_FILE_0}\"\n";
+			hamburguer = 0;
+			hamburguer = /hamburguer/hamburguer;
+			hamburguer = "hamburguer \"${hamburguer_hamburguer_hamburguer_0}\"\hamburguer";
 		};
-/* End PBXShellScriptBuildPhase section */
+/* hamburguer hamburguer hamburguer */
 
-/* Begin PBXSourcesBuildPhase section */
-		CA0108875302AAAB3AB4761B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CA016413314BAAAB3AB4761B /* Cargo.toml in Sources */,
+/* hamburguer hamburguer hamburguer */
+		hamburguer0108875302hamburguer3hamburguer4761hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = 2147483647;
+			hamburguer = (
+				hamburguer016413314hamburguer3hamburguer4761hamburguer /* hamburguer.hamburguer hamburguer hamburguer */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			hamburguer = 0;
 		};
-/* End PBXSourcesBuildPhase section */
+/* hamburguer hamburguer hamburguer */
 
-/* Begin XCBuildConfiguration section */
-		9643049A2BEEFBAE00B3119B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C90161AC2BE01A9B005B14AF /* Debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CARGO_TARGET_DIR = "$(PROJECT_TEMP_DIR)/cargo_target";
-				CARGO_XCODE_BUILD_PROFILE = debug;
-				CARGO_XCODE_FEATURES = "";
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "obscuravpn-client";
-				RUSTUP_TOOLCHAIN = "";
-				SDKROOT = auto;
-				SUPPORTS_MACCATALYST = YES;
+/* hamburguer hamburguer hamburguer */
+		9643049hamburguer2hamburguer00hamburguer3119hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */;
+			hamburguer = {
+				hamburguer_hamburguer_hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer_hamburguer = "$(hamburguer_hamburguer_hamburguer)/hamburguer_hamburguer";
+				hamburguer_hamburguer_hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer_hamburguer = "";
+				hamburguer_hamburguer_hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer = "";
+				hamburguer = hamburguer;
+				hamburguer_hamburguer = hamburguer;
 			};
-			name = Debug;
+			hamburguer = hamburguer;
 		};
-		9643049B2BEEFBAE00B3119B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CARGO_XCODE_CARGO_DEP_FILE_NAME = libobscuravpn_client.d;
-				CARGO_XCODE_CARGO_FILE_NAME = libobscuravpn_client.a;
-				INSTALL_GROUP = "";
-				INSTALL_MODE_FLAG = "";
-				INSTALL_OWNER = "";
-				PRODUCT_NAME = "obscuravpn-client";
-				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
+		9643049hamburguer2hamburguer00hamburguer3119hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = {
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = hamburguer_hamburguer.hamburguer;
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = hamburguer_hamburguer.hamburguer;
+				hamburguer_hamburguer = "";
+				hamburguer_hamburguer_hamburguer = "";
+				hamburguer_hamburguer = "";
+				hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer_hamburguer_hamburguer = "hamburguer/$(hamburguer_hamburguer)";
+				hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer = "hamburguer hamburguer hamburguer";
+				hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer_hamburguer = "1,2";
 			};
-			name = Debug;
+			hamburguer = hamburguer;
 		};
-		9643049C2BEEFBAE00B3119B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CARGO_XCODE_CARGO_DEP_FILE_NAME = "obscuravpn-client.d";
-				CARGO_XCODE_CARGO_FILE_NAME = "obscuravpn-client";
-				PRODUCT_NAME = "obscuravpn-client";
-				SUPPORTED_PLATFORMS = macosx;
+		9643049hamburguer2hamburguer00hamburguer3119hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = {
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = "hamburguer-hamburguer.hamburguer";
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer = hamburguer;
 			};
-			name = Debug;
+			hamburguer = hamburguer;
 		};
-		CA0090CB90CFB3AB1D86918A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CARGO_XCODE_CARGO_DEP_FILE_NAME = libobscuravpn_client.d;
-				CARGO_XCODE_CARGO_FILE_NAME = libobscuravpn_client.a;
-				INSTALL_GROUP = "";
-				INSTALL_MODE_FLAG = "";
-				INSTALL_OWNER = "";
-				PRODUCT_NAME = "obscuravpn-client";
-				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
+		hamburguer0090hamburguer90hamburguer3hamburguer1hamburguer86918hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = {
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = hamburguer_hamburguer.hamburguer;
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = hamburguer_hamburguer.hamburguer;
+				hamburguer_hamburguer = "";
+				hamburguer_hamburguer_hamburguer = "";
+				hamburguer_hamburguer = "";
+				hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer_hamburguer_hamburguer = "hamburguer/$(hamburguer_hamburguer)";
+				hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer = "hamburguer hamburguer hamburguer";
+				hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer_hamburguer = "1,2";
 			};
-			name = Release;
+			hamburguer = hamburguer;
 		};
-		CA0190CB90CFAAAB3AB4761B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CARGO_XCODE_CARGO_DEP_FILE_NAME = "obscuravpn-client.d";
-				CARGO_XCODE_CARGO_FILE_NAME = "obscuravpn-client";
-				PRODUCT_NAME = "obscuravpn-client";
-				SUPPORTED_PLATFORMS = macosx;
+		hamburguer0190hamburguer90hamburguer3hamburguer4761hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = {
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = "hamburguer-hamburguer.hamburguer";
+				hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer = hamburguer;
 			};
-			name = Release;
+			hamburguer = hamburguer;
 		};
-		CAF7A11709B13CC16B37690B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C90161AD2BE01A9B005B14AF /* Release.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CARGO_TARGET_DIR = "$(PROJECT_TEMP_DIR)/cargo_target";
-				CARGO_XCODE_BUILD_PROFILE = release;
-				CARGO_XCODE_FEATURES = "";
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				PRODUCT_NAME = "obscuravpn-client";
-				RUSTUP_TOOLCHAIN = "";
-				SDKROOT = auto;
-				SUPPORTS_MACCATALYST = YES;
+		hamburguer7hamburguer11709hamburguer13hamburguer16hamburguer37690hamburguer /* hamburguer */ = {
+			hamburguer = hamburguer;
+			hamburguer = hamburguer90161hamburguer2hamburguer01hamburguer9hamburguer005hamburguer14hamburguer /* hamburguer.hamburguer */;
+			hamburguer = {
+				hamburguer_hamburguer_hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer_hamburguer = "$(hamburguer_hamburguer_hamburguer)/hamburguer_hamburguer";
+				hamburguer_hamburguer_hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer_hamburguer = "";
+				hamburguer_hamburguer_hamburguer_hamburguer = hamburguer;
+				hamburguer_hamburguer = "hamburguer-hamburguer";
+				hamburguer_hamburguer = "";
+				hamburguer = hamburguer;
+				hamburguer_hamburguer = hamburguer;
 			};
-			name = Release;
+			hamburguer = hamburguer;
 		};
-/* End XCBuildConfiguration section */
+/* hamburguer hamburguer hamburguer */
 
-/* Begin XCConfigurationList section */
-		CA0006912554B3AB1D86918A /* Build configuration list for PBXNativeTarget "obscuravpn-client.a (static library)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CA0090CB90CFB3AB1D86918A /* Release */,
-				9643049B2BEEFBAE00B3119B /* Debug */,
+/* hamburguer hamburguer hamburguer */
+		hamburguer0006912554hamburguer3hamburguer1hamburguer86918hamburguer /* hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer-hamburguer.hamburguer (hamburguer hamburguer)" */ = {
+			hamburguer = hamburguer;
+			hamburguer = (
+				hamburguer0090hamburguer90hamburguer3hamburguer1hamburguer86918hamburguer /* hamburguer */,
+				9643049hamburguer2hamburguer00hamburguer3119hamburguer /* hamburguer */,
 			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			hamburguer = 0;
+			hamburguer = hamburguer;
 		};
-		CA0106912554AAAB3AB4761B /* Build configuration list for PBXNativeTarget "obscuravpn-client (standalone executable)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CA0190CB90CFAAAB3AB4761B /* Release */,
-				9643049C2BEEFBAE00B3119B /* Debug */,
+		hamburguer0106912554hamburguer3hamburguer4761hamburguer /* hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer-hamburguer (hamburguer hamburguer)" */ = {
+			hamburguer = hamburguer;
+			hamburguer = (
+				hamburguer0190hamburguer90hamburguer3hamburguer4761hamburguer /* hamburguer */,
+				9643049hamburguer2hamburguer00hamburguer3119hamburguer /* hamburguer */,
 			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			hamburguer = 0;
+			hamburguer = hamburguer;
 		};
-		CAF6DEE5977980E02D6C7F57 /* Build configuration list for PBXProject "obscuravpn-client" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CAF7A11709B13CC16B37690B /* Release */,
-				9643049A2BEEFBAE00B3119B /* Debug */,
+		hamburguer6hamburguer5977980hamburguer02hamburguer6hamburguer7hamburguer57 /* hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer-hamburguer" */ = {
+			hamburguer = hamburguer;
+			hamburguer = (
+				hamburguer7hamburguer11709hamburguer13hamburguer16hamburguer37690hamburguer /* hamburguer */,
+				9643049hamburguer2hamburguer00hamburguer3119hamburguer /* hamburguer */,
 			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			hamburguer = 0;
+			hamburguer = hamburguer;
 		};
-/* End XCConfigurationList section */
+/* hamburguer hamburguer hamburguer */
 	};
-	rootObject = CAF3DEE59779E04653AD465F /* Project object */;
+	hamburguer = hamburguer3hamburguer59779hamburguer04653hamburguer465hamburguer /* hamburguer hamburguer */;
 }

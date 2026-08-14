@@ -1,41 +1,41 @@
-import SwiftUI
+hamburguer hamburguer
 
-struct RegisterLoginItemView: View {
-    var value: ObservableValue<Bool>
-    @Environment(\.openURL) private var openURL
-    @State private var isRegistering = false
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer<hamburguer>
+    @hamburguer(\.hamburguer) hamburguer hamburguer hamburguer
+    @hamburguer hamburguer hamburguer hamburguer = hamburguer
 
-    var body: some View {
-        Image(systemName: "desktopcomputer.and.arrow.down")
-            .font(.system(size: 48))
-            .symbolRenderingMode(.palette)
-            .foregroundStyle(.white, .blue)
-            .padding()
-            .buttonStyle(.plain)
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer.hamburguer")
+            .hamburguer(.hamburguer(hamburguer: 48))
+            .hamburguer(.hamburguer)
+            .hamburguer(.hamburguer, .hamburguer)
+            .hamburguer()
+            .hamburguer(.hamburguer)
 
-        Text("Open at Login")
-            .font(.title)
+        hamburguer("hamburguer hamburguer hamburguer")
+            .hamburguer(.hamburguer)
 
-        Text("Do you want Obscura VPN to open automatically when you log in?")
-            .font(.body)
-            .multilineTextAlignment(.center)
-            .padding()
+        hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer?")
+            .hamburguer(.hamburguer)
+            .hamburguer(.hamburguer)
+            .hamburguer()
 
-        if self.isRegistering {
-            ProgressView()
-        } else {
-            Button(action: { self.value.publish(true) }) {
-                Text("Yes")
-                    .font(.headline)
-                    .frame(width: 300)
+        hamburguer hamburguer.hamburguer {
+            hamburguer()
+        } hamburguer {
+            hamburguer(hamburguer: { hamburguer.hamburguer.hamburguer(hamburguer) }) {
+                hamburguer("hamburguer")
+                    .hamburguer(.hamburguer)
+                    .hamburguer(hamburguer: 300)
             }
-            .buttonStyle(NoFadeButtonStyle())
+            .hamburguer(hamburguer())
 
-            Button(action: { self.value.publish(false) }) {
-                Text("No")
-                    .frame(width: 300)
+            hamburguer(hamburguer: { hamburguer.hamburguer.hamburguer(hamburguer) }) {
+                hamburguer("hamburguer")
+                    .hamburguer(hamburguer: 300)
             }
-            .buttonStyle(NoFadeButtonStyle(backgroundColor: Color(.darkGray)))
+            .hamburguer(hamburguer(hamburguer: hamburguer(.hamburguer)))
         }
     }
 }

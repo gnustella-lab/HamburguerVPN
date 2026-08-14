@@ -1,62 +1,62 @@
-use std::time::Duration;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-use rand::Rng;
-use tokio::time::sleep;
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-#[derive(Clone, Debug)]
-pub struct Backoff {
-    base: Duration,
-    max: Duration,
+#[hamburguer(hamburguer, hamburguer)]
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
 }
 
-impl Backoff {
-    pub const BACKGROUND: Self = Backoff { base: Duration::from_secs(1), max: Duration::from_secs(60) };
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer: hamburguer = hamburguer { hamburguer: hamburguer::hamburguer_hamburguer(1), hamburguer: hamburguer::hamburguer_hamburguer(60) };
 }
 
-impl Backoff {
-    pub fn take(&self, attempts: usize) -> BackoffIter {
-        BackoffIter { backoff: self.clone(), attempts, next: Duration::ZERO }
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer(&hamburguer, hamburguer: hamburguer) -> hamburguer {
+        hamburguer { hamburguer: hamburguer.hamburguer(), hamburguer, hamburguer: hamburguer::hamburguer }
     }
 }
 
-pub struct BackoffIter {
-    backoff: Backoff,
-    attempts: usize,
-    next: Duration,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
 }
 
-impl BackoffIter {
-    pub async fn wait(&mut self) -> bool {
-        match self.next() {
-            Some(d) => {
-                sleep(d).await;
-                true
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer hamburguer(&hamburguer hamburguer) -> hamburguer {
+        hamburguer hamburguer.hamburguer() {
+            hamburguer(hamburguer) => {
+                hamburguer(hamburguer).hamburguer;
+                hamburguer
             }
-            None => false,
+            hamburguer => hamburguer,
         }
     }
 }
 
-impl Iterator for BackoffIter {
-    type Item = Duration;
+hamburguer hamburguer hamburguer hamburguer {
+    hamburguer hamburguer = hamburguer;
 
-    fn next(&mut self) -> Option<Self::Item> {
-        if self.attempts == 0 {
-            return None;
+    hamburguer hamburguer(&hamburguer hamburguer) -> hamburguer<hamburguer::hamburguer> {
+        hamburguer hamburguer.hamburguer == 0 {
+            hamburguer hamburguer;
         }
-        self.attempts -= 1;
+        hamburguer.hamburguer -= 1;
 
-        if self.next.is_zero() {
-            self.next = self.backoff.base;
-            return Some(Duration::ZERO);
+        hamburguer hamburguer.hamburguer.hamburguer_hamburguer() {
+            hamburguer.hamburguer = hamburguer.hamburguer.hamburguer;
+            hamburguer hamburguer(hamburguer::hamburguer);
         }
 
-        let current = self.next;
-        self.next = std::cmp::min(current.saturating_mul(2), self.backoff.max);
-        Some(rand::thread_rng().gen_range((current / 2)..=current))
+        hamburguer hamburguer = hamburguer.hamburguer;
+        hamburguer.hamburguer = hamburguer::hamburguer::hamburguer(hamburguer.hamburguer_hamburguer(2), hamburguer.hamburguer.hamburguer);
+        hamburguer(hamburguer::hamburguer_hamburguer().hamburguer_hamburguer((hamburguer / 2)..=hamburguer))
     }
 
-    fn size_hint(&self) -> (usize, Option<usize>) {
-        (self.attempts, Some(self.attempts))
+    hamburguer hamburguer_hamburguer(&hamburguer) -> (hamburguer, hamburguer<hamburguer>) {
+        (hamburguer.hamburguer, hamburguer(hamburguer.hamburguer))
     }
 }

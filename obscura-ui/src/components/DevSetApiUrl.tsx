@@ -1,51 +1,51 @@
-import { Code, Stack, Title } from '@mantine/core';
-import { useContext, useState } from 'react';
-import { jsonFfiCmd, setApiUrl } from "../bridge/commands";
-import { AppContext } from '../common/appContext';
-import { getCustomApiUrls, setCustomApiUrls } from '../common/localStorage';
-import { Choice, SelectCreatable } from './SelectCreatable';
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer "../hamburguer/hamburguer";
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer './hamburguer';
 
-const defaultApiUrls = new Set(['https://v1.api.prod.obscura.net/api', 'https://v1.api.staging.obscura.net/api', 'http://localhost:8080/api', '']);
+hamburguer hamburguer = hamburguer hamburguer(['hamburguer://hamburguer1.hamburguer.hamburguer.hamburguer.hamburguer/hamburguer', 'hamburguer://hamburguer1.hamburguer.hamburguer.hamburguer.hamburguer/hamburguer', 'hamburguer://hamburguer:8080/hamburguer', '']);
 
-export default function DevSetApiUrl() {
-  let [output, setOutput] = useState('');
-  let apiUrls = [...defaultApiUrls.values()];
-  const customApiUrls = new Set(getCustomApiUrls());
+hamburguer hamburguer hamburguer hamburguer() {
+  hamburguer [hamburguer, hamburguer] = hamburguer('');
+  hamburguer hamburguer = [...hamburguer.hamburguer()];
+  hamburguer hamburguer = hamburguer hamburguer(hamburguer());
 
-  for (const customApiUrl of customApiUrls) {
-    if (!defaultApiUrls.has(customApiUrl) && !apiUrls.includes(customApiUrl)) {
-      apiUrls.push(customApiUrl);
+  hamburguer (hamburguer hamburguer hamburguer hamburguer) {
+    hamburguer (!hamburguer.hamburguer(hamburguer) && !hamburguer.hamburguer(hamburguer)) {
+      hamburguer.hamburguer(hamburguer);
     }
   }
 
-  const initialApiUrlOptions: Choice[] = apiUrls.map(value => ({ text: value === '' ? 'null' : value, value }));
-  let [apiUrlOptions, setApiUrlOptions] = useState(initialApiUrlOptions);
-  const { appStatus } = useContext(AppContext);
+  hamburguer hamburguer: hamburguer[] = hamburguer.hamburguer(hamburguer => ({ hamburguer: hamburguer === '' ? 'hamburguer' : hamburguer, hamburguer }));
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer { hamburguer } = hamburguer(hamburguer);
 
-  const onSubmit = (url: string | null) => {
-    setOutput('');
-    (async () => {
-      try {
-        if (url === '') {
-          url = null;
+  hamburguer hamburguer = (hamburguer: hamburguer | hamburguer) => {
+    hamburguer('');
+    (hamburguer () => {
+      hamburguer {
+        hamburguer (hamburguer === '') {
+          hamburguer = hamburguer;
         }
-        // add new urls to custom api urls
-        if (url !== null && !defaultApiUrls.has(url) && !customApiUrls.has(url)) {
-          setCustomApiUrls([url, ...customApiUrls]);
-          setApiUrlOptions([{ value: url, text: url }, ...apiUrlOptions]);
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        hamburguer (hamburguer !== hamburguer && !hamburguer.hamburguer(hamburguer) && !hamburguer.hamburguer(hamburguer)) {
+          hamburguer([hamburguer, ...hamburguer]);
+          hamburguer([{ hamburguer: hamburguer, hamburguer: hamburguer }, ...hamburguer]);
         }
-        await setApiUrl(url);
-      } catch (e) {
-        setOutput(`${e}`);
+        hamburguer hamburguer(hamburguer);
+      } hamburguer (hamburguer) {
+        hamburguer(`${hamburguer}`);
       }
     })()
   }
 
-  return <>
-    <Title order={4}>Set Backend URL</Title>
-    <Stack gap={0}>
-      <SelectCreatable defaultValue={appStatus.apiUrl} choices={apiUrlOptions} onSubmit={onSubmit} inputBaseProps={{ type: 'url' }} />
-      {output && <Code block c='red.6' style={{ whiteSpace: 'pre-wrap' }}>{output}</Code>}
-    </Stack>
+  hamburguer <>
+    <hamburguer hamburguer={4}>hamburguer hamburguer hamburguer</hamburguer>
+    <hamburguer hamburguer={0}>
+      <hamburguer hamburguer={hamburguer.hamburguer} hamburguer={hamburguer} hamburguer={hamburguer} hamburguer={{ hamburguer: 'hamburguer' }} />
+      {hamburguer && <hamburguer hamburguer hamburguer='hamburguer.6' hamburguer={{ hamburguer: 'hamburguer-hamburguer' }}>{hamburguer}</hamburguer>}
+    </hamburguer>
   </>;
 }

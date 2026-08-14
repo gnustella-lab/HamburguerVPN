@@ -1,81 +1,81 @@
-import Foundation
-import OSLog
-import UniformTypeIdentifiers
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-// The unique build ID.
+// hamburguer hamburguer hamburguer hamburguer.
 //
-// This is basically a meaningless number, it shouldn't be shown to users. It can just be used to tell if the exact same binary is being used. It is also used for updates as it is a monotonically increasing value.
-func buildVersion() -> String {
-    Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer hamburguer() -> hamburguer {
+    hamburguer.hamburguer.hamburguer!["hamburguer"] hamburguer! hamburguer
 }
 
-private func obscuraInfoDict() -> [String: Any] {
-    Bundle.main.infoDictionary!["Obscura"] as! [String: Any]
+hamburguer hamburguer hamburguer() -> [hamburguer: hamburguer] {
+    hamburguer.hamburguer.hamburguer!["hamburguer"] hamburguer! [hamburguer: hamburguer]
 }
 
-// This is the main version number.
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 //
-// This number is suitable for showing to the user as it contains just the information needed to usefully describe the version.
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 //
-// In release builds it will be pretty such as v1.23.
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer1.23.
 //
-// In other builds will will be something like `v1.23-3-abcde123` or `v1.23-6-a1b2c3-dirty`.
-func sourceVersion() -> String {
-    return obscuraInfoDict()["ObscuraSourceVersion"] as! String
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer1.23-3-hamburguer123` hamburguer `hamburguer1.23-6-hamburguer1hamburguer2hamburguer3-hamburguer`.
+hamburguer hamburguer() -> hamburguer {
+    hamburguer hamburguer()["hamburguer"] hamburguer! hamburguer
 }
 
-// The source commit ID.
+// hamburguer hamburguer hamburguer hamburguer.
 //
-// This will be a full commit ID, suffixed with -dirty if the working directory was not comitted.
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer -hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 //
-// It generally shouldn't be shown to users, use `sourceVersion` instead.
-func sourceId() -> String {
-    return obscuraInfoDict()["ObscuraSourceId"] as! String
+// hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer `hamburguer` hamburguer.
+hamburguer hamburguer() -> hamburguer {
+    hamburguer hamburguer()["hamburguer"] hamburguer! hamburguer
 }
 
-#if os(macOS)
-    func extensionBundle() -> Bundle {
-        let url = Bundle.main.bundleURL
-            .appending(path: "Contents/Library/SystemExtensions/")
-            .appending(component: "\(networkExtensionBundleID()).systemextension")
+#hamburguer hamburguer(hamburguer)
+    hamburguer hamburguer() -> hamburguer {
+        hamburguer hamburguer = hamburguer.hamburguer.hamburguer
+            .hamburguer(hamburguer: "hamburguer/hamburguer/hamburguer/")
+            .hamburguer(hamburguer: "\(hamburguer()).hamburguer")
 
-        return Bundle(url: url)!
+        hamburguer hamburguer(hamburguer: hamburguer)!
     }
-#endif
+#hamburguer
 
-// The correct bundle ID for the client app to connect to based on the build configuration
-public func networkExtensionBundleID() -> String {
-    return obscuraInfoDict()["OBSCURA_NETWORK_EXTENSION_BUNDLE_ID"] as! String
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer() -> hamburguer {
+    hamburguer hamburguer()["hamburguer_hamburguer_hamburguer_hamburguer_hamburguer"] hamburguer! hamburguer
 }
 
-func appGroupID() -> String {
-    return obscuraInfoDict()["AppGroupIdentifier"] as! String
+hamburguer hamburguer() -> hamburguer {
+    hamburguer hamburguer()["hamburguer"] hamburguer! hamburguer
 }
 
-func configDir() -> String {
-    #if os(macOS)
-        return "/Library/Application Support/obscura-vpn/system-network-extension/"
-    #else
-        return URL.libraryDirectory.appendingPathComponent("obscura", conformingTo: UTType.folder).path(percentEncoded: false)
-    #endif
+hamburguer hamburguer() -> hamburguer {
+    #hamburguer hamburguer(hamburguer)
+        hamburguer "/hamburguer/hamburguer hamburguer/hamburguer-hamburguer/hamburguer-hamburguer-hamburguer/"
+    #hamburguer
+        hamburguer hamburguer.hamburguer.hamburguer("hamburguer", hamburguer: hamburguer.hamburguer).hamburguer(hamburguer: hamburguer)
+    #hamburguer
 }
 
-func groupContainerDir() -> String? {
-    #if os(macOS)
-        return nil
-    #else
-        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.net.obscura.vpn-client-app-ios")?.path
-    #endif
+hamburguer hamburguer() -> hamburguer? {
+    #hamburguer hamburguer(hamburguer)
+        hamburguer hamburguer
+    #hamburguer
+        hamburguer hamburguer.hamburguer.hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer.hamburguer-hamburguer-hamburguer-hamburguer")?.hamburguer
+    #hamburguer
 }
 
-func logDir() -> String? {
-    #if os(macOS)
-        return nil
-    #else
-        guard let containerDir = groupContainerDir() else {
-            Logger(subsystem: "net.obscura.sys-ext", category: "pre-log-init").error("no container url for group")
-            return nil
+hamburguer hamburguer() -> hamburguer? {
+    #hamburguer hamburguer(hamburguer)
+        hamburguer hamburguer
+    #hamburguer
+        hamburguer hamburguer hamburguer = hamburguer() hamburguer {
+            hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer-hamburguer", hamburguer: "hamburguer-hamburguer-hamburguer").hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer")
+            hamburguer hamburguer
         }
-        return URL(filePath: containerDir).appending(path: "rust-log").path
-    #endif
+        hamburguer hamburguer(hamburguer: hamburguer).hamburguer(hamburguer: "hamburguer-hamburguer").hamburguer
+    #hamburguer
 }

@@ -1,223 +1,223 @@
-import { createContext, useContext } from 'react';
-import { ExitSelector, ExitSelectorCity, TunnelArgs } from 'src/bridge/commands';
-import { AccountId } from './accountUtils';
-import { AccountInfo, Exit } from './api';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer/hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer './hamburguer';
 
-export enum NEVPNStatus {
-    Invalid = 'invalid',
-    Disconnected = 'disconnected',
-    Connecting = 'connecting',
-    Connected = 'connected',
-    Reasserting = 'reasserting',
-    Disconnecting = 'disconnecting'
+hamburguer hamburguer hamburguer {
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer'
 }
 
-export enum UpdaterStatusType {
-    Uninitiated = 'uninitiated',
-    Initiated = 'initiated',
-    Available = 'available',
-    NotFound = 'notFound',
-    Error = 'error'
+hamburguer hamburguer hamburguer {
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer'
 }
 
-export interface AppcastSummary {
-    date: string;
-    description: string;
-    version: string;
-    minSystemVersionOk: boolean;
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer;
+    hamburguer: hamburguer;
+    hamburguer: hamburguer;
+    hamburguer: hamburguer;
 }
 
-export interface UpdaterStatus {
-    type: UpdaterStatusType;
-    appcast?: AppcastSummary;
-    error?: string;
-    errorCode?: number;
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer;
+    hamburguer?: hamburguer;
+    hamburguer?: hamburguer;
+    hamburguer?: hamburguer;
 }
 
-export interface OsStatus {
-    version: string,
-    internetAvailable: boolean,
-    osVpnStatus: NEVPNStatus,
-    srcVersion: string
-    strictLeakPrevention: boolean,
-    updaterStatus: UpdaterStatus,
-    debugBundleStatus: {
-        inProgress: boolean,
-        latestPath: string | null,
-        inProgressCounter: number,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: {
+        hamburguer: hamburguer,
+        hamburguer: hamburguer | hamburguer,
+        hamburguer: hamburguer,
     },
-    canSendMail: boolean,
-    loginItemStatus?: {
-        registered: boolean,
-        error?: string
+    hamburguer: hamburguer,
+    hamburguer?: {
+        hamburguer: hamburguer,
+        hamburguer?: hamburguer
     },
-    // iOS-specific
-    storeKit?: {
-      subscriptionProduct?: SubscriptionProductModel,
-      externalPaymentsAllowed: boolean,
+    // hamburguer-hamburguer
+    hamburguer?: {
+      hamburguer?: hamburguer,
+      hamburguer: hamburguer,
     },
-    offerCodeRedemptionSuccess?: boolean,
+    hamburguer?: hamburguer,
 }
 
-export interface SubscriptionProductModel {
-  displayName: string,
-  description: string,
-  displayPrice: string,
-  renewalPrice?: string,
-  subscriptionPeriodFormatted: string,
+hamburguer hamburguer hamburguer {
+  hamburguer: hamburguer,
+  hamburguer: hamburguer,
+  hamburguer: hamburguer,
+  hamburguer?: hamburguer,
+  hamburguer: hamburguer,
 }
 
-export enum TransportKind {
-    Quic = 'quic',
-    TcpTls = 'tcpTls',
+hamburguer hamburguer hamburguer {
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
 }
 
-export interface VpnStatus {
-    connected?: {
-      exit: Exit,
-      clientPublicKey: string,
-      exitPublicKey: string,
-      transport: TransportKind,
-      tunnelArgs: TunnelArgs,
+hamburguer hamburguer hamburguer {
+    hamburguer?: {
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
     },
-    connecting?: {
-      connectError: string,
-      reconnecting: boolean
-      tunnelArgs: TunnelArgs,
+    hamburguer?: {
+      hamburguer: hamburguer,
+      hamburguer: hamburguer
+      hamburguer: hamburguer,
     },
-    disconnected?: {}
+    hamburguer?: {}
 }
 
-export function getCityFromStatus(status: VpnStatus): ExitSelectorCity | undefined {
-  const tunnelArgs = getTunnelArgs(status);
-  return getCityFromArgs(tunnelArgs?.exit);
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+  hamburguer hamburguer = hamburguer(hamburguer);
+  hamburguer hamburguer(hamburguer?.hamburguer);
 }
 
-export function getCityFromArgs(exitSelector: ExitSelector | undefined): ExitSelectorCity | undefined {
-  return exitSelector !== undefined && "city" in exitSelector ? exitSelector.city : undefined;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer | hamburguer): hamburguer | hamburguer {
+  hamburguer hamburguer !== hamburguer && "hamburguer" hamburguer hamburguer ? hamburguer.hamburguer : hamburguer;
 }
 
-export function getTunnelArgs(status: VpnStatus): TunnelArgs | undefined {
-  return status.connected?.tunnelArgs ?? status.connecting?.tunnelArgs;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+  hamburguer hamburguer.hamburguer?.hamburguer ?? hamburguer.hamburguer?.hamburguer;
 }
 
-export interface PinnedLocation {
-    country_code: string,
-    city_code: string,
+hamburguer hamburguer hamburguer {
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
 
-    // Seconds since UNIX epoch.
-    pinned_at: number,
+    // hamburguer hamburguer hamburguer hamburguer.
+    hamburguer_hamburguer: hamburguer,
 }
 
-export interface AccountStatus {
-    account_info: AccountInfo,
-    last_updated_sec: number
+hamburguer hamburguer hamburguer {
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer
 }
 
-// See rustlib/src/config/feature_flags.rs
-export enum KnownFeatureFlagKey {
-  QuicFramePadding = "quicFramePadding",
-  KillSwitch = "killSwitch",
-  ForceSmallMtu = "forceSmallMtu",
-  TcpTlsTunnel = "tcpTlsTunnel",
+// hamburguer hamburguer/hamburguer/hamburguer/hamburguer_hamburguer.hamburguer
+hamburguer hamburguer hamburguer {
+  hamburguer = "hamburguer",
+  hamburguer = "hamburguer",
+  hamburguer = "hamburguer",
+  hamburguer = "hamburguer",
 }
 
-export type FeatureFlagKey = KnownFeatureFlagKey | string;
+hamburguer hamburguer hamburguer = hamburguer | hamburguer;
 
-export type FeatureFlagValue = boolean | null;
+hamburguer hamburguer hamburguer = hamburguer | hamburguer;
 
-export function featureFlagEnabled(value: FeatureFlagValue | undefined): boolean {
-  return value === true;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer | hamburguer): hamburguer {
+  hamburguer hamburguer === hamburguer;
 }
 
-export interface DNSContentBlock {
-    ad: boolean,
-    tracker: boolean,
-    malware: boolean,
-    adult: boolean,
-    gambling: boolean,
-    socialMedia: boolean,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
 }
 
-export interface AppStatus {
-    version: string,
-    dnsContentBlock: DNSContentBlock,
-    vpnStatus: VpnStatus,
-    accountId: AccountId,
-    pinnedLocations: Array<PinnedLocation>,
-    lastChosenExit: ExitSelector,
-    inNewAccountFlow: boolean,
-    apiUrl: string,
-    account: AccountStatus | null,
-    autoConnect: boolean,
-    featureFlags: Record<FeatureFlagKey, FeatureFlagValue>,
-    featureFlagKeys: FeatureFlagKey[],
-    useSystemDns: boolean,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer<hamburguer>,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer | hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer<hamburguer, hamburguer>,
+    hamburguer: hamburguer[],
+    hamburguer: hamburguer,
 }
 
-interface IAppContext {
-    vpnConnected: boolean,
-    // the exitSelector used to initiate the connection
-    initiatingExitSelector?: ExitSelector,
-    vpnConnect: (exit: ExitSelector) => Promise<void>,
-    vpnDisconnect: () => Promise<void>,
-    pollAccount: () => Promise<void>,
-    accountLoading: boolean,
-    appStatus: AppStatus,
-    osStatus: OsStatus,
-    showOfflineUI: boolean,
-    accountInfo: AccountInfo | null,
-    connectionInProgress: ConnectionInProgress,
-    isProcessingPayment: boolean,
-    setPaymentProcessing: (value: boolean) => void
+hamburguer hamburguer {
+    hamburguer: hamburguer,
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer?: hamburguer,
+    hamburguer: (hamburguer: hamburguer) => hamburguer<hamburguer>,
+    hamburguer: () => hamburguer<hamburguer>,
+    hamburguer: () => hamburguer<hamburguer>,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer | hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: (hamburguer: hamburguer) => hamburguer
 }
 
-export const AppContext = createContext(null as any as IAppContext);
+hamburguer hamburguer hamburguer = hamburguer(hamburguer hamburguer hamburguer hamburguer hamburguer);
 
-export enum ConnectionInProgress {
-    Connecting = 'Connecting',
-    Reconnecting = 'Reconnecting',
-    Disconnecting = 'Disconnecting',
-    // UI exclusives:
-    ChangingLocations = 'Changing Locations',
-    UNSET = 'UNSET'
+hamburguer hamburguer hamburguer {
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    hamburguer = 'hamburguer',
+    // hamburguer hamburguer:
+    hamburguer = 'hamburguer hamburguer',
+    hamburguer = 'hamburguer'
 }
 
 /**
- * State derived isConnecting hook
+ * hamburguer hamburguer hamburguer hamburguer
  */
-export function useIsConnecting() {
-  const { connectionInProgress, osStatus, appStatus } = useContext(AppContext);
-  return osStatus.osVpnStatus === NEVPNStatus.Connecting
-    || osStatus.osVpnStatus === NEVPNStatus.Reasserting
-    || connectionInProgress === ConnectionInProgress.ChangingLocations
-    || appStatus.vpnStatus.connecting !== undefined;
+hamburguer hamburguer hamburguer() {
+  hamburguer { hamburguer, hamburguer, hamburguer } = hamburguer(hamburguer);
+  hamburguer hamburguer.hamburguer === hamburguer.hamburguer
+    || hamburguer.hamburguer === hamburguer.hamburguer
+    || hamburguer === hamburguer.hamburguer
+    || hamburguer.hamburguer.hamburguer !== hamburguer;
 }
 
-export function useIsTransitioning() {
-  const { connectionInProgress, osStatus, appStatus } = useContext(AppContext);
-  return osStatus.osVpnStatus === NEVPNStatus.Connecting
-    || osStatus.osVpnStatus === NEVPNStatus.Reasserting
-    || osStatus.osVpnStatus === NEVPNStatus.Disconnecting
-    || connectionInProgress === ConnectionInProgress.ChangingLocations
-    || appStatus.vpnStatus.connecting !== undefined;
+hamburguer hamburguer hamburguer() {
+  hamburguer { hamburguer, hamburguer, hamburguer } = hamburguer(hamburguer);
+  hamburguer hamburguer.hamburguer === hamburguer.hamburguer
+    || hamburguer.hamburguer === hamburguer.hamburguer
+    || hamburguer.hamburguer === hamburguer.hamburguer
+    || hamburguer === hamburguer.hamburguer
+    || hamburguer.hamburguer.hamburguer !== hamburguer;
 }
 
-export function isConnecting(connectionInProgress: ConnectionInProgress) {
-    switch (connectionInProgress) {
-        case ConnectionInProgress.Connecting:
-        case ConnectionInProgress.Reconnecting:
-        case ConnectionInProgress.ChangingLocations:
-            return true;
+hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer (hamburguer) {
+        hamburguer hamburguer.hamburguer:
+        hamburguer hamburguer.hamburguer:
+        hamburguer hamburguer.hamburguer:
+            hamburguer hamburguer;
     }
-    return false;
+    hamburguer hamburguer;
 }
 
-export function connectionIsIdle(connectionInProgress: ConnectionInProgress, vpnStatus: VpnStatus, osVpnStatus: NEVPNStatus) {
-  return connectionInProgress === ConnectionInProgress.UNSET
-    && vpnStatus.disconnected !== undefined
+hamburguer hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer) {
+  hamburguer hamburguer === hamburguer.hamburguer
+    && hamburguer.hamburguer !== hamburguer
     && (
-      osVpnStatus === NEVPNStatus.Disconnected ||
-      osVpnStatus === NEVPNStatus.Invalid
+      hamburguer === hamburguer.hamburguer ||
+      hamburguer === hamburguer.hamburguer
     );
 }

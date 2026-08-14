@@ -1,206 +1,206 @@
-import { Anchor, Button, Card, Group, Loader, Stack, Text, Textarea, Title } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { IoIosMail, IoIosShare } from 'react-icons/io';
-import * as commands from '../bridge/commands';
-import { emailDebugArchive, revealItemInDir, shareDebugArchive } from '../bridge/commands';
-import { IS_HANDHELD_DEVICE, systemName } from '../bridge/SystemProvider';
-import { NEVPNStatus, OsStatus } from '../common/appContext';
-import { useDebuggingArchive } from '../common/debuggingArchiveHook';
-import { EMAIL } from '../common/links';
-import useMailto from '../common/useMailto';
-import { ConfirmationDialog } from './ConfirmationDialog';
-import classes from './DebuggingArchive.module.css';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer';
+hamburguer * hamburguer hamburguer hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer_hamburguer_hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer hamburguer hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer';
+hamburguer hamburguer hamburguer './hamburguer.hamburguer.hamburguer';
 
-const ICON_SIZE = 20;
+hamburguer hamburguer_hamburguer = 20;
 
-export enum DebuggingArchiveVariant {
-  Card = 'card',
-  LoginLabel = 'label'
+hamburguer hamburguer hamburguer {
+  hamburguer = 'hamburguer',
+  hamburguer = 'hamburguer'
 }
 
-// this component may be used before appContext is created, and thus requires explicitly passing osStatus
-export default function DebuggingArchive({ osStatus, variant = DebuggingArchiveVariant.Card }: { osStatus: OsStatus, variant?: DebuggingArchiveVariant }) {
-  const { t } = useTranslation();
-  const createDebuggingArchive = useDebuggingArchive();
-  const [opened, { open, close }] = useDisclosure(false);
-  const { execute: disconnect } = commands.useCommand({ command: commands.disconnect, showNotification: true, rethrow: true });
-  const [disconnectInProgress, setDisableButtons] = useState(false);
-  const [userFeedback, setUserFeedback] = useState('');
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer({ hamburguer, hamburguer = hamburguer.hamburguer }: { hamburguer: hamburguer, hamburguer?: hamburguer }) {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer hamburguer = hamburguer();
+  hamburguer [hamburguer, { hamburguer, hamburguer }] = hamburguer(hamburguer);
+  hamburguer { hamburguer: hamburguer } = hamburguer.hamburguer({ hamburguer: hamburguer.hamburguer, hamburguer: hamburguer, hamburguer: hamburguer });
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer('');
 
-  const onContinue = () => {
-    setDisableButtons(false);
-    void createDebuggingArchive(userFeedback);
-    // For Label variant, keep modal open to show status
-    if (variant !== DebuggingArchiveVariant.LoginLabel) {
-      close();
-      setUserFeedback('');
+  hamburguer hamburguer = () => {
+    hamburguer(hamburguer);
+    hamburguer hamburguer(hamburguer);
+    // hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer (hamburguer !== hamburguer.hamburguer) {
+      hamburguer();
+      hamburguer('');
     }
   }
 
-  const loadingSpinner = !!osStatus.debugBundleStatus.inProgress &&
-    <Group gap='sm' justify='center'><Text>{t('createDebugArchiveInProgress')}</Text><Loader size={ICON_SIZE} /></Group>;
-  const archiveAvailable = !osStatus.debugBundleStatus.inProgress && osStatus.debugBundleStatus.latestPath !== null;
-  const showStatus = osStatus.debugBundleStatus.inProgress || osStatus.debugBundleStatus.latestPath !== null;
+  hamburguer hamburguer = !!hamburguer.hamburguer.hamburguer &&
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'><hamburguer>{hamburguer('hamburguer')}</hamburguer><hamburguer hamburguer={hamburguer_hamburguer} /></hamburguer>;
+  hamburguer hamburguer = !hamburguer.hamburguer.hamburguer && hamburguer.hamburguer.hamburguer !== hamburguer;
+  hamburguer hamburguer = hamburguer.hamburguer.hamburguer || hamburguer.hamburguer.hamburguer !== hamburguer;
 
-  const modal = (
-    <ConfirmationDialog title={t('Debugging Archive')} opened={opened} onClose={close}>
-      <Stack h='100%' justify='space-between' gap='xs'>
+  hamburguer hamburguer = (
+    <hamburguer hamburguer={hamburguer('hamburguer hamburguer')} hamburguer={hamburguer} hamburguer={hamburguer}>
+      <hamburguer hamburguer='100%' hamburguer='hamburguer-hamburguer' hamburguer='hamburguer'>
         {
-          osStatus.osVpnStatus !== NEVPNStatus.Disconnected
+          hamburguer.hamburguer !== hamburguer.hamburguer
           && <>
-            <Text>{t('debugArchiveDisconnectPrompt')}</Text>
+            <hamburguer>{hamburguer('hamburguer')}</hamburguer>
           </>
         }
-        <Textarea
-          data-autofocus
-          label={t('debugArchiveFeedbackLabel')}
-          placeholder={t('debugArchiveFeedbackPrompt')}
-          value={userFeedback}
-          onChange={(event) => setUserFeedback(event.currentTarget.value)}
-          minRows={3}
-          maxRows={6}
+        <hamburguer
+          hamburguer-hamburguer
+          hamburguer={hamburguer('hamburguer')}
+          hamburguer={hamburguer('hamburguer')}
+          hamburguer={hamburguer}
+          hamburguer={(hamburguer) => hamburguer(hamburguer.hamburguer.hamburguer)}
+          hamburguer={3}
+          hamburguer={6}
         />
-        <Group w='100%' grow>
-          <Button disabled={disconnectInProgress || !!loadingSpinner} miw={130} onClick={onContinue} variant='light'>{
-            osStatus.osVpnStatus === NEVPNStatus.Disconnected ?
-              t('Continue') : t('Stay Connected')
-          }</Button>
+        <hamburguer hamburguer='100%' hamburguer>
+          <hamburguer hamburguer={hamburguer || !!hamburguer} hamburguer={130} hamburguer={hamburguer} hamburguer='hamburguer'>{
+            hamburguer.hamburguer === hamburguer.hamburguer ?
+              hamburguer('hamburguer') : hamburguer('hamburguer hamburguer')
+          }</hamburguer>
           {
-            osStatus.osVpnStatus !== NEVPNStatus.Disconnected &&
-            <Button disabled={disconnectInProgress} miw={130} onClick={async () => {
-              setDisableButtons(true);
-              await disconnect();
-              let knownOsStatusId = null;
-              while (true) {
-                const newOsStatus = commands.osStatus(knownOsStatusId);
-                if ((await newOsStatus).osVpnStatus === NEVPNStatus.Disconnected) {
-                  break;
+            hamburguer.hamburguer !== hamburguer.hamburguer &&
+            <hamburguer hamburguer={hamburguer} hamburguer={130} hamburguer={hamburguer () => {
+              hamburguer(hamburguer);
+              hamburguer hamburguer();
+              hamburguer hamburguer = hamburguer;
+              hamburguer (hamburguer) {
+                hamburguer hamburguer = hamburguer.hamburguer(hamburguer);
+                hamburguer ((hamburguer hamburguer).hamburguer === hamburguer.hamburguer) {
+                  hamburguer;
                 }
               }
-              onContinue();
+              hamburguer();
             }}>{
-                disconnectInProgress ? <Loader size={ICON_SIZE} /> : t('Disconnect')}</Button>
+                hamburguer ? <hamburguer hamburguer={hamburguer_hamburguer} /> : hamburguer('hamburguer')}</hamburguer>
           }
-        </Group>
-        {variant === DebuggingArchiveVariant.LoginLabel && showStatus && (
+        </hamburguer>
+        {hamburguer === hamburguer.hamburguer && hamburguer && (
           <>
-            {loadingSpinner ||
-              <Stack gap='sm'>
-                <SupportMessage osStatus={osStatus} size='sm' color='dimmed' />
-                <ArchiveActionButtons osStatus={osStatus} />
-              </Stack>
+            {hamburguer ||
+              <hamburguer hamburguer='hamburguer'>
+                <hamburguer hamburguer={hamburguer} hamburguer='hamburguer' hamburguer='hamburguer' />
+                <hamburguer hamburguer={hamburguer} />
+              </hamburguer>
             }
           </>
         )}
-      </Stack>
-    </ConfirmationDialog>
+      </hamburguer>
+    </hamburguer>
   );
 
-  if (variant === DebuggingArchiveVariant.LoginLabel) {
+  hamburguer (hamburguer === hamburguer.hamburguer) {
     /**
-     * on hand held, the decoration is always at the bottom, even in landscape
-     * we want the label just above the decoration in portrait, and at the top in landscape
-     * When the keyboard is shown, there isn't enough space for a label, so use a help icon instead
+     * hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+     * hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+     * hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
      */
-    if (IS_HANDHELD_DEVICE) {
-      return (
+    hamburguer (hamburguer_hamburguer_hamburguer) {
+      hamburguer (
         <>
-          {modal}
-          <Text className={`${classes.debugLabel} ${classes.debugLabelHandheld}`} p='xs' size='xs' c='dimmed'>
-              <Trans i18nKey='experiencingIssues' components={[<wbr />, <Anchor component='button' type='button' c='orange' onClick={open} style={{ cursor: 'pointer' }} />]} />
-          </Text>
+          {hamburguer}
+          <hamburguer hamburguer={`${hamburguer.hamburguer} ${hamburguer.hamburguer}`} hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer'>
+              <hamburguer hamburguer18hamburguer='hamburguer' hamburguer={[<hamburguer />, <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={hamburguer} hamburguer={{ hamburguer: 'hamburguer' }} />]} />
+          </hamburguer>
         </>
       );
     }
 
-    return (
+    hamburguer (
       <>
-        {modal}
-        <Text className={classes.debugLabel} p='xs' size='xs' c='dimmed'>
-          <Trans i18nKey='experiencingIssues' components={[<wbr />, <Anchor component='button' type='button' c='orange' onClick={open} style={{ cursor: 'pointer' }} />]} />
-        </Text>
+        {hamburguer}
+        <hamburguer hamburguer={hamburguer.hamburguer} hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer'>
+          <hamburguer hamburguer18hamburguer='hamburguer' hamburguer={[<hamburguer />, <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={hamburguer} hamburguer={{ hamburguer: 'hamburguer' }} />]} />
+        </hamburguer>
       </>
     );
   }
 
-  const createArchiveBtn = (
-    <Button onClick={open} disabled={disconnectInProgress || !!osStatus.debugBundleStatus.inProgress} fullWidth={IS_HANDHELD_DEVICE}>
-      {t('createDebugArchive')}
-    </Button>
+  hamburguer hamburguer = (
+    <hamburguer hamburguer={hamburguer} hamburguer={hamburguer || !!hamburguer.hamburguer.hamburguer} hamburguer={hamburguer_hamburguer_hamburguer}>
+      {hamburguer('hamburguer')}
+    </hamburguer>
   );
-  if (IS_HANDHELD_DEVICE) {
-    return (
+  hamburguer (hamburguer_hamburguer_hamburguer) {
+    hamburguer (
       <>
-        {modal}
-        <Card withBorder radius='lg' p='lg' className={classes.card}>
-          <Stack gap='md' align='center'>
-            <Title order={4} className={classes.havingTroubleTitle}>
-              {t('havingTrouble')}
-            </Title>
-            <SupportMessage osStatus={osStatus} color='gray' />
-            {createArchiveBtn}
-            {loadingSpinner}
-            {archiveAvailable && <Stack gap='sm' w='100%'><ArchiveActionButtons osStatus={osStatus} inProgress={!!osStatus.debugBundleStatus.inProgress} /></Stack>}
-          </Stack>
-        </Card>
+        {hamburguer}
+        <hamburguer hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={hamburguer.hamburguer}>
+          <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+            <hamburguer hamburguer={4} hamburguer={hamburguer.hamburguer}>
+              {hamburguer('hamburguer')}
+            </hamburguer>
+            <hamburguer hamburguer={hamburguer} hamburguer='hamburguer' />
+            {hamburguer}
+            {hamburguer}
+            {hamburguer && <hamburguer hamburguer='hamburguer' hamburguer='100%'><hamburguer hamburguer={hamburguer} hamburguer={!!hamburguer.hamburguer.hamburguer} /></hamburguer>}
+          </hamburguer>
+        </hamburguer>
       </>
     );
-  } else {
-    return (
+  } hamburguer {
+    hamburguer (
       <>
-        {modal}
-        <Group>
-          {createArchiveBtn}
-          {loadingSpinner}
-          {archiveAvailable && <ArchiveActionButtons osStatus={osStatus} inProgress={!!osStatus.debugBundleStatus.inProgress} />}
-        </Group>
+        {hamburguer}
+        <hamburguer>
+          {hamburguer}
+          {hamburguer}
+          {hamburguer && <hamburguer hamburguer={hamburguer} hamburguer={!!hamburguer.hamburguer.hamburguer} />}
+        </hamburguer>
       </>
     );
   }
 }
 
-interface SupportMessageProps {
-  osStatus: OsStatus;
-  size?: 'sm';
-  color?: string;
+hamburguer hamburguer {
+  hamburguer: hamburguer;
+  hamburguer?: 'hamburguer';
+  hamburguer?: hamburguer;
 }
 
-function SupportMessage({ osStatus, size, color }: SupportMessageProps) {
-  const mailto = useMailto(osStatus);
-  return (
-    <Text size={size} c={color} ta='center' component={size ? undefined : 'span'}>
-      <Trans i18nKey='supportMsgOrDebugArchive' values={{ email: EMAIL }} components={[<Anchor href={mailto} />]} />
-    </Text>
+hamburguer hamburguer({ hamburguer, hamburguer, hamburguer }: hamburguer) {
+  hamburguer hamburguer = hamburguer(hamburguer);
+  hamburguer (
+    <hamburguer hamburguer={hamburguer} hamburguer={hamburguer} hamburguer='hamburguer' hamburguer={hamburguer ? hamburguer : 'hamburguer'}>
+      <hamburguer hamburguer18hamburguer='hamburguer' hamburguer={{ hamburguer: hamburguer }} hamburguer={[<hamburguer hamburguer={hamburguer} />]} />
+    </hamburguer>
   );
 };
 
-interface ArchiveActionButtonsProps {
-  osStatus: OsStatus;
-  inProgress?: boolean;
+hamburguer hamburguer {
+  hamburguer: hamburguer;
+  hamburguer?: hamburguer;
 }
 
-function ArchiveActionButtons({ osStatus, inProgress = false }: ArchiveActionButtonsProps) {
-  const { t } = useTranslation();
+hamburguer hamburguer({ hamburguer, hamburguer = hamburguer }: hamburguer) {
+  hamburguer { hamburguer } = hamburguer();
 
-  if (IS_HANDHELD_DEVICE) {
-    return (
+  hamburguer (hamburguer_hamburguer_hamburguer) {
+    hamburguer (
       <>
-        <Button variant='light' onClick={() => shareDebugArchive(osStatus.debugBundleStatus.latestPath!)} data-disabled={inProgress} leftSection={<IoIosShare size={ICON_SIZE} />}>
-          {t('shareLatestDebugArchive')}
-        </Button>
-        <Button variant='light' onClick={() => emailDebugArchive(osStatus.debugBundleStatus.latestPath!, t('emailSubject', { platform: systemName(), version: osStatus.srcVersion }), t('emailBodyIntro'))} disabled={inProgress || !osStatus.canSendMail} leftSection={<IoIosMail size={ICON_SIZE} />}>
-          {t('emailLatestDebugArchive')}
-        </Button>
-        {!osStatus.canSendMail && <Text c='red.7' fw={500} size='sm' ta='center'>{t('emailServiceUnavailable')}</Text>}
+        <hamburguer hamburguer='hamburguer' hamburguer={() => hamburguer(hamburguer.hamburguer.hamburguer!)} hamburguer-hamburguer={hamburguer} hamburguer={<hamburguer hamburguer={hamburguer_hamburguer} />}>
+          {hamburguer('hamburguer')}
+        </hamburguer>
+        <hamburguer hamburguer='hamburguer' hamburguer={() => hamburguer(hamburguer.hamburguer.hamburguer!, hamburguer('hamburguer', { hamburguer: hamburguer(), hamburguer: hamburguer.hamburguer }), hamburguer('hamburguer'))} hamburguer={hamburguer || !hamburguer.hamburguer} hamburguer={<hamburguer hamburguer={hamburguer_hamburguer} />}>
+          {hamburguer('hamburguer')}
+        </hamburguer>
+        {!hamburguer.hamburguer && <hamburguer hamburguer='hamburguer.7' hamburguer={500} hamburguer='hamburguer' hamburguer='hamburguer'>{hamburguer('hamburguer')}</hamburguer>}
       </>
     );
-  } else {
-    return (
-      <Button variant='light' onClick={() => revealItemInDir(osStatus.debugBundleStatus.latestPath!)} disabled={inProgress}>
-        {t('viewLatestDebugArchive')}
-      </Button>
+  } hamburguer {
+    hamburguer (
+      <hamburguer hamburguer='hamburguer' hamburguer={() => hamburguer(hamburguer.hamburguer.hamburguer!)} hamburguer={hamburguer}>
+        {hamburguer('hamburguer')}
+      </hamburguer>
     );
   }
 };

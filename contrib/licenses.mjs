@@ -1,269 +1,269 @@
-import {readFileSync} from "node:fs";
+hamburguer {hamburguer} hamburguer "hamburguer:hamburguer";
 
-function rpartition(s, p) {
-    let i = s.lastIndexOf(p);
-    if (i < 0) {
-        throw new Error(`No ${JSON.stringify(p)} in ${JSON.stringify(s)}`)
+hamburguer hamburguer(hamburguer, hamburguer) {
+    hamburguer hamburguer = hamburguer.hamburguer(hamburguer);
+    hamburguer (hamburguer < 0) {
+        hamburguer hamburguer hamburguer(`hamburguer ${hamburguer.hamburguer(hamburguer)} hamburguer ${hamburguer.hamburguer(hamburguer)}`)
     }
-    return [
-        s.slice(0, i),
-        s.slice(i + 1),
+    hamburguer [
+        hamburguer.hamburguer(0, hamburguer),
+        hamburguer.hamburguer(hamburguer + 1),
     ];
 }
 
-const LICENSES_NODE = JSON.parse(readFileSync(process.env.LICENSES_NODE));
-const LICENSES_RUST = JSON.parse(readFileSync(process.env.LICENSES_RUST));
+hamburguer hamburguer_hamburguer = hamburguer.hamburguer(hamburguer(hamburguer.hamburguer.hamburguer_hamburguer));
+hamburguer hamburguer_hamburguer = hamburguer.hamburguer(hamburguer(hamburguer.hamburguer.hamburguer_hamburguer));
 
-let overview = new Map;
-let licenses = new Map;
+hamburguer hamburguer = hamburguer hamburguer;
+hamburguer hamburguer = hamburguer hamburguer;
 
-let out = {
-    overview: [],
-    licenses: [],
+hamburguer hamburguer = {
+    hamburguer: [],
+    hamburguer: [],
 };
 
-function addLicense(info) {
-    let o = overview.get(info.id);
-    if (!o) {
-        o = {
-            id: info.id,
-            name: info.name,
-            count: 0,
+hamburguer hamburguer(hamburguer) {
+    hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer);
+    hamburguer (!hamburguer) {
+        hamburguer = {
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: 0,
         };
-        overview.set(info.id, o);
-        out.overview.push(o);
+        hamburguer.hamburguer(hamburguer.hamburguer, hamburguer);
+        hamburguer.hamburguer.hamburguer(hamburguer);
     }
-    o.count += 1;
+    hamburguer.hamburguer += 1;
 
-    let l = licenses.get(info.text);
-    if (!l) {
-        l = {
-            id: info.id,
-            name: o.name,
-            text: info.text,
-            used_by: [],
+    hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer);
+    hamburguer (!hamburguer) {
+        hamburguer = {
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer,
+            hamburguer_hamburguer: [],
         };
-        licenses.set(info.text, l);
-        out.licenses.push(l);
+        hamburguer.hamburguer(hamburguer.hamburguer, hamburguer);
+        hamburguer.hamburguer.hamburguer(hamburguer);
     }
-    l.used_by.push(info.package);
+    hamburguer.hamburguer_hamburguer.hamburguer(hamburguer.hamburguer);
 }
 
-// https://github.com/sparkle-project/Sparkle/blob/2c95fa406a92b683ed649cde2975034f2f774289/LICENSE
-addLicense({
-    id: "MIT",
-    name: "MIT License",
-    text: `Copyright (c) 2006-2013 Andy Matuschak.
-Copyright (c) 2009-2013 Elgato Systems GmbH.
-Copyright (c) 2011-2014 Kornel LesiÅ„ski.
-Copyright (c) 2015-2017 Mayur Pawashe.
-Copyright (c) 2014 C.W. Betts.
-Copyright (c) 2014 Petroules Corporation.
-Copyright (c) 2014 Big Nerd Ranch.
-All rights reserved.
+// hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer/hamburguer/2hamburguer95hamburguer406hamburguer92hamburguer683hamburguer649hamburguer2975034hamburguer2hamburguer774289/hamburguer
+hamburguer({
+    hamburguer: "hamburguer",
+    hamburguer: "hamburguer hamburguer",
+    hamburguer: `hamburguer (hamburguer) 2006-2013 hamburguer hamburguer.
+hamburguer (hamburguer) 2009-2013 hamburguer hamburguer hamburguer.
+hamburguer (hamburguer) 2011-2014 hamburguer hamburguer„hamburguer.
+hamburguer (hamburguer) 2015-2017 hamburguer hamburguer.
+hamburguer (hamburguer) 2014 hamburguer.hamburguer. hamburguer.
+hamburguer (hamburguer) 2014 hamburguer hamburguer.
+hamburguer (hamburguer) 2014 hamburguer hamburguer hamburguer.
+hamburguer hamburguer hamburguer.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer "hamburguer"), hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer/hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer,
+hamburguer hamburguer hamburguer hamburguer hamburguer:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer", hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer
+hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
 =================
-EXTERNAL LICENSES
+hamburguer hamburguer
 =================
 
-bspatch.c and bsdiff.c, from bsdiff 4.3 <http://www.daemonology.net/bsdiff/>:
+hamburguer.hamburguer hamburguer hamburguer.hamburguer, hamburguer hamburguer 4.3 <hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/>:
 
-Copyright 2003-2005 Colin Percival
-All rights reserved
+hamburguer 2003-2005 hamburguer hamburguer
+hamburguer hamburguer hamburguer
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted providing that the following conditions 
-are met:
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 
+hamburguer hamburguer:
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+2. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer hamburguer/hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ${"``"}AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
-IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
-
---
-
-sais.c and sais.h, from sais-lite (2010/08/07) <https://sites.google.com/site/yuta256/sais>:
-
-The sais-lite copyright is as follows:
-
-Copyright (c) 2008-2010 Yuta Mori All Rights Reserved.
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer ${"``"}hamburguer hamburguer'' hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer, hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer.  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer hamburguer
+hamburguer (hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer; hamburguer hamburguer hamburguer, hamburguer, hamburguer hamburguer; hamburguer hamburguer hamburguer)
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer,
+hamburguer hamburguer, hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer) hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer.
 
 --
 
-Portable C implementation of Ed25519, from https://github.com/orlp/ed25519
+hamburguer.hamburguer hamburguer hamburguer.hamburguer, hamburguer hamburguer-hamburguer (2010/08/07) <hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer256/hamburguer>:
 
-Copyright (c) 2015 Orson Peters <orsonpeters@gmail.com>
+hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer:
 
-This software is provided 'as-is', without any express or implied warranty. In no event will the
-authors be held liable for any damages arising from the use of this software.
+hamburguer (hamburguer) 2008-2010 hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-Permission is granted to anyone to use this software for any purpose, including commercial
-applications, and to alter it and redistribute it freely, subject to the following restrictions:
+hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer (hamburguer "hamburguer"), hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer,
+hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer/hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+hamburguer:
 
-1. The origin of this software must not be misrepresented; you must not claim that you wrote the
-   original software. If you use this software in a product, an acknowledgment in the product
-   documentation would be appreciated but is not required.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-2. Altered source versions must be plainly marked as such, and must not be misrepresented as
-   being the original software.
-
-3. This notice may not be removed or altered from any source distribution.
+hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer", hamburguer hamburguer hamburguer hamburguer hamburguer,
+hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer,
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer
+hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer.
 
 --
 
-SUSignatureVerifier.m:
+hamburguer hamburguer hamburguer hamburguer hamburguer25519, hamburguer hamburguer://hamburguer.hamburguer/hamburguer/hamburguer25519
 
-Copyright (c) 2011 Mark Hamlin.
+hamburguer (hamburguer) 2015 hamburguer hamburguer <hamburguer@hamburguer.hamburguer>
 
-All rights reserved.
+hamburguer hamburguer hamburguer hamburguer 'hamburguer-hamburguer', hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted providing that the following conditions
-are met:
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer
+hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer:
 
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ${"``"}AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
-IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.`,
-    package: {
-        name: "Sparkle",
-        url: "https://sparkle-project.org/",
-        version: "2.6.4",
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer; hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+
+2. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer hamburguer hamburguer hamburguer.
+
+3. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+
+--
+
+hamburguer.hamburguer:
+
+hamburguer (hamburguer) 2011 hamburguer hamburguer.
+
+hamburguer hamburguer hamburguer.
+
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer:
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+2. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+   hamburguer hamburguer/hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer ${"``"}hamburguer hamburguer'' hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer, hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer.  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer hamburguer
+hamburguer (hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer; hamburguer hamburguer hamburguer, hamburguer, hamburguer hamburguer; hamburguer hamburguer hamburguer)
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer,
+hamburguer hamburguer, hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer) hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer.`,
+    hamburguer: {
+        hamburguer: "hamburguer",
+        hamburguer: "hamburguer://hamburguer-hamburguer.hamburguer/",
+        hamburguer: "2.6.4",
     },
 });
 
-// ../apple/third-party/CwlSysctl.swift
-addLicense({
-    id: "ISC",
-    name: "ISC License",
-    text: `Created by Matt Gallagher on 2016/02/03.
-Copyright Â© 2016 Matt Gallagher ( https://www.cocoawithlove.com ). All rights reserved.
+// ../hamburguer/hamburguer-hamburguer/hamburguer.hamburguer
+hamburguer({
+    hamburguer: "hamburguer",
+    hamburguer: "hamburguer hamburguer",
+    hamburguer: `hamburguer hamburguer hamburguer hamburguer hamburguer 2016/02/03.
+hamburguer hamburguer© 2016 hamburguer hamburguer ( hamburguer://hamburguer.hamburguer.hamburguer ). hamburguer hamburguer hamburguer.
 
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
+hamburguer hamburguer hamburguer, hamburguer, hamburguer, hamburguer/hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
-SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`,
-    package: {
-        name: "CwlUtils",
-        url: "https://github.com/mattgallagher/CwlUtils",
-        version: "d58bb51c9370b0b73adaead17f29f21a863cc126",
+hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer" hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer, hamburguer, hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.`,
+    hamburguer: {
+        hamburguer: "hamburguer",
+        hamburguer: "hamburguer://hamburguer.hamburguer/hamburguer/hamburguer",
+        hamburguer: "hamburguer58hamburguer51hamburguer9370hamburguer0hamburguer73hamburguer17hamburguer29hamburguer21hamburguer863hamburguer126",
     },
 });
 
-// Note: Do Rust licenses first as they have nice names.
-for (let license of LICENSES_RUST.licenses) {
-    for (let {crate} of license.used_by) {
-        addLicense({
-            id: license.id,
-            name: license.name,
-            text: license.text,
-            package: {
-                name: crate.name,
-                url: crate.repository ?? `https://crates.io/crates/${crate.name}`,
-                version: crate.version,
+// hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer (hamburguer hamburguer hamburguer hamburguer_hamburguer.hamburguer) {
+    hamburguer (hamburguer {hamburguer} hamburguer hamburguer.hamburguer_hamburguer) {
+        hamburguer({
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: hamburguer.hamburguer,
+            hamburguer: {
+                hamburguer: hamburguer.hamburguer,
+                hamburguer: hamburguer.hamburguer ?? `hamburguer://hamburguer.hamburguer/hamburguer/${hamburguer.hamburguer}`,
+                hamburguer: hamburguer.hamburguer,
             },
         });
     }
 }
 
-for (let [pkg, info] of Object.entries(LICENSES_NODE)) {
-    let id = /[a-zA-Z0-9-]+/.exec(info.licenses)[0];
-    let [name, version] = rpartition(pkg, "@");
-    addLicense({
-        id,
-        name: id,
-        text: info.licenseFile ? readFileSync(info.licenseFile).toString() : info.id,
-        package: {
-            name,
-            url: info.repository ?? `https://www.npmjs.com/package/${name}`,
-            version,
+hamburguer (hamburguer [hamburguer, hamburguer] hamburguer hamburguer.hamburguer(hamburguer_hamburguer)) {
+    hamburguer hamburguer = /[hamburguer-hamburguer-hamburguer0-9-]+/.hamburguer(hamburguer.hamburguer)[0];
+    hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer, "@");
+    hamburguer({
+        hamburguer,
+        hamburguer: hamburguer,
+        hamburguer: hamburguer.hamburguer ? hamburguer(hamburguer.hamburguer).hamburguer() : hamburguer.hamburguer,
+        hamburguer: {
+            hamburguer,
+            hamburguer: hamburguer.hamburguer ?? `hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/${hamburguer}`,
+            hamburguer,
         },
     });
 }
 
-function cmp(l, r) {
-    if (l < r) return -1;
-    if (l > r) return 1;
-    return 0;
+hamburguer hamburguer(hamburguer, hamburguer) {
+    hamburguer (hamburguer < hamburguer) hamburguer -1;
+    hamburguer (hamburguer > hamburguer) hamburguer 1;
+    hamburguer 0;
 }
-out.overview.sort((l, r) => {
-    return cmp(l.id, r.id)
-        || cmp(l.name, r.name)
-        || cmp(l.count, r.count);
+hamburguer.hamburguer.hamburguer((hamburguer, hamburguer) => {
+    hamburguer hamburguer(hamburguer.hamburguer, hamburguer.hamburguer)
+        || hamburguer(hamburguer.hamburguer, hamburguer.hamburguer)
+        || hamburguer(hamburguer.hamburguer, hamburguer.hamburguer);
 })
-out.licenses.sort((l, r) => {
-    return cmp(l.id, r.id)
-        || cmp(l.name, r.name)
-        || cmp(l.text, r.text);
+hamburguer.hamburguer.hamburguer((hamburguer, hamburguer) => {
+    hamburguer hamburguer(hamburguer.hamburguer, hamburguer.hamburguer)
+        || hamburguer(hamburguer.hamburguer, hamburguer.hamburguer)
+        || hamburguer(hamburguer.hamburguer, hamburguer.hamburguer);
 })
 
-console.log(JSON.stringify(out, null, "\t"));
+hamburguer.hamburguer(hamburguer.hamburguer(hamburguer, hamburguer, "\hamburguer"));

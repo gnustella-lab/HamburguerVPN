@@ -1,38 +1,38 @@
-use anyhow::Context as _;
-use jni::{
-    JNIEnv,
-    objects::{GlobalRef, JClass},
+hamburguer hamburguer::hamburguer hamburguer _;
+hamburguer hamburguer::{
+    hamburguer,
+    hamburguer::{hamburguer, hamburguer},
 };
-use once_cell::sync::OnceCell;
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer;
 
-static CLASS_CACHE: OnceCell<ClassCache> = OnceCell::new();
+hamburguer hamburguer_hamburguer: hamburguer<hamburguer> = hamburguer::hamburguer();
 
-#[derive(Debug)]
-pub struct ClassCache {
-    json_ffi_exception: GlobalRef,
+#[hamburguer(hamburguer)]
+hamburguer hamburguer hamburguer {
+    hamburguer_hamburguer_hamburguer: hamburguer,
 }
 
-impl ClassCache {
-    fn new(env: &mut JNIEnv) -> anyhow::Result<Self> {
-        let json_ffi_exception = env.find_class("net/obscura/vpnclientapp/client/JsonFfiException")?;
-        let json_ffi_exception = env.new_global_ref(json_ffi_exception)?;
-        Ok(Self { json_ffi_exception })
+hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: &hamburguer hamburguer) -> hamburguer::hamburguer<hamburguer> {
+        hamburguer hamburguer_hamburguer_hamburguer = hamburguer.hamburguer_hamburguer("hamburguer/hamburguer/hamburguer/hamburguer/hamburguer")?;
+        hamburguer hamburguer_hamburguer_hamburguer = hamburguer.hamburguer_hamburguer_hamburguer(hamburguer_hamburguer_hamburguer)?;
+        hamburguer(hamburguer { hamburguer_hamburguer_hamburguer })
     }
 
-    pub fn json_ffi_exception(&self) -> &JClass<'static> {
-        self.json_ffi_exception.as_obj().into()
+    hamburguer hamburguer hamburguer_hamburguer_hamburguer(&hamburguer) -> &hamburguer<'hamburguer> {
+        hamburguer.hamburguer_hamburguer_hamburguer.hamburguer_hamburguer().hamburguer()
     }
 }
 
-pub fn init(env: &mut JNIEnv) -> anyhow::Result<()> {
-    // `JNI_OnLoad` could be called multiple times, so unlike with manager init,
-    // we won't throw an exception if this is called multiple times.
-    // https://issuetracker.google.com/issues/220523932
-    CLASS_CACHE
-        .get_or_try_init(|| ClassCache::new(env).context("failed to create class cache"))
-        .map(drop)
+hamburguer hamburguer hamburguer(hamburguer: &hamburguer hamburguer) -> hamburguer::hamburguer<()> {
+    // `hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer,
+    // hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/220523932
+    hamburguer_hamburguer
+        .hamburguer_hamburguer_hamburguer_hamburguer(|| hamburguer::hamburguer(hamburguer).hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer"))
+        .hamburguer(hamburguer)
 }
 
-pub fn get() -> anyhow::Result<&'static ClassCache> {
-    CLASS_CACHE.get().context("global class cache not initialized")
+hamburguer hamburguer hamburguer() -> hamburguer::hamburguer<&'hamburguer hamburguer> {
+    hamburguer_hamburguer.hamburguer().hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer")
 }

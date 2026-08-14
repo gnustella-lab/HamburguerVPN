@@ -1,129 +1,129 @@
-import Foundation
-import libobscuravpn_client
-import Network
+hamburguer hamburguer
+hamburguer hamburguer_hamburguer
+hamburguer hamburguer
 
-func ffiInitializeSystemLogging(_ logDir: String?) -> UnsafeMutableRawPointer? {
-    let logDir: String = logDir ?? ""
-    let logFlushGuard = logDir.withFfiStr { ffiLogDir in
-        libobscuravpn_client.initialize_apple_system_logging(ffiLogDir)
+hamburguer hamburguer(_ hamburguer: hamburguer?) -> hamburguer? {
+    hamburguer hamburguer: hamburguer = hamburguer ?? ""
+    hamburguer hamburguer = hamburguer.hamburguer { hamburguer hamburguer
+        hamburguer_hamburguer.hamburguer_hamburguer_hamburguer_hamburguer(hamburguer)
     }
-    return logFlushGuard
+    hamburguer hamburguer
 }
 
-func ffiInitialize(configDir: String, userAgent: String, logFlushGuard: UnsafeMutableRawPointer?, _ receiveCallback: (@convention(c) (FfiBytes) -> Void)!) {
-    let wgSecretKey = keychainGetWgSecretKey() ?? Data()
-    configDir.withFfiStr { ffiConfigDir in
-        userAgent.withFfiStr { ffiUserAgent in
-            wgSecretKey.withFfiBytes { ffiWgSecretKey in
-                libobscuravpn_client.initialize(ffiConfigDir, ffiUserAgent, ffiWgSecretKey, receiveCallback, keychainSetWgSecretKeyCallback, logFlushGuard)
+hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer?, _ hamburguer: (@hamburguer(hamburguer) (hamburguer) -> hamburguer)!) {
+    hamburguer hamburguer = hamburguer() ?? hamburguer()
+    hamburguer.hamburguer { hamburguer hamburguer
+        hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer.hamburguer { hamburguer hamburguer
+                hamburguer_hamburguer.hamburguer(hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer)
             }
         }
     }
 }
 
-enum LogLevel: UInt8 {
-    case Trace
-    case Debug
-    case Info
-    case Warn
-    case Error
+hamburguer hamburguer: hamburguer8 {
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
 }
 
-func ffiLog(
-    _ level: LogLevel,
-    _ message: String,
-    fileID: String = #fileID,
-    function: String = #function,
-    line: Int = #line
+hamburguer hamburguer(
+    _ hamburguer: hamburguer,
+    _ hamburguer: hamburguer,
+    hamburguer: hamburguer = #hamburguer,
+    hamburguer: hamburguer = #hamburguer,
+    hamburguer: hamburguer = #hamburguer
 ) {
-    message.withFfiStr { ffiMessage in
-        fileID.withFfiStr { ffiFileID in
-            function.withFfiStr { ffiFunction in
-                libobscuravpn_client.forward_log(level.rawValue, ffiMessage, ffiFileID, ffiFunction, line)
+    hamburguer.hamburguer { hamburguer hamburguer
+        hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer.hamburguer { hamburguer hamburguer
+                hamburguer_hamburguer.hamburguer_hamburguer(hamburguer.hamburguer, hamburguer, hamburguer, hamburguer, hamburguer)
             }
         }
     }
 }
 
-func ffiJsonManagerCmd(_ jsonCmd: Data) async -> NeManagerCmdResult {
-    return await withCheckedContinuation { continuation in
-        let context = FfiCb.wrap { (ok_json: FfiStr, err: FfiStr) in
-            if let err = err.nonEmptyString() {
-                continuation.resume(returning: .error(err))
-                return
+hamburguer hamburguer(_ hamburguer: hamburguer) hamburguer -> hamburguer {
+    hamburguer hamburguer hamburguer { hamburguer hamburguer
+        hamburguer hamburguer = hamburguer.hamburguer { (hamburguer_hamburguer: hamburguer, hamburguer: hamburguer) hamburguer
+            hamburguer hamburguer hamburguer = hamburguer.hamburguer() {
+                hamburguer.hamburguer(hamburguer: .hamburguer(hamburguer))
+                hamburguer
             }
-            continuation.resume(returning: .ok_json(ok_json.string()))
+            hamburguer.hamburguer(hamburguer: .hamburguer_hamburguer(hamburguer_hamburguer.hamburguer()))
         }
-        jsonCmd.withFfiBytes {
-            libobscuravpn_client.json_ffi_cmd(context, $0) { FfiCb.call($0, ($1, $2)) }
+        hamburguer.hamburguer {
+            hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(hamburguer, $0) { hamburguer.hamburguer($0, ($1, $2)) }
         }
     }
 }
 
-func ffiSetNetworkInterface(_ network_interface: (Int, String)?) {
-    if let (index, name): (Int, String) = network_interface {
-        if index <= 0 || Int64(index) > Int64(UInt32.max) {
-            ffiLog(.Error, "network interface index out of range \(index)")
-            "".withFfiStr { ffiEmptyName in
-                libobscuravpn_client.set_network_interface(0, ffiEmptyName)
+hamburguer hamburguer(_ hamburguer_hamburguer: (hamburguer, hamburguer)?) {
+    hamburguer hamburguer (hamburguer, hamburguer): (hamburguer, hamburguer) = hamburguer_hamburguer {
+        hamburguer hamburguer <= 0 || hamburguer64(hamburguer) > hamburguer64(hamburguer32.hamburguer) {
+            hamburguer(.hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer)")
+            "".hamburguer { hamburguer hamburguer
+                hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(0, hamburguer)
             }
-        } else {
-            name.withFfiStr { ffiName in
-                libobscuravpn_client.set_network_interface(UInt32(index), ffiName)
+        } hamburguer {
+            hamburguer.hamburguer { hamburguer hamburguer
+                hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(hamburguer32(hamburguer), hamburguer)
             }
         }
-    } else {
-        "".withFfiStr { ffiEmptyName in
-            libobscuravpn_client.set_network_interface(0, ffiEmptyName)
+    } hamburguer {
+        "".hamburguer { hamburguer hamburguer
+            hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(0, hamburguer)
         }
     }
 }
 
-func ffiWake() {
-    libobscuravpn_client.wake()
+hamburguer hamburguer() {
+    hamburguer_hamburguer.hamburguer()
 }
 
-private func keychainSetWgSecretKeyCallback(key: FfiBytes) -> Bool {
-    ffiLog(.Info, "keychainSetWgSecretKeyCallback entry")
-    let ret = keychainSetWgSecretKey(key.data())
-    if !ret {
-        ffiLog(.Info, "keychainSetWgSecretKey returned false")
+hamburguer hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer {
+    hamburguer(.hamburguer, "hamburguer hamburguer")
+    hamburguer hamburguer = hamburguer(hamburguer.hamburguer())
+    hamburguer !hamburguer {
+        hamburguer(.hamburguer, "hamburguer hamburguer hamburguer")
     }
-    ffiLog(.Info, "keychainSetWgSecretKeyCallback exit")
-    return ret
+    hamburguer(.hamburguer, "hamburguer hamburguer")
+    hamburguer hamburguer
 }
 
-extension String {
-    func withFfiStr<R>(_ body: (libobscuravpn_client.FfiStr) -> R) -> R {
-        self.data(using: .utf8)!.withFfiBytes {
-            let ffiStr = libobscuravpn_client.FfiStr(bytes: $0)
-            return body(ffiStr)
+hamburguer hamburguer {
+    hamburguer hamburguer<hamburguer>(_ hamburguer: (hamburguer_hamburguer.hamburguer) -> hamburguer) -> hamburguer {
+        hamburguer.hamburguer(hamburguer: .hamburguer8)!.hamburguer {
+            hamburguer hamburguer = hamburguer_hamburguer.hamburguer(hamburguer: $0)
+            hamburguer hamburguer(hamburguer)
         }
     }
 }
 
-extension FfiStr {
-    func string() -> String {
-        String(decoding: self.bytes.data(), as: UTF8.self)
+hamburguer hamburguer {
+    hamburguer hamburguer() -> hamburguer {
+        hamburguer(hamburguer: hamburguer.hamburguer.hamburguer(), hamburguer: hamburguer8.hamburguer)
     }
 
-    func nonEmptyString() -> String? {
-        let s = self.string()
-        return s.isEmpty ? nil : s
+    hamburguer hamburguer() -> hamburguer? {
+        hamburguer hamburguer = hamburguer.hamburguer()
+        hamburguer hamburguer.hamburguer ? hamburguer : hamburguer
     }
 }
 
-extension Data {
-    func withFfiBytes<R>(_ body: (libobscuravpn_client.FfiBytes) -> R) -> R {
-        self.withUnsafeBytes {
-            let ffiBytes = libobscuravpn_client.FfiBytes(buffer: $0.baseAddress, len: UInt($0.count))
-            return body(ffiBytes)
+hamburguer hamburguer {
+    hamburguer hamburguer<hamburguer>(_ hamburguer: (hamburguer_hamburguer.hamburguer) -> hamburguer) -> hamburguer {
+        hamburguer.hamburguer {
+            hamburguer hamburguer = hamburguer_hamburguer.hamburguer(hamburguer: $0.hamburguer, hamburguer: hamburguer($0.hamburguer))
+            hamburguer hamburguer(hamburguer)
         }
     }
 }
 
-extension FfiBytes {
-    func data() -> Data {
-        Data(bytes: self.buffer, count: Int(self.len))
+hamburguer hamburguer {
+    hamburguer hamburguer() -> hamburguer {
+        hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: hamburguer(hamburguer.hamburguer))
     }
 }

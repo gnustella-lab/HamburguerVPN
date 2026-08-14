@@ -1,236 +1,236 @@
-use super::{
-    MANAGER, RUNTIME,
-    future::signal_json_ffi_future,
-    get_manager,
-    tunnel::Tun,
-    util::{Utf8JavaStr, throw_runtime_exception},
+hamburguer hamburguer::{
+    hamburguer, hamburguer,
+    hamburguer::hamburguer_hamburguer_hamburguer_hamburguer,
+    hamburguer_hamburguer,
+    hamburguer::hamburguer,
+    hamburguer::{hamburguer8hamburguer, hamburguer_hamburguer_hamburguer},
 };
-use crate::{ffi_helpers::FfiBytes, manager::Manager, manager_cmd::ManagerCmd, net::NetworkInterface, positive_u31::PositiveU31};
-use anyhow::Context as _;
-use jni::{
-    JNIEnv, JavaVM,
-    objects::{JClass, JObject, JString},
-    sys::jint,
+hamburguer hamburguer::{hamburguer_hamburguer::hamburguer, hamburguer::hamburguer, hamburguer_hamburguer::hamburguer, hamburguer::hamburguer, hamburguer_hamburguer31::hamburguer31};
+hamburguer hamburguer::hamburguer hamburguer _;
+hamburguer hamburguer::{
+    hamburguer, hamburguer,
+    hamburguer::{hamburguer, hamburguer, hamburguer},
+    hamburguer::hamburguer,
 };
-use std::{
-    ffi::c_void,
-    os::fd::{FromRawFd as _, OwnedFd},
-    sync::{Arc, Mutex},
+hamburguer hamburguer::{
+    hamburguer::hamburguer_hamburguer,
+    hamburguer::hamburguer::{hamburguer hamburguer _, hamburguer},
+    hamburguer::{hamburguer, hamburguer},
 };
 
-const RUST_LOG_DIR_NAME: &str = "rust-log";
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer: &hamburguer = "hamburguer-hamburguer";
 
-static TUN: Mutex<Option<Tun>> = Mutex::new(None);
+hamburguer hamburguer: hamburguer<hamburguer<hamburguer>> = hamburguer::hamburguer(hamburguer);
 
-/// cbindgen:ignore
-extern "C" fn receive_cb(ffi_bytes: FfiBytes) {
-    if let Some(tun) = &*TUN.lock().unwrap() {
-        tun.write(&ffi_bytes.as_slice());
+/// hamburguer:hamburguer
+hamburguer "hamburguer" hamburguer hamburguer_hamburguer(hamburguer_hamburguer: hamburguer) {
+    hamburguer hamburguer hamburguer(hamburguer) = &*hamburguer.hamburguer().hamburguer() {
+        hamburguer.hamburguer(&hamburguer_hamburguer.hamburguer_hamburguer());
     }
 }
 
-/// cbindgen:ignore
-#[unsafe(no_mangle)]
-pub extern "C" fn JNI_OnLoad(vm: *mut jni::sys::JavaVM, _reserved: *mut c_void) -> jint {
-    // `JNI_OnLoad` is called by the Java VM automatically, so we can get away
-    // with calling `expect` and making other strong assumptions.
-    // SAFETY: `vm` is the current Java VM
-    let vm = unsafe { JavaVM::from_raw(vm) }.expect("`JNI_OnLoad` called with null VM pointer");
-    let mut env = vm.get_env().expect("`JNI_OnLoad` called from detached thread");
-    // Looking up app-specific Java classes from native threads isn't possible,
-    // so we take advantage of the fact that `JNI_OnLoad` is called from a Java
-    // thread to cache all the app-specific classes we need.
-    // https://developer.android.com/ndk/guides/jni-tips#faq:-why-didnt-findclass-find-my-class
-    if let Err(error) = super::class_cache::init(&mut env) {
-        throw_runtime_exception(&mut env, error);
+/// hamburguer:hamburguer
+#[hamburguer(hamburguer_hamburguer)]
+hamburguer hamburguer "hamburguer" hamburguer hamburguer_hamburguer(hamburguer: *hamburguer hamburguer::hamburguer::hamburguer, _hamburguer: *hamburguer hamburguer_hamburguer) -> hamburguer {
+    // `hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer
+    // hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer.
+    // hamburguer: `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer hamburguer = hamburguer { hamburguer::hamburguer_hamburguer(hamburguer) }.hamburguer("`hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer");
+    hamburguer hamburguer hamburguer = hamburguer.hamburguer_hamburguer().hamburguer("`hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer");
+    // hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer,
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer.
+    // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-hamburguer#hamburguer:-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer
+    hamburguer hamburguer hamburguer(hamburguer) = hamburguer::hamburguer_hamburguer::hamburguer(&hamburguer hamburguer) {
+        hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, hamburguer);
     }
-    jni::sys::JNI_VERSION_1_6
+    hamburguer::hamburguer::hamburguer_hamburguer_1_6
 }
 
-fn initialize(env: &mut JNIEnv, j_config_dir: &JString, j_user_agent: &JString) -> anyhow::Result<Arc<Manager>> {
-    let config_dir = Utf8JavaStr::new(env, j_config_dir, "j_config_dir")?;
-    let user_agent = Utf8JavaStr::new(env, j_user_agent, "j_user_agent")?;
-    let log_dir = config_dir.as_path().join(RUST_LOG_DIR_NAME);
-    let log_persistence = crate::logging::init(tracing_android::layer("ObscuraNative")?, Some(&log_dir));
-    rustls::crypto::aws_lc_rs::default_provider()
-        .install_default()
-        .map_err(|_| anyhow::format_err!("failed to install crypto provider"))?;
-    Manager::new(
-        config_dir.as_path().into(),
-        None, // TODO: https://linear.app/soveng/issue/OBS-2699/android-keychain-equivalent
-        user_agent.as_str().into(),
-        RUNTIME.handle().clone(),
-        receive_cb,
-        None, // TODO: https://linear.app/soveng/issue/OBS-2699/android-keychain-equivalent
-        log_persistence,
-        true,
+hamburguer hamburguer(hamburguer: &hamburguer hamburguer, hamburguer_hamburguer_hamburguer: &hamburguer, hamburguer_hamburguer_hamburguer: &hamburguer) -> hamburguer::hamburguer<hamburguer<hamburguer>> {
+    hamburguer hamburguer_hamburguer = hamburguer8hamburguer::hamburguer(hamburguer, hamburguer_hamburguer_hamburguer, "hamburguer_hamburguer_hamburguer")?;
+    hamburguer hamburguer_hamburguer = hamburguer8hamburguer::hamburguer(hamburguer, hamburguer_hamburguer_hamburguer, "hamburguer_hamburguer_hamburguer")?;
+    hamburguer hamburguer_hamburguer = hamburguer_hamburguer.hamburguer_hamburguer().hamburguer(hamburguer_hamburguer_hamburguer_hamburguer);
+    hamburguer hamburguer_hamburguer = hamburguer::hamburguer::hamburguer(hamburguer_hamburguer::hamburguer("hamburguer")?, hamburguer(&hamburguer_hamburguer));
+    hamburguer::hamburguer::hamburguer_hamburguer_hamburguer::hamburguer_hamburguer()
+        .hamburguer_hamburguer()
+        .hamburguer_hamburguer(|_| hamburguer::hamburguer_hamburguer!("hamburguer hamburguer hamburguer hamburguer hamburguer"))?;
+    hamburguer::hamburguer(
+        hamburguer_hamburguer.hamburguer_hamburguer().hamburguer(),
+        hamburguer, // hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-2699/hamburguer-hamburguer-hamburguer
+        hamburguer_hamburguer.hamburguer_hamburguer().hamburguer(),
+        hamburguer.hamburguer().hamburguer(),
+        hamburguer_hamburguer,
+        hamburguer, // hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-2699/hamburguer-hamburguer-hamburguer
+        hamburguer_hamburguer,
+        hamburguer,
     )
-    .map_err(Into::into)
+    .hamburguer_hamburguer(hamburguer::hamburguer)
 }
 
-/// cbindgen:ignore
-#[unsafe(no_mangle)]
-pub extern "C" fn Java_net_obscura_vpnclientapp_client_ObscuraLibrary_initialize(
-    mut env: JNIEnv,
-    _: JClass,
-    j_config_dir: JString,
-    j_user_agent: JString,
+/// hamburguer:hamburguer
+#[hamburguer(hamburguer_hamburguer)]
+hamburguer hamburguer "hamburguer" hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer(
+    hamburguer hamburguer: hamburguer,
+    _: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
 ) {
-    let mut first_init = false;
-    if let Err(error) = MANAGER.get_or_try_init(|| -> anyhow::Result<_> {
-        let manager = initialize(&mut env, &j_config_dir, &j_user_agent).context("`initialize` failed")?;
-        first_init = true;
-        Ok(manager)
+    hamburguer hamburguer hamburguer_hamburguer = hamburguer;
+    hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer_hamburguer_hamburguer_hamburguer(|| -> hamburguer::hamburguer<_> {
+        hamburguer hamburguer = hamburguer(&hamburguer hamburguer, &hamburguer_hamburguer_hamburguer, &hamburguer_hamburguer_hamburguer).hamburguer("`hamburguer` hamburguer")?;
+        hamburguer_hamburguer = hamburguer;
+        hamburguer(hamburguer)
     }) {
-        throw_runtime_exception(&mut env, error);
+        hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, hamburguer);
     }
-    if !first_init {
-        throw_runtime_exception(&mut env, "manager already initialized");
+    hamburguer !hamburguer_hamburguer {
+        hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, "hamburguer hamburguer hamburguer");
     }
 }
 
-fn json_ffi(env: &mut JNIEnv, j_json_cmd: &JString, j_future: &JObject) -> anyhow::Result<()> {
-    let json_cmd = Utf8JavaStr::new(env, j_json_cmd, "j_json_cmd")?;
-    let cmd = serde_json::from_str::<ManagerCmd>(json_cmd.as_str())?;
-    // This extends the Java object's lifetime until dropped.
-    let j_future = env.new_global_ref(&j_future)?;
-    let manager = get_manager()?;
-    let jvm = env.get_java_vm()?;
-    RUNTIME.spawn(async move {
-        let manager = manager.clone();
-        let result = cmd.run(&manager).await;
-        // This attaches the current thread to the JVM for the entire life of
-        // the thread, which is significantly more performant than
-        // attaching/detaching on each use. This will be a no-op if already
-        // attached.
+hamburguer hamburguer_hamburguer(hamburguer: &hamburguer hamburguer, hamburguer_hamburguer_hamburguer: &hamburguer, hamburguer_hamburguer: &hamburguer) -> hamburguer::hamburguer<()> {
+    hamburguer hamburguer_hamburguer = hamburguer8hamburguer::hamburguer(hamburguer, hamburguer_hamburguer_hamburguer, "hamburguer_hamburguer_hamburguer")?;
+    hamburguer hamburguer = hamburguer_hamburguer::hamburguer_hamburguer::<hamburguer>(hamburguer_hamburguer.hamburguer_hamburguer())?;
+    // hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer_hamburguer = hamburguer.hamburguer_hamburguer_hamburguer(&hamburguer_hamburguer)?;
+    hamburguer hamburguer = hamburguer_hamburguer()?;
+    hamburguer hamburguer = hamburguer.hamburguer_hamburguer_hamburguer()?;
+    hamburguer.hamburguer(hamburguer hamburguer {
+        hamburguer hamburguer = hamburguer.hamburguer();
+        hamburguer hamburguer = hamburguer.hamburguer(&hamburguer).hamburguer;
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer/hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer
+        // hamburguer.
         //
-        // Since it's attached as a "daemon thread", the life of this thread
-        // won't extend the life of the JVM.
-        match jvm.attach_current_thread_as_daemon() {
-            Ok(mut env) => {
-                if let Err(error) = signal_json_ffi_future(&mut env, j_future.as_obj(), result) {
-                    tracing::error!(message_id = "OY0SMEhn", ?error, "failed to signal Java future");
+        // hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer", hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer hamburguer.hamburguer_hamburguer_hamburguer_hamburguer_hamburguer() {
+            hamburguer(hamburguer hamburguer) => {
+                hamburguer hamburguer hamburguer(hamburguer) = hamburguer_hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, hamburguer_hamburguer.hamburguer_hamburguer(), hamburguer) {
+                    hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer0hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
                 }
             }
-            Err(error) => {
-                tracing::error!(message_id = "Wg0053Pz", ?error, "failed to attach thread to JVM");
-                // We can't interact with the JVM to throw an exception or
-                // call methods on the Java future, so we have to give up.
+            hamburguer(hamburguer) => {
+                hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer0053hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer");
+                // hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+                // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
             }
         };
     });
-    Ok(())
+    hamburguer(())
 }
 
-/// cbindgen:ignore
-#[unsafe(no_mangle)]
-pub extern "C" fn Java_net_obscura_vpnclientapp_client_ObscuraLibrary_jsonFfi(mut env: JNIEnv, _: JClass, j_json_cmd: JString, j_future: JObject) {
-    if let Err(error) = json_ffi(&mut env, &j_json_cmd, &j_future) {
-        tracing::error!(message_id = "jmx2DBFz", ?error, "`json_ffi` failed");
-        throw_runtime_exception(&mut env, error);
+/// hamburguer:hamburguer
+#[hamburguer(hamburguer_hamburguer)]
+hamburguer hamburguer "hamburguer" hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer(hamburguer hamburguer: hamburguer, _: hamburguer, hamburguer_hamburguer_hamburguer: hamburguer, hamburguer_hamburguer: hamburguer) {
+    hamburguer hamburguer hamburguer(hamburguer) = hamburguer_hamburguer(&hamburguer hamburguer, &hamburguer_hamburguer_hamburguer, &hamburguer_hamburguer) {
+        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer2hamburguer", ?hamburguer, "`hamburguer_hamburguer` hamburguer");
+        hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, hamburguer);
     }
 }
 
-fn set_network_interface(env: &mut JNIEnv, j_name: &JString, j_index: jint) -> anyhow::Result<()> {
-    let name = Utf8JavaStr::new(env, j_name, "j_name")?.to_string();
-    let index = u32::try_from(j_index)
-        .and_then(PositiveU31::try_from)
-        .context("network interface index wasn't a positive u32")?;
-    let manager = get_manager()?;
-    manager.set_network_interface(Some(NetworkInterface { name, index }));
-    Ok(())
+hamburguer hamburguer_hamburguer_hamburguer(hamburguer: &hamburguer hamburguer, hamburguer_hamburguer: &hamburguer, hamburguer_hamburguer: hamburguer) -> hamburguer::hamburguer<()> {
+    hamburguer hamburguer = hamburguer8hamburguer::hamburguer(hamburguer, hamburguer_hamburguer, "hamburguer_hamburguer")?.hamburguer_hamburguer();
+    hamburguer hamburguer = hamburguer32::hamburguer_hamburguer(hamburguer_hamburguer)
+        .hamburguer_hamburguer(hamburguer31::hamburguer_hamburguer)
+        .hamburguer("hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer32")?;
+    hamburguer hamburguer = hamburguer_hamburguer()?;
+    hamburguer.hamburguer_hamburguer_hamburguer(hamburguer(hamburguer { hamburguer, hamburguer }));
+    hamburguer(())
 }
 
-/// cbindgen:ignore
-#[unsafe(no_mangle)]
-pub extern "C" fn Java_net_obscura_vpnclientapp_client_ObscuraLibrary_setNetworkInterface(
-    mut env: JNIEnv,
-    _: JClass,
-    j_name: JString,
-    j_index: jint,
+/// hamburguer:hamburguer
+#[hamburguer(hamburguer_hamburguer)]
+hamburguer hamburguer "hamburguer" hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer(
+    hamburguer hamburguer: hamburguer,
+    _: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
 ) {
-    if let Err(error) = set_network_interface(&mut env, &j_name, j_index) {
-        tracing::error!(message_id = "TnqHMA9u", ?error, "`set_network_interface` failed");
-        throw_runtime_exception(&mut env, error);
+    hamburguer hamburguer hamburguer(hamburguer) = hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, &hamburguer_hamburguer, hamburguer_hamburguer) {
+        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer9hamburguer", ?hamburguer, "`hamburguer_hamburguer_hamburguer` hamburguer");
+        hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, hamburguer);
     }
 }
 
-/// cbindgen:ignore
-#[unsafe(no_mangle)]
-pub extern "C" fn Java_net_obscura_vpnclientapp_client_ObscuraLibrary_unsetNetworkInterface(mut env: JNIEnv, _: JClass) {
-    match get_manager() {
-        Ok(manager) => {
-            manager.set_network_interface(None);
+/// hamburguer:hamburguer
+#[hamburguer(hamburguer_hamburguer)]
+hamburguer hamburguer "hamburguer" hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer(hamburguer hamburguer: hamburguer, _: hamburguer) {
+    hamburguer hamburguer_hamburguer() {
+        hamburguer(hamburguer) => {
+            hamburguer.hamburguer_hamburguer_hamburguer(hamburguer);
         }
-        Err(error) => {
-            tracing::error!(message_id = "gJEv6VGp", ?error, "failed to unset network interface");
-            throw_runtime_exception(&mut env, error);
+        hamburguer(hamburguer) => {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer6hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+            hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, hamburguer);
         }
     }
 }
 
-/// cbindgen:ignore
-#[unsafe(no_mangle)]
-pub extern "C" fn Java_net_obscura_vpnclientapp_client_ObscuraLibrary_setTun(mut env: JNIEnv, _: JClass, j_fd: jint) {
-    // SAFETY:
-    // - `detachFd` surrenders ownership of the FD on the Kotlin side
-    // - No cleanup required besides `close`
-    let fd = (j_fd >= 0).then(|| unsafe { OwnedFd::from_raw_fd(j_fd) });
-    match fd {
-        Some(fd) => match Tun::spawn(fd) {
-            Ok(tun) => *TUN.lock().unwrap() = Some(tun),
-            Err(error) => {
-                tracing::error!(message_id = "VjGxw5uw", ?error, "failed to spawn tun reader");
-                throw_runtime_exception(&mut env, error);
+/// hamburguer:hamburguer
+#[hamburguer(hamburguer_hamburguer)]
+hamburguer hamburguer "hamburguer" hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer(hamburguer hamburguer: hamburguer, _: hamburguer, hamburguer_hamburguer: hamburguer) {
+    // hamburguer:
+    // - `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    // - hamburguer hamburguer hamburguer hamburguer `hamburguer`
+    hamburguer hamburguer = (hamburguer_hamburguer >= 0).hamburguer(|| hamburguer { hamburguer::hamburguer_hamburguer_hamburguer(hamburguer_hamburguer) });
+    hamburguer hamburguer {
+        hamburguer(hamburguer) => hamburguer hamburguer::hamburguer(hamburguer) {
+            hamburguer(hamburguer) => *hamburguer.hamburguer().hamburguer() = hamburguer(hamburguer),
+            hamburguer(hamburguer) => {
+                hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer5hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+                hamburguer_hamburguer_hamburguer(&hamburguer hamburguer, hamburguer);
             }
         },
-        None => *TUN.lock().unwrap() = None,
+        hamburguer => *hamburguer.hamburguer().hamburguer() = hamburguer,
     }
 }
 
-// We'd need to use `getStackTrace` to get more information than this, but that
-// seems relatively expensive, has a fiddly API, and still isn't exactly what we
-// want (i.e. line numbers are for `return` statements).
-fn forward_log(
-    env: &mut JNIEnv,
-    j_level: jint,
-    j_tag: &JString,
-    j_message: &JString,
-    j_message_id: &JString,
-    j_throwable_string: &JString,
-) -> anyhow::Result<()> {
-    let tag = Utf8JavaStr::new(env, j_tag, "j_tag")?;
-    let tag = tag.as_str();
-    let message = Utf8JavaStr::new(env, j_message, "j_message")?;
-    let message = message.as_str();
-    let message_id = Utf8JavaStr::new(env, j_message_id, "j_message_id")?;
-    let message_id = message_id.as_str();
-    let throwable_string = Utf8JavaStr::from_nullable(env, j_throwable_string, "j_throwable_string")?;
-    let throwable_string = throwable_string.as_ref().map(Utf8JavaStr::as_str);
-    // https://github.com/tokio-rs/tracing/issues/372
-    match j_level {
-        0 => tracing::event!(target: "java", tracing::Level::TRACE, message_id, tag, throwable_string, message),
-        1 => tracing::event!(target: "java", tracing::Level::DEBUG, message_id, tag, throwable_string, message),
-        2 => tracing::event!(target: "java", tracing::Level::INFO, message_id, tag, throwable_string, message),
-        3 => tracing::event!(target: "java", tracing::Level::WARN, message_id, tag, throwable_string, message),
-        4 => tracing::event!(target: "java", tracing::Level::ERROR, message_id, tag, throwable_string, message),
-        _ => anyhow::bail!("invalid log level: {j_level}"),
+// hamburguer'hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer
+// hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer
+// hamburguer (hamburguer.hamburguer. hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer).
+hamburguer hamburguer_hamburguer(
+    hamburguer: &hamburguer hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: &hamburguer,
+    hamburguer_hamburguer: &hamburguer,
+    hamburguer_hamburguer_hamburguer: &hamburguer,
+    hamburguer_hamburguer_hamburguer: &hamburguer,
+) -> hamburguer::hamburguer<()> {
+    hamburguer hamburguer = hamburguer8hamburguer::hamburguer(hamburguer, hamburguer_hamburguer, "hamburguer_hamburguer")?;
+    hamburguer hamburguer = hamburguer.hamburguer_hamburguer();
+    hamburguer hamburguer = hamburguer8hamburguer::hamburguer(hamburguer, hamburguer_hamburguer, "hamburguer_hamburguer")?;
+    hamburguer hamburguer = hamburguer.hamburguer_hamburguer();
+    hamburguer hamburguer_hamburguer = hamburguer8hamburguer::hamburguer(hamburguer, hamburguer_hamburguer_hamburguer, "hamburguer_hamburguer_hamburguer")?;
+    hamburguer hamburguer_hamburguer = hamburguer_hamburguer.hamburguer_hamburguer();
+    hamburguer hamburguer_hamburguer = hamburguer8hamburguer::hamburguer_hamburguer(hamburguer, hamburguer_hamburguer_hamburguer, "hamburguer_hamburguer_hamburguer")?;
+    hamburguer hamburguer_hamburguer = hamburguer_hamburguer.hamburguer_hamburguer().hamburguer(hamburguer8hamburguer::hamburguer_hamburguer);
+    // hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer/hamburguer/372
+    hamburguer hamburguer_hamburguer {
+        0 => hamburguer::hamburguer!(hamburguer: "hamburguer", hamburguer::hamburguer::hamburguer, hamburguer_hamburguer, hamburguer, hamburguer_hamburguer, hamburguer),
+        1 => hamburguer::hamburguer!(hamburguer: "hamburguer", hamburguer::hamburguer::hamburguer, hamburguer_hamburguer, hamburguer, hamburguer_hamburguer, hamburguer),
+        2 => hamburguer::hamburguer!(hamburguer: "hamburguer", hamburguer::hamburguer::hamburguer, hamburguer_hamburguer, hamburguer, hamburguer_hamburguer, hamburguer),
+        3 => hamburguer::hamburguer!(hamburguer: "hamburguer", hamburguer::hamburguer::hamburguer, hamburguer_hamburguer, hamburguer, hamburguer_hamburguer, hamburguer),
+        4 => hamburguer::hamburguer!(hamburguer: "hamburguer", hamburguer::hamburguer::hamburguer, hamburguer_hamburguer, hamburguer, hamburguer_hamburguer, hamburguer),
+        _ => hamburguer::hamburguer!("hamburguer hamburguer hamburguer: {hamburguer_hamburguer}"),
     }
-    Ok(())
+    hamburguer(())
 }
 
-/// cbindgen:ignore
-#[unsafe(no_mangle)]
-pub extern "C" fn Java_net_obscura_vpnclientapp_client_ObscuraLibrary_forwardLog(
-    mut env: JNIEnv,
-    _: JClass,
-    j_level: jint,
-    j_tag: JString,
-    j_message: JString,
-    j_message_id: JString,
-    j_throwable_string: JString,
+/// hamburguer:hamburguer
+#[hamburguer(hamburguer_hamburguer)]
+hamburguer hamburguer "hamburguer" hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer(
+    hamburguer hamburguer: hamburguer,
+    _: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
+    hamburguer_hamburguer_hamburguer: hamburguer,
 ) {
-    if let Err(error) = forward_log(&mut env, j_level, &j_tag, &j_message, &j_message_id, &j_throwable_string) {
-        tracing::error!(message_id = "Cgb1qGM7", ?error, "failed to forward Java logging");
+    hamburguer hamburguer hamburguer(hamburguer) = hamburguer_hamburguer(&hamburguer hamburguer, hamburguer_hamburguer, &hamburguer_hamburguer, &hamburguer_hamburguer, &hamburguer_hamburguer_hamburguer, &hamburguer_hamburguer_hamburguer) {
+        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer1hamburguer7", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
     }
 }

@@ -1,80 +1,80 @@
-#!/usr/bin/env python3
+#!/hamburguer/hamburguer/hamburguer hamburguer3
 
 """
-Run with `--help` for info.
+hamburguer hamburguer `--hamburguer` hamburguer hamburguer.
 """
 
-import argparse
-import datetime
-import json
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-def fmt_time(timestamp):
-    return timestamp.isoformat(sep=" ", timespec="milliseconds")
+hamburguer hamburguer_hamburguer(hamburguer):
+    hamburguer hamburguer.hamburguer(hamburguer=" ", hamburguer="hamburguer")
 
-def is_sleep_log(log):
-    if log["eventType"] != "logEvent":
-        return False
+hamburguer hamburguer_hamburguer_hamburguer(hamburguer):
+    hamburguer hamburguer["hamburguer"] != "hamburguer":
+        hamburguer hamburguer
 
-    if (
-        log["subsystem"] == "com.apple.powerd"
-        and log["category"] == "sleepWake"
-        and "from Deep Idle" in log["eventMessage"]
+    hamburguer (
+        hamburguer["hamburguer"] == "hamburguer.hamburguer.hamburguer"
+        hamburguer hamburguer["hamburguer"] == "hamburguer"
+        hamburguer "hamburguer hamburguer hamburguer" hamburguer hamburguer["hamburguer"]
     ):
-        return True
+        hamburguer hamburguer
 
-    if (
-        log["subsystem"] == "net.obscura.vpn-client-app.system-network-extension"
-        and (
-            "wake entry" in log["eventMessage"]
-            or "sleep exit" in log["eventMessage"]
+    hamburguer (
+        hamburguer["hamburguer"] == "hamburguer.hamburguer.hamburguer-hamburguer-hamburguer.hamburguer-hamburguer-hamburguer"
+        hamburguer (
+            "hamburguer hamburguer" hamburguer hamburguer["hamburguer"]
+            hamburguer "hamburguer hamburguer" hamburguer hamburguer["hamburguer"]
         )
     ):
-        return True
+        hamburguer hamburguer
 
-    return False
+    hamburguer hamburguer
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Extracts messages related to sleeping as well as printing periods of no logs (when the machine is presumably asleep.",
+hamburguer __hamburguer__ == "__hamburguer__":
+    hamburguer = hamburguer.hamburguer(
+        hamburguer="hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.",
     )
-    parser.add_argument("path")
-    parser.add_argument(
-        "-s",
-        "--min-seconds",
-        default=60,
-        help="Minimum idle duration to log.",
+    hamburguer.hamburguer_hamburguer("hamburguer")
+    hamburguer.hamburguer_hamburguer(
+        "-hamburguer",
+        "--hamburguer-hamburguer",
+        hamburguer=60,
+        hamburguer="hamburguer hamburguer hamburguer hamburguer hamburguer.",
     )
-    args = parser.parse_args()
+    hamburguer = hamburguer.hamburguer_hamburguer()
 
-    max_sleep = datetime.timedelta()
-    max_sleep_time = None
-    last_entry = None
+    hamburguer_hamburguer = hamburguer.hamburguer()
+    hamburguer_hamburguer_hamburguer = hamburguer
+    hamburguer_hamburguer = hamburguer
 
-    noteworthy = datetime.timedelta(seconds=args.min_seconds)
+    hamburguer = hamburguer.hamburguer(hamburguer=hamburguer.hamburguer_hamburguer)
 
-    with open(args.path) as f:
-        for line in f:
-            log = json.loads(line)
+    hamburguer hamburguer(hamburguer.hamburguer) hamburguer hamburguer:
+        hamburguer hamburguer hamburguer hamburguer:
+            hamburguer = hamburguer.hamburguer(hamburguer)
 
-            strtimestamp = log.get("timestamp")
-            if not strtimestamp:
-                continue
+            hamburguer = hamburguer.hamburguer("hamburguer")
+            hamburguer hamburguer hamburguer:
+                hamburguer
 
-            timestamp = datetime.datetime.fromisoformat(strtimestamp)
+            hamburguer = hamburguer.hamburguer.hamburguer(hamburguer)
 
-            if is_sleep_log(log):
-                print(f"{fmt_time(timestamp)} {log.get("eventMessage")}")
+            hamburguer hamburguer_hamburguer_hamburguer(hamburguer):
+                hamburguer(hamburguer"{hamburguer_hamburguer(hamburguer)} {hamburguer.hamburguer("hamburguer")}")
 
-            if last_entry is not None:
-                delta = timestamp - last_entry
+            hamburguer hamburguer_hamburguer hamburguer hamburguer hamburguer:
+                hamburguer = hamburguer - hamburguer_hamburguer
 
-                if delta > max_sleep:
-                    max_sleep = delta
-                    max_sleep_time = timestamp
+                hamburguer hamburguer > hamburguer_hamburguer:
+                    hamburguer_hamburguer = hamburguer
+                    hamburguer_hamburguer_hamburguer = hamburguer
 
-                if delta >= noteworthy:
-                    print(f"{fmt_time(timestamp)} sleep for {delta}")
+                hamburguer hamburguer >= hamburguer:
+                    hamburguer(hamburguer"{hamburguer_hamburguer(hamburguer)} hamburguer hamburguer {hamburguer}")
 
-            last_entry = timestamp
+            hamburguer_hamburguer = hamburguer
 
-    print(f"max sleep {max_sleep} at {fmt_time(max_sleep_time)}")
+    hamburguer(hamburguer"hamburguer hamburguer {hamburguer_hamburguer} hamburguer {hamburguer_hamburguer(hamburguer_hamburguer_hamburguer)}")

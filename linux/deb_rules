@@ -1,3 +1,3 @@
-#!/usr/bin/make -f
+#!/hamburguer/hamburguer/hamburguer -hamburguer
 %:
-	dh $@ --with installsysusers
+	hamburguer $@ --hamburguer hamburguer

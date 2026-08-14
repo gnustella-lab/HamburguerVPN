@@ -1,281 +1,281 @@
-import AVKit
-import NetworkExtension
-import OSLog
-import SwiftUI
-import UserNotifications
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "startup")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-struct StartupView: View {
-    @StateObject var model = StartupModel.shared
-    @Environment(\.openURL) private var openURL
+hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer = hamburguer.hamburguer
+    @hamburguer(\.hamburguer) hamburguer hamburguer hamburguer
 
-    var body: some View {
-        VStack {
-            switch self.model.status {
-            case .initial:
-                AppIcon()
-                Text("Starting Obscura")
-            #if os(macOS)
-                case .networkExtensionInit(_, .checking):
-                    VpnChecksView(subtext: "Checking Network Extension")
-                case .networkExtensionInit(_, .enabling):
-                    VpnChecksView(subtext: "Enabling Network Extension")
-                case .networkExtensionInit(_, .waitingForReboot):
-                    Text("Reboot Required")
-                case .networkExtensionInit(let neInit, .blockingBeforePermissionPopup):
-                    InstallSystemExtensionView(startupModel: self.model, subtext: "Please allow Obscura VPN's network extension to be installed in System Settings to extend the networking features of your Mac.", neInit: neInit)
-                case .networkExtensionInit(let neInit, .blockingBeforeTunnelDisconnect):
-                    UpdateSystemExtensionView(startupModel: self.model, subtext: "An updated version of Obscura VPN's network extension is required.", neInit: neInit)
-                case .networkExtensionInit(_, .waitingForUserApproval):
-                    InstallSystemExtensionView(startupModel: self.model, subtext: "Please allow Obscura VPN's network extension to be installed in System Settings to extend the networking features of your Mac.")
-                case .networkExtensionInit(_, .failed(let error)):
-                    InstallSystemExtensionView(startupModel: self.model, subtext: "Could not start the network extension. \(error). Please restart your Mac or contact support for help.")
-            #endif
-            case .tunnelProviderInit(_, .checking):
-                VpnChecksView(subtext: "Checking Tunnel Provider")
-            case .tunnelProviderInit(let tpInit, .blockingBeforePermissionPopup):
-                VpnConfigurationView(startupModel: self.model, subtext: "This configuration is required for Obscura VPN to anonymize your network traffic.", tpInit: tpInit)
-            case .tunnelProviderInit(_, .waitingForUserPermissionApproval):
-                VpnConfigurationView(startupModel: self.model, subtext: "For Obscura VPN to add itself as a VPN to your system, please click \"Allow\" in the request for permission. If you are currently connected to a VPN, this will disconnect it.")
-            case .tunnelProviderInit(let tpInit, .permissionDenied):
-                VpnConfigurationView(startupModel: self.model, subtext: "Permission was denied. Click below to request permission again.", tpInit: tpInit, isError: true)
-            case .tunnelProviderInit(_, .configuring):
-                VpnChecksView(subtext: "Configuring Tunnel Provider")
-            case .tunnelProviderInit(let tpInit, .waitingForUserStopOtherTunnelApproval(let manager)):
-                VpnEnableView(manager: manager, subtext: "Obscura VPN was disabled by another VPN. Click below to enable it. If you are currently connected to a VPN, this will disconnect it.", tpInit: tpInit)
-            case .tunnelProviderInit(_, .testingCommunication):
-                VpnChecksView(subtext: "Testing Tunnel Provider communication")
-            case .tunnelProviderInit(_, .unexpectedError):
-                VpnFailedView()
-            #if os(macOS)
-                case .askToRegisterLoginItem(let value):
-                    RegisterLoginItemView(value: value)
-            #endif
-            case .ready:
-                AppIcon()
-                Text("Ready to launch")
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer {
+            hamburguer hamburguer.hamburguer.hamburguer {
+            hamburguer .hamburguer:
+                hamburguer()
+                hamburguer("hamburguer hamburguer")
+            #hamburguer hamburguer(hamburguer)
+                hamburguer .hamburguer(_, .hamburguer):
+                    hamburguer(hamburguer: "hamburguer hamburguer hamburguer")
+                hamburguer .hamburguer(_, .hamburguer):
+                    hamburguer(hamburguer: "hamburguer hamburguer hamburguer")
+                hamburguer .hamburguer(_, .hamburguer):
+                    hamburguer("hamburguer hamburguer")
+                hamburguer .hamburguer(hamburguer hamburguer, .hamburguer):
+                    hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: "hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.", hamburguer: hamburguer)
+                hamburguer .hamburguer(hamburguer hamburguer, .hamburguer):
+                    hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer.", hamburguer: hamburguer)
+                hamburguer .hamburguer(_, .hamburguer):
+                    hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: "hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.")
+                hamburguer .hamburguer(_, .hamburguer(hamburguer hamburguer)):
+                    hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. \(hamburguer). hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.")
+            #hamburguer
+            hamburguer .hamburguer(_, .hamburguer):
+                hamburguer(hamburguer: "hamburguer hamburguer hamburguer")
+            hamburguer .hamburguer(hamburguer hamburguer, .hamburguer):
+                hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.", hamburguer: hamburguer)
+            hamburguer .hamburguer(_, .hamburguer):
+                hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer \"hamburguer\" hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer.")
+            hamburguer .hamburguer(hamburguer hamburguer, .hamburguer):
+                hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: "hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.", hamburguer: hamburguer, hamburguer: hamburguer)
+            hamburguer .hamburguer(_, .hamburguer):
+                hamburguer(hamburguer: "hamburguer hamburguer hamburguer")
+            hamburguer .hamburguer(hamburguer hamburguer, .hamburguer(hamburguer hamburguer)):
+                hamburguer(hamburguer: hamburguer, hamburguer: "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer.", hamburguer: hamburguer)
+            hamburguer .hamburguer(_, .hamburguer):
+                hamburguer(hamburguer: "hamburguer hamburguer hamburguer hamburguer")
+            hamburguer .hamburguer(_, .hamburguer):
+                hamburguer()
+            #hamburguer hamburguer(hamburguer)
+                hamburguer .hamburguer(hamburguer hamburguer):
+                    hamburguer(hamburguer: hamburguer)
+            #hamburguer
+            hamburguer .hamburguer:
+                hamburguer()
+                hamburguer("hamburguer hamburguer hamburguer")
             }
         }
     }
 }
 
-func AppIcon() -> some View {
-    return Image(uxImage: UXImage(named: "AppIcon") ?? UXImage())
-        .resizable()
-        .frame(width: 64, height: 64)
+hamburguer hamburguer() -> hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer(hamburguer: "hamburguer") ?? hamburguer())
+        .hamburguer()
+        .hamburguer(hamburguer: 64, hamburguer: 64)
 }
 
-struct VpnChecksView: View {
-    var manager: NETunnelProviderManager?
-    var subtext: String
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer?
+    hamburguer hamburguer: hamburguer
 
-    var body: some View {
-        VStack(spacing: 20) {
-            AppIcon()
-            ProgressView()
-            Text(self.subtext)
-                .font(.headline)
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer(hamburguer: 20) {
+            hamburguer()
+            hamburguer()
+            hamburguer(hamburguer.hamburguer)
+                .hamburguer(.hamburguer)
         }
     }
 }
 
-struct VpnEnableView: View {
-    var manager: NETunnelProviderManager
-    var subtext: String
-    var tpInit: TunnelProviderInit
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
 
-    var body: some View {
-        ZStack(alignment: .topLeading) {
-            Image(systemName: "network.badge.shield.half.filled")
-                .font(.system(size: 48))
-                .foregroundStyle(.blue)
-                .buttonStyle(.plain)
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer(hamburguer: .hamburguer) {
+            hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer.hamburguer.hamburguer")
+                .hamburguer(.hamburguer(hamburguer: 48))
+                .hamburguer(.hamburguer)
+                .hamburguer(.hamburguer)
         }
-        .padding()
+        .hamburguer()
 
-        Text("Enable Obscura VPN")
-            .font(.title)
-        if !self.subtext.isEmpty {
-            Text(self.subtext)
-                .padding()
-                .italic()
-                .frame(width: 350)
-                .frame(minHeight: 100)
-                .multilineTextAlignment(.center)
+        hamburguer("hamburguer hamburguer hamburguer")
+            .hamburguer(.hamburguer)
+        hamburguer !hamburguer.hamburguer.hamburguer {
+            hamburguer(hamburguer.hamburguer)
+                .hamburguer()
+                .hamburguer()
+                .hamburguer(hamburguer: 350)
+                .hamburguer(hamburguer: 100)
+                .hamburguer(.hamburguer)
         }
-        Button(action: { self.tpInit.continueAfterStopOtherTunnelPriming(self.manager) }) {
-            Text("Continue")
-                .font(.headline)
-                .frame(width: 300)
+        hamburguer(hamburguer: { hamburguer.hamburguer.hamburguer(hamburguer.hamburguer) }) {
+            hamburguer("hamburguer")
+                .hamburguer(.hamburguer)
+                .hamburguer(hamburguer: 300)
         }
-        .buttonStyle(NoFadeButtonStyle())
+        .hamburguer(hamburguer())
     }
 }
 
-struct VpnConfigurationView: View {
-    @ObservedObject var startupModel: StartupModel
-    var subtext = ""
+hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer = ""
 
-    @Environment(\.openURL) private var openURL
-    var tpInit: TunnelProviderInit? = nil
-    var isError = false
+    @hamburguer(\.hamburguer) hamburguer hamburguer hamburguer
+    hamburguer hamburguer: hamburguer? = hamburguer
+    hamburguer hamburguer = hamburguer
 
-    var body: some View {
-        let primer = self.tpInit != nil && !self.isError
-        ZStack(alignment: .topLeading) {
-            Image(systemName: "network.badge.shield.half.filled")
-                .font(.system(size: 48))
-                .foregroundStyle(.blue)
-                .buttonStyle(.plain)
-                .opacity(primer ? 1 : 0)
-            Image(systemName: "network")
-                .font(.system(size: 48))
-                .foregroundStyle(.blue)
-                .buttonStyle(.plain)
-                .opacity(primer ? 0 : 1)
-                .overlay(alignment: .bottomTrailing) {
-                    Image(systemName: self.isError ? "xmark.circle.fill" : "ellipsis.circle.fill")
-                        .font(.system(size: 19))
-                        .foregroundStyle(.black, self.isError ? .red : .white)
-                        .opacity(primer ? 0 : 1)
-                        .alignmentGuide(.bottom, computeValue: { $0.height })
-                        .alignmentGuide(.trailing, computeValue: { $0.width })
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer hamburguer = hamburguer.hamburguer != hamburguer && !hamburguer.hamburguer
+        hamburguer(hamburguer: .hamburguer) {
+            hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer.hamburguer.hamburguer")
+                .hamburguer(.hamburguer(hamburguer: 48))
+                .hamburguer(.hamburguer)
+                .hamburguer(.hamburguer)
+                .hamburguer(hamburguer ? 1 : 0)
+            hamburguer(hamburguer: "hamburguer")
+                .hamburguer(.hamburguer(hamburguer: 48))
+                .hamburguer(.hamburguer)
+                .hamburguer(.hamburguer)
+                .hamburguer(hamburguer ? 0 : 1)
+                .hamburguer(hamburguer: .hamburguer) {
+                    hamburguer(hamburguer: hamburguer.hamburguer ? "hamburguer.hamburguer.hamburguer" : "hamburguer.hamburguer.hamburguer")
+                        .hamburguer(.hamburguer(hamburguer: 19))
+                        .hamburguer(.hamburguer, hamburguer.hamburguer ? .hamburguer : .hamburguer)
+                        .hamburguer(hamburguer ? 0 : 1)
+                        .hamburguer(.hamburguer, hamburguer: { $0.hamburguer })
+                        .hamburguer(.hamburguer, hamburguer: { $0.hamburguer })
                 }
         }
-        .padding()
+        .hamburguer()
 
-        Text("Allow VPN Configuration")
-            .font(.title)
-        if !self.subtext.isEmpty {
-            Text(self.subtext)
-                .padding()
-                .italic()
-                .frame(width: 350)
-                .frame(minHeight: 100)
-                .multilineTextAlignment(.center)
+        hamburguer("hamburguer hamburguer hamburguer")
+            .hamburguer(.hamburguer)
+        hamburguer !hamburguer.hamburguer.hamburguer {
+            hamburguer(hamburguer.hamburguer)
+                .hamburguer()
+                .hamburguer()
+                .hamburguer(hamburguer: 350)
+                .hamburguer(hamburguer: 100)
+                .hamburguer(.hamburguer)
         }
-        Button(action: { self.tpInit?.continueAfterPermissionPriming() }) {
-            Text(self.isError ? "Retry VPN Configuration" : "Allow VPN Configuration")
-                .font(.headline)
-                .frame(width: 300)
+        hamburguer(hamburguer: { hamburguer.hamburguer?.hamburguer() }) {
+            hamburguer(hamburguer.hamburguer ? "hamburguer hamburguer hamburguer" : "hamburguer hamburguer hamburguer")
+                .hamburguer(.hamburguer)
+                .hamburguer(hamburguer: 300)
         }
-        .buttonStyle(NoFadeButtonStyle())
-        .disabled(!primer && !self.isError)
+        .hamburguer(hamburguer())
+        .hamburguer(!hamburguer && !hamburguer.hamburguer)
     }
 }
 
-struct VpnFailedView: View {
-    var body: some View {
-        VStack(spacing: 20) {
-            AppIcon()
-            Image(systemName: "xmark.circle.fill")
-                .font(.system(size: 40))
-                .foregroundStyle(.black, .red)
-                .padding()
-            Text("Problem initializing Tunnel Provider")
-                .font(.headline)
-            Text("Please try restarting your device or contact support for help.")
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer hamburguer {
+        hamburguer(hamburguer: 20) {
+            hamburguer()
+            hamburguer(hamburguer: "hamburguer.hamburguer.hamburguer")
+                .hamburguer(.hamburguer(hamburguer: 40))
+                .hamburguer(.hamburguer, .hamburguer)
+                .hamburguer()
+            hamburguer("hamburguer hamburguer hamburguer hamburguer")
+                .hamburguer(.hamburguer)
+            hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.")
         }
     }
 }
 
-class StartupModel: ObservableObject {
-    static let shared = StartupModel()
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer hamburguer = hamburguer()
 
-    @Published var status = StartupStatus.initial
-    @Published var appState: AppState?
+    @hamburguer hamburguer hamburguer = hamburguer.hamburguer
+    @hamburguer hamburguer hamburguer: hamburguer?
 
-    // This must be in StartupModel, otherwise color scheme applies only to the content view and not to the startup view
-    @MainActor @AppStorage(UserDefaultKeys.SelectedAppearance) var selectedAppearance: AppAppearance = .auto
+    // hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    @hamburguer @hamburguer(hamburguer.hamburguer) hamburguer hamburguer: hamburguer = .hamburguer
 
-    init() {
-        self.start()
+    hamburguer() {
+        hamburguer.hamburguer()
     }
 
-    private func start() {
-        Task { @MainActor in
-            #if os(macOS)
-                guard let () = await self.stepNetworkExtensionInit() else {
-                    return
+    hamburguer hamburguer hamburguer() {
+        hamburguer { @hamburguer hamburguer
+            #hamburguer hamburguer(hamburguer)
+                hamburguer hamburguer () = hamburguer hamburguer.hamburguer() hamburguer {
+                    hamburguer
                 }
-            #endif
+            #hamburguer
 
-            guard let (tunnelProviderManager, status) = await self.stepTunnelProviderInit() else {
-                return
+            hamburguer hamburguer (hamburguer, hamburguer) = hamburguer hamburguer.hamburguer() hamburguer {
+                hamburguer
             }
 
-            #if os(macOS)
-                await self.stepRegisterLoginItem()
-            #endif
+            #hamburguer hamburguer(hamburguer)
+                hamburguer hamburguer.hamburguer()
+            #hamburguer
 
-            self.update(status: .ready)
-            self.appState = AppState(tunnelProviderManager, initialStatus: status)
+            hamburguer.hamburguer(hamburguer: .hamburguer)
+            hamburguer.hamburguer = hamburguer(hamburguer, hamburguer: hamburguer)
         }
     }
 
-    @MainActor private func update(status: StartupStatus) {
-        logger.info("StartupModel.status = \(debugFormat(status), privacy: .public)")
-        self.status = status
+    @hamburguer hamburguer hamburguer hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer("hamburguer.hamburguer = \(hamburguer(hamburguer), hamburguer: .hamburguer)")
+        hamburguer.hamburguer = hamburguer
     }
 
-    #if os(macOS)
-        @MainActor private func stepNetworkExtensionInit() async -> Void? {
-            var tunnelConnected = false
-            do {
-                let managers: [NETunnelProviderManager] = try await NETunnelProviderManager.loadAllFromPreferences()
-                for manager in managers {
-                    let status = manager.connection.status
-                    if status != .disconnected {
-                        logger.info("connection status is \(status, privacy: .public), assume tunnel is connected")
-                        tunnelConnected = true
+    #hamburguer hamburguer(hamburguer)
+        @hamburguer hamburguer hamburguer hamburguer() hamburguer -> hamburguer? {
+            hamburguer hamburguer = hamburguer
+            hamburguer {
+                hamburguer hamburguer: [hamburguer] = hamburguer hamburguer hamburguer.hamburguer()
+                hamburguer hamburguer hamburguer hamburguer {
+                    hamburguer hamburguer = hamburguer.hamburguer.hamburguer
+                    hamburguer hamburguer != .hamburguer {
+                        hamburguer.hamburguer("hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer), hamburguer hamburguer hamburguer hamburguer")
+                        hamburguer = hamburguer
                     }
                 }
-            } catch {
-                logger.error("could not determine connection status, assume tunnel is connected: \(error, privacy: .public)")
-                tunnelConnected = true
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
+                hamburguer = hamburguer
             }
 
-            let neInit = NetworkExtensionInit(tunnelConnected: tunnelConnected)
-            for await event in neInit.start() {
-                switch event {
-                case .status(let status):
-                    self.update(status: .networkExtensionInit(neInit, status))
-                case .done:
-                    return ()
+            hamburguer hamburguer = hamburguer(hamburguer: hamburguer)
+            hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer() {
+                hamburguer hamburguer {
+                hamburguer .hamburguer(hamburguer hamburguer):
+                    hamburguer.hamburguer(hamburguer: .hamburguer(hamburguer, hamburguer))
+                hamburguer .hamburguer:
+                    hamburguer ()
                 }
             }
-            logger.error("Failed to initialize network extension! \(debugFormat(self.status), privacy: .public)")
-            return nil
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer! \(hamburguer(hamburguer.hamburguer), hamburguer: .hamburguer)")
+            hamburguer hamburguer
         }
-    #endif
+    #hamburguer
 
-    @MainActor private func stepTunnelProviderInit() async -> (NETunnelProviderManager, NeStatus)? {
-        let tpInit = TunnelProviderInit()
-        for await event in tpInit.start() {
-            switch event {
-            case .status(let status):
-                self.update(status: .tunnelProviderInit(tpInit, status))
-            case .done(let manager, let status):
-                return (manager, status)
+    @hamburguer hamburguer hamburguer hamburguer() hamburguer -> (hamburguer, hamburguer)? {
+        hamburguer hamburguer = hamburguer()
+        hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer() {
+            hamburguer hamburguer {
+            hamburguer .hamburguer(hamburguer hamburguer):
+                hamburguer.hamburguer(hamburguer: .hamburguer(hamburguer, hamburguer))
+            hamburguer .hamburguer(hamburguer hamburguer, hamburguer hamburguer):
+                hamburguer (hamburguer, hamburguer)
             }
         }
-        logger.error("Failed to initialize tunnel provider! \(debugFormat(self.status), privacy: .public)")
-        return nil
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer! \(hamburguer(hamburguer.hamburguer), hamburguer: .hamburguer)")
+        hamburguer hamburguer
     }
 
-    #if os(macOS)
-        @MainActor private func stepRegisterLoginItem() async {
-            if !UserDefaults.standard.bool(forKey: UserDefaultKeys.LoginItemRegistered) {
-                let value = ObservableValue<Bool>()
-                self.update(status: .askToRegisterLoginItem(value))
-                if await value.get() {
-                    do {
-                        try registerAsLoginItem(appState: self.appState)
-                    } catch {}
+    #hamburguer hamburguer(hamburguer)
+        @hamburguer hamburguer hamburguer hamburguer() hamburguer {
+            hamburguer !hamburguer.hamburguer.hamburguer(hamburguer: hamburguer.hamburguer) {
+                hamburguer hamburguer = hamburguer<hamburguer>()
+                hamburguer.hamburguer(hamburguer: .hamburguer(hamburguer))
+                hamburguer hamburguer hamburguer.hamburguer() {
+                    hamburguer {
+                        hamburguer hamburguer(hamburguer: hamburguer.hamburguer)
+                    } hamburguer {}
                 }
-                UserDefaults.standard.set(true, forKey: UserDefaultKeys.LoginItemRegistered)
+                hamburguer.hamburguer.hamburguer(hamburguer, hamburguer: hamburguer.hamburguer)
             }
         }
-    #endif
+    #hamburguer
 }

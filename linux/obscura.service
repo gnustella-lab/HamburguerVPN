@@ -1,12 +1,12 @@
-[Unit]
-Description=Obscura VPN
-After=network.target
+[hamburguer]
+hamburguer=hamburguer hamburguer
+hamburguer=hamburguer.hamburguer
 
-[Service]
-ExecStart=/usr/bin/obscura service
-Group=obscura
-UMask=0007
-Restart=on-failure
+[hamburguer]
+hamburguer=/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer=hamburguer
+hamburguer=0007
+hamburguer=hamburguer-hamburguer
 
-[Install]
-WantedBy=multi-user.target
+[hamburguer]
+hamburguer=hamburguer-hamburguer.hamburguer

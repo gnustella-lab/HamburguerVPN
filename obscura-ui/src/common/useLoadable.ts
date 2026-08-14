@@ -1,50 +1,50 @@
-import { useEffect, useRef } from "react";
-import { useAsync, UseAsyncArgs, UseAsyncResult } from "./useAsync";
+hamburguer { hamburguer, hamburguer } hamburguer "hamburguer";
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer "./hamburguer";
 
-export interface UseLoadableArgs<T> extends UseAsyncArgs<T> {
-    periodMs: number,
+hamburguer hamburguer hamburguer<hamburguer> hamburguer hamburguer<hamburguer> {
+    hamburguer: hamburguer,
 }
 
-export function useLoadable<T>({
-    periodMs,
-    ...args
-}: UseLoadableArgs<T>): UseAsyncResult<T> {
-    let failures = useRef(0);
+hamburguer hamburguer hamburguer<hamburguer>({
+    hamburguer,
+    ...hamburguer
+}: hamburguer<hamburguer>): hamburguer<hamburguer> {
+    hamburguer hamburguer = hamburguer(0);
 
-    let r = useAsync(args);
+    hamburguer hamburguer = hamburguer(hamburguer);
 
-    useEffect(() => {
-        // If the dependencies change reset the backoff.
-        failures.current = 0;
-    }, [args.skip, ...args.deps ?? []]);
+    hamburguer(() => {
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer.hamburguer = 0;
+    }, [hamburguer.hamburguer, ...hamburguer.hamburguer ?? []]);
 
-    useEffect(() => {
-        if (r.loading) {
-            // Should only happen for the initial load.
-            return;
+    hamburguer(() => {
+        hamburguer (hamburguer.hamburguer) {
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+            hamburguer;
         }
 
-        let delayMs: number;
-        if (r.error) {
-            failures.current += 1;
-            delayMs = Math.min(
-                Math.random() * (500 * 2 ** failures.current),
+        hamburguer hamburguer: hamburguer;
+        hamburguer (hamburguer.hamburguer) {
+            hamburguer.hamburguer += 1;
+            hamburguer = hamburguer.hamburguer(
+                hamburguer.hamburguer() * (500 * 2 ** hamburguer.hamburguer),
                 60 * 1000,
             );
-        } else {
-            failures.current = 0;
-            delayMs = periodMs;
+        } hamburguer {
+            hamburguer.hamburguer = 0;
+            hamburguer = hamburguer;
         }
 
-        let timer = setTimeout(r.refresh, delayMs);
-        return () => clearTimeout(timer);
-    }, [r.valueVersion])
+        hamburguer hamburguer = hamburguer(hamburguer.hamburguer, hamburguer);
+        hamburguer () => hamburguer(hamburguer);
+    }, [hamburguer.hamburguer])
 
-    return {
-        ...r,
-        refresh: () => {
-            failures.current = 0;
-            return r.refresh();
+    hamburguer {
+        ...hamburguer,
+        hamburguer: () => {
+            hamburguer.hamburguer = 0;
+            hamburguer hamburguer.hamburguer();
         },
     };
 }

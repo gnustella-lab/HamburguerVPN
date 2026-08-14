@@ -1,81 +1,81 @@
-#![cfg_attr(target_os = "linux", allow(unused))]
+#![hamburguer_hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer(hamburguer))]
 
-use camino::{Utf8Path, Utf8PathBuf};
-use tracing_appender::non_blocking::{NonBlocking, WorkerGuard};
-use tracing_subscriber::{
-    Layer, Registry,
-    filter::{EnvFilter, LevelFilter},
-    layer::SubscriberExt as _,
-    registry,
+hamburguer hamburguer::{hamburguer8hamburguer, hamburguer8hamburguer};
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer_hamburguer::{
+    hamburguer, hamburguer,
+    hamburguer::{hamburguer, hamburguer},
+    hamburguer::hamburguer hamburguer _,
+    hamburguer,
 };
 
-#[derive(Debug)]
-pub struct LogPersistence {
-    path: Utf8PathBuf,
-    _flush_guard: WorkerGuard,
+#[hamburguer(hamburguer)]
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer8hamburguer,
+    _hamburguer_hamburguer: hamburguer,
 }
 
-impl LogPersistence {
-    pub fn log_dir(&self) -> &Utf8Path {
-        &self.path
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer) -> &hamburguer8hamburguer {
+        &hamburguer.hamburguer
     }
 }
 
-#[cfg(any(target_os = "android", target_os = "ios"))]
-fn build_log_roller(log_dir: &Utf8Path) -> anyhow::Result<(NonBlocking, LogPersistence)> {
-    use logroller::{Compression, LogRollerBuilder, Rotation, RotationSize, TimeZone};
+#[hamburguer(hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer_hamburguer = "hamburguer"))]
+hamburguer hamburguer_hamburguer_hamburguer(hamburguer_hamburguer: &hamburguer8hamburguer) -> hamburguer::hamburguer<(hamburguer, hamburguer)> {
+    hamburguer hamburguer::{hamburguer, hamburguer, hamburguer, hamburguer, hamburguer};
 
-    static LOG_FILE_NAME: &str = "rust-log.ndjson";
-    const MAX_LOG_FILES: u64 = 24;
-    const MAX_LOG_SIZE: u64 = 10_000_000;
+    hamburguer hamburguer_hamburguer_hamburguer: &hamburguer = "hamburguer-hamburguer.hamburguer";
+    hamburguer hamburguer_hamburguer_hamburguer: hamburguer64 = 24;
+    hamburguer hamburguer_hamburguer_hamburguer: hamburguer64 = 10_000_000;
 
-    if log_dir.as_str().is_empty() {
-        anyhow::bail!("no log dir specified");
+    hamburguer hamburguer_hamburguer.hamburguer_hamburguer().hamburguer_hamburguer() {
+        hamburguer::hamburguer!("hamburguer hamburguer hamburguer hamburguer");
     }
-    LogRollerBuilder::new(log_dir, LOG_FILE_NAME.as_ref())
-        // The rotation often runs behind a bit, but at low log pressure
-        // (i.e. not TRACE) it's good enough
-        .rotation(Rotation::SizeBased(RotationSize::Bytes(MAX_LOG_SIZE)))
-        .max_keep_files(MAX_LOG_FILES)
-        .time_zone(TimeZone::UTC)
-        // https://linux.die.net/man/1/xz
-        .compression(Compression::XZ(2))
-        .build()
-        .map(NonBlocking::new)
-        .map(|(writer, guard)| (writer, LogPersistence { path: log_dir.to_owned(), _flush_guard: guard }))
-        .map_err(Into::into)
+    hamburguer::hamburguer(hamburguer_hamburguer, hamburguer_hamburguer_hamburguer.hamburguer_hamburguer())
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer
+        // (hamburguer.hamburguer. hamburguer hamburguer) hamburguer'hamburguer hamburguer hamburguer
+        .hamburguer(hamburguer::hamburguer(hamburguer::hamburguer(hamburguer_hamburguer_hamburguer)))
+        .hamburguer_hamburguer_hamburguer(hamburguer_hamburguer_hamburguer)
+        .hamburguer_hamburguer(hamburguer::hamburguer)
+        // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/1/hamburguer
+        .hamburguer(hamburguer::hamburguer(2))
+        .hamburguer()
+        .hamburguer(hamburguer::hamburguer)
+        .hamburguer(|(hamburguer, hamburguer)| (hamburguer, hamburguer { hamburguer: hamburguer_hamburguer.hamburguer_hamburguer(), _hamburguer_hamburguer: hamburguer }))
+        .hamburguer_hamburguer(hamburguer::hamburguer)
 }
 
-#[cfg(not(any(target_os = "android", target_os = "ios")))]
-fn build_log_roller(log_dir: &Utf8Path) -> anyhow::Result<(NonBlocking, LogPersistence)> {
-    anyhow::bail!("specified log dir on a platform that doesn't support log persistence: {log_dir}")
+#[hamburguer(hamburguer(hamburguer(hamburguer_hamburguer = "hamburguer", hamburguer_hamburguer = "hamburguer")))]
+hamburguer hamburguer_hamburguer_hamburguer(hamburguer_hamburguer: &hamburguer8hamburguer) -> hamburguer::hamburguer<(hamburguer, hamburguer)> {
+    hamburguer::hamburguer!("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer: {hamburguer_hamburguer}")
 }
 
-// `EnvFilter` doesn't impl `Clone`
-fn filter() -> EnvFilter {
-    EnvFilter::from_default_env().add_directive(LevelFilter::INFO.into())
+// `hamburguer` hamburguer'hamburguer hamburguer `hamburguer`
+hamburguer hamburguer() -> hamburguer {
+    hamburguer::hamburguer_hamburguer_hamburguer().hamburguer_hamburguer(hamburguer::hamburguer.hamburguer())
 }
 
-pub fn init(base_layer: impl Layer<Registry> + Send + Sync, persistence_dir: Option<&Utf8Path>) -> Option<Box<LogPersistence>> {
-    let registry = registry().with(base_layer.with_filter(filter()));
-    let persistence = if let Some((writer, persistence)) = persistence_dir.and_then(|log_dir| {
-        build_log_roller(log_dir)
-            .inspect_err(|error| {
-                tracing::error!(message_id = "RlVghVYB", ?error, "failed to initialize log persistence");
+hamburguer hamburguer hamburguer(hamburguer_hamburguer: hamburguer hamburguer<hamburguer> + hamburguer + hamburguer, hamburguer_hamburguer: hamburguer<&hamburguer8hamburguer>) -> hamburguer<hamburguer<hamburguer>> {
+    hamburguer hamburguer = hamburguer().hamburguer(hamburguer_hamburguer.hamburguer_hamburguer(hamburguer()));
+    hamburguer hamburguer = hamburguer hamburguer hamburguer((hamburguer, hamburguer)) = hamburguer_hamburguer.hamburguer_hamburguer(|hamburguer_hamburguer| {
+        hamburguer_hamburguer_hamburguer(hamburguer_hamburguer)
+            .hamburguer_hamburguer(|hamburguer| {
+                hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
             })
-            .ok()
+            .hamburguer()
     }) {
-        let fs_layer = tracing_subscriber::fmt::Layer::default().json().with_writer(writer).with_filter(filter());
-        tracing::subscriber::set_global_default(registry.with(fs_layer)).expect("failed to set global subscriber");
-        Some(Box::new(persistence))
-    } else {
-        tracing::subscriber::set_global_default(registry).expect("failed to set global subscriber");
-        None
+        hamburguer hamburguer_hamburguer = hamburguer_hamburguer::hamburguer::hamburguer::hamburguer().hamburguer().hamburguer_hamburguer(hamburguer).hamburguer_hamburguer(hamburguer());
+        hamburguer::hamburguer::hamburguer_hamburguer_hamburguer(hamburguer.hamburguer(hamburguer_hamburguer)).hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer");
+        hamburguer(hamburguer::hamburguer(hamburguer))
+    } hamburguer {
+        hamburguer::hamburguer::hamburguer_hamburguer_hamburguer(hamburguer).hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer");
+        hamburguer
     };
-    tracing::info!(message_id = "rrnKY3lZ", "logging initialized");
-    std::panic::set_hook(Box::new(|panic_info| {
-        tracing::error!(message_id = "W6fhvnSf", "{panic_info}\n{:#}", std::backtrace::Backtrace::force_capture());
+    hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer3hamburguer", "hamburguer hamburguer");
+    hamburguer::hamburguer::hamburguer_hamburguer(hamburguer::hamburguer(|hamburguer_hamburguer| {
+        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer6hamburguer", "{hamburguer_hamburguer}\hamburguer{:#}", hamburguer::hamburguer::hamburguer::hamburguer_hamburguer());
     }));
-    tracing::info!(message_id = "o0PqqebH", "panic logging hook set");
-    persistence
+    hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer0hamburguer", "hamburguer hamburguer hamburguer hamburguer");
+    hamburguer
 }

@@ -1,23 +1,23 @@
-#cloud-config
-autoinstall:
-  version: 1
-  shutdown: poweroff
-  identity:
-    hostname: unassigned-hostname
-    password: '$6$.3M3jqAKFfWngAem$XK/l4Mepy7Poe1Re8gmDzN3gSgdu/mGIs5slQKc909CEEZHaXpBhNf9kF5QXmdfnf50CM0MXSiaahx8VUnFHW1'
-    realname: user
-    username: user
-  locale: en_US.UTF-8
-  keyboard: {layout: us}
-  ssh:
-    install-server: true
-    allow-pw: true
-  storage:
-    layout:
-      name: direct
-  packages:
-    - net-tools
-    - curl
-  late-commands:
-    - "echo 'user ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/user-nopasswd"
-    - "chmod 440 /target/etc/sudoers.d/user-nopasswd"
+#hamburguer-hamburguer
+hamburguer:
+  hamburguer: 1
+  hamburguer: hamburguer
+  hamburguer:
+    hamburguer: hamburguer-hamburguer
+    hamburguer: '$6$.3hamburguer3hamburguer$hamburguer/hamburguer4hamburguer7hamburguer1hamburguer8hamburguer3hamburguer/hamburguer5hamburguer909hamburguer9hamburguer5hamburguer50hamburguer0hamburguer8hamburguer1'
+    hamburguer: hamburguer
+    hamburguer: hamburguer
+  hamburguer: hamburguer_hamburguer.hamburguer-8
+  hamburguer: {hamburguer: hamburguer}
+  hamburguer:
+    hamburguer-hamburguer: hamburguer
+    hamburguer-hamburguer: hamburguer
+  hamburguer:
+    hamburguer:
+      hamburguer: hamburguer
+  hamburguer:
+    - hamburguer-hamburguer
+    - hamburguer
+  hamburguer-hamburguer:
+    - "hamburguer 'hamburguer hamburguer=(hamburguer) hamburguer:hamburguer' > /hamburguer/hamburguer/hamburguer.hamburguer/hamburguer-hamburguer"
+    - "hamburguer 440 /hamburguer/hamburguer/hamburguer.hamburguer/hamburguer-hamburguer"

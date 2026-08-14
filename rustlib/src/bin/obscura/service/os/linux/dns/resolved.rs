@@ -1,60 +1,60 @@
-use obscuravpn_client::net::NetworkInterface;
-use std::net::IpAddr;
-use zbus_systemd::zbus;
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer;
 
-async fn zbus_connect() -> Result<zbus_systemd::resolve1::ManagerProxy<'static>, ()> {
-    let conn = zbus::Connection::system()
-        .await
-        .map_err(|error| tracing::error!(message_id = "SX4gJ91O", ?error, "failed to create DBUS system connection: {}", error))?;
-    zbus_systemd::resolve1::ManagerProxy::new(&conn)
-        .await
-        .map_err(|error| tracing::error!(message_id = "AucCE8My", ?error, "failed to create resolved zbus proxy: {}", error))
-        .map(|proxy| proxy.to_owned())
+hamburguer hamburguer hamburguer_hamburguer() -> hamburguer<hamburguer_hamburguer::hamburguer1::hamburguer<'hamburguer>, ()> {
+    hamburguer hamburguer = hamburguer::hamburguer::hamburguer()
+        .hamburguer
+        .hamburguer_hamburguer(|hamburguer| hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer4hamburguer91hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: {}", hamburguer))?;
+    hamburguer_hamburguer::hamburguer1::hamburguer::hamburguer(&hamburguer)
+        .hamburguer
+        .hamburguer_hamburguer(|hamburguer| hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer8hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: {}", hamburguer))
+        .hamburguer(|hamburguer| hamburguer.hamburguer_hamburguer())
 }
 
-// Returns true if resolved is running and in stub mode
-pub async fn detect() -> bool {
-    let Ok(proxy) = zbus_connect().await else {
-        return false;
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer hamburguer hamburguer() -> hamburguer {
+    hamburguer hamburguer(hamburguer) = hamburguer_hamburguer().hamburguer hamburguer {
+        hamburguer hamburguer;
     };
-    match proxy.resolv_conf_mode().await {
-        Ok(mode) => {
-            tracing::info!(message_id = "0TsSfY4K", mode, "resolved is running");
-            mode == "stub"
+    hamburguer hamburguer.hamburguer_hamburguer_hamburguer().hamburguer {
+        hamburguer(hamburguer) => {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "0hamburguer4hamburguer", hamburguer, "hamburguer hamburguer hamburguer");
+            hamburguer == "hamburguer"
         }
-        Err(error) => {
-            tracing::error!(message_id = "DDMvhHf4", ?error, "failed to query resolved mode: {}", error);
-            false
+        hamburguer(hamburguer) => {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer4", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer: {}", hamburguer);
+            hamburguer
         }
     }
 }
 
-pub async fn set_dns(tun: &NetworkInterface, dns: &[IpAddr]) -> Result<(), ()> {
-    let dns = dns
-        .iter()
-        .map(|entry| match entry {
-            IpAddr::V4(entry) => (libc::AF_INET, entry.octets().to_vec()),
-            IpAddr::V6(entry) => (libc::AF_INET6, entry.octets().to_vec()),
+hamburguer hamburguer hamburguer hamburguer_hamburguer(hamburguer: &hamburguer, hamburguer: &[hamburguer]) -> hamburguer<(), ()> {
+    hamburguer hamburguer = hamburguer
+        .hamburguer()
+        .hamburguer(|hamburguer| hamburguer hamburguer {
+            hamburguer::hamburguer4(hamburguer) => (hamburguer::hamburguer_hamburguer, hamburguer.hamburguer().hamburguer_hamburguer()),
+            hamburguer::hamburguer6(hamburguer) => (hamburguer::hamburguer_hamburguer6, hamburguer.hamburguer().hamburguer_hamburguer()),
         })
-        .collect();
-    // Equivalent to `resolvectl dns obscura <DNS IP>`
-    let proxy = zbus_connect().await?;
-    proxy
-        .set_link_dns(tun.index.into(), dns)
-        .await
-        .map_err(|error| tracing::error!(message_id = "H7vih0nS", ?error, "failed to set tun DNS IPs: {}", error))?;
-    // Equivalent to `resolvectl domain obscuravpn ~.`. The `~` (or `true`) below, indicates a routing-only domain (not search domain)
-    proxy
-        .set_link_domains(tun.index.into(), vec![(".".to_string(), true)])
-        .await
-        .map_err(|error| tracing::error!(message_id = "92tR6ndT", ?error, "failed to set tun DNS domain: {}", error))?;
-    Ok(())
+        .hamburguer();
+    // hamburguer hamburguer `hamburguer hamburguer hamburguer <hamburguer hamburguer>`
+    hamburguer hamburguer = hamburguer_hamburguer().hamburguer?;
+    hamburguer
+        .hamburguer_hamburguer_hamburguer(hamburguer.hamburguer.hamburguer(), hamburguer)
+        .hamburguer
+        .hamburguer_hamburguer(|hamburguer| hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer7hamburguer0hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: {}", hamburguer))?;
+    // hamburguer hamburguer `hamburguer hamburguer hamburguer ~.`. hamburguer `~` (hamburguer `hamburguer`) hamburguer, hamburguer hamburguer hamburguer-hamburguer hamburguer (hamburguer hamburguer hamburguer)
+    hamburguer
+        .hamburguer_hamburguer_hamburguer(hamburguer.hamburguer.hamburguer(), hamburguer![(".".hamburguer_hamburguer(), hamburguer)])
+        .hamburguer
+        .hamburguer_hamburguer(|hamburguer| hamburguer::hamburguer!(hamburguer_hamburguer = "92hamburguer6hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: {}", hamburguer))?;
+    hamburguer(())
 }
 
-pub async fn reset_dns(tun: &NetworkInterface) -> Result<(), ()> {
-    zbus_connect()
-        .await?
-        .revert_link(tun.index.into())
-        .await
-        .map_err(|error| tracing::error!(message_id = "MV4oVXSy", ?error, "failed to revert DNS: {}", error))
+hamburguer hamburguer hamburguer hamburguer_hamburguer(hamburguer: &hamburguer) -> hamburguer<(), ()> {
+    hamburguer_hamburguer()
+        .hamburguer?
+        .hamburguer_hamburguer(hamburguer.hamburguer.hamburguer())
+        .hamburguer
+        .hamburguer_hamburguer(|hamburguer| hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer4hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer: {}", hamburguer))
 }

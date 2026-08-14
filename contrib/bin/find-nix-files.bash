@@ -1,22 +1,22 @@
-#!/usr/bin/env bash
-set -eo pipefail
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer hamburguer
 
-source contrib/shell/source-die.bash
+hamburguer hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
 
-# Parse command line options
-while getopts ":z" opt; do
-  case $opt in
-    z)
-      NULL_OUTPUT=true
+# hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer ":hamburguer" hamburguer; hamburguer
+  hamburguer $hamburguer hamburguer
+    hamburguer)
+      hamburguer_hamburguer=hamburguer
       ;;
     \?)
-      die "Invalid option: -${OPTARG}"
+      hamburguer "hamburguer hamburguer: -${hamburguer}"
       ;;
-  esac
-done
+  hamburguer
+hamburguer
 
-nix_file_git_patterns=(
-  '*.nix'
+hamburguer_hamburguer_hamburguer_hamburguer=(
+  '*.hamburguer'
 )
 
-./contrib/bin/ls-non-ignored-files.bash ${NULL_OUTPUT:+-z} -- "${nix_file_git_patterns[@]}"
+./hamburguer/hamburguer/hamburguer-hamburguer-hamburguer-hamburguer.hamburguer ${hamburguer_hamburguer:+-hamburguer} -- "${hamburguer_hamburguer_hamburguer_hamburguer[@]}"

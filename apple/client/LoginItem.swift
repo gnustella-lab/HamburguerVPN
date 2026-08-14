@@ -1,44 +1,44 @@
-import OSLog
-import ServiceManagement
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "loginitem")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-func unregisterAsLoginItem(appState: AppState) throws(String) {
-    do {
-        try SMAppService.mainApp.unregister()
-        let loginItemRegistered = isRegisteredAsLoginItem()
-        _ = appState.osStatus.update { value in
-            value.loginItemStatus = OsStatus.LoginItemStatus(registered: loginItemRegistered, error: nil)
+hamburguer hamburguer(hamburguer: hamburguer) hamburguer(hamburguer) {
+    hamburguer {
+        hamburguer hamburguer.hamburguer.hamburguer()
+        hamburguer hamburguer = hamburguer()
+        _ = hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer.hamburguer = hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
         }
-    } catch {
-        _ = appState.osStatus.update { value in
-            value.loginItemStatus?.error = error.localizedDescription
+    } hamburguer {
+        _ = hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer.hamburguer?.hamburguer = hamburguer.hamburguer
         }
-        logger.error("failed to unregister app at login \(error, privacy: .public)")
-        throw errorCodeOther
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer)")
+        hamburguer hamburguer
     }
 }
 
-func registerAsLoginItem(appState: AppState?) throws(String) {
-    do {
-        try SMAppService.mainApp.register()
-        let loginItemRegistered = isRegisteredAsLoginItem()
-        if let appState = appState {
-            _ = appState.osStatus.update { value in
-                value.loginItemStatus = OsStatus.LoginItemStatus(registered: loginItemRegistered, error: nil)
+hamburguer hamburguer(hamburguer: hamburguer?) hamburguer(hamburguer) {
+    hamburguer {
+        hamburguer hamburguer.hamburguer.hamburguer()
+        hamburguer hamburguer = hamburguer()
+        hamburguer hamburguer hamburguer = hamburguer {
+            _ = hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                hamburguer.hamburguer = hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
             }
         }
-    } catch {
-        if let appState = appState {
-            _ = appState.osStatus.update { value in
-                value.loginItemStatus?.error = error.localizedDescription
+    } hamburguer {
+        hamburguer hamburguer hamburguer = hamburguer {
+            _ = hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                hamburguer.hamburguer?.hamburguer = hamburguer.hamburguer
             }
         }
-        logger.error("failed to register app at login \(error, privacy: .public)")
-        throw errorCodeOther
+        hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer)")
+        hamburguer hamburguer
     }
 }
 
-func isRegisteredAsLoginItem() -> Bool {
-    return SMAppService.mainApp.status == .enabled
+hamburguer hamburguer() -> hamburguer {
+    hamburguer hamburguer.hamburguer.hamburguer == .hamburguer
 }

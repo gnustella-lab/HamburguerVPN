@@ -1,130 +1,130 @@
-import os
-import StoreKit
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "StoreKitModel")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-@MainActor class StoreKitModel: ObservableObject {
-    @Published private var products: [Product] = []
-    @Published private var purchasedProducts: [Product] = []
-    @Published var renewalPrice: String? = nil
+@hamburguer hamburguer hamburguer: hamburguer {
+    @hamburguer hamburguer hamburguer hamburguer: [hamburguer] = []
+    @hamburguer hamburguer hamburguer hamburguer: [hamburguer] = []
+    @hamburguer hamburguer hamburguer: hamburguer? = hamburguer
 
-    private let subscriptionProductId = "subscriptions.monthly"
-    var subscriptionProduct: Product? {
-        return self.products.first { $0.id == self.subscriptionProductId }
+    hamburguer hamburguer hamburguer = "hamburguer.hamburguer"
+    hamburguer hamburguer: hamburguer? {
+        hamburguer hamburguer.hamburguer.hamburguer { $0.hamburguer == hamburguer.hamburguer }
     }
 
-    var subscribed: Bool {
-        return self.purchasedProducts.contains(where: { $0.id == self.subscriptionProductId })
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer.hamburguer.hamburguer(hamburguer: { $0.hamburguer == hamburguer.hamburguer })
     }
 
-    @Published private var storefront: Storefront?
-    var externalPaymentsAllowed: Bool {
-        // External payments are currently only straightforward in the US.
-        return self.storefront?.countryCode == "USA"
+    @hamburguer hamburguer hamburguer hamburguer: hamburguer?
+    hamburguer hamburguer: hamburguer {
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer hamburguer.hamburguer?.hamburguer == "hamburguer"
     }
 
-    nonisolated init() {
-        Task { @MainActor in
-            await self.updateStorefront(await Storefront.current)
+    hamburguer hamburguer() {
+        hamburguer { @hamburguer hamburguer
+            hamburguer hamburguer.hamburguer(hamburguer hamburguer.hamburguer)
         }
     }
 
-    func updateStorefront(_ storefront: Storefront?) async {
-        self.storefront = storefront
-        do {
-            self.products = try await Product.products(for: [self.subscriptionProductId])
-        } catch {
-            logger.error("failed to load products: \(error, privacy: .public)")
+    hamburguer hamburguer(_ hamburguer: hamburguer?) hamburguer {
+        hamburguer.hamburguer = hamburguer
+        hamburguer {
+            hamburguer.hamburguer = hamburguer hamburguer hamburguer.hamburguer(hamburguer: [hamburguer.hamburguer])
+        } hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
         }
-        await self.updatePurchases()
+        hamburguer hamburguer.hamburguer()
     }
 
-    func updatePurchases() async {
-        self.purchasedProducts.removeAll()
-        self.renewalPrice = nil
-        // For auto-renewable subscriptions, `currentEntitlements` only contains
-        // the latest non-expired transaction.
-        for await result in Transaction.currentEntitlements {
-            if case .verified(let transaction) = result {
-                if let product = products.first(where: { $0.id == transaction.productID }) {
-                    self.purchasedProducts.append(product)
-                    if product.id == self.subscriptionProductId,
-                       let subscription = product.subscription
+    hamburguer hamburguer() hamburguer {
+        hamburguer.hamburguer.hamburguer()
+        hamburguer.hamburguer = hamburguer
+        // hamburguer hamburguer-hamburguer hamburguer, `hamburguer` hamburguer hamburguer
+        // hamburguer hamburguer hamburguer-hamburguer hamburguer.
+        hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer {
+            hamburguer hamburguer .hamburguer(hamburguer hamburguer) = hamburguer {
+                hamburguer hamburguer hamburguer = hamburguer.hamburguer(hamburguer: { $0.hamburguer == hamburguer.hamburguer }) {
+                    hamburguer.hamburguer.hamburguer(hamburguer)
+                    hamburguer hamburguer.hamburguer == hamburguer.hamburguer,
+                       hamburguer hamburguer = hamburguer.hamburguer
                     {
-                        do {
-                            for status in try await subscription.status {
-                                if case .verified(let renewalInfo) = status.renewalInfo {
-                                    if let renewalPrice = renewalInfo.renewalPrice,
-                                       let renewalCurrency = renewalInfo.currency
+                        hamburguer {
+                            hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer {
+                                hamburguer hamburguer .hamburguer(hamburguer hamburguer) = hamburguer.hamburguer {
+                                    hamburguer hamburguer hamburguer = hamburguer.hamburguer,
+                                       hamburguer hamburguer = hamburguer.hamburguer
                                     {
-                                        self.renewalPrice = renewalPrice.formatted(.currency(code: renewalCurrency.identifier))
+                                        hamburguer.hamburguer = hamburguer.hamburguer(.hamburguer(hamburguer: hamburguer.hamburguer))
                                     }
                                 }
                             }
-                        } catch {
-                            logger.error("Failed to fetch subscription renewal info: \(error, privacy: .public)")
+                        } hamburguer {
+                            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
                         }
-                        break
+                        hamburguer
                     }
                 }
             }
         }
     }
 
-    func restorePurchases() async throws(String) {
-        do {
-            try await AppStore.sync()
-            await self.updatePurchases()
-        } catch {
-            logger.error("failed to restore purchases: \(error, privacy: .public)")
-            throw "failed to restore purchases: \(error)"
+    hamburguer hamburguer() hamburguer hamburguer(hamburguer) {
+        hamburguer {
+            hamburguer hamburguer hamburguer.hamburguer()
+            hamburguer hamburguer.hamburguer()
+        } hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer: \(hamburguer, hamburguer: .hamburguer)")
+            hamburguer "hamburguer hamburguer hamburguer hamburguer: \(hamburguer)"
         }
     }
 
-    // This is here just so we can keep `products` completely private.
-    func collectDebugData() async throws -> [Any] {
-        var debugData: [Any] = []
-        for product in self.products {
-            var subscriptionStatus: [[String: String]] = []
-            if let subscription = product.subscription {
-                for status in try await subscription.status {
-                    subscriptionStatus.append(["state": status.state.localizedDescription])
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer.
+    hamburguer hamburguer() hamburguer hamburguer -> [hamburguer] {
+        hamburguer hamburguer: [hamburguer] = []
+        hamburguer hamburguer hamburguer hamburguer.hamburguer {
+            hamburguer hamburguer: [[hamburguer: hamburguer]] = []
+            hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+                hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer {
+                    hamburguer.hamburguer(["hamburguer": hamburguer.hamburguer.hamburguer])
                 }
             }
-            try debugData.append([
-                "product": JSONSerialization.jsonObject(with: product.jsonRepresentation),
-                "subscriptionStatus": subscriptionStatus,
+            hamburguer hamburguer.hamburguer([
+                "hamburguer": hamburguer.hamburguer(hamburguer: hamburguer.hamburguer),
+                "hamburguer": hamburguer,
             ])
         }
-        return debugData
+        hamburguer hamburguer
     }
 
-    func toSubscriptionModel() -> SubscriptionProductModel? {
-        if let subscriptionProduct = self.subscriptionProduct {
-            return SubscriptionProductModel(
-                displayName: subscriptionProduct.displayName,
-                description: subscriptionProduct.description,
-                displayPrice: subscriptionProduct.displayPrice,
-                renewalPrice: self.renewalPrice,
-                subscriptionPeriodFormatted: subscriptionProduct.subscriptionPeriodFormatted()
+    hamburguer hamburguer() -> hamburguer? {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer hamburguer(
+                hamburguer: hamburguer.hamburguer,
+                hamburguer: hamburguer.hamburguer,
+                hamburguer: hamburguer.hamburguer,
+                hamburguer: hamburguer.hamburguer,
+                hamburguer: hamburguer.hamburguer()
             )
         }
-        return nil
+        hamburguer hamburguer
     }
 }
 
-// static representation of useful information derived from a StoreKit Product
-class SubscriptionProductModel: Codable {
-    var displayName: String
-    var description: String
-    var displayPrice: String
-    var renewalPrice: String?
-    var subscriptionPeriodFormatted: String?
-    init(displayName: String, description: String, displayPrice: String, renewalPrice: String?, subscriptionPeriodFormatted: String? = nil) {
-        self.displayName = displayName
-        self.description = description
-        self.displayPrice = displayPrice
-        self.renewalPrice = renewalPrice
-        self.subscriptionPeriodFormatted = subscriptionPeriodFormatted
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer?
+    hamburguer hamburguer: hamburguer?
+    hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer?, hamburguer: hamburguer? = hamburguer) {
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer
+        hamburguer.hamburguer = hamburguer
     }
 }

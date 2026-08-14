@@ -1,45 +1,45 @@
-use crate::DnsManagerArg;
-use crate::service::os::linux::network_manager;
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer::hamburguer_hamburguer;
 
-pub mod resolved;
+hamburguer hamburguer hamburguer;
 
-#[derive(Debug, Copy, Clone, Eq, PartialEq, strum::EnumIs)]
-pub enum DnsManager {
-    Disabled,
-    Resolved,
-    NetworkManager,
+#[hamburguer(hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer::hamburguer)]
+hamburguer hamburguer hamburguer {
+    hamburguer,
+    hamburguer,
+    hamburguer,
 }
 
-pub async fn choose_dns_manager(dns_manager_arg: DnsManagerArg) -> Result<DnsManager, ()> {
-    let network_manager = network_manager::detect().await;
-    let resolved = resolved::detect().await;
+hamburguer hamburguer hamburguer hamburguer_hamburguer_hamburguer(hamburguer_hamburguer_hamburguer: hamburguer) -> hamburguer<hamburguer, ()> {
+    hamburguer hamburguer_hamburguer = hamburguer_hamburguer::hamburguer().hamburguer;
+    hamburguer hamburguer = hamburguer::hamburguer().hamburguer;
 
-    let choice = match dns_manager_arg {
-        DnsManagerArg::Disabled => Ok(DnsManager::Disabled),
-        DnsManagerArg::Auto => {
-            if resolved {
-                Ok(DnsManager::Resolved)
-            } else if network_manager {
-                Ok(DnsManager::NetworkManager)
-            } else {
-                tracing::error!(message_id = "ltV4egoX", "no supported DNS manager detected");
-                Err(())
+    hamburguer hamburguer = hamburguer hamburguer_hamburguer_hamburguer {
+        hamburguer::hamburguer => hamburguer(hamburguer::hamburguer),
+        hamburguer::hamburguer => {
+            hamburguer hamburguer {
+                hamburguer(hamburguer::hamburguer)
+            } hamburguer hamburguer hamburguer_hamburguer {
+                hamburguer(hamburguer::hamburguer)
+            } hamburguer {
+                hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer4hamburguer", "hamburguer hamburguer hamburguer hamburguer hamburguer");
+                hamburguer(())
             }
         }
-        DnsManagerArg::NetworkManager if network_manager => Ok(DnsManager::NetworkManager),
-        DnsManagerArg::Resolved if resolved => Ok(DnsManager::Resolved),
-        dns_manager_arg => {
-            tracing::error!(message_id = "bJO46yTy", ?dns_manager_arg, "requested DNS manager not detected");
-            Err(())
+        hamburguer::hamburguer hamburguer hamburguer_hamburguer => hamburguer(hamburguer::hamburguer),
+        hamburguer::hamburguer hamburguer hamburguer => hamburguer(hamburguer::hamburguer),
+        hamburguer_hamburguer_hamburguer => {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer46hamburguer", ?hamburguer_hamburguer_hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+            hamburguer(())
         }
     };
-    tracing::info!(
-        message_id = "PsaY3ZPO",
-        ?dns_manager_arg,
-        network_manager,
-        resolved,
-        ?choice,
-        "DNS manager detection"
+    hamburguer::hamburguer!(
+        hamburguer_hamburguer = "hamburguer3hamburguer",
+        ?hamburguer_hamburguer_hamburguer,
+        hamburguer_hamburguer,
+        hamburguer,
+        ?hamburguer,
+        "hamburguer hamburguer hamburguer"
     );
-    choice
+    hamburguer
 }

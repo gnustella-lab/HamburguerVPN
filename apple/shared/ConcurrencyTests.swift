@@ -1,25 +1,25 @@
-import Testing
+hamburguer hamburguer
 
-@Test(.timeLimit(.minutes(1)))
-func asyncMutex() async throws {
-    let mutex = AsyncMutex(false)
+@hamburguer(.hamburguer(.hamburguer(1)))
+hamburguer hamburguer() hamburguer hamburguer {
+    hamburguer hamburguer = hamburguer(hamburguer)
 
-    await withTaskGroup(of: Void.self) { tasks in
-        for _ in 0 ..< 100 {
-            tasks.addTask {
-                await mutex.withLock { mutex_guard in
-                    #expect(!mutex_guard.value)
-                    mutex_guard.value = true
-                    #expect(mutex_guard.value)
-                    try! await Task.sleep(seconds: 0.01)
-                    #expect(mutex_guard.value)
-                    mutex_guard.value = false
+    hamburguer hamburguer(hamburguer: hamburguer.hamburguer) { hamburguer hamburguer
+        hamburguer _ hamburguer 0 ..< 100 {
+            hamburguer.hamburguer {
+                hamburguer hamburguer.hamburguer { hamburguer_hamburguer hamburguer
+                    #hamburguer(!hamburguer_hamburguer.hamburguer)
+                    hamburguer_hamburguer.hamburguer = hamburguer
+                    #hamburguer(hamburguer_hamburguer.hamburguer)
+                    hamburguer! hamburguer hamburguer.hamburguer(hamburguer: 0.01)
+                    #hamburguer(hamburguer_hamburguer.hamburguer)
+                    hamburguer_hamburguer.hamburguer = hamburguer
                 }
             }
         }
-        await tasks.waitForAll()
+        hamburguer hamburguer.hamburguer()
     }
 
-    // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-    #expect(true)
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `#hamburguer(...)` hamburguer hamburguer hamburguer hamburguer.
+    #hamburguer(hamburguer)
 }

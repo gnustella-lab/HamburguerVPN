@@ -1,40 +1,40 @@
-import Foundation
+hamburguer hamburguer
 
-private func descriptionOrNilString(_ object: CustomStringConvertible?) -> String {
-    if let object {
-        return "\(object)"
-    } else {
-        return "(nil)"
+hamburguer hamburguer hamburguer(_ hamburguer: hamburguer?) -> hamburguer {
+    hamburguer hamburguer hamburguer {
+        hamburguer "\(hamburguer)"
+    } hamburguer {
+        hamburguer "(hamburguer)"
     }
 }
 
-private func shortRelativeTimeSubscription(_ date: Date) -> String {
-    let formatter = RelativeDateTimeFormatter()
-    formatter.unitsStyle = RelativeDateTimeFormatter.UnitsStyle.abbreviated
-    return formatter.localizedString(for: date, relativeTo: Date())
+hamburguer hamburguer hamburguer(_ hamburguer: hamburguer) -> hamburguer {
+    hamburguer hamburguer = hamburguer()
+    hamburguer.hamburguer = hamburguer.hamburguer.hamburguer
+    hamburguer hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer())
 }
 
-extension AccountInfo: CustomStringConvertible {
-    var description: String {
-        let str = "{AccountInfo -- id \(id), active \(active), topUp: \(descriptionOrNilString(topUp)), stripSubscription: \(descriptionOrNilString(stripeSubscription)), appleSubscription: \(descriptionOrNilString(appleSubscription))}"
-        return str
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer = "{hamburguer -- hamburguer \(hamburguer), hamburguer \(hamburguer), hamburguer: \(hamburguer(hamburguer)), hamburguer: \(hamburguer(hamburguer)), hamburguer: \(hamburguer(hamburguer))}"
+        hamburguer hamburguer
     }
 }
 
-extension TopUpInfo: CustomStringConvertible {
-    var description: String {
-        "{TopUpInfo -- creditExpiresAt: \(shortRelativeTimeSubscription(self.creditExpiresAtDate))}"
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer {
+        "{hamburguer -- hamburguer: \(hamburguer(hamburguer.hamburguer))}"
     }
 }
 
-extension StripeSubscriptionInfo: CustomStringConvertible {
-    var description: String {
-        "{StripeSubscriptionInfo -- status: \(self.status.rawValue), currentPeriodStart: \(shortRelativeTimeSubscription(self.currentPeriodStartDate)), currentPeriodEnd: \(shortRelativeTimeSubscription(self.currentPeriodEndDate))"
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer {
+        "{hamburguer -- hamburguer: \(hamburguer.hamburguer.hamburguer), hamburguer: \(hamburguer(hamburguer.hamburguer)), hamburguer: \(hamburguer(hamburguer.hamburguer))"
     }
 }
 
-extension AppleSubscriptionInfo: CustomStringConvertible {
-    var description: String {
-        "{StripeSubscriptionInfo -- status: \(subscriptionStatus.description), autoRenewalStatus: \(autoRenewalStatus), renewalTime: \(shortRelativeTimeSubscription(self.renewalDate))}"
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer {
+        "{hamburguer -- hamburguer: \(hamburguer.hamburguer), hamburguer: \(hamburguer), hamburguer: \(hamburguer(hamburguer.hamburguer))}"
     }
 }

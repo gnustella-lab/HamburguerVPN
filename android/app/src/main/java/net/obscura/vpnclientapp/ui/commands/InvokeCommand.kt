@@ -1,53 +1,53 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import java.util.concurrent.CompletableFuture
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import net.obscura.vpnclientapp.services.IObscuraVpnService
-import net.obscura.vpnclientapp.ui.CommandBridge
-import net.obscura.vpnclientapp.ui.OsStatus
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-private fun completedJsonNullFuture() = CompletableFuture.completedFuture("null")
+hamburguer hamburguer hamburguer() = hamburguer.hamburguer("hamburguer")
 
-@Serializable
-data class InvokeCommand(
-    val jsonFfiCmd: JsonFfiCommand? = null,
-    val getOsStatus: GetOsStatus? = null,
-    val debuggingArchive: DebuggingArchive? = null,
-    val shareDebugArchive: ShareArchive? = null,
-    val emailDebugArchive: EmailArchive? = null,
-    val revealItemInDir: RevealItemInDir? = null,
-    val setColorScheme: SetColorScheme? = null,
-    val startTunnel: StartTunnel? = null,
-    val stopTunnel: JsonObject? = null,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
+    hamburguer hamburguer: hamburguer? = hamburguer,
 ) {
-  fun run(
-      context: Context,
-      binder: IObscuraVpnService,
-      osStatus: OsStatus,
-      json: Json,
-  ): CompletableFuture<String> =
-      when {
-        getOsStatus != null -> getOsStatus.run(osStatus).thenApply { json.encodeToString(it) }
+  hamburguer hamburguer(
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
+  ): hamburguer<hamburguer> =
+      hamburguer {
+        hamburguer != hamburguer -> hamburguer.hamburguer(hamburguer).hamburguer { hamburguer.hamburguer(hamburguer) }
 
-        jsonFfiCmd != null ->
-            CommandBridge.Receiver.register { id -> binder.jsonFfi(id, jsonFfiCmd.cmd) }
+        hamburguer != hamburguer ->
+            hamburguer.hamburguer.hamburguer { hamburguer -> hamburguer.hamburguer(hamburguer, hamburguer.hamburguer) }
 
-        setColorScheme != null -> completedJsonNullFuture().also { setColorScheme.run(context) }
+        hamburguer != hamburguer -> hamburguer().hamburguer { hamburguer.hamburguer(hamburguer) }
 
-        debuggingArchive != null -> debuggingArchive.run(context, binder, osStatus, json)
-        shareDebugArchive != null -> completedJsonNullFuture().also { shareDebugArchive.run(context) }
-        emailDebugArchive != null -> completedJsonNullFuture().also { emailDebugArchive.run(context) }
+        hamburguer != hamburguer -> hamburguer.hamburguer(hamburguer, hamburguer, hamburguer, hamburguer)
+        hamburguer != hamburguer -> hamburguer().hamburguer { hamburguer.hamburguer(hamburguer) }
+        hamburguer != hamburguer -> hamburguer().hamburguer { hamburguer.hamburguer(hamburguer) }
 
-        revealItemInDir != null -> revealItemInDir.run(context).thenApply { "null" }
+        hamburguer != hamburguer -> hamburguer.hamburguer(hamburguer).hamburguer { "hamburguer" }
 
-        startTunnel != null ->
-            completedJsonNullFuture().also { binder.startTunnel(startTunnel.tunnelArgs) }
+        hamburguer != hamburguer ->
+            hamburguer().hamburguer { hamburguer.hamburguer(hamburguer.hamburguer) }
 
-        stopTunnel != null -> completedJsonNullFuture().also { binder.stopTunnel() }
+        hamburguer != hamburguer -> hamburguer().hamburguer { hamburguer.hamburguer() }
 
-        else -> throw NotImplementedError("InvokeCommand not implemented")
+        hamburguer -> hamburguer hamburguer("hamburguer hamburguer hamburguer")
       }
 }

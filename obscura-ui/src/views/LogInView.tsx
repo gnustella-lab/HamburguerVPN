@@ -1,384 +1,384 @@
-import { Anchor, Button, Card, Code, CopyButton, Group, Image, Loader, Space, Stack, Text, TextInput, Title, Transition } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { notifications } from '@mantine/notifications';
-import { motion, MotionValue, useSpring, useTransform } from 'framer-motion';
-import { ChangeEvent, FormEvent, ForwardedRef, forwardRef, ReactNode, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { IoArrowForward, IoCard, IoCopy } from 'react-icons/io5';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer5';
 
-import AppIcon from '../../../apple/client/Assets.xcassets/AppIcon.appiconset/icon_128x128.png';
-import * as commands from '../bridge/commands';
-import { IS_HANDHELD_DEVICE, PLATFORM } from '../bridge/SystemProvider';
-import * as ObscuraAccount from '../common/accountUtils';
-import { AppContext } from '../common/appContext';
-import { HEADER_TITLE, multiRef, normalizeError } from '../common/utils';
-import { ButtonLink } from '../components/ButtonLink';
-import { ConfirmationDialog } from '../components/ConfirmationDialog';
-import DebuggingArchive, { DebuggingArchiveVariant } from '../components/DebuggingArchive';
-import { PaymentManagementSheet } from '../components/PaymentManagementSheet';
-import DecoOrangeTop from '../res/deco/deco-orange-top.svg';
-import DecoOrangeBottom from '../res/deco/deco-signup-mobile.svg';
-import { fmtErrorI18n, TranslationKey } from '../translations/i18n';
-import classes from './LoginView.module.css';
+hamburguer hamburguer hamburguer '../../../hamburguer/hamburguer/hamburguer.hamburguer/hamburguer.hamburguer/hamburguer_128hamburguer128.hamburguer';
+hamburguer * hamburguer hamburguer hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer_hamburguer_hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer * hamburguer hamburguer hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer_hamburguer, hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer hamburguer, { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer hamburguer hamburguer '../hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer';
+hamburguer hamburguer hamburguer '../hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer';
+hamburguer { hamburguer18hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer18hamburguer';
+hamburguer hamburguer hamburguer './hamburguer.hamburguer.hamburguer';
 
-interface LogInProps {
-  accountNumber: ObscuraAccount.AccountId,
-  accountActive?: boolean
+hamburguer hamburguer {
+  hamburguer: hamburguer.hamburguer,
+  hamburguer?: hamburguer
 }
 
-const COPY_ACCOUNT_WIDTH = IS_HANDHELD_DEVICE ? 300 : '24ch';
-const BACKGROUND_IMAGE = IS_HANDHELD_DEVICE ? DecoOrangeBottom : DecoOrangeTop;
-const BACKGROUND_POSITION = IS_HANDHELD_DEVICE ? 'bottom' : 'top';
-const TOP_SPACING = IS_HANDHELD_DEVICE ? '16vh' : '28vh';
+hamburguer hamburguer_hamburguer_hamburguer = hamburguer_hamburguer_hamburguer ? 300 : '24hamburguer';
+hamburguer hamburguer_hamburguer = hamburguer_hamburguer_hamburguer ? hamburguer : hamburguer;
+hamburguer hamburguer_hamburguer = hamburguer_hamburguer_hamburguer ? 'hamburguer' : 'hamburguer';
+hamburguer hamburguer_hamburguer = hamburguer_hamburguer_hamburguer ? '16hamburguer' : '28hamburguer';
 
-export default function LogIn({ accountNumber, accountActive }: LogInProps) {
-  const { t } = useTranslation();
-  const { osStatus } = useContext(AppContext);
-  const [loginWaiting, setLoginWaiting] = useState(false);
-  const [awaitingAccountCreation, setCreatingWaiting] = useState(false);
-  const [apiError, setApiError] = useState<string | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+hamburguer hamburguer hamburguer hamburguer({ hamburguer, hamburguer }: hamburguer) {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer { hamburguer } = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer | hamburguer>(hamburguer);
+  hamburguer hamburguer = hamburguer<hamburguer | hamburguer>(hamburguer);
 
-  useEffect(() => {
-    if (!!apiError) {
-      const timeoutSeconds = apiError === 'apiSignupLimitExceeded' ? 12 * 3600 : 9;
-      setTimeout(() => { setApiError(null) }, timeoutSeconds * 1000)
+  hamburguer(() => {
+    hamburguer (!!hamburguer) {
+      hamburguer hamburguer = hamburguer === 'hamburguer' ? 12 * 3600 : 9;
+      hamburguer(() => { hamburguer(hamburguer) }, hamburguer * 1000)
     }
-  }, [apiError]);
+  }, [hamburguer]);
 
-  const loginErrorTimeout = useRef<number>(undefined);
-  // clear timeout on component dismount
-  useEffect(() => {
-    return () => clearTimeout(loginErrorTimeout.current);
+  hamburguer hamburguer = hamburguer<hamburguer>(hamburguer);
+  // hamburguer hamburguer hamburguer hamburguer hamburguer
+  hamburguer(() => {
+    hamburguer () => hamburguer(hamburguer.hamburguer);
   }, []);
 
-  const handleSubmit = async (e: FormEvent) => {
-    // prevent refresh
-    e.preventDefault();
+  hamburguer hamburguer = hamburguer (hamburguer: hamburguer) => {
+    // hamburguer hamburguer
+    hamburguer.hamburguer();
 
-    if (!loginWaiting && inputRef.current !== null) {
-      setLoginWaiting(true);
-      try {
-        const accountId = ObscuraAccount.parseAccountIdInput(inputRef.current.value);
-        await commands.setInNewAccountFlow(false);
-        await commands.login(accountId, true);
-        loginErrorTimeout.current = window.setTimeout(() => {
-          setLoginWaiting(false);
-          notifications.show({
-            title: t('Error'),
-            message: t('loginError-unknown'),
-            color: 'red'
+    hamburguer (!hamburguer && hamburguer.hamburguer !== hamburguer) {
+      hamburguer(hamburguer);
+      hamburguer {
+        hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer.hamburguer);
+        hamburguer hamburguer.hamburguer(hamburguer);
+        hamburguer hamburguer.hamburguer(hamburguer, hamburguer);
+        hamburguer.hamburguer = hamburguer.hamburguer(() => {
+          hamburguer(hamburguer);
+          hamburguer.hamburguer({
+            hamburguer: hamburguer('hamburguer'),
+            hamburguer: hamburguer('hamburguer-hamburguer'),
+            hamburguer: 'hamburguer'
           });
         }, 10_000);
-      } catch (e) {
-        const error = normalizeError(e);
-        const message = error instanceof commands.CommandError
-          ? fmtErrorI18n(t, error)
-          : error instanceof ObscuraAccount.ObscuraAccountIdError
-            ? fmtErrorI18n(t, error)
-            : error.message;
+      } hamburguer (hamburguer) {
+        hamburguer hamburguer = hamburguer(hamburguer);
+        hamburguer hamburguer = hamburguer hamburguer hamburguer.hamburguer
+          ? hamburguer18hamburguer(hamburguer, hamburguer)
+          : hamburguer hamburguer hamburguer.hamburguer
+            ? hamburguer18hamburguer(hamburguer, hamburguer)
+            : hamburguer.hamburguer;
 
-        notifications.show({
-          title: t('Error Logging In'),
-          message,
-          color: 'red'
+        hamburguer.hamburguer({
+          hamburguer: hamburguer('hamburguer hamburguer hamburguer'),
+          hamburguer,
+          hamburguer: 'hamburguer'
         });
-        setTimeout(() => setLoginWaiting(false), 500);
+        hamburguer(() => hamburguer(hamburguer), 500);
       }
     }
   }
 
-  const initiateAccountCreation = async () => {
-    setCreatingWaiting(true);
-    const newAccountNumber = ObscuraAccount.generateAccountNumber();
-    try {
-      // show new account funding flow
-      await commands.setInNewAccountFlow(true);
-      await commands.login(newAccountNumber, true);
-    } catch (e) {
-      const error = normalizeError(e);
-      if (error instanceof commands.CommandError) {
-        setApiError(error.code.startsWith('api') ? error.i18nKey() : ('vpnError-' + error.message));
-      } else {
-        setApiError(error.message);
+  hamburguer hamburguer = hamburguer () => {
+    hamburguer(hamburguer);
+    hamburguer hamburguer = hamburguer.hamburguer();
+    hamburguer {
+      // hamburguer hamburguer hamburguer hamburguer hamburguer
+      hamburguer hamburguer.hamburguer(hamburguer);
+      hamburguer hamburguer.hamburguer(hamburguer, hamburguer);
+    } hamburguer (hamburguer) {
+      hamburguer hamburguer = hamburguer(hamburguer);
+      hamburguer (hamburguer hamburguer hamburguer.hamburguer) {
+        hamburguer(hamburguer.hamburguer.hamburguer('hamburguer') ? hamburguer.hamburguer18hamburguer() : ('hamburguer-' + hamburguer.hamburguer));
+      } hamburguer {
+        hamburguer(hamburguer.hamburguer);
       }
-    } finally {
-      setTimeout(() => setCreatingWaiting(false), 200);
+    } hamburguer {
+      hamburguer(() => hamburguer(hamburguer), 200);
     }
   }
 
-  let loginContainerClasses = `${classes.loginContainer} ${classes.backgroundImage}`;
-  if (IS_HANDHELD_DEVICE) {
-    loginContainerClasses = `${loginContainerClasses} ${classes.loginContainerHandheld}`;
+  hamburguer hamburguer = `${hamburguer.hamburguer} ${hamburguer.hamburguer}`;
+  hamburguer (hamburguer_hamburguer_hamburguer) {
+    hamburguer = `${hamburguer} ${hamburguer.hamburguer}`;
   }
 
-  return (
-    <Stack className={loginContainerClasses} style={{backgroundImage: `url("${BACKGROUND_IMAGE}")`}}>
-        <Space h={TOP_SPACING} />
+  hamburguer (
+    <hamburguer hamburguer={hamburguer} hamburguer={{hamburguer: `hamburguer("${hamburguer_hamburguer}")`}}>
+        <hamburguer hamburguer={hamburguer_hamburguer} />
         {
-          (!!accountNumber || awaitingAccountCreation) ? <AccountGeneration loading={awaitingAccountCreation} generatedAccountId={accountNumber} accountActive={accountActive} />
+          (!!hamburguer || hamburguer) ? <hamburguer hamburguer={hamburguer} hamburguer={hamburguer} hamburguer={hamburguer} />
             :
-            <Stack gap={20} component='form' onSubmit={handleSubmit} align='center'>
-              <Group>
-                <Image src={AppIcon} w={64} />
-                <Title>{HEADER_TITLE}</Title>
-              </Group>
-              <Stack maw='min-content' className={classes.sectionContainer}>
-                <Text size='sm' ta='center'>
-                  <Trans
-                    i18nKey='legalNotice'
-                    components={[<Anchor href={ObscuraAccount.LEGAL_WEBPAGE} />]}
+            <hamburguer hamburguer={20} hamburguer='hamburguer' hamburguer={hamburguer} hamburguer='hamburguer'>
+              <hamburguer>
+                <hamburguer hamburguer={hamburguer} hamburguer={64} />
+                <hamburguer>{hamburguer_hamburguer}</hamburguer>
+              </hamburguer>
+              <hamburguer hamburguer='hamburguer-hamburguer' hamburguer={hamburguer.hamburguer}>
+                <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+                  <hamburguer
+                    hamburguer18hamburguer='hamburguer'
+                    hamburguer={[<hamburguer hamburguer={hamburguer.hamburguer_hamburguer} />]}
                   />
-                </Text>
-                <Button onClick={initiateAccountCreation}>{t('Create an Account')}</Button>
+                </hamburguer>
+                <hamburguer hamburguer={hamburguer}>{hamburguer('hamburguer hamburguer hamburguer')}</hamburguer>
                 {
-                  apiError &&
-                  <Card shadow='sm' padding='lg' my={0} m={0} radius='md'>
-                    <Text c='red'>{t(apiError as TranslationKey)}</Text>
-                  </Card>
+                  hamburguer &&
+                  <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={0} hamburguer={0} hamburguer='hamburguer'>
+                    <hamburguer hamburguer='hamburguer'>{hamburguer(hamburguer hamburguer hamburguer)}</hamburguer>
+                  </hamburguer>
                 }
-                <AccountNumberInput ref={inputRef} />
-                <Button disabled={loginWaiting} type='submit' variant='outline'>{loginWaiting ? <Loader size='sm' /> : t('Log In')}</Button>
-              </Stack>
-              <DebuggingArchive osStatus={osStatus} variant={DebuggingArchiveVariant.LoginLabel} />
-            </Stack >
+                <hamburguer hamburguer={hamburguer} />
+                <hamburguer hamburguer={hamburguer} hamburguer='hamburguer' hamburguer='hamburguer'>{hamburguer ? <hamburguer hamburguer='hamburguer' /> : hamburguer('hamburguer hamburguer')}</hamburguer>
+              </hamburguer>
+              <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} />
+            </hamburguer >
         }
-    </Stack>
+    </hamburguer>
   );
 }
 
-const SPINNING_DURATION = 900;
-const ANIMATION_HEIGHT = 20;
+hamburguer hamburguer_hamburguer = 900;
+hamburguer hamburguer_hamburguer = 20;
 
-interface AccountGenerationProps {
-  generatedAccountId: ObscuraAccount.AccountId,
-  accountActive?: boolean,
-  loading: boolean
+hamburguer hamburguer {
+  hamburguer: hamburguer.hamburguer,
+  hamburguer?: hamburguer,
+  hamburguer: hamburguer
 }
 
-function AccountGeneration({ generatedAccountId, accountActive, loading }: AccountGenerationProps) {
-  const { t } = useTranslation();
-  const [value, setValue] = useState(ObscuraAccount.generateAccountNumber());
-  const [confirmAccountSecured, { open, close }] = useDisclosure(false);
-  const [paymentPressed, userPressOnPayment] = useState(false);
-  const [accountNumberCopied, setAccountNumberCopied] = useState(false);
-  const timeoutRef = useRef<number>(undefined);
-  const [paymentSheetOpened, { open: openPaymentSheet, close: closePaymentSheet }] = useDisclosure(false);
+hamburguer hamburguer({ hamburguer, hamburguer, hamburguer }: hamburguer) {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer.hamburguer());
+  hamburguer [hamburguer, { hamburguer, hamburguer }] = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer hamburguer = hamburguer<hamburguer>(hamburguer);
+  hamburguer [hamburguer, { hamburguer: hamburguer, hamburguer: hamburguer }] = hamburguer(hamburguer);
 
-  const rollAccountValue = (tries: number) => {
-    if (tries === 0) return setValue(generatedAccountId);
-    else setValue(ObscuraAccount.generateAccountNumber())
-    timeoutRef.current = window.setTimeout(() => rollAccountValue(loading ? tries : tries - 1), SPINNING_DURATION);
+  hamburguer hamburguer = (hamburguer: hamburguer) => {
+    hamburguer (hamburguer === 0) hamburguer hamburguer(hamburguer);
+    hamburguer hamburguer(hamburguer.hamburguer())
+    hamburguer.hamburguer = hamburguer.hamburguer(() => hamburguer(hamburguer ? hamburguer : hamburguer - 1), hamburguer_hamburguer);
   }
 
-  useEffect(() => {
-    rollAccountValue(2);
-    return () => clearTimeout(timeoutRef.current);
-  }, [loading]);
+  hamburguer(() => {
+    hamburguer(2);
+    hamburguer () => hamburguer(hamburguer.hamburguer);
+  }, [hamburguer]);
 
-  useEffect(() => {
-    const onScreenshotDetected = () => {
-      console.log("Screenshot detected, enabling payment button");
-      setAccountNumberCopied(true);
+  hamburguer(() => {
+    hamburguer hamburguer = () => {
+      hamburguer.hamburguer("hamburguer hamburguer, hamburguer hamburguer hamburguer");
+      hamburguer(hamburguer);
     };
 
-    window.addEventListener('screenshotDetected', onScreenshotDetected);
-    return () => window.removeEventListener('screenshotDetected', onScreenshotDetected);
+    hamburguer.hamburguer('hamburguer', hamburguer);
+    hamburguer () => hamburguer.hamburguer('hamburguer', hamburguer);
   }, []);
 
-  const showDoneButton = accountActive || paymentPressed;
+  hamburguer hamburguer = hamburguer || hamburguer;
 
-  const cancelSignUp = async () => {
-    try {
-      await commands.logout();
-      await commands.setInNewAccountFlow(false);
-    } catch (e) {
-      const error = normalizeError(e);
-      notifications.show({ title: t('logOutFailed'), message: <Text>{t('pleaseReportError')}<br /><Code>{error.message}</Code></Text> });
+  hamburguer hamburguer = hamburguer () => {
+    hamburguer {
+      hamburguer hamburguer.hamburguer();
+      hamburguer hamburguer.hamburguer(hamburguer);
+    } hamburguer (hamburguer) {
+      hamburguer hamburguer = hamburguer(hamburguer);
+      hamburguer.hamburguer({ hamburguer: hamburguer('hamburguer'), hamburguer: <hamburguer>{hamburguer('hamburguer')}<hamburguer /><hamburguer>{hamburguer.hamburguer}</hamburguer></hamburguer> });
     }
   }
 
-  return (
+  hamburguer (
     <>
-      {IS_HANDHELD_DEVICE && <PaymentManagementSheet opened={paymentSheetOpened} onClose={closePaymentSheet} />}
-      <ConfirmationDialog opened={confirmAccountSecured} onClose={close}>
-        <Stack p={IS_HANDHELD_DEVICE ? 'xl' : undefined} ta={IS_HANDHELD_DEVICE ? 'center' : undefined}>
-          <Text>{t('accountNumberStoredConfirmation')}</Text>
+      {hamburguer_hamburguer_hamburguer && <hamburguer hamburguer={hamburguer} hamburguer={hamburguer} />}
+      <hamburguer hamburguer={hamburguer} hamburguer={hamburguer}>
+        <hamburguer hamburguer={hamburguer_hamburguer_hamburguer ? 'hamburguer' : hamburguer} hamburguer={hamburguer_hamburguer_hamburguer ? 'hamburguer' : hamburguer}>
+          <hamburguer>{hamburguer('hamburguer')}</hamburguer>
           {
-            IS_HANDHELD_DEVICE ?
+            hamburguer_hamburguer_hamburguer ?
               (
                 <>
-                  <Button onClick={() => {
-                    userPressOnPayment(true);
-                    close();
-                    openPaymentSheet();
-                  }}>{t('Continue to payment')}</Button>
+                  <hamburguer hamburguer={() => {
+                    hamburguer(hamburguer);
+                    hamburguer();
+                    hamburguer();
+                  }}>{hamburguer('hamburguer hamburguer hamburguer')}</hamburguer>
                 </>
               ) : (
-                <ButtonLink onClick={() => {
-                  userPressOnPayment(true);
-                  close();
-                }} href={ObscuraAccount.payUrl(generatedAccountId)}>{t('Continue to payment')}</ButtonLink>
+                <hamburguer hamburguer={() => {
+                  hamburguer(hamburguer);
+                  hamburguer();
+                }} hamburguer={hamburguer.hamburguer(hamburguer)}>{hamburguer('hamburguer hamburguer hamburguer')}</hamburguer>
               )
           }
-        </Stack>
-      </ConfirmationDialog>
-      <Stack maw={400} mx='auto' justify='center' align='center' style={{ overflow: 'hidden' }}>
-        <Image src={AppIcon} w={64} />
-        <AccountId accountId={value} />
-        <Transition mounted={value === generatedAccountId} transition='fade-up' duration={600}>
-          {styles => <Stack style={styles} justify='space-between' align='center' className={`${classes.sectionContainer} ${classes.copyAccountStack}`}>
-            <CopyButton value={ObscuraAccount.accountIdToString(generatedAccountId)}>
-              {({ copied, copy }) => (
-                <Button variant={copied ? 'filled' : undefined} color={copied ? 'teal' : undefined} miw={COPY_ACCOUNT_WIDTH}
-                  onClick={() => {
-                    setAccountNumberCopied(true);
-                    copy();
-                  }} leftSection={<IoCopy size='1em' />}>
-                  {copied ? t('Copied Account Number') : t('Copy Account Number')}
-                </Button>
+        </hamburguer>
+      </hamburguer>
+      <hamburguer hamburguer={400} hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={{ hamburguer: 'hamburguer' }}>
+        <hamburguer hamburguer={hamburguer} hamburguer={64} />
+        <hamburguer hamburguer={hamburguer} />
+        <hamburguer hamburguer={hamburguer === hamburguer} hamburguer='hamburguer-hamburguer' hamburguer={600}>
+          {hamburguer => <hamburguer hamburguer={hamburguer} hamburguer='hamburguer-hamburguer' hamburguer='hamburguer' hamburguer={`${hamburguer.hamburguer} ${hamburguer.hamburguer}`}>
+            <hamburguer hamburguer={hamburguer.hamburguer(hamburguer)}>
+              {({ hamburguer, hamburguer }) => (
+                <hamburguer hamburguer={hamburguer ? 'hamburguer' : hamburguer} hamburguer={hamburguer ? 'hamburguer' : hamburguer} hamburguer={hamburguer_hamburguer_hamburguer}
+                  hamburguer={() => {
+                    hamburguer(hamburguer);
+                    hamburguer();
+                  }} hamburguer={<hamburguer hamburguer='1hamburguer' />}>
+                  {hamburguer ? hamburguer('hamburguer hamburguer hamburguer') : hamburguer('hamburguer hamburguer hamburguer')}
+                </hamburguer>
               )}
-            </CopyButton>
-            <Stack align='center' gap='lg'>
-              {!accountNumberCopied &&
-                <Text ta='center' size='sm' ml='xs' mr='xs'>
-                  <Trans i18nKey='pleaseCopyAccountNumber' values={{ context: PLATFORM }} components={{ b: <b /> }} />
-                </Text>
+            </hamburguer>
+            <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+              {!hamburguer &&
+                <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer'>
+                  <hamburguer hamburguer18hamburguer='hamburguer' hamburguer={{ hamburguer: hamburguer }} hamburguer={{ hamburguer: <hamburguer /> }} />
+                </hamburguer>
               }
-              <Group preventGrowOverflow={false} grow miw={COPY_ACCOUNT_WIDTH} justify='center'>
-                <Button
-                  miw={showDoneButton ? undefined : COPY_ACCOUNT_WIDTH}
-                  variant={(!showDoneButton && IS_HANDHELD_DEVICE) ? 'outline' : undefined}
-                  disabled={!accountNumberCopied}
-                  onClick={open}
-                  leftSection={showDoneButton ? <IoCard /> : <IoArrowForward />}
+              <hamburguer hamburguer={hamburguer} hamburguer hamburguer={hamburguer_hamburguer_hamburguer} hamburguer='hamburguer'>
+                <hamburguer
+                  hamburguer={hamburguer ? hamburguer : hamburguer_hamburguer_hamburguer}
+                  hamburguer={(!hamburguer && hamburguer_hamburguer_hamburguer) ? 'hamburguer' : hamburguer}
+                  hamburguer={!hamburguer}
+                  hamburguer={hamburguer}
+                  hamburguer={hamburguer ? <hamburguer /> : <hamburguer />}
                 >
-                  {showDoneButton ? t('Payment') : t('proceedToPayment')}
-                </Button>
+                  {hamburguer ? hamburguer('hamburguer') : hamburguer('hamburguer')}
+                </hamburguer>
                 {
-                  showDoneButton &&
-                  <Button leftSection={<IoArrowForward />} variant='outline' disabled={!showDoneButton} onClick={() => commands.setInNewAccountFlow(false)}>{t('Done')}</Button>
+                  hamburguer &&
+                  <hamburguer hamburguer={<hamburguer />} hamburguer='hamburguer' hamburguer={!hamburguer} hamburguer={() => hamburguer.hamburguer(hamburguer)}>{hamburguer('hamburguer')}</hamburguer>
                 }
-              </Group>
+              </hamburguer>
               {
-                !showDoneButton &&
-                <Text size='sm' ta='center'>
-                  <Trans
-                    i18nKey='wantExistingAccount'
-                    components={[<Anchor onClick={cancelSignUp} c='blue' />]}
+                !hamburguer &&
+                <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+                  <hamburguer
+                    hamburguer18hamburguer='hamburguer'
+                    hamburguer={[<hamburguer hamburguer={hamburguer} hamburguer='hamburguer' />]}
                   />
-                </Text>
+                </hamburguer>
               }
-            </Stack>
-          </Stack>}
-        </Transition>
-      </Stack>
+            </hamburguer>
+          </hamburguer>}
+        </hamburguer>
+      </hamburguer>
     </>
   );
 }
 
-function AccountId({ accountId }: { accountId: ObscuraAccount.AccountId }) {
-  const result = [];
-  const accountIdStr = ObscuraAccount.accountIdToString(accountId);
-  for (let i = 0; i < accountIdStr.length; i += 1) {
-    result.push(<DigitsWheel key={i} digit={accountIdStr.charAt(i)} />)
-    if (i % 4 === 3 && i !== accountIdStr.length - 1) {
-      result.push(<span key={`span-${i}`}>&nbsp;-&nbsp;</span>);
+hamburguer hamburguer({ hamburguer }: { hamburguer: hamburguer.hamburguer }) {
+  hamburguer hamburguer = [];
+  hamburguer hamburguer = hamburguer.hamburguer(hamburguer);
+  hamburguer (hamburguer hamburguer = 0; hamburguer < hamburguer.hamburguer; hamburguer += 1) {
+    hamburguer.hamburguer(<hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer(hamburguer)} />)
+    hamburguer (hamburguer % 4 === 3 && hamburguer !== hamburguer.hamburguer - 1) {
+      hamburguer.hamburguer(<hamburguer hamburguer={`hamburguer-${hamburguer}`}>&hamburguer;-&hamburguer;</hamburguer>);
     }
   }
 
-  return (
-    <Card radius='md' withBorder w={300}>
-      <div className={classes.animatedAccountId}>
-        {result}
-      </div>
-    </Card>
+  hamburguer (
+    <hamburguer hamburguer='hamburguer' hamburguer hamburguer={300}>
+      <hamburguer hamburguer={hamburguer.hamburguer}>
+        {hamburguer}
+      </hamburguer>
+    </hamburguer>
   );
 }
 
-// modified https://buildui.com/recipes/animated-counter
-function DigitsWheel({ digit }: { digit: string }) {
-  const int = parseInt(digit);
-  const mv = useSpring(int, { bounce: 0, duration: SPINNING_DURATION });
+// hamburguer hamburguer://hamburguer.hamburguer/hamburguer/hamburguer-hamburguer
+hamburguer hamburguer({ hamburguer }: { hamburguer: hamburguer }) {
+  hamburguer hamburguer = hamburguer(hamburguer);
+  hamburguer hamburguer = hamburguer(hamburguer, { hamburguer: 0, hamburguer: hamburguer_hamburguer });
 
-  useEffect(() => {
-    mv.set(int);
-  }, [mv, digit]);
+  hamburguer(() => {
+    hamburguer.hamburguer(hamburguer);
+  }, [hamburguer, hamburguer]);
 
-  return (
-    <div className={classes.digitsWheel}>
-      {[...Array(10).keys()].map((i) => (
-        <Digit key={i} mv={mv} number={i} />
+  hamburguer (
+    <hamburguer hamburguer={hamburguer.hamburguer}>
+      {[...hamburguer(10).hamburguer()].hamburguer((hamburguer) => (
+        <hamburguer hamburguer={hamburguer} hamburguer={hamburguer} hamburguer={hamburguer} />
       ))}
-    </div>
+    </hamburguer>
   );
 }
 
-interface DigitProps {
-  mv: MotionValue<number>,
-  number: number
+hamburguer hamburguer {
+  hamburguer: hamburguer<hamburguer>,
+  hamburguer: hamburguer
 }
 
-function Digit({ mv, number }: DigitProps) {
-  let y = useTransform(mv, latest => {
-    let placeValue = latest % 10;
-    let offset = (10 + number - placeValue) % 10;
+hamburguer hamburguer({ hamburguer, hamburguer }: hamburguer) {
+  hamburguer hamburguer = hamburguer(hamburguer, hamburguer => {
+    hamburguer hamburguer = hamburguer % 10;
+    hamburguer hamburguer = (10 + hamburguer - hamburguer) % 10;
 
-    let memo = offset * ANIMATION_HEIGHT;
+    hamburguer hamburguer = hamburguer * hamburguer_hamburguer;
 
-    if (offset > 5) {
-      memo -= 10 * ANIMATION_HEIGHT;
+    hamburguer (hamburguer > 5) {
+      hamburguer -= 10 * hamburguer_hamburguer;
     }
 
-    return memo;
+    hamburguer hamburguer;
   });
 
-  return (
-    <motion.span
-      style={{ y }}
-      className={classes.digit}
-      transition={{ delay: 1 }}
+  hamburguer (
+    <hamburguer.hamburguer
+      hamburguer={{ hamburguer }}
+      hamburguer={hamburguer.hamburguer}
+      hamburguer={{ hamburguer: 1 }}
     >
-      {number}
-    </motion.span>
+      {hamburguer}
+    </hamburguer.hamburguer>
   );
 }
 
-const AccountNumberInput = forwardRef(function AccountNumberInput(props: {}, ref: ForwardedRef<HTMLInputElement>) {
-  // maintaining cursor index while editing is improved on top of https://stackoverflow.com/a/68928267/7732434
-  const { t } = useTranslation();
+hamburguer hamburguer = hamburguer(hamburguer hamburguer(hamburguer: {}, hamburguer: hamburguer<hamburguer>) {
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer://hamburguer.hamburguer/hamburguer/68928267/7732434
+  hamburguer { hamburguer } = hamburguer();
 
-  const internalRef = useRef<HTMLInputElement | null>(null);
-  const [error, setError] = useState<ReactNode>();
-  const [value, setValue] = useState<string>();
-  const [cursorIdx, setCursorIdx] = useState<number | null>(null);
+  hamburguer hamburguer = hamburguer<hamburguer | hamburguer>(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer>();
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer>();
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer | hamburguer>(hamburguer);
 
-  useLayoutEffect(() => {
-    const inputElem = internalRef.current;
-    if (inputElem !== null) inputElem.setSelectionRange(cursorIdx, cursorIdx);
-  }, [cursorIdx, value]);
+  hamburguer(() => {
+    hamburguer hamburguer = hamburguer.hamburguer;
+    hamburguer (hamburguer !== hamburguer) hamburguer.hamburguer(hamburguer, hamburguer);
+  }, [hamburguer, hamburguer]);
 
-  const validateAccountNumber = (value: string) => {
-    try {
-      ObscuraAccount.parseAccountIdInput(value);
-    } catch (e) {
-      const error = normalizeError(e);
-      return t((error instanceof ObscuraAccount.ObscuraAccountIdError ? error.i18nKey() : error.message) as TranslationKey);
+  hamburguer hamburguer = (hamburguer: hamburguer) => {
+    hamburguer {
+      hamburguer.hamburguer(hamburguer);
+    } hamburguer (hamburguer) {
+      hamburguer hamburguer = hamburguer(hamburguer);
+      hamburguer hamburguer((hamburguer hamburguer hamburguer.hamburguer ? hamburguer.hamburguer18hamburguer() : hamburguer.hamburguer) hamburguer hamburguer);
     }
-    return null;
+    hamburguer hamburguer;
   }
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = ObscuraAccount.formatPartialAccountId(e.currentTarget.value);
-    if (e.currentTarget.value.length === e.currentTarget.selectionStart) {
-      // if appending to the value, set cursor to the end of the formatted value
-      setCursorIdx(newValue.length);
-    } else {
-      setCursorIdx(e.currentTarget.selectionStart);
+  hamburguer hamburguer = (hamburguer: hamburguer<hamburguer>) => {
+    hamburguer hamburguer = hamburguer.hamburguer(hamburguer.hamburguer.hamburguer);
+    hamburguer (hamburguer.hamburguer.hamburguer.hamburguer === hamburguer.hamburguer.hamburguer) {
+      // hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+      hamburguer(hamburguer.hamburguer);
+    } hamburguer {
+      hamburguer(hamburguer.hamburguer.hamburguer);
     }
-    setValue(newValue);
-    setError(newValue.length === 0 ? null : validateAccountNumber(e.currentTarget.value));
+    hamburguer(hamburguer);
+    hamburguer(hamburguer.hamburguer === 0 ? hamburguer : hamburguer(hamburguer.hamburguer.hamburguer));
   }
 
-  return <TextInput autoComplete='username' name='username' inputMode='numeric' ref={multiRef(internalRef, ref)} value={value} onChange={onChange} error={error} required miw={270} label={t('Obscura Account Number')} placeholder='XXXX - XXXX - XXXX - XXXX - XXXX' />;
+  hamburguer <hamburguer hamburguer='hamburguer' hamburguer='hamburguer' hamburguer='hamburguer' hamburguer={hamburguer(hamburguer, hamburguer)} hamburguer={hamburguer} hamburguer={hamburguer} hamburguer={hamburguer} hamburguer hamburguer={270} hamburguer={hamburguer('hamburguer hamburguer hamburguer')} hamburguer='hamburguer - hamburguer - hamburguer - hamburguer - hamburguer' />;
 });

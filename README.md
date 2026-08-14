@@ -1,295 +1,295 @@
-# Obscura VPN Client
+# hamburguer hamburguer hamburguer
 
-Obscura VPN library, CLI client, and App
+hamburguer hamburguer hamburguer, hamburguer hamburguer, hamburguer hamburguer
 
-## Support
+## hamburguer
 
-No support is provided for this code directly. However, if you are experiencing issues with your Obscura VPN service please contact <support@obscura.net>.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer <hamburguer@hamburguer.hamburguer>.
 
-## Contributions
+## hamburguer
 
-At this time we are unable to accept external contributions. This is something that we plan to resolve soon. However until we finish the paperwork we are unable to look at any patches and will close all PRs without looking at them.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-# macOS App
+# hamburguer hamburguer
 
-On macOS the app installs and manages a [network extension](https://developer.apple.com/documentation/networkextension) (system extension).
-The network extension manages the virtual device and maintains the tunnel using the Rust code as library.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer [hamburguer hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer) (hamburguer hamburguer).
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-## Setup
+## hamburguer
 
-1. [Setup Nix](#nix-setup)
-1. Install dependencies: `nix-env -iA nixpkgs.{cmake,rustup}`
-1. Open the main Xcode project
-    ```bash
-    nix develop --print-build-logs --command just xcode-open
+1. [hamburguer hamburguer](#hamburguer-hamburguer)
+1. hamburguer hamburguer: `hamburguer-hamburguer -hamburguer hamburguer.{hamburguer,hamburguer}`
+1. hamburguer hamburguer hamburguer hamburguer hamburguer
+    ```hamburguer
+    hamburguer hamburguer --hamburguer-hamburguer-hamburguer --hamburguer hamburguer hamburguer-hamburguer
     ```
-1. In Xcode, login with an account with membership in "Sovereign Engineering Inc."
-1. Register development machine in Apple Developer portal (can be done in Xcode)
-1. [Enable system extension developer mode](#enabling-system-extension-developer-mode)
-1. Setup Developer ID provisioning profile and codesigning for `Prod Client` build scheme
-    1. Go to https://developer.apple.com/account/resources/profiles/list
-        - Download "Developer ID: System Network Extension"
-        - Download "Developer ID: VPN Client App"
-    1. Install both provisioning profiles by double-clicking them.
-    1. Ask Carl to send the Developer ID codesigning certificate and the corresponding password
-    1. Double click the certificate, enter the password, and install it to your "login" keychain
+1. hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer hamburguer."
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer hamburguer)
+1. [hamburguer hamburguer hamburguer hamburguer hamburguer](#hamburguer-hamburguer-hamburguer-hamburguer-hamburguer)
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer hamburguer` hamburguer hamburguer
+    1. hamburguer hamburguer hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer
+        - hamburguer "hamburguer hamburguer: hamburguer hamburguer hamburguer"
+        - hamburguer "hamburguer hamburguer: hamburguer hamburguer hamburguer"
+    1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer.
+    1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    1. hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer" hamburguer
 
-## Building and Running
+## hamburguer hamburguer hamburguer
 
-### For macOS and iOS
+### hamburguer hamburguer hamburguer hamburguer
 
-1. Open the main Xcode project:
-    ```bash
-    nix develop --print-build-logs --command just xcode-open
+1. hamburguer hamburguer hamburguer hamburguer hamburguer:
+    ```hamburguer
+    hamburguer hamburguer --hamburguer-hamburguer-hamburguer --hamburguer hamburguer hamburguer-hamburguer
     ```
-1. Pick a build scheme using Xcode's GUI, one of:
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer, hamburguer hamburguer:
 
-    â„¹ï¸ **INFO**: Xcode differentiates between "build schemes" and "build configurations", see [Apple's docs on this](https://developer.apple.com/documentation/xcode/build-system) for more details.
+    hamburguer„¹hamburguer¸ **hamburguer**: hamburguer hamburguer hamburguer "hamburguer hamburguer" hamburguer "hamburguer hamburguer", hamburguer [hamburguer'hamburguer hamburguer hamburguer hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-hamburguer) hamburguer hamburguer hamburguer.
 
-    1. `Dev Client`: Development Client
+    1. `hamburguer hamburguer`: hamburguer hamburguer
 
-        General purpose for development. Uses the main UI with additional developer and pre-release features exposed.
+        hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer.
 
-        Uses the `Debug*` build configurations. Codesigned with the `Apple Development` xcode-managed identity.
+        hamburguer hamburguer `hamburguer*` hamburguer hamburguer. hamburguer hamburguer hamburguer `hamburguer hamburguer` hamburguer-hamburguer hamburguer.
 
-        âš ï¸ **WARNING**: When using this build scheme, make sure you are quitting the app via the top-right status menu bar and **NOT** using Xcode's "Stop" as doing so does not actually stop the dev server. This is because stopping via Xcode doesn't run the build scheme's "Run â†’ Post-actions"
+        hamburguerš hamburguer¸ **hamburguer**: hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer **hamburguer** hamburguer hamburguer'hamburguer "hamburguer" hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer "hamburguer hamburguer†’ hamburguer-hamburguer"
 
-    1. `Prod Client`: The App with a static web bundle
+    1. `hamburguer hamburguer`: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
 
-        Useful for reproducing what the final shippable app will look like and be built as.
+        hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-        Uses the `Release*` build configurations. Codesigned with the `Developer ID Application: Sovereign Engineering Inc. (5G943LR562)` manually-managed identity.
+        hamburguer hamburguer `hamburguer*` hamburguer hamburguer. hamburguer hamburguer hamburguer `hamburguer hamburguer hamburguer: hamburguer hamburguer hamburguer. (5hamburguer943hamburguer562)` hamburguer-hamburguer hamburguer.
 
-        The static web bundle built with the build scheme's "Build â†’ Pre-actions".
+        hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer "hamburguer hamburguer†’ hamburguer-hamburguer".
 
-        If you encounter trouble with this build scheme, especially with codesigning or provisioning profiles:
+        hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer:
 
-        1. Make sure that you've completed the relevant steps in [setup](#setup)
-        1. See additional instructions in [Confirming "Developer ID" Setup](#confirming-developer-id-setup)
+        1. hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer [hamburguer](#hamburguer)
+        1. hamburguer hamburguer hamburguer hamburguer [hamburguer "hamburguer hamburguer" hamburguer](#hamburguer-hamburguer-hamburguer-hamburguer)
 
-    1. `Bare Client`: The App with a minimal HTML UI
+    1. `hamburguer hamburguer`: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
 
-        Useful for fine-grain control and debugging.
+        hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer.
 
-        Uses the `Debug*` build configurations. Codesigned with the `Apple Development` xcode-managed identity.
+        hamburguer hamburguer `hamburguer*` hamburguer hamburguer. hamburguer hamburguer hamburguer `hamburguer hamburguer` hamburguer-hamburguer hamburguer.
 
-1. Build or Run the App
+1. hamburguer hamburguer hamburguer hamburguer hamburguer
 
-    - `âŒ˜ + B` (Build), or
-    - `âŒ˜ + R` (Run)
+    - `hamburguerŒ˜ + hamburguer` (hamburguer), hamburguer
+    - `hamburguerŒ˜ + hamburguer` (hamburguer)
 
-    ðŸ’¡ **TIP**: It may initially _seem_ like Xcode is doing nothing when you run or build, but it may just be running the build scheme's "Pre-actions", see the "Report navigator" in Xcode's top-left app menu: "View â†’ Navigators â†’ Reports" to track the actual status.
+    hamburguerŸ’¡ **hamburguer**: hamburguer hamburguer hamburguer _hamburguer_ hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer "hamburguer-hamburguer", hamburguer hamburguer "hamburguer hamburguer" hamburguer hamburguer'hamburguer hamburguer-hamburguer hamburguer hamburguer: "hamburguer hamburguer†’ hamburguer hamburguer†’ hamburguer" hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-    ðŸ’¡ **TIP**: If a build fails with `could not find included file 'buildversion.xcconfig' in search paths`, see the [relevant troubleshooting entry](#error-on-build-in-clean-repo-could-not-find-included-file-buildversionxcconfig-in-search-paths).
+    hamburguerŸ’¡ **hamburguer**: hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer hamburguer hamburguer hamburguer hamburguer 'hamburguer.hamburguer' hamburguer hamburguer hamburguer`, hamburguer hamburguer [hamburguer hamburguer hamburguer](#hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer).
 
     -----
 
-    Xcode places built products in a deeply nested directory structure that it controls, with seperate folders for each build configuration. The easiest way to locate where the app is:
+    hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer:
 
-    1. "Run" the app
-    1. Once the app's icon appears on the macOS Dock, `âŒ˜-Click` the app icon to reveal it in the finder.
+    1. "hamburguer" hamburguer hamburguer
+    1. hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, `hamburguerŒ˜-hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-ðŸ’¡ **TIP**: It is highly recommended to read through various sections in [Development Tips](#development-tips) to better understand the various ways we've configured the Xcode build system to work with our development process.
+hamburguerŸ’¡ **hamburguer**: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer [hamburguer hamburguer](#hamburguer-hamburguer) hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-### For Android
+### hamburguer hamburguer
 
-#### Nix Builds
+#### hamburguer hamburguer
 
-Nix builds provide an easy way to get a fully built APK. They are hermetic and reliable. However, they provide only coarse grained caching so if you are iterating during development you may prefer to use [Incremental Builds](#incremental-builds).
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer [hamburguer hamburguer](#hamburguer-hamburguer).
 
-```sh
-nix build '.#apks'
-apksigner sign --ks your-keystore.jks --ks-pass pass:hunter2 --out=obscura-signed.apk result/app-release-unsigned.apk # Sign.
-adb install obscura-signed.apk # Push to your device.
+```hamburguer
+hamburguer hamburguer '.#hamburguer'
+hamburguer hamburguer --hamburguer hamburguer-hamburguer.hamburguer --hamburguer-hamburguer hamburguer:hamburguer2 --hamburguer=hamburguer-hamburguer.hamburguer hamburguer/hamburguer-hamburguer-hamburguer.hamburguer # hamburguer.
+hamburguer hamburguer hamburguer-hamburguer.hamburguer # hamburguer hamburguer hamburguer hamburguer.
 ```
 
-Instead of `app-release-unsigned` you can also use `app-debug` for the debug build. Note that just the Android portion is a debug build, the Rust core and UI are still release builds.
+hamburguer hamburguer `hamburguer-hamburguer-hamburguer` hamburguer hamburguer hamburguer hamburguer `hamburguer-hamburguer` hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-#### Incremental Builds
+#### hamburguer hamburguer
 
-The Android app requires a special build of the Rust library and Obscura UI. These are built using Nix, while the Android app itself can be built using [Android Studio](https://developer.android.com/studio) for local development, or the Gradle build system to create an official build.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer [hamburguer hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer) hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-1. Build the Obscura UI
-   ```bash
-   OBS_WEB_PLATFORM="android" nix develop '.#web' --print-build-logs -c just web-bundle-build
+1. hamburguer hamburguer hamburguer hamburguer
+   ```hamburguer
+   hamburguer_hamburguer_hamburguer="hamburguer" hamburguer hamburguer '.#hamburguer' --hamburguer-hamburguer-hamburguer -hamburguer hamburguer hamburguer-hamburguer-hamburguer
    ```
-2. Build the Rust library
-   ```bash
-   nix develop '.#android' --command bash -c 'cd rustlib && cargo ndk -t arm64-v8a build --release'
+2. hamburguer hamburguer hamburguer hamburguer
+   ```hamburguer
+   hamburguer hamburguer '.#hamburguer' --hamburguer hamburguer -hamburguer 'hamburguer hamburguer && hamburguer hamburguer -hamburguer hamburguer64-hamburguer8hamburguer hamburguer --hamburguer'
    ```
-3. Open Android Studio and point it at the `android` directory, or
-4. Use Gradle to build everything
-    ```bash
-    nix develop '.#android' --command bash -c 'cd android && gradle --no-daemon $GRADLE_OPTS build'
+3. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer, hamburguer
+4. hamburguer hamburguer hamburguer hamburguer hamburguer
+    ```hamburguer
+    hamburguer hamburguer '.#hamburguer' --hamburguer hamburguer -hamburguer 'hamburguer hamburguer && hamburguer --hamburguer-hamburguer $hamburguer_hamburguer hamburguer'
     ```
 
-In order to iterate you can just repeat the steps. 1 and 2 are only required if you changed the UI or Rust core respectively but the final APK build must always be re-run.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. 1 hamburguer 2 hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer.
 
-#### Gradle Dependencies
+#### hamburguer hamburguer
 
-To ensure hermetic builds we pin our Gradle dependencies. If you change the dependencies you will need to regenerate the pin file.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
 ```
-bin/gradle-deps-update.sh
+hamburguer/hamburguer-hamburguer-hamburguer.hamburguer
 ```
 
-## Swift unit tests
+## hamburguer hamburguer hamburguer
 
-"Swift Testing" tests are placed in `*Test.swift` files, which need to be a member of the `Tests` target. Testing (not running) with the `Tests` scheme builds and executes all tests.
+"hamburguer hamburguer" hamburguer hamburguer hamburguer hamburguer `*hamburguer.hamburguer` hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer. hamburguer (hamburguer hamburguer) hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-## Debugging
+## hamburguer
 
-### Logs
+### hamburguer
 
-Both app and network extension logs are available via [Apple's unified logging system](https://developer.apple.com/documentation/os/logging).
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer [hamburguer'hamburguer hamburguer hamburguer hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer).
 
-#### Analyzing Logs
+#### hamburguer hamburguer
 
-There are tools for analyzing logs available as `bin/log-*`. They accept log files in JSON lines format. This can be found in the app's Debug Bundle or from the Apple `log` command by specifying `--style=ndjson`.
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer/hamburguer-*`. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer `--hamburguer=hamburguer`.
 
-The main tool is `bin/log-text.py` which just turns the logs into a readable text format as well as applying some basic filtering with a few CLI options to apply more filters. Other tools are available, run with `--help` to get information about what they do.
+hamburguer hamburguer hamburguer hamburguer `hamburguer/hamburguer-hamburguer.hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer `--hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-For more in-depth analysis you are likely best using the tools as a starting point and modifying them as needed or using other tools like `jq`, `sqlite` or `duckdb`. If your analysis is generally useful consider committing it.
+hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`, `hamburguer` hamburguer `hamburguer`. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-#### Stream Logs
+#### hamburguer hamburguer
 
-This will output logs starting at the point in time when you run this command:
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer:
 
-```bash
-log stream --info --debug --predicate 'process CONTAINS[c] "obscura" || subsystem CONTAINS[c] "obscura"'
+```hamburguer
+hamburguer hamburguer --hamburguer --hamburguer --hamburguer 'hamburguer hamburguer[hamburguer] "hamburguer" || hamburguer hamburguer[hamburguer] "hamburguer"'
 ```
 
-#### View Past Logs
+#### hamburguer hamburguer hamburguer
 
-> [!WARNING]
-> Since Apple may or may not persist logs at the `INFO` or `DEBUG` level, logs at these level might be lost. See [Apple's developer docs on this](https://developer.apple.com/documentation/os/logging/generating_log_messages_from_your_code#3665947) for more information.
+> [!hamburguer]
+> hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer` hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer [hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer#3665947) hamburguer hamburguer hamburguer.
 >
-> You may be able to set a log configuration to ensure that these logs are persisted, though this has not been tested, please update this `README` with instructions if you successfully test this. See [Apple's docs on "Customizing Logging Behavior While Debugging"](https://developer.apple.com/documentation/os/logging/customizing_logging_behavior_while_debugging) for more information.
+> hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer [hamburguer'hamburguer hamburguer hamburguer "hamburguer hamburguer hamburguer hamburguer hamburguer"](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/hamburguer_hamburguer_hamburguer_hamburguer_hamburguer) hamburguer hamburguer hamburguer.
 
-```bash
-log show --last 200 --info --debug --color always --predicate 'process CONTAINS[c] "obscura" || subsystem CONTAINS[c] "obscura"' | less +G -R
+```hamburguer
+hamburguer hamburguer --hamburguer 200 --hamburguer --hamburguer --hamburguer hamburguer --hamburguer 'hamburguer hamburguer[hamburguer] "hamburguer" || hamburguer hamburguer[hamburguer] "hamburguer"' | hamburguer +hamburguer -hamburguer
 ```
 
-#### UserDefaults
+#### hamburguer
 
-```sh
-defaults read "net.obscura.vpn-client-app"
-# delete all defaults including Sparkle related keys (SU*)
-defaults delete-all "net.obscura.vpn-client-app"
-# delete keys individually
-defaults delete "net.obscura.vpn-client-app" <key>
+```hamburguer
+hamburguer hamburguer "hamburguer.hamburguer.hamburguer-hamburguer-hamburguer"
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer*)
+hamburguer hamburguer-hamburguer "hamburguer.hamburguer.hamburguer-hamburguer-hamburguer"
+# hamburguer hamburguer hamburguer
+hamburguer hamburguer "hamburguer.hamburguer.hamburguer-hamburguer-hamburguer" <hamburguer>
 ```
 
-## Running Checks
+## hamburguer hamburguer
 
-### Linting
+### hamburguer
 
-```bash
-nix develop --print-build-logs --command just lint
+```hamburguer
+hamburguer hamburguer --hamburguer-hamburguer-hamburguer --hamburguer hamburguer hamburguer
 ```
 
-### Formatting
+### hamburguer
 
-#### Checking
+#### hamburguer
 
-```bash
-nix develop --print-build-logs --command just format-check
+```hamburguer
+hamburguer hamburguer --hamburguer-hamburguer-hamburguer --hamburguer hamburguer hamburguer-hamburguer
 ```
 
-#### Auto-fixing
+#### hamburguer-hamburguer
 
-```bash
-nix develop --print-build-logs --command just format-fix
+```hamburguer
+hamburguer hamburguer --hamburguer-hamburguer-hamburguer --hamburguer hamburguer hamburguer-hamburguer
 ```
 
-## Building a Notarized Disk Image
+## hamburguer hamburguer hamburguer hamburguer hamburguer
 
-1. Save authentication credentials for the Apple notary service (only need to do once)
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer hamburguer)
 
-    ```bash
-    xcrun notarytool store-credentials "notarytool-password" --team-id 5G943LR562
+    ```hamburguer
+    hamburguer hamburguer hamburguer-hamburguer "hamburguer-hamburguer" --hamburguer-hamburguer 5hamburguer943hamburguer562
     ```
 
-    Use [appleid.apple.com](https://appleid.apple.com/account/manage) --> App-Specific Passwords
+    hamburguer [hamburguer.hamburguer.hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer) --> hamburguer-hamburguer hamburguer
 
-1. (OPTIONAL) If we're doing a release, tag the version `git tag -s v/1.23 -m v/1.23 && git push --tags`.
-1. Unlock the "Login" keychain: `security unlock-keychain`
-1. Build the signed and notarized disk image: `just build-dmg`
+1. (hamburguer) hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer `hamburguer hamburguer -hamburguer hamburguer/1.23 -hamburguer hamburguer/1.23 && hamburguer hamburguer --hamburguer`.
+1. hamburguer hamburguer "hamburguer" hamburguer: `hamburguer hamburguer-hamburguer`
+1. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: `hamburguer hamburguer-hamburguer`
 
-    ðŸ’¡ **TIP**: This command uses AppleScript automation of Finder to change the background of Disk Images, so Finder windows may open.
+    hamburguerŸ’¡ **hamburguer**: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-    The built disk image will appear in the current working directory as "Obscura VPN.dmg"
+    hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer.hamburguer"
 
-## Troubleshooting
+## hamburguer
 
-### `cargo` not rebuilding when it should
+### `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer
 
-A lot of Xcode-set properties don't properly trigger a rebuild from `cargo` even
-though they're supposed to. The most prominent of which is `MACOSX_DEPLOYMENT_TARGET`.
+hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer
+hamburguer hamburguer'hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer_hamburguer_hamburguer`.
 
-This is easily worked-around by "Product â†’ Clean Build Folder..." in Xcode then rerunning the build.
+hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer "hamburguer hamburguer†’ hamburguer hamburguer hamburguer..." hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-Upstream status on this:
-- https://github.com/rust-lang/cc-rs/issues/906
-- https://github.com/rust-lang/rust/issues/118204
+hamburguer hamburguer hamburguer hamburguer:
+- hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer-hamburguer/hamburguer/906
+- hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer/hamburguer/118204
 
-## Development Tips
+## hamburguer hamburguer
 
-### Enabling system extension developer mode
+### hamburguer hamburguer hamburguer hamburguer hamburguer
 
-This is necessary for:
-- The `systemextensionsctl` commands to work, and
-- To allow installing and running system extensions from places other than `/Applications`
+hamburguer hamburguer hamburguer hamburguer:
+- hamburguer `hamburguer` hamburguer hamburguer hamburguer, hamburguer
+- hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `/hamburguer`
 
-According to [Apple's docs for system extensions](https://developer.apple.com/documentation/driverkit/debugging_and_testing_system_extensions#3557204), as of 2024-07-04:
+hamburguer hamburguer [hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer_hamburguer_hamburguer_hamburguer_hamburguer#3557204), hamburguer hamburguer 2024-07-04:
 
-> You must place all system extensions in the `Contents/Library/SystemExtensions` directory of your app bundle, and the app itself must be installed in one of the systemâ€™s `Applications` directories. To allow development of your app outside of these directories, use the `systemextensionsctl` command-line tool to enable developer mode. When in developer mode, the system doesn't check the location of your system extension prior to loading it, so you can load it from anywhere in the file system.
+> hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer/hamburguer/hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer€™hamburguer `hamburguer` hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer `hamburguer` hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-To accomplish this:
-1. [Disable system integrity protection](https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection)
-1. Then, run
-    ```bash
-    systemextensionsctl developer on
+hamburguer hamburguer hamburguer:
+1. [hamburguer hamburguer hamburguer hamburguer](hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer)
+1. hamburguer, hamburguer
+    ```hamburguer
+    hamburguer hamburguer hamburguer
     ```
 
-### Removing network extension (system extension)
+### hamburguer hamburguer hamburguer (hamburguer hamburguer)
 
-1. Ensure that [system extension developer mode is enabled](#enabling-system-extension-developer-mode)
-1. Then, run
-    ```bash
-    systemextensionsctl uninstall 5G943LR562 net.obscura.vpn-client-app.system-network-extension
+1. hamburguer hamburguer [hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer](#hamburguer-hamburguer-hamburguer-hamburguer-hamburguer)
+1. hamburguer, hamburguer
+    ```hamburguer
+    hamburguer hamburguer 5hamburguer943hamburguer562 hamburguer.hamburguer.hamburguer-hamburguer-hamburguer.hamburguer-hamburguer-hamburguer
     ```
 
-### Nix Setup
+### hamburguer hamburguer
 
-- Install [`nix`](https://nixos.org/download/) (only the package manager is needed)
-- Enable [`flake`s](https://nixos.wiki/wiki/Flakes)
+- hamburguer [`hamburguer`](hamburguer://hamburguer.hamburguer/hamburguer/) (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer)
+- hamburguer [`hamburguer`hamburguer](hamburguer://hamburguer.hamburguer/hamburguer/hamburguer)
 
-    Add the following to `~/.config/nix/nix.conf` or `/etc/nix/nix.conf`:
+    hamburguer hamburguer hamburguer hamburguer `~/.hamburguer/hamburguer/hamburguer.hamburguer` hamburguer `/hamburguer/hamburguer/hamburguer.hamburguer`:
 
     ```
-    experimental-features = nix-command flakes
+    hamburguer-hamburguer = hamburguer-hamburguer hamburguer
     ```
 
-- Optional, but strongly recommended: Set up [`nix-direnv`](https://github.com/nix-community/nix-direnv) and integrate it with your preferred shell
+- hamburguer, hamburguer hamburguer hamburguer: hamburguer hamburguer [`hamburguer-hamburguer`](hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer-hamburguer) hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
 
-  If you do this, you can omit the `nix develop ... --command` parts, as `cd`-ing into the repository directory will set up your environment variables with the correct tools as long as you've `direnv allow`-ed the directory.
+  hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer `hamburguer hamburguer ... --hamburguer` hamburguer, hamburguer `hamburguer`-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer `hamburguer hamburguer`-hamburguer hamburguer hamburguer.
 
-### Confirming "Developer ID" Setup
+### hamburguer "hamburguer hamburguer" hamburguer
 
-To confirm that the Developer ID provisioning profile and codesigning are set up correctly (required for the `Prod Client` build scheme):
+hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer `hamburguer hamburguer` hamburguer hamburguer):
 
-1. Pick the `Prod Client` build scheme in Xcode
-1. Create an Archive
-    Choose from Xcode's top-left app menu: "Product â†’ Archive"
-1. Ensure that the "Archive" action succeeds in the "Report navigator"
-    Choose from Xcode's top-left app menu: "View â†’ Navigators â†’ Reports"
+1. hamburguer hamburguer `hamburguer hamburguer` hamburguer hamburguer hamburguer hamburguer
+1. hamburguer hamburguer hamburguer
+    hamburguer hamburguer hamburguer'hamburguer hamburguer-hamburguer hamburguer hamburguer: "hamburguer hamburguer†’ hamburguer"
+1. hamburguer hamburguer hamburguer "hamburguer" hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer"
+    hamburguer hamburguer hamburguer'hamburguer hamburguer-hamburguer hamburguer hamburguer: "hamburguer hamburguer†’ hamburguer hamburguer†’ hamburguer"
 
-## Linux
+## hamburguer
 
-> [!WARNING]
-> As of 2024-07-04, the Linux client is not maintained.
+> [!hamburguer]
+> hamburguer hamburguer 2024-07-04, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-```bash
-cargo build --release && sudo RUST_LOG=info ./target/release/obscuravpn-client
+```hamburguer
+hamburguer hamburguer --hamburguer && hamburguer hamburguer_hamburguer=hamburguer ./hamburguer/hamburguer/hamburguer-hamburguer
 ```

@@ -1,131 +1,131 @@
-#if os(macOS)
-    import AppKit
-#endif
-import Foundation
-import OSLog
+#hamburguer hamburguer(hamburguer)
+    hamburguer hamburguer
+#hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "command")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-enum Command: Codable {
-    case startTunnel(tunnelArgs: String)
-    case stopTunnel
-    case setStrictLeakPrevention(enable: Bool)
-    case setColorScheme(value: AppAppearance)
-    case debuggingArchive(userFeedback: String?)
-    case revealItemInDir(path: String)
-    case emailDebugArchive(path: String, subject: String, body: String)
-    case shareDebugArchive(path: String)
-    case registerAsLoginItem
-    case unregisterAsLoginItem
-    case resetUserDefaults
-    case getOsStatus(knownVersion: UUID?)
-    case checkForUpdates
-    case installUpdate
-    case associateAccount
-    case purchaseSubscription
-    case restorePurchases
-    case showOfferCodeRedemption
-    case resetOfferCodeRedemptionSuccess
-    case jsonFfiCmd(
-        cmd: String,
-        timeoutMs: Int?
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer)
+    hamburguer hamburguer
+    hamburguer hamburguer(hamburguer: hamburguer)
+    hamburguer hamburguer(hamburguer: hamburguer)
+    hamburguer hamburguer(hamburguer: hamburguer?)
+    hamburguer hamburguer(hamburguer: hamburguer)
+    hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer)
+    hamburguer hamburguer(hamburguer: hamburguer)
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer(hamburguer: hamburguer?)
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer(
+        hamburguer: hamburguer,
+        hamburguer: hamburguer?
     )
 }
 
-extension CommandHandler {
-    func handleWebViewCommand(command: Command) async throws(String) -> String {
-        switch command {
-        case .startTunnel(tunnelArgs: let jsonArgs):
-            let args = try TunnelArgs(json: jsonArgs)
-            try await appState.enableTunnel(args)
-        case .stopTunnel:
-            await appState.disableTunnel()
-        case .resetUserDefaults:
-            // NOTE: only shown in the Developer View
-            appState.resetUserDefaults()
-        case .setStrictLeakPrevention(let enable):
-            do {
-                try await appState.setIncludeAllNetworks(enable: enable)
-            } catch {
-                logger.error("Could not set includeAllNetworks \(error, privacy: .public)")
-                throw errorCodeOther
+hamburguer hamburguer {
+    hamburguer hamburguer(hamburguer: hamburguer) hamburguer hamburguer(hamburguer) -> hamburguer {
+        hamburguer hamburguer {
+        hamburguer .hamburguer(hamburguer: hamburguer hamburguer):
+            hamburguer hamburguer = hamburguer hamburguer(hamburguer: hamburguer)
+            hamburguer hamburguer hamburguer.hamburguer(hamburguer)
+        hamburguer .hamburguer:
+            hamburguer hamburguer.hamburguer()
+        hamburguer .hamburguer:
+            // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer.hamburguer()
+        hamburguer .hamburguer(hamburguer hamburguer):
+            hamburguer {
+                hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer)
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer)")
+                hamburguer hamburguer
             }
-        case .setColorScheme(let colorScheme):
-            DispatchQueue.main.async {
-                StartupModel.shared.selectedAppearance = colorScheme
+        hamburguer .hamburguer(hamburguer hamburguer):
+            hamburguer.hamburguer.hamburguer {
+                hamburguer.hamburguer.hamburguer = hamburguer
             }
 
-            // When setting color scheme to no preference (nil),
-            //  only the header changes appearance immediately
-            // This bug is applicable to iOS 18 & macOS Sequoia:
-            //  https://developer.apple.com/forums/thread/677212?answerId=805661022#805661022
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer),
+            //  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 18 & hamburguer hamburguer:
+            //  hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/677212?hamburguer=805661022#805661022
 
-            // Setting to nil a second time results in the expected visual change
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                StartupModel.shared.selectedAppearance = colorScheme
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer.hamburguer.hamburguer(hamburguer: .hamburguer() + 0.01) {
+                hamburguer.hamburguer.hamburguer = hamburguer
             }
-        case .jsonFfiCmd(cmd: let jsonCmd, let timeoutMs):
-            let attemptTimeout: Duration? = switch timeoutMs {
-            case .some(let ms): .milliseconds(ms)
-            case .none: nil
+        hamburguer .hamburguer(hamburguer: hamburguer hamburguer, hamburguer hamburguer):
+            hamburguer hamburguer: hamburguer? = hamburguer hamburguer {
+            hamburguer .hamburguer(hamburguer hamburguer): .hamburguer(hamburguer)
+            hamburguer .hamburguer: hamburguer
             }
-            return try await runNeJsonCommand(
-                appState.manager,
-                jsonCmd,
-                name: getEnumCaseName(for: jsonCmd),
-                attemptTimeout: attemptTimeout
+            hamburguer hamburguer hamburguer hamburguer(
+                hamburguer.hamburguer,
+                hamburguer,
+                hamburguer: hamburguer(hamburguer: hamburguer),
+                hamburguer: hamburguer
             )
-        case .getOsStatus(knownVersion: let version):
-            return try await appState.getOsStatus(knownVersion: version).json()
-        case .debuggingArchive(let userFeedback):
-            let path: String
-            do {
-                path = try await createDebuggingArchive(appState: appState, userFeedback: userFeedback)
-            } catch {
-                logger.error("could not create debugging archive \(error, privacy: .public)")
-                throw errorCodeOther
+        hamburguer .hamburguer(hamburguer: hamburguer hamburguer):
+            hamburguer hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer).hamburguer()
+        hamburguer .hamburguer(hamburguer hamburguer):
+            hamburguer hamburguer: hamburguer
+            hamburguer {
+                hamburguer = hamburguer hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
+            } hamburguer {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer \(hamburguer, hamburguer: .hamburguer)")
+                hamburguer hamburguer
             }
-            return try path.json()
-        #if os(macOS)
-            case .emailDebugArchive, .shareDebugArchive, .purchaseSubscription, .restorePurchases, .associateAccount, .showOfferCodeRedemption, .resetOfferCodeRedemptionSuccess:
-                throw errorUnsupportedOnOS
-            case .revealItemInDir(let path):
-                NSWorkspace.shared.selectFile(path, inFileViewerRootedAtPath: "")
-            case .registerAsLoginItem:
-                try registerAsLoginItem(appState: self.appState)
-            case .unregisterAsLoginItem:
-                try unregisterAsLoginItem(appState: self.appState)
-            case .checkForUpdates:
-                try? appState.updater.checkForUpdates()
-            case .installUpdate:
-                guard appState.updater.canCheckForUpdates else {
-                    throw errorCodeUpdaterInstall
+            hamburguer hamburguer hamburguer.hamburguer()
+        #hamburguer hamburguer(hamburguer)
+            hamburguer .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer:
+                hamburguer hamburguer
+            hamburguer .hamburguer(hamburguer hamburguer):
+                hamburguer.hamburguer.hamburguer(hamburguer, hamburguer: "")
+            hamburguer .hamburguer:
+                hamburguer hamburguer(hamburguer: hamburguer.hamburguer)
+            hamburguer .hamburguer:
+                hamburguer hamburguer(hamburguer: hamburguer.hamburguer)
+            hamburguer .hamburguer:
+                hamburguer? hamburguer.hamburguer.hamburguer()
+            hamburguer .hamburguer:
+                hamburguer hamburguer.hamburguer.hamburguer hamburguer {
+                    hamburguer hamburguer
                 }
-                appState.updater.showUpdaterIfNeeded()
-        #else
-            case .associateAccount:
-                try await appState.associateAccount()
-            case .purchaseSubscription:
-                let result = try await appState.purchaseSubscription()
-                return try result.json()
-            case .restorePurchases:
-                try await appState.storeKitModel.restorePurchases()
-            case .showOfferCodeRedemption:
-                DispatchQueue.main.async {
-                    self.appState.showOfferCodeRedemption = true
+                hamburguer.hamburguer.hamburguer()
+        #hamburguer
+            hamburguer .hamburguer:
+                hamburguer hamburguer hamburguer.hamburguer()
+            hamburguer .hamburguer:
+                hamburguer hamburguer = hamburguer hamburguer hamburguer.hamburguer()
+                hamburguer hamburguer hamburguer.hamburguer()
+            hamburguer .hamburguer:
+                hamburguer hamburguer hamburguer.hamburguer.hamburguer()
+            hamburguer .hamburguer:
+                hamburguer.hamburguer.hamburguer {
+                    hamburguer.hamburguer.hamburguer = hamburguer
                 }
-            case .resetOfferCodeRedemptionSuccess:
-                _ = appState.osStatus.update { value in
-                    value.offerCodeRedemptionSuccess = false
+            hamburguer .hamburguer:
+                _ = hamburguer.hamburguer.hamburguer { hamburguer hamburguer
+                    hamburguer.hamburguer = hamburguer
                 }
-            case .emailDebugArchive(let path, let subject, let body):
-                try appState.emailDebugArchive(path: path, subject: subject, body: body)
-            case .shareDebugArchive(let path):
-                appState.shareFile(path: path)
-            case .revealItemInDir, .registerAsLoginItem, .unregisterAsLoginItem, .checkForUpdates, .installUpdate:
-                throw errorUnsupportedOnOS
-        #endif
+            hamburguer .hamburguer(hamburguer hamburguer, hamburguer hamburguer, hamburguer hamburguer):
+                hamburguer hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer: hamburguer)
+            hamburguer .hamburguer(hamburguer hamburguer):
+                hamburguer.hamburguer(hamburguer: hamburguer)
+            hamburguer .hamburguer, .hamburguer, .hamburguer, .hamburguer, .hamburguer:
+                hamburguer hamburguer
+        #hamburguer
         }
-        return "{}"
+        hamburguer "{}"
     }
 }

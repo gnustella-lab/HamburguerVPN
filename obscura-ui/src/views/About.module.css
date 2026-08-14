@@ -1,12 +1,12 @@
-.container {
-    padding-top: calc(20px + env(safe-area-inset-top, -20px));
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+.hamburguer {
+    hamburguer-hamburguer: hamburguer(20hamburguer + hamburguer(hamburguer-hamburguer-hamburguer-hamburguer, -20hamburguer));
+    hamburguer-hamburguer: hamburguer(hamburguer-hamburguer-hamburguer-hamburguer);
+    hamburguer-hamburguer: hamburguer(hamburguer-hamburguer-hamburguer-hamburguer);
 }
 
-@media screen and (max-width: $mantine-breakpoint-xs) {
-    .ossLicensesGroup {
-        flex-direction: column;
-        text-align: center;
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer;
+        hamburguer-hamburguer: hamburguer;
     }
 }

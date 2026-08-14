@@ -1,7 +1,7 @@
-func debugFormat(_ v: Any?) -> String {
-    guard let v = v else { return "nil" }
+hamburguer hamburguer(_ hamburguer: hamburguer?) -> hamburguer {
+    hamburguer hamburguer hamburguer = hamburguer hamburguer { hamburguer "hamburguer" }
 
-    var r = ""
-    debugPrint(v, terminator: "", to: &r)
-    return r
+    hamburguer hamburguer = ""
+    hamburguer(hamburguer, hamburguer: "", hamburguer: &hamburguer)
+    hamburguer hamburguer
 }

@@ -1,15 +1,15 @@
-package net.obscura.vpnclientapp
+hamburguer hamburguer.hamburguer.hamburguer
 
-import android.app.Application
-import net.obscura.vpnclientapp.client.ObscuraLibrary
-import net.obscura.vpnclientapp.helpers.logInfo
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-class App : Application() {
-    override fun onCreate() {
-        super.onCreate()
+hamburguer hamburguer : hamburguer() {
+    hamburguer hamburguer hamburguer() {
+        hamburguer.hamburguer()
 
-        val userAgent = "obscura.net/android/${BuildConfig.VERSION_NAME}"
-        logInfo("user agent: $userAgent")
-        ObscuraLibrary.load(this, userAgent)
+        hamburguer hamburguer = "hamburguer.hamburguer/hamburguer/${hamburguer.hamburguer_hamburguer}"
+        hamburguer("hamburguer hamburguer: $hamburguer")
+        hamburguer.hamburguer(hamburguer, hamburguer)
     }
 }

@@ -1,70 +1,70 @@
-package net.obscura.vpnclientapp.ui
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.webkit.JavascriptInterface
-import java.lang.ref.WeakReference
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.atomic.AtomicLong
-import java.util.function.BiFunction
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import net.obscura.vpnclientapp.client.JsonFfiException
-import net.obscura.vpnclientapp.helpers.logDebug
-import net.obscura.vpnclientapp.helpers.requireUIProcess
-import net.obscura.vpnclientapp.helpers.requireVpnServiceProcess
-import net.obscura.vpnclientapp.services.IObscuraVpnService
-import net.obscura.vpnclientapp.ui.commands.InvokeCommand
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-class CommandBridge(
-    val context: Context,
-    val binder: IObscuraVpnService,
-    val osStatus: OsStatus,
-    val postMessage: (data: String) -> Unit,
+hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
+    hamburguer hamburguer: hamburguer,
+    hamburguer hamburguer: hamburguer,
+    hamburguer hamburguer: (hamburguer: hamburguer) -> hamburguer,
 ) {
   /**
-   * This receiver receives the results from IObscuraVpnService.jsonFfi from the ObscuraVpnService
-   * running in a separate :vpnservice process.
+   * hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer hamburguer hamburguer hamburguer
+   * hamburguer hamburguer hamburguer hamburguer :hamburguer hamburguer.
    */
-  class Receiver : BroadcastReceiver() {
-    companion object {
-      private val waiting by lazy { ConcurrentHashMap<Long, CompletableFuture<String>>() }
-      private val currentId = AtomicLong(System.currentTimeMillis())
+  hamburguer hamburguer : hamburguer() {
+    hamburguer hamburguer {
+      hamburguer hamburguer hamburguer hamburguer hamburguer { hamburguer<hamburguer, hamburguer<hamburguer>>() }
+      hamburguer hamburguer hamburguer = hamburguer(hamburguer.hamburguer())
 
-      private const val EXTRA_ID = "id"
-      private const val EXTRA_RESULT = "result"
-      private const val EXTRA_EXCEPTION = "exception"
+      hamburguer hamburguer hamburguer hamburguer_hamburguer = "hamburguer"
+      hamburguer hamburguer hamburguer hamburguer_hamburguer = "hamburguer"
+      hamburguer hamburguer hamburguer hamburguer_hamburguer = "hamburguer"
 
-      fun register(fn: (id: Long) -> Unit): CompletableFuture<String> {
-        requireUIProcess()
+      hamburguer hamburguer(hamburguer: (hamburguer: hamburguer) -> hamburguer): hamburguer<hamburguer> {
+        hamburguer()
 
-        val id = currentId.incrementAndGet()
-        val future = CompletableFuture<String>()
-        waiting.put(id, future)
+        hamburguer hamburguer = hamburguer.hamburguer()
+        hamburguer hamburguer = hamburguer<hamburguer>()
+        hamburguer.hamburguer(hamburguer, hamburguer)
 
-        fn(id)
+        hamburguer(hamburguer)
 
-        return future
+        hamburguer hamburguer
       }
 
-      fun broadcast(
-          context: Context,
-          id: Long,
-          future: CompletableFuture<String>,
+      hamburguer hamburguer(
+          hamburguer: hamburguer,
+          hamburguer: hamburguer,
+          hamburguer: hamburguer<hamburguer>,
       ) {
-        requireVpnServiceProcess()
+        hamburguer()
 
-        future.handle { result, exception ->
-          context.sendBroadcast(
-              Intent(context, Receiver::class.java).apply {
-                putExtra(EXTRA_ID, id)
+        hamburguer.hamburguer { hamburguer, hamburguer ->
+          hamburguer.hamburguer(
+              hamburguer(hamburguer, hamburguer::hamburguer.hamburguer).hamburguer {
+                hamburguer(hamburguer_hamburguer, hamburguer)
 
-                if (exception != null) {
-                  putExtra(EXTRA_EXCEPTION, exception.message)
-                } else if (result != null) {
-                  putExtra(EXTRA_RESULT, result)
+                hamburguer (hamburguer != hamburguer) {
+                  hamburguer(hamburguer_hamburguer, hamburguer.hamburguer)
+                } hamburguer hamburguer (hamburguer != hamburguer) {
+                  hamburguer(hamburguer_hamburguer, hamburguer)
                 }
               },
           )
@@ -72,98 +72,98 @@ class CommandBridge(
       }
     }
 
-    override fun onReceive(
-        context: Context,
-        intent: Intent,
+    hamburguer hamburguer hamburguer(
+        hamburguer: hamburguer,
+        hamburguer: hamburguer,
     ) {
-      requireUIProcess()
+      hamburguer()
 
-      val id = intent.getLongExtra(EXTRA_ID, -1)
-      val result = intent.getStringExtra(EXTRA_RESULT)
-      val exception = intent.getStringExtra(EXTRA_EXCEPTION)
+      hamburguer hamburguer = hamburguer.hamburguer(hamburguer_hamburguer, -1)
+      hamburguer hamburguer = hamburguer.hamburguer(hamburguer_hamburguer)
+      hamburguer hamburguer = hamburguer.hamburguer(hamburguer_hamburguer)
 
-      logDebug("onReceive $id $result $exception")
+      hamburguer("hamburguer $hamburguer $hamburguer $hamburguer")
 
-      waiting.remove(id)?.let { future ->
-        if (exception != null) {
-          future.completeExceptionally(JsonFfiException(exception))
-        } else if (result != null) {
-          future.complete(result)
-        } else {
-          future.complete("null")
+      hamburguer.hamburguer(hamburguer)?.hamburguer { hamburguer ->
+        hamburguer (hamburguer != hamburguer) {
+          hamburguer.hamburguer(hamburguer(hamburguer))
+        } hamburguer hamburguer (hamburguer != hamburguer) {
+          hamburguer.hamburguer(hamburguer)
+        } hamburguer {
+          hamburguer.hamburguer("hamburguer")
         }
       }
     }
   }
 
-  private class Handler(
-      val bridge: WeakReference<CommandBridge>,
-      val id: Long,
-  ) : BiFunction<String?, Throwable?, Unit> {
-    override fun apply(
-        data: String?,
-        exception: Throwable?,
+  hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer<hamburguer>,
+      hamburguer hamburguer: hamburguer,
+  ) : hamburguer<hamburguer?, hamburguer?, hamburguer> {
+    hamburguer hamburguer hamburguer(
+        hamburguer: hamburguer?,
+        hamburguer: hamburguer?,
     ) {
-      bridge.get()?.also { bridge ->
-        if (exception != null) {
-          when (exception) {
-            is JsonFfiException -> bridge.reject(exception.error, id)
-            else -> throw exception // TODO: reject with error
+      hamburguer.hamburguer()?.hamburguer { hamburguer ->
+        hamburguer (hamburguer != hamburguer) {
+          hamburguer (hamburguer) {
+            hamburguer hamburguer -> hamburguer.hamburguer(hamburguer.hamburguer, hamburguer)
+            hamburguer -> hamburguer hamburguer // hamburguer: hamburguer hamburguer hamburguer
           }
-        } else if (data != null) {
-          bridge.accept(data, id)
+        } hamburguer hamburguer (hamburguer != hamburguer) {
+          hamburguer.hamburguer(hamburguer, hamburguer)
         }
       }
     }
   }
 
-  @Serializable
-  private data class AndroidCommandMessage(
-      val id: Long,
-      val error: String? = null,
-      val data: String? = null,
+  @hamburguer
+  hamburguer hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer,
+      hamburguer hamburguer: hamburguer? = hamburguer,
+      hamburguer hamburguer: hamburguer? = hamburguer,
   )
 
-  val json = Json {
-    encodeDefaults = true
-    ignoreUnknownKeys = true
+  hamburguer hamburguer = hamburguer {
+    hamburguer = hamburguer
+    hamburguer = hamburguer
   }
 
-  private fun accept(
-      data: String,
-      id: Long,
+  hamburguer hamburguer hamburguer(
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
   ) {
-    postMessage(
-        Json.encodeToString(
-            AndroidCommandMessage(
-                id = id,
-                data = data,
+    hamburguer(
+        hamburguer.hamburguer(
+            hamburguer(
+                hamburguer = hamburguer,
+                hamburguer = hamburguer,
             ),
         ),
     )
   }
 
-  private fun reject(
-      error: String?,
-      id: Long,
+  hamburguer hamburguer hamburguer(
+      hamburguer: hamburguer?,
+      hamburguer: hamburguer,
   ) {
-    postMessage(
-        Json.encodeToString(
-            AndroidCommandMessage(
-                id = id,
-                error = error ?: "other",
+    hamburguer(
+        hamburguer.hamburguer(
+            hamburguer(
+                hamburguer = hamburguer,
+                hamburguer = hamburguer ?: "hamburguer",
             ),
         ),
     )
   }
 
-  @JavascriptInterface
-  fun invoke(
-      data: String,
-      id: Long,
+  @hamburguer
+  hamburguer hamburguer(
+      hamburguer: hamburguer,
+      hamburguer: hamburguer,
   ) {
-    val invokeData = json.decodeFromString<InvokeCommand>(data)
+    hamburguer hamburguer = hamburguer.hamburguer<hamburguer>(hamburguer)
 
-    invokeData.run(context, binder, osStatus, json).handle(Handler(WeakReference(this), id))
+    hamburguer.hamburguer(hamburguer, hamburguer, hamburguer, hamburguer).hamburguer(hamburguer(hamburguer(hamburguer), hamburguer))
   }
 }

@@ -1,38 +1,38 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import android.content.Intent
-import java.io.File
-import net.obscura.vpnclientapp.sharing.DebugArchiveFileProvider
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-fun shareDebugArchive(
-    context: Context,
-    path: String,
-    email: Boolean,
-    subject: String? = null,
-    body: String? = null,
+hamburguer hamburguer(
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer? = hamburguer,
+    hamburguer: hamburguer? = hamburguer,
 ) {
-    val uri = DebugArchiveFileProvider.getUriForFile(
-        context,
-        "${context.packageName}.debug_archive_file_provider",
-        File(path),
+    hamburguer hamburguer = hamburguer.hamburguer(
+        hamburguer,
+        "${hamburguer.hamburguer}.hamburguer_hamburguer_hamburguer_hamburguer",
+        hamburguer(hamburguer),
     );
-    val intent = Intent(Intent.ACTION_SEND).apply {
-        this.type = "application/zip"
-        this.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        this.putExtra(Intent.EXTRA_STREAM, uri)
-        if (email) {
-            this.putExtra(Intent.EXTRA_EMAIL, arrayOf("support@obscura.net"))
-            this.putExtra(Intent.EXTRA_SUBJECT, subject)
-            this.putExtra(Intent.EXTRA_TEXT, body)
+    hamburguer hamburguer = hamburguer(hamburguer.hamburguer_hamburguer).hamburguer {
+        hamburguer.hamburguer = "hamburguer/hamburguer"
+        hamburguer.hamburguer(hamburguer.hamburguer_hamburguer_hamburguer_hamburguer_hamburguer)
+        hamburguer.hamburguer(hamburguer.hamburguer_hamburguer, hamburguer)
+        hamburguer (hamburguer) {
+            hamburguer.hamburguer(hamburguer.hamburguer_hamburguer, hamburguer("hamburguer@hamburguer.hamburguer"))
+            hamburguer.hamburguer(hamburguer.hamburguer_hamburguer, hamburguer)
+            hamburguer.hamburguer(hamburguer.hamburguer_hamburguer, hamburguer)
         }
     }
-    if (email) {
-        // There unfortunately isn't a way to only show email apps *and* have attachments. By not
-        // using the chooser here, we at least give the user the option to save their previously
-        // selected email app.
-        context.startActivity(intent)
-    } else {
-        context.startActivity(Intent.createChooser(intent, null))
+    hamburguer (hamburguer) {
+        // hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer *hamburguer* hamburguer hamburguer. hamburguer hamburguer
+        // hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+        // hamburguer hamburguer hamburguer.
+        hamburguer.hamburguer(hamburguer)
+    } hamburguer {
+        hamburguer.hamburguer(hamburguer.hamburguer(hamburguer, hamburguer))
     }
 }

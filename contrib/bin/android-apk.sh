@@ -1,14 +1,14 @@
-#!/bin/bash
-set -ex
+#!/hamburguer/hamburguer
+hamburguer -hamburguer
 
-# expects to run inside nix develop .#android shell
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer .#hamburguer hamburguer
 
-cd rustlib
+hamburguer hamburguer
 
-rustup target add aarch64-linux-android
+hamburguer hamburguer hamburguer hamburguer64-hamburguer-hamburguer
 
-cargo ndk -t arm64-v8a build --release
+hamburguer hamburguer -hamburguer hamburguer64-hamburguer8hamburguer hamburguer --hamburguer
 
-cd ../android
+hamburguer ../hamburguer
 
-./gradlew --no-daemon spotlessCheck build
+./hamburguer --hamburguer-hamburguer hamburguer hamburguer

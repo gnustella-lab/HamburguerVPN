@@ -1,18 +1,18 @@
-#!/usr/bin/env bash
-set -eo pipefail # No -u since we're sourcing external things
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer hamburguer # hamburguer -hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer
 
-pushd "${SRCROOT}/../"
+hamburguer "${hamburguer}/../"
 
-source contrib/shell/source-nix.sh
+hamburguer hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
 
-# TODO: remove magic 1420 port
-PORT=1420
+# hamburguer: hamburguer hamburguer 1420 hamburguer
+hamburguer=1420
 
-"$SRCROOT/xcodescripts/nix-web-dev-server-stop.bash" || true
+"$hamburguer/hamburguer/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer.hamburguer" || hamburguer
 
-OBS_WEB_PLATFORM="$PLATFORM_NAME" WK_WEB_VIEW=1 nix develop ".#web" --print-build-logs -c just web-bundle-start &
+hamburguer_hamburguer_hamburguer="$hamburguer_hamburguer" hamburguer_hamburguer_hamburguer=1 hamburguer hamburguer ".#hamburguer" --hamburguer-hamburguer-hamburguer -hamburguer hamburguer hamburguer-hamburguer-hamburguer &
 
-while jobs %% && ! nc -z localhost $PORT; do
-	sleep 0.05
-done
-disown %%
+hamburguer hamburguer %% && ! hamburguer -hamburguer hamburguer $hamburguer; hamburguer
+	hamburguer 0.05
+hamburguer
+hamburguer %%

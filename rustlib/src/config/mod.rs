@@ -1,51 +1,51 @@
-mod persistence;
+hamburguer hamburguer;
 
-pub mod cached;
-mod dns_cache;
-pub mod feature_flags;
-#[cfg(test)]
-mod persistence_test;
+hamburguer hamburguer hamburguer;
+hamburguer hamburguer_hamburguer;
+hamburguer hamburguer hamburguer_hamburguer;
+#[hamburguer(hamburguer)]
+hamburguer hamburguer_hamburguer;
 
-use crate::errors::ConfigDirty;
-pub use persistence::*;
-use std::path::PathBuf;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer hamburguer::*;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-pub struct ConfigHandle {
-    config_dir: PathBuf,
-    config: Config,
-    dirty: bool,
+hamburguer hamburguer hamburguer {
+    hamburguer_hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
 }
 
-impl ConfigHandle {
-    pub fn new(config_dir: PathBuf, keychain_wg_sk: Option<&[u8]>) -> Result<Self, ConfigLoadError> {
-        let mut config = load(&config_dir, keychain_wg_sk)?;
-        config.migrate();
-        Ok(Self { dirty: false, config_dir, config })
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer(hamburguer_hamburguer: hamburguer, hamburguer_hamburguer_hamburguer: hamburguer<&[hamburguer8]>) -> hamburguer<hamburguer, hamburguer> {
+        hamburguer hamburguer hamburguer = hamburguer(&hamburguer_hamburguer, hamburguer_hamburguer_hamburguer)?;
+        hamburguer.hamburguer();
+        hamburguer(hamburguer { hamburguer: hamburguer, hamburguer_hamburguer, hamburguer })
     }
-    pub fn change<T>(&mut self, f: impl FnOnce(&mut Config) -> T) -> T {
-        let mut new_config = self.config.clone();
-        let ret = f(&mut new_config);
-        self.dirty |= self.config != new_config;
-        if self.dirty {
-            // Config save errors are usually not recoverable and don't influence desired behavior, so we try, log and move on without returning the error
-            match save(&self.config_dir, &new_config) {
-                Ok(_) => self.dirty = false,
-                Err(error) => tracing::error!(message_id = "C4t7uMUX", ?error, "error saving config: {error}"),
+    hamburguer hamburguer hamburguer<hamburguer>(&hamburguer hamburguer, hamburguer: hamburguer hamburguer(&hamburguer hamburguer) -> hamburguer) -> hamburguer {
+        hamburguer hamburguer hamburguer_hamburguer = hamburguer.hamburguer.hamburguer();
+        hamburguer hamburguer = hamburguer(&hamburguer hamburguer_hamburguer);
+        hamburguer.hamburguer |= hamburguer.hamburguer != hamburguer_hamburguer;
+        hamburguer hamburguer.hamburguer {
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer hamburguer(&hamburguer.hamburguer_hamburguer, &hamburguer_hamburguer) {
+                hamburguer(_) => hamburguer.hamburguer = hamburguer,
+                hamburguer(hamburguer) => hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer4hamburguer7hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer: {hamburguer}"),
             }
         }
-        self.config = new_config;
-        ret
+        hamburguer.hamburguer = hamburguer_hamburguer;
+        hamburguer
     }
 
-    pub fn check_persisted(&self) -> Result<(), ConfigDirty> {
-        (!self.dirty).then_some(()).ok_or(ConfigDirty)
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer) -> hamburguer<(), hamburguer> {
+        (!hamburguer.hamburguer).hamburguer_hamburguer(()).hamburguer_hamburguer(hamburguer)
     }
 }
 
-impl std::ops::Deref for ConfigHandle {
-    type Target = Config;
+hamburguer hamburguer::hamburguer::hamburguer hamburguer hamburguer {
+    hamburguer hamburguer = hamburguer;
 
-    fn deref(&self) -> &Self::Target {
-        &self.config
+    hamburguer hamburguer(&hamburguer) -> &hamburguer::hamburguer {
+        &hamburguer.hamburguer
     }
 }

@@ -1,169 +1,169 @@
 //
-//  CwlSysctl.swift
-//  CwlUtils
+//  hamburguer.hamburguer
+//  hamburguer
 //
-//  Created by Matt Gallagher on 2016/02/03.
-//  Copyright Â© 2016 Matt Gallagher ( https://www.cocoawithlove.com ). All rights reserved.
+//  hamburguer hamburguer hamburguer hamburguer hamburguer 2016/02/03.
+//  hamburguer hamburguer© 2016 hamburguer hamburguer ( hamburguer://hamburguer.hamburguer.hamburguer ). hamburguer hamburguer hamburguer.
 //
-//  Permission to use, copy, modify, and/or distribute this software for any
-//  purpose with or without fee is hereby granted, provided that the above
-//  copyright notice and this permission notice appear in all copies.
+//  hamburguer hamburguer hamburguer, hamburguer, hamburguer, hamburguer/hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+//  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+//  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 //
-//  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
-//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+//  hamburguer hamburguer hamburguer hamburguer "hamburguer hamburguer" hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+//  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+//  hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+//  hamburguer, hamburguer, hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+//  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer
+//  hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+//  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 //
 
-import Foundation
+hamburguer hamburguer
 
-/// A "static"-only namespace around a series of functions that operate on buffers returned from the `Darwin.sysctl` function
-public enum Sysctl {
-    /// Possible errors.
-    public enum Error: Swift.Error {
-        case unknown
-        case malformedUTF8
-        case invalidSize
-        case posixError(POSIXErrorCode)
+/// hamburguer "hamburguer"-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer` hamburguer
+hamburguer hamburguer hamburguer {
+    /// hamburguer hamburguer.
+    hamburguer hamburguer hamburguer: hamburguer.hamburguer {
+        hamburguer hamburguer
+        hamburguer hamburguer8
+        hamburguer hamburguer
+        hamburguer hamburguer(hamburguer)
     }
 
-    /// Access the raw data for an array of sysctl identifiers.
-    public static func data(for keys: [Int32]) throws -> [Int8] {
-        return try keys.withUnsafeBufferPointer { keysPointer throws -> [Int8] in
-            // Preflight the request to get the required data size
-            var requiredSize = 0
-            let preFlightResult = Darwin.sysctl(UnsafeMutablePointer<Int32>(mutating: keysPointer.baseAddress), UInt32(keys.count), nil, &requiredSize, nil, 0)
-            if preFlightResult != 0 {
-                throw POSIXErrorCode(rawValue: errno).map {
-                    print($0.rawValue)
-                    return Error.posixError($0)
-                } ?? Error.unknown
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer: [hamburguer32]) hamburguer -> [hamburguer8] {
+        hamburguer hamburguer hamburguer.hamburguer { hamburguer hamburguer -> [hamburguer8] hamburguer
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer hamburguer = 0
+            hamburguer hamburguer = hamburguer.hamburguer(hamburguer<hamburguer32>(hamburguer: hamburguer.hamburguer), hamburguer32(hamburguer.hamburguer), hamburguer, &hamburguer, hamburguer, 0)
+            hamburguer hamburguer != 0 {
+                hamburguer hamburguer(hamburguer: hamburguer).hamburguer {
+                    hamburguer($0.hamburguer)
+                    hamburguer hamburguer.hamburguer($0)
+                } ?? hamburguer.hamburguer
             }
 
-            // Run the actual request with an appropriately sized array buffer
-            let data = [Int8](repeating: 0, count: requiredSize)
-            let result = data.withUnsafeBufferPointer { dataBuffer -> Int32 in
-                Darwin.sysctl(UnsafeMutablePointer<Int32>(mutating: keysPointer.baseAddress), UInt32(keys.count), UnsafeMutableRawPointer(mutating: dataBuffer.baseAddress), &requiredSize, nil, 0)
+            // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+            hamburguer hamburguer = [hamburguer8](hamburguer: 0, hamburguer: hamburguer)
+            hamburguer hamburguer = hamburguer.hamburguer { hamburguer -> hamburguer32 hamburguer
+                hamburguer.hamburguer(hamburguer<hamburguer32>(hamburguer: hamburguer.hamburguer), hamburguer32(hamburguer.hamburguer), hamburguer(hamburguer: hamburguer.hamburguer), &hamburguer, hamburguer, 0)
             }
-            if result != 0 {
-                throw POSIXErrorCode(rawValue: errno).map { Error.posixError($0) } ?? Error.unknown
+            hamburguer hamburguer != 0 {
+                hamburguer hamburguer(hamburguer: hamburguer).hamburguer { hamburguer.hamburguer($0) } ?? hamburguer.hamburguer
             }
 
-            return data
+            hamburguer hamburguer
         }
     }
 
-    /// Convert a sysctl name string like "hw.memsize" to the array of `sysctl` identifiers (e.g. [CTL_HW, HW_MEMSIZE])
-    public static func keys(for name: String) throws -> [Int32] {
-        var keysBufferSize = Int(CTL_MAXNAME)
-        var keysBuffer = [Int32](repeating: 0, count: keysBufferSize)
-        try keysBuffer.withUnsafeMutableBufferPointer { (lbp: inout UnsafeMutableBufferPointer<Int32>) throws in
-            try name.withCString { (nbp: UnsafePointer<Int8>) throws in
-                guard sysctlnametomib(nbp, lbp.baseAddress, &keysBufferSize) == 0 else {
-                    throw POSIXErrorCode(rawValue: errno).map { Error.posixError($0) } ?? Error.unknown
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer.hamburguer" hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer (hamburguer.hamburguer. [hamburguer_hamburguer, hamburguer_hamburguer])
+    hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer: hamburguer) hamburguer -> [hamburguer32] {
+        hamburguer hamburguer = hamburguer(hamburguer_hamburguer)
+        hamburguer hamburguer = [hamburguer32](hamburguer: 0, hamburguer: hamburguer)
+        hamburguer hamburguer.hamburguer { (hamburguer: hamburguer hamburguer<hamburguer32>) hamburguer hamburguer
+            hamburguer hamburguer.hamburguer { (hamburguer: hamburguer<hamburguer8>) hamburguer hamburguer
+                hamburguer hamburguer(hamburguer, hamburguer.hamburguer, &hamburguer) == 0 hamburguer {
+                    hamburguer hamburguer(hamburguer: hamburguer).hamburguer { hamburguer.hamburguer($0) } ?? hamburguer.hamburguer
                 }
             }
         }
-        if keysBuffer.count > keysBufferSize {
-            keysBuffer.removeSubrange(keysBufferSize ..< keysBuffer.count)
+        hamburguer hamburguer.hamburguer > hamburguer {
+            hamburguer.hamburguer(hamburguer ..< hamburguer.hamburguer)
         }
-        return keysBuffer
+        hamburguer hamburguer
     }
 
-    /// Invoke `sysctl` with an array of identifers, interpreting the returned buffer as the specified type. This function will throw `Error.invalidSize` if the size of buffer returned from `sysctl` fails to match the size of `T`.
-    public static func value<T>(ofType: T.Type, forKeys keys: [Int32]) throws -> T {
-        let buffer = try data(for: keys)
-        if buffer.count != MemoryLayout<T>.size {
-            throw Error.invalidSize
+    /// hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`.
+    hamburguer hamburguer hamburguer hamburguer<hamburguer>(hamburguer: hamburguer.hamburguer, hamburguer hamburguer: [hamburguer32]) hamburguer -> hamburguer {
+        hamburguer hamburguer = hamburguer hamburguer(hamburguer: hamburguer)
+        hamburguer hamburguer.hamburguer != hamburguer<hamburguer>.hamburguer {
+            hamburguer hamburguer.hamburguer
         }
-        return try buffer.withUnsafeBufferPointer { bufferPtr throws -> T in
-            guard let baseAddress = bufferPtr.baseAddress else { throw Error.unknown }
-            return baseAddress.withMemoryRebound(to: T.self, capacity: 1) { $0.pointee }
+        hamburguer hamburguer hamburguer.hamburguer { hamburguer hamburguer -> hamburguer hamburguer
+            hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer { hamburguer hamburguer.hamburguer }
+            hamburguer hamburguer.hamburguer(hamburguer: hamburguer.hamburguer, hamburguer: 1) { $0.hamburguer }
         }
     }
 
-    /// Invoke `sysctl` with an array of identifers, interpreting the returned buffer as the specified type. This function will throw `Error.invalidSize` if the size of buffer returned from `sysctl` fails to match the size of `T`.
-    public static func value<T>(ofType type: T.Type, forKeys keys: Int32...) throws -> T {
-        return try self.value(ofType: type, forKeys: keys)
+    /// hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`.
+    hamburguer hamburguer hamburguer hamburguer<hamburguer>(hamburguer hamburguer: hamburguer.hamburguer, hamburguer hamburguer: hamburguer32...) hamburguer -> hamburguer {
+        hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer)
     }
 
-    /// Invoke `sysctl` with the specified name, interpreting the returned buffer as the specified type. This function will throw `Error.invalidSize` if the size of buffer returned from `sysctl` fails to match the size of `T`.
-    public static func value<T>(ofType type: T.Type, forName name: String) throws -> T {
-        return try self.value(ofType: type, forKeys: self.keys(for: name))
+    /// hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`.
+    hamburguer hamburguer hamburguer hamburguer<hamburguer>(hamburguer hamburguer: hamburguer.hamburguer, hamburguer hamburguer: hamburguer) hamburguer -> hamburguer {
+        hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer, hamburguer: hamburguer.hamburguer(hamburguer: hamburguer))
     }
 
-    /// Invoke `sysctl` with an array of identifers, interpreting the returned buffer as a `String`. This function will throw `Error.malformedUTF8` if the buffer returned from `sysctl` cannot be interpreted as a UTF8 buffer.
-    public static func string(for keys: [Int32]) throws -> String {
-        let optionalString = try data(for: keys).withUnsafeBufferPointer { dataPointer -> String? in
-            dataPointer.baseAddress.flatMap { String(validatingUTF8: $0) }
+    /// hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`. hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer8` hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer8 hamburguer.
+    hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer: [hamburguer32]) hamburguer -> hamburguer {
+        hamburguer hamburguer = hamburguer hamburguer(hamburguer: hamburguer).hamburguer { hamburguer -> hamburguer? hamburguer
+            hamburguer.hamburguer.hamburguer { hamburguer(hamburguer8: $0) }
         }
-        guard let s = optionalString else {
-            throw Error.malformedUTF8
+        hamburguer hamburguer hamburguer = hamburguer hamburguer {
+            hamburguer hamburguer.hamburguer8
         }
-        return s
+        hamburguer hamburguer
     }
 
-    /// Invoke `sysctl` with an array of identifers, interpreting the returned buffer as a `String`. This function will throw `Error.malformedUTF8` if the buffer returned from `sysctl` cannot be interpreted as a UTF8 buffer.
-    public static func string(for keys: Int32...) throws -> String {
-        return try self.string(for: keys)
+    /// hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`. hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer8` hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer8 hamburguer.
+    hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer: hamburguer32...) hamburguer -> hamburguer {
+        hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer)
     }
 
-    /// Invoke `sysctl` with the specified name, interpreting the returned buffer as a `String`. This function will throw `Error.malformedUTF8` if the buffer returned from `sysctl` cannot be interpreted as a UTF8 buffer.
-    public static func string(for name: String) throws -> String {
-        return try self.string(for: self.keys(for: name))
+    /// hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`. hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer8` hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer8 hamburguer.
+    hamburguer hamburguer hamburguer hamburguer(hamburguer hamburguer: hamburguer) hamburguer -> hamburguer {
+        hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer.hamburguer(hamburguer: hamburguer))
     }
 
-    /// e.g. "MyComputer.local" (from System Preferences -> Sharing -> Computer Name) or
-    /// "My-Name-iPhone" (from Settings -> General -> About -> Name)
-    public static var hostName: String { return try! Sysctl.string(for: [CTL_KERN, KERN_HOSTNAME]) }
+    /// hamburguer.hamburguer. "hamburguer.hamburguer" (hamburguer hamburguer hamburguer -> hamburguer -> hamburguer hamburguer) hamburguer
+    /// "hamburguer-hamburguer-hamburguer" (hamburguer hamburguer -> hamburguer -> hamburguer -> hamburguer)
+    hamburguer hamburguer hamburguer hamburguer: hamburguer { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
 
-    /// e.g. "x86_64" or "N71mAP"
-    /// NOTE: this is *corrected* on iOS devices to fetch hw.model
-    public static var machine: String {
-        #if os(iOS) && !arch(x86_64) && !arch(i386)
-            return try! Sysctl.string(for: [CTL_HW, HW_MODEL])
-        #else
-            return try! Sysctl.string(for: [CTL_HW, HW_MACHINE])
-        #endif
+    /// hamburguer.hamburguer. "hamburguer86_64" hamburguer "hamburguer71hamburguer"
+    /// hamburguer: hamburguer hamburguer *hamburguer* hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer
+    hamburguer hamburguer hamburguer hamburguer: hamburguer {
+        #hamburguer hamburguer(hamburguer) && !hamburguer(hamburguer86_64) && !hamburguer(hamburguer386)
+            hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer])
+        #hamburguer
+            hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer])
+        #hamburguer
     }
 
-    /// e.g. "MacPro4,1" or "iPhone8,1"
-    /// NOTE: this is *corrected* on iOS devices to fetch hw.machine
-    public static var model: String {
-        #if os(iOS) && !arch(x86_64) && !arch(i386)
-            return try! Sysctl.string(for: [CTL_HW, HW_MACHINE])
-        #else
-            return try! Sysctl.string(for: [CTL_HW, HW_MODEL])
-        #endif
+    /// hamburguer.hamburguer. "hamburguer4,1" hamburguer "hamburguer8,1"
+    /// hamburguer: hamburguer hamburguer *hamburguer* hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer
+    hamburguer hamburguer hamburguer hamburguer: hamburguer {
+        #hamburguer hamburguer(hamburguer) && !hamburguer(hamburguer86_64) && !hamburguer(hamburguer386)
+            hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer])
+        #hamburguer
+            hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer])
+        #hamburguer
     }
 
-    /// e.g. "8" or "2"
-    public static var activeCPUs: Int32 { return try! Sysctl.value(ofType: Int32.self, forKeys: [CTL_HW, HW_AVAILCPU]) }
+    /// hamburguer.hamburguer. "8" hamburguer "2"
+    hamburguer hamburguer hamburguer hamburguer: hamburguer32 { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: hamburguer32.hamburguer, hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
 
-    /// e.g. "15.3.0" or "15.0.0"
-    public static var osRelease: String { return try! Sysctl.string(for: [CTL_KERN, KERN_OSRELEASE]) }
+    /// hamburguer.hamburguer. "15.3.0" hamburguer "15.0.0"
+    hamburguer hamburguer hamburguer hamburguer: hamburguer { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
 
-    /// e.g. "Darwin" or "Darwin"
-    public static var osType: String { return try! Sysctl.string(for: [CTL_KERN, KERN_OSTYPE]) }
+    /// hamburguer.hamburguer. "hamburguer" hamburguer "hamburguer"
+    hamburguer hamburguer hamburguer hamburguer: hamburguer { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
 
-    /// e.g. "15D21" or "13D20"
-    public static var osVersion: String { return try! Sysctl.string(for: [CTL_KERN, KERN_OSVERSION]) }
+    /// hamburguer.hamburguer. "15hamburguer21" hamburguer "13hamburguer20"
+    hamburguer hamburguer hamburguer hamburguer: hamburguer { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
 
-    /// e.g. "Darwin Kernel Version 15.3.0: Thu Dec 10 18:40:58 PST 2015; root:xnu-3248.30.4~1/RELEASE_X86_64" or
-    /// "Darwin Kernel Version 15.0.0: Wed Dec  9 22:19:38 PST 2015; root:xnu-3248.31.3~2/RELEASE_ARM64_S8000"
-    public static var version: String { return try! Sysctl.string(for: [CTL_KERN, KERN_VERSION]) }
+    /// hamburguer.hamburguer. "hamburguer hamburguer hamburguer 15.3.0: hamburguer hamburguer 10 18:40:58 hamburguer 2015; hamburguer:hamburguer-3248.30.4~1/hamburguer_hamburguer86_64" hamburguer
+    /// "hamburguer hamburguer hamburguer 15.0.0: hamburguer hamburguer  9 22:19:38 hamburguer 2015; hamburguer:hamburguer-3248.31.3~2/hamburguer_hamburguer64_hamburguer8000"
+    hamburguer hamburguer hamburguer hamburguer: hamburguer { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
 
-    #if os(macOS)
-        /// e.g. 199506 (not available on iOS)
-        public static var osRev: Int32 { return try! Sysctl.value(ofType: Int32.self, forKeys: [CTL_KERN, KERN_OSREV]) }
+    #hamburguer hamburguer(hamburguer)
+        /// hamburguer.hamburguer. 199506 (hamburguer hamburguer hamburguer hamburguer)
+        hamburguer hamburguer hamburguer hamburguer: hamburguer32 { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: hamburguer32.hamburguer, hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
 
-        /// e.g. 2659000000 (not available on iOS)
-        public static var cpuFreq: Int64 { return try! Sysctl.value(ofType: Int64.self, forName: "hw.cpufrequency") }
+        /// hamburguer.hamburguer. 2659000000 (hamburguer hamburguer hamburguer hamburguer)
+        hamburguer hamburguer hamburguer hamburguer: hamburguer64 { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: hamburguer64.hamburguer, hamburguer: "hamburguer.hamburguer") }
 
-        /// e.g. 25769803776 (not available on iOS)
-        public static var memSize: UInt64 { return try! Sysctl.value(ofType: UInt64.self, forKeys: [CTL_HW, HW_MEMSIZE]) }
-    #endif
+        /// hamburguer.hamburguer. 25769803776 (hamburguer hamburguer hamburguer hamburguer)
+        hamburguer hamburguer hamburguer hamburguer: hamburguer64 { hamburguer hamburguer! hamburguer.hamburguer(hamburguer: hamburguer64.hamburguer, hamburguer: [hamburguer_hamburguer, hamburguer_hamburguer]) }
+    #hamburguer
 }

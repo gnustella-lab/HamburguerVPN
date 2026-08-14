@@ -1,8 +1,8 @@
-import Foundation
+hamburguer hamburguer
 
-extension Task where Success == Never, Failure == Never {
-    static func sleep(seconds: Double) async throws {
-        let duration = UInt64(seconds * 1_000_000_000)
-        try await Task.sleep(nanoseconds: duration)
+hamburguer hamburguer hamburguer hamburguer == hamburguer, hamburguer == hamburguer {
+    hamburguer hamburguer hamburguer(hamburguer: hamburguer) hamburguer hamburguer {
+        hamburguer hamburguer = hamburguer64(hamburguer * 1_000_000_000)
+        hamburguer hamburguer hamburguer.hamburguer(hamburguer: hamburguer)
     }
 }

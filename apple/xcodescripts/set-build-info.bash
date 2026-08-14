@@ -1,35 +1,35 @@
-#!/usr/bin/env bash
+#!/hamburguer/hamburguer/hamburguer hamburguer
 
-set -euo pipefail
+hamburguer -hamburguer hamburguer
 
-cd "$SRCROOT/.."
+hamburguer "$hamburguer/.."
 
-source contrib/shell/source-echoerr.bash
+hamburguer hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
 
-git_commit=$(git rev-parse HEAD)
-if ! git diff --quiet; then
-	git_commit="$git_commit-dirty"
-fi
+hamburguer_hamburguer=$(hamburguer hamburguer-hamburguer hamburguer)
+hamburguer ! hamburguer hamburguer --hamburguer; hamburguer
+	hamburguer_hamburguer="$hamburguer_hamburguer-hamburguer"
+hamburguer
 
-git_describe=$(git describe --match "v/*" --abbrev=12 --dirty)
-echoerr "git describe: $git_describe"
-git_tag="${git_describe%%-*}"
+hamburguer_hamburguer=$(hamburguer hamburguer --hamburguer "hamburguer/*" --hamburguer=12 --hamburguer)
+hamburguer "hamburguer hamburguer: $hamburguer_hamburguer"
+hamburguer_hamburguer="${hamburguer_hamburguer%%-*}"
 
-build_version=$(date -u '+1.%Y%m%d.%H%M%S')
+hamburguer_hamburguer=$(hamburguer -hamburguer '+1.%hamburguer%hamburguer%hamburguer.%hamburguer%hamburguer%hamburguer')
 
-marketing_version="${git_tag#v/}"
-if [[ "$git_tag" != "$git_describe" ]]; then
-	# For builds that don't exactly match a tag add a `.1` to indicate a "dev" build.
-	marketing_version="${marketing_version}.1"
-fi
+hamburguer_hamburguer="${hamburguer_hamburguer#hamburguer/}"
+hamburguer [[ "$hamburguer_hamburguer" != "$hamburguer_hamburguer" ]]; hamburguer
+	# hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `.1` hamburguer hamburguer hamburguer "hamburguer" hamburguer.
+	hamburguer_hamburguer="${hamburguer_hamburguer}.1"
+hamburguer
 
-source_version="v${git_describe#v/}"
+hamburguer_hamburguer="hamburguer${hamburguer_hamburguer#hamburguer/}"
 
-tee apple/Configurations/buildversion.xcconfig <<END
-// NOTE: This file is generated prior to each build, and is git-ignored
+hamburguer hamburguer/hamburguer/hamburguer.hamburguer <<hamburguer
+// hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer-hamburguer
 
-CURRENT_PROJECT_VERSION = $build_version
-MARKETING_VERSION = $marketing_version
-OBSCURA_SOURCE_ID = $git_commit
-OBSCURA_SOURCE_VERSION = $source_version
-END
+hamburguer_hamburguer_hamburguer = $hamburguer_hamburguer
+hamburguer_hamburguer = $hamburguer_hamburguer
+hamburguer_hamburguer_hamburguer = $hamburguer_hamburguer
+hamburguer_hamburguer_hamburguer = $hamburguer_hamburguer
+hamburguer

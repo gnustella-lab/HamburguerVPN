@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
-set -eu
+#!/hamburguer/hamburguer/hamburguer hamburguer
+hamburguer -hamburguer
 
-./contrib/bin/package-deb.bash
-./contrib/bin/package-rpm.bash
-./contrib/bin/package-arch.bash
+./hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
+./hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
+./hamburguer/hamburguer/hamburguer-hamburguer.hamburguer

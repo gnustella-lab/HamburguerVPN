@@ -1,157 +1,157 @@
-use crate::service::os::PutIncomingPacketFn;
-use crate::service::os::packet_buffer::PacketBuffer;
-use ipnetwork::Ipv6Network;
-use obscuravpn_client::net::NetworkInterface;
-use obscuravpn_client::network_config::TunnelNetworkConfig;
-use obscuravpn_client::positive_u31::PositiveU31;
-use std::io::ErrorKind::{AlreadyExists, WouldBlock};
-use std::net::{IpAddr, Ipv4Addr};
-use std::sync::{Arc, Mutex, Weak};
-use std::time::{Duration, Instant};
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer6hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer31::hamburguer31;
+hamburguer hamburguer::hamburguer::hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer::{hamburguer, hamburguer4hamburguer};
+hamburguer hamburguer::hamburguer::{hamburguer, hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer::{hamburguer, hamburguer};
 
-const TUN_MIN_LOG_SILENCE: Duration = Duration::from_secs(5);
-const TUN_NAME: &str = "obscuravpn";
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer: hamburguer = hamburguer::hamburguer_hamburguer(5);
+hamburguer hamburguer_hamburguer: &hamburguer = "hamburguer";
 
-pub struct Tun {
-    dev: Arc<tun_rs::AsyncDevice>,
-    interface_index: PositiveU31,
-    last_error_log_at: Mutex<Option<Instant>>,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer<hamburguer_hamburguer::hamburguer>,
+    hamburguer_hamburguer: hamburguer31,
+    hamburguer_hamburguer_hamburguer_hamburguer: hamburguer<hamburguer<hamburguer>>,
 }
 
-pub struct TunWriter {
-    dev: Weak<tun_rs::AsyncDevice>,
-    last_error_log_at: Option<Instant>,
+hamburguer hamburguer hamburguer {
+    hamburguer: hamburguer<hamburguer_hamburguer::hamburguer>,
+    hamburguer_hamburguer_hamburguer_hamburguer: hamburguer<hamburguer>,
 }
 
-impl Tun {
-    pub async fn create() -> anyhow::Result<Self> {
-        let network_config = TunnelNetworkConfig::dummy();
-        let dev = Arc::new(
-            tun_rs::DeviceBuilder::new()
-                // NetworkManager classifies new TUN devices without assigned IPs as `NM_DEVICE_STATE_UNMANAGED` instead of just externally connected and refuses all device configuration interactions. As initial state this is harmless in tested versions, but avoiding the state is simpler and may be safer.
-                .ipv4(network_config.ipv4, 32u8, None)
-                .ipv6(network_config.ipv6.network(), network_config.ipv6.prefix())
-                .mtu(network_config.mtu)
-                .name(TUN_NAME.to_string())
-                .build_async()?,
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer hamburguer() -> hamburguer::hamburguer<hamburguer> {
+        hamburguer hamburguer_hamburguer = hamburguer::hamburguer();
+        hamburguer hamburguer = hamburguer::hamburguer(
+            hamburguer_hamburguer::hamburguer::hamburguer()
+                // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer_hamburguer_hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                .hamburguer4(hamburguer_hamburguer.hamburguer4, 32hamburguer8, hamburguer)
+                .hamburguer6(hamburguer_hamburguer.hamburguer6.hamburguer(), hamburguer_hamburguer.hamburguer6.hamburguer())
+                .hamburguer(hamburguer_hamburguer.hamburguer)
+                .hamburguer(hamburguer_hamburguer.hamburguer_hamburguer())
+                .hamburguer_hamburguer()?,
         );
-        let interface_index = dev.if_index()?.try_into()?;
-        Ok(Self { dev, interface_index, last_error_log_at: Mutex::new(None) })
+        hamburguer hamburguer_hamburguer = hamburguer.hamburguer_hamburguer()?.hamburguer_hamburguer()?;
+        hamburguer(hamburguer { hamburguer, hamburguer_hamburguer, hamburguer_hamburguer_hamburguer_hamburguer: hamburguer::hamburguer(hamburguer) })
     }
 
-    pub fn interface(&self) -> NetworkInterface {
-        NetworkInterface { name: TUN_NAME.to_string(), index: self.interface_index }
+    hamburguer hamburguer hamburguer(&hamburguer) -> hamburguer {
+        hamburguer { hamburguer: hamburguer_hamburguer.hamburguer_hamburguer(), hamburguer: hamburguer.hamburguer_hamburguer }
     }
 
-    pub fn writer(&self) -> TunWriter {
-        TunWriter { dev: Arc::downgrade(&self.dev), last_error_log_at: None }
+    hamburguer hamburguer hamburguer(&hamburguer) -> hamburguer {
+        hamburguer { hamburguer: hamburguer::hamburguer(&hamburguer.hamburguer), hamburguer_hamburguer_hamburguer_hamburguer: hamburguer }
     }
 
-    pub async fn receive(&self, packet_buffer: &mut PacketBuffer) {
-        if let Err(error) = self.dev.readable().await {
-            let mut last_error_log_at = self.last_error_log_at.lock().unwrap();
-            rate_limited_error_log(&mut last_error_log_at, "YRah33os", "failed to wait for packet on tun device", error)
+    hamburguer hamburguer hamburguer hamburguer(&hamburguer, hamburguer_hamburguer: &hamburguer hamburguer) {
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer.hamburguer().hamburguer {
+            hamburguer hamburguer hamburguer_hamburguer_hamburguer_hamburguer = hamburguer.hamburguer_hamburguer_hamburguer_hamburguer.hamburguer().hamburguer();
+            hamburguer_hamburguer_hamburguer_hamburguer(&hamburguer hamburguer_hamburguer_hamburguer_hamburguer, "hamburguer33hamburguer", "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer", hamburguer)
         }
-        while let Some(buffer) = packet_buffer.buffer() {
-            match self.dev.try_recv(buffer) {
-                Ok(n) => match u16::try_from(n) {
-                    Ok(n) => packet_buffer.commit(n),
-                    Err(_) => {
-                        let mut last_error_log_at = self.last_error_log_at.lock().unwrap();
-                        rate_limited_error_log(
-                            &mut last_error_log_at,
-                            "A1s4jdil",
-                            "ignoring oversized packet from tun device",
-                            std::io::Error::other("oversized packet"),
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer_hamburguer.hamburguer() {
+            hamburguer hamburguer.hamburguer.hamburguer_hamburguer(hamburguer) {
+                hamburguer(hamburguer) => hamburguer hamburguer16::hamburguer_hamburguer(hamburguer) {
+                    hamburguer(hamburguer) => hamburguer_hamburguer.hamburguer(hamburguer),
+                    hamburguer(_) => {
+                        hamburguer hamburguer hamburguer_hamburguer_hamburguer_hamburguer = hamburguer.hamburguer_hamburguer_hamburguer_hamburguer.hamburguer().hamburguer();
+                        hamburguer_hamburguer_hamburguer_hamburguer(
+                            &hamburguer hamburguer_hamburguer_hamburguer_hamburguer,
+                            "hamburguer1hamburguer4hamburguer",
+                            "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer",
+                            hamburguer::hamburguer::hamburguer::hamburguer("hamburguer hamburguer"),
                         )
                     }
                 },
-                Err(error) if error.kind() == WouldBlock => return,
-                Err(error) => {
-                    let mut last_error_log_at = self.last_error_log_at.lock().unwrap();
-                    rate_limited_error_log(&mut last_error_log_at, "uGIH5zSb", "failed to receive from tun device", error)
+                hamburguer(hamburguer) hamburguer hamburguer.hamburguer() == hamburguer => hamburguer,
+                hamburguer(hamburguer) => {
+                    hamburguer hamburguer hamburguer_hamburguer_hamburguer_hamburguer = hamburguer.hamburguer_hamburguer_hamburguer_hamburguer.hamburguer().hamburguer();
+                    hamburguer_hamburguer_hamburguer_hamburguer(&hamburguer hamburguer_hamburguer_hamburguer_hamburguer, "hamburguer5hamburguer", "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer", hamburguer)
                 }
             }
         }
     }
 
-    pub fn set_config(&mut self, mtu: u16, ipv4: Ipv4Addr, ipv6: Ipv6Network) -> Result<(), ()> {
-        let mut result = Ok(());
+    hamburguer hamburguer hamburguer_hamburguer(&hamburguer hamburguer, hamburguer: hamburguer16, hamburguer4: hamburguer4hamburguer, hamburguer6: hamburguer6hamburguer) -> hamburguer<(), ()> {
+        hamburguer hamburguer hamburguer = hamburguer(());
 
-        // Add new IPs before removing the current ones. This prevents having no addresses on the device temporarily, which may trigger automatic network manager device state changes with unintended side effects on DNS and routes.
+        // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-        if let Err(error) = self.dev.set_mtu(mtu) {
-            tracing::error!(message_id = "qPppmh83", ?error, "failed to set tun mtu");
-            result = Err(());
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer.hamburguer_hamburguer(hamburguer) {
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer83", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+            hamburguer = hamburguer(());
         }
-        if let Err(error) = self.dev.add_address_v4(ipv4, 32u8)
-            && error.kind() != AlreadyExists
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer.hamburguer_hamburguer_hamburguer4(hamburguer4, 32hamburguer8)
+            && hamburguer.hamburguer() != hamburguer
         {
-            tracing::error!(message_id = "cY11X3I6", ?error, address = ?ipv4, "failed to add IPv4 tun address");
-            result = Err(());
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer11hamburguer3hamburguer6", ?hamburguer, hamburguer = ?hamburguer4, "hamburguer hamburguer hamburguer hamburguer4 hamburguer hamburguer");
+            hamburguer = hamburguer(());
         }
-        if let Err(error) = self.dev.add_address_v6(ipv6.network(), ipv6.prefix())
-            && error.kind() != AlreadyExists
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer.hamburguer_hamburguer_hamburguer6(hamburguer6.hamburguer(), hamburguer6.hamburguer())
+            && hamburguer.hamburguer() != hamburguer
         {
-            tracing::error!(message_id = "wHod6P2h", ?error, address = ?ipv6, "failed to add IPv6 tun address");
-            result = Err(());
+            hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer6hamburguer2hamburguer", ?hamburguer, hamburguer = ?hamburguer6, "hamburguer hamburguer hamburguer hamburguer6 hamburguer hamburguer");
+            hamburguer = hamburguer(());
         }
 
-        match self.dev.addresses() {
-            Ok(addresses) => {
-                for address in addresses {
-                    let keep = match address {
-                        IpAddr::V4(address) => address == ipv4,
-                        IpAddr::V6(address) => ipv6.contains(address),
+        hamburguer hamburguer.hamburguer.hamburguer() {
+            hamburguer(hamburguer) => {
+                hamburguer hamburguer hamburguer hamburguer {
+                    hamburguer hamburguer = hamburguer hamburguer {
+                        hamburguer::hamburguer4(hamburguer) => hamburguer == hamburguer4,
+                        hamburguer::hamburguer6(hamburguer) => hamburguer6.hamburguer(hamburguer),
                     };
-                    if keep {
-                        continue;
+                    hamburguer hamburguer {
+                        hamburguer;
                     }
-                    if let Err(error) = self.dev.remove_address(address) {
-                        tracing::error!(message_id = "qPppmh83", ?error, ?address, "failed to remove tun address");
-                        result = Err(());
+                    hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer.hamburguer_hamburguer(hamburguer) {
+                        hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer83", ?hamburguer, ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+                        hamburguer = hamburguer(());
                     }
                 }
             }
-            Err(error) => {
-                tracing::error!(message_id = "1SDywPMm", ?error, "failed to retrieve tun addresses");
-                result = Err(());
+            hamburguer(hamburguer) => {
+                hamburguer::hamburguer!(hamburguer_hamburguer = "1hamburguer", ?hamburguer, "hamburguer hamburguer hamburguer hamburguer hamburguer");
+                hamburguer = hamburguer(());
             }
         }
-        result
+        hamburguer
     }
 }
 
-impl TunWriter {
-    pub const fn invalid() -> Self {
-        Self { dev: Weak::new(), last_error_log_at: None }
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer hamburguer() -> hamburguer {
+        hamburguer { hamburguer: hamburguer::hamburguer(), hamburguer_hamburguer_hamburguer_hamburguer: hamburguer }
     }
 }
 
-impl PutIncomingPacketFn for TunWriter {
-    fn call(&mut self, packet: &[u8]) {
-        let Some(dev) = self.dev.upgrade() else {
-            rate_limited_error_log(
-                &mut self.last_error_log_at,
-                "blWRxJIQ",
-                "send on dropped or invalid tun device",
-                std::io::Error::other("no device"),
+hamburguer hamburguer hamburguer hamburguer {
+    hamburguer hamburguer(&hamburguer hamburguer, hamburguer: &[hamburguer8]) {
+        hamburguer hamburguer(hamburguer) = hamburguer.hamburguer.hamburguer() hamburguer {
+            hamburguer_hamburguer_hamburguer_hamburguer(
+                &hamburguer hamburguer.hamburguer_hamburguer_hamburguer_hamburguer,
+                "hamburguer",
+                "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer",
+                hamburguer::hamburguer::hamburguer::hamburguer("hamburguer hamburguer"),
             );
-            return;
+            hamburguer;
         };
-        if let Err(error) = dev.try_send(packet)
-            && error.kind() != WouldBlock
+        hamburguer hamburguer hamburguer(hamburguer) = hamburguer.hamburguer_hamburguer(hamburguer)
+            && hamburguer.hamburguer() != hamburguer
         {
-            rate_limited_error_log(&mut self.last_error_log_at, "4nG6rvr3", "failed to send packet on tun device", error);
+            hamburguer_hamburguer_hamburguer_hamburguer(&hamburguer hamburguer.hamburguer_hamburguer_hamburguer_hamburguer, "4hamburguer6hamburguer3", "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer", hamburguer);
         }
     }
 }
 
-fn rate_limited_error_log(last: &mut Option<Instant>, message_id: &'static str, message: &'static str, error: std::io::Error) {
-    let now = Instant::now();
-    if last.is_some_and(|last| last + TUN_MIN_LOG_SILENCE > now) {
-        return;
+hamburguer hamburguer_hamburguer_hamburguer_hamburguer(hamburguer: &hamburguer hamburguer<hamburguer>, hamburguer_hamburguer: &'hamburguer hamburguer, hamburguer: &'hamburguer hamburguer, hamburguer: hamburguer::hamburguer::hamburguer) {
+    hamburguer hamburguer = hamburguer::hamburguer();
+    hamburguer hamburguer.hamburguer_hamburguer_hamburguer(|hamburguer| hamburguer + hamburguer_hamburguer_hamburguer_hamburguer > hamburguer) {
+        hamburguer;
     }
-    *last = Some(now);
-    tracing::error!(message_id, ?error, message);
+    *hamburguer = hamburguer(hamburguer);
+    hamburguer::hamburguer!(hamburguer_hamburguer, ?hamburguer, hamburguer);
 }

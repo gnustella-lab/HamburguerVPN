@@ -1,32 +1,32 @@
-import { ActionIcon, Group, Text, Tooltip } from '@mantine/core';
-import { useTranslation } from 'react-i18next';
-import { SiDiscord, SiMatrix, SiX } from 'react-icons/si';
-import commonClasses from '../common/common.module.css';
-import { DISCORD_SERVER, MATRIX_SERVER, TWITTER } from '../common/links';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer/hamburguer';
+hamburguer hamburguer hamburguer '../hamburguer/hamburguer.hamburguer.hamburguer';
+hamburguer { hamburguer_hamburguer, hamburguer_hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
 
-export function Socials() {
-  const { t } = useTranslation();
+hamburguer hamburguer hamburguer() {
+  hamburguer { hamburguer } = hamburguer();
 
-  return <>
-    <Text c='dimmed' ta='center'>
-      {t('ConnectWithUs')}
-    </Text>
-    <Group gap='xl' justify='center'>
-      <Tooltip label='Discord'>
-        <ActionIcon component='a' href={DISCORD_SERVER} color='#5865f2' size='xl' variant='transparent'>
-          <SiDiscord size='100%' />
-        </ActionIcon>
-      </Tooltip>
-      <Tooltip label='Matrix'>
-        <ActionIcon component='a' href={MATRIX_SERVER} size='xl' variant='transparent'>
-          <SiMatrix className={commonClasses.svgThemed} size='100%' />
-        </ActionIcon>
-      </Tooltip>
-      <Tooltip label='X'>
-        <ActionIcon component='a' href={TWITTER} size={50} radius='md' variant='transparent'>
-          <SiX className={commonClasses.svgThemed} size={24} />
-        </ActionIcon>
-      </Tooltip>
-    </Group>
+  hamburguer <>
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+      {hamburguer('hamburguer')}
+    </hamburguer>
+    <hamburguer hamburguer='hamburguer' hamburguer='hamburguer'>
+      <hamburguer hamburguer='hamburguer'>
+        <hamburguer hamburguer='hamburguer' hamburguer={hamburguer_hamburguer} hamburguer='#5865hamburguer2' hamburguer='hamburguer' hamburguer='hamburguer'>
+          <hamburguer hamburguer='100%' />
+        </hamburguer>
+      </hamburguer>
+      <hamburguer hamburguer='hamburguer'>
+        <hamburguer hamburguer='hamburguer' hamburguer={hamburguer_hamburguer} hamburguer='hamburguer' hamburguer='hamburguer'>
+          <hamburguer hamburguer={hamburguer.hamburguer} hamburguer='100%' />
+        </hamburguer>
+      </hamburguer>
+      <hamburguer hamburguer='hamburguer'>
+        <hamburguer hamburguer='hamburguer' hamburguer={hamburguer} hamburguer={50} hamburguer='hamburguer' hamburguer='hamburguer'>
+          <hamburguer hamburguer={hamburguer.hamburguer} hamburguer={24} />
+        </hamburguer>
+      </hamburguer>
+    </hamburguer>
   </>
 }

@@ -1,109 +1,109 @@
-import com.android.build.api.dsl.ApplicationExtension
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlinx.serialization)
-    alias(libs.plugins.spotless)
+hamburguer {
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer)
 }
 
-extensions.configure<ApplicationExtension> {
-    buildToolsVersion = "36.0.0"
+hamburguer.hamburguer<hamburguer> {
+    hamburguer = "36.0.0"
 
-    namespace = "net.obscura.vpnclientapp"
-    compileSdk = 36
+    hamburguer = "hamburguer.hamburguer.hamburguer"
+    hamburguer = 36
 
-    defaultConfig {
-        applicationId = "net.obscura.vpnclientapp"
-        minSdk = 31
-        targetSdk = 36
-        versionCode = 1
-        versionName = project.getVersionName(project.rootDir)
+    hamburguer {
+        hamburguer = "hamburguer.hamburguer.hamburguer"
+        hamburguer = 31
+        hamburguer = 36
+        hamburguer = 1
+        hamburguer = hamburguer.hamburguer(hamburguer.hamburguer)
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        hamburguer = "hamburguer.hamburguer.hamburguer.hamburguer"
     }
 
-    buildFeatures {
-        aidl = true
-        buildConfig = true
+    hamburguer {
+        hamburguer = hamburguer
+        hamburguer = hamburguer
     }
 
-    buildTypes {
-        getByName("debug") {
-            applicationIdSuffix = ".debug"
-            isMinifyEnabled = false
-            isShrinkResources = false
-            resValue("string", "app_name", "Obscura VPN (Debug)")
+    hamburguer {
+        hamburguer("hamburguer") {
+            hamburguer = ".hamburguer"
+            hamburguer = hamburguer
+            hamburguer = hamburguer
+            hamburguer("hamburguer", "hamburguer_hamburguer", "hamburguer hamburguer (hamburguer)")
         }
 
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+        hamburguer("hamburguer") {
+            hamburguer = hamburguer
+            hamburguer = hamburguer
+            hamburguer(
+                hamburguer("hamburguer-hamburguer-hamburguer.hamburguer"),
+                "hamburguer-hamburguer.hamburguer"
             )
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+    hamburguer {
+        hamburguer = hamburguer.hamburguer_11
+        hamburguer = hamburguer.hamburguer_11
     }
 }
 
-kotlin {
-    compilerOptions {
-        jvmTarget = JvmTarget.JVM_11
+hamburguer {
+    hamburguer {
+        hamburguer = hamburguer.hamburguer_11
     }
 }
 
-dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.webkit)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.material)
+hamburguer {
+    hamburguer(hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    hamburguer(hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer)
+    hamburguer(hamburguer.hamburguer.hamburguer.hamburguer)
 }
 
-spotless {
-    java {
-        target("**/*.java")
+hamburguer {
+    hamburguer {
+        hamburguer("**/*.hamburguer")
 
-        googleJavaFormat()
-        removeUnusedImports()
-        trimTrailingWhitespace()
-        endWithNewline()
+        hamburguer()
+        hamburguer()
+        hamburguer()
+        hamburguer()
     }
 
-    // TODO: https://linear.app/soveng/issue/OBS-2642/move-spotless-format-check-to-nix-flake-check Don't fail build and check in CI.
-    kotlin {
-        target("**/*.kt")
+    // hamburguer: hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-2642/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer {
+        hamburguer("**/*.hamburguer")
 
-        ktlint()
-        ktfmt()
-        trimTrailingWhitespace()
-        endWithNewline()
+        hamburguer()
+        hamburguer()
+        hamburguer()
+        hamburguer()
     }
 }
 
-if (gradle.startParameter.taskNames.contains("nixDownloadDeps")) {
-    configurations.configureEach {
-        // This configuration fails to evaluate.
-        if (name == "implementation") {
-            exclude(module = project.name)
+hamburguer (hamburguer.hamburguer.hamburguer.hamburguer("hamburguer")) {
+    hamburguer.hamburguer {
+        // hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer (hamburguer == "hamburguer") {
+            hamburguer(hamburguer = hamburguer.hamburguer)
         }
     }
 
-    // Some parts of the build are dynamically scheduled so aren't triggered during the dep fetch so we force the dependency.
-    @Suppress("UNUSED_VARIABLE")
-    val lintConfig = configurations.create("nixDynamicDeps")
-    dependencies {
-        "nixDynamicDeps"("com.android.tools.lint:lint-gradle:31.13.0")
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    @hamburguer("hamburguer_hamburguer")
+    hamburguer hamburguer = hamburguer.hamburguer("hamburguer")
+    hamburguer {
+        "hamburguer"("hamburguer.hamburguer.hamburguer.hamburguer:hamburguer-hamburguer:31.13.0")
     }
 }

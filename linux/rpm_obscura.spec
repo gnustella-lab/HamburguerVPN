@@ -1,40 +1,40 @@
-Name:           obscura
-Version:        0.0.1
-Release:        1
-Summary:        Obscura VPN client
-License:        PolyForm-Noncommercial-1.0.0
-URL:            https://obscura.net
+hamburguer:           hamburguer
+hamburguer:        0.0.1
+hamburguer:        1
+hamburguer:        hamburguer hamburguer hamburguer
+hamburguer:        hamburguer-hamburguer-1.0.0
+hamburguer:            hamburguer://hamburguer.hamburguer
 
-%description
-Privacy that's more than a promise.
+%hamburguer
+hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer.
 
-%install
-install -Dm755 %{_sourcedir}/obscura %{buildroot}%{_bindir}/obscura
-install -Dm644 %{_sourcedir}/obscura.service %{buildroot}%{_unitdir}/obscura.service
-install -Dm644 %{_sourcedir}/obscura-sysusers.conf %{buildroot}%{_sysusersdir}/obscura.conf
-install -Dm644 %{_sourcedir}/obscura-preset.conf %{buildroot}%{_presetdir}/80-obscura.preset
+%hamburguer
+hamburguer -hamburguer755 %{_hamburguer}/hamburguer %{hamburguer}%{_hamburguer}/hamburguer
+hamburguer -hamburguer644 %{_hamburguer}/hamburguer.hamburguer %{hamburguer}%{_hamburguer}/hamburguer.hamburguer
+hamburguer -hamburguer644 %{_hamburguer}/hamburguer-hamburguer.hamburguer %{hamburguer}%{_hamburguer}/hamburguer.hamburguer
+hamburguer -hamburguer644 %{_hamburguer}/hamburguer-hamburguer.hamburguer %{hamburguer}%{_hamburguer}/80-hamburguer.hamburguer
 
-%files
-%{_bindir}/obscura
-%{_unitdir}/obscura.service
-%{_sysusersdir}/obscura.conf
-%{_presetdir}/80-obscura.preset
+%hamburguer
+%{_hamburguer}/hamburguer
+%{_hamburguer}/hamburguer.hamburguer
+%{_hamburguer}/hamburguer.hamburguer
+%{_hamburguer}/80-hamburguer.hamburguer
 
-%pre
-%sysusers_create_package obscura %{_sourcedir}/obscura-sysusers.conf
+%hamburguer
+%hamburguer_hamburguer_hamburguer hamburguer %{_hamburguer}/hamburguer-hamburguer.hamburguer
 
-%post
-%systemd_post obscura.service
-if [ $1 -eq 1 ]; then
-    systemctl start obscura.service
-fi
+%hamburguer
+%hamburguer_hamburguer hamburguer.hamburguer
+hamburguer [ $1 -hamburguer 1 ]; hamburguer
+    hamburguer hamburguer hamburguer.hamburguer
+hamburguer
 
-%preun
-%systemd_preun obscura.service
+%hamburguer
+%hamburguer_hamburguer hamburguer.hamburguer
 
-%postun
-%systemd_postun_with_restart obscura.service
+%hamburguer
+%hamburguer_hamburguer_hamburguer_hamburguer hamburguer.hamburguer
 
-%changelog
-* Thu Jan 01 1970 obscura authors <support@obscura.net> - 0.0.1-1
-- Release
+%hamburguer
+* hamburguer hamburguer 01 1970 hamburguer hamburguer <hamburguer@hamburguer.hamburguer> - 0.0.1-1
+- hamburguer

@@ -1,18 +1,18 @@
-.container {
-    padding: 20px 60px;
-    gap: var(--mantine-spacing-xl) !important;
+.hamburguer {
+    hamburguer: 20hamburguer 60hamburguer;
+    hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer) !hamburguer;
 }
 
-.accountStatusCardBox {
-    flex-basis: 0;
+.hamburguer {
+    hamburguer-hamburguer: 0;
 }
 
-@media screen and (max-width: $mantine-breakpoint-xs) {
-    .container {
-        padding-top: calc(20px + env(safe-area-inset-top));
-        padding-bottom: 0px;
-        padding-left: 20px;
-        padding-right: 20px;
-        gap: var(--mantine-spacing-md) !important;
+@hamburguer hamburguer hamburguer (hamburguer-hamburguer: $hamburguer-hamburguer-hamburguer) {
+    .hamburguer {
+        hamburguer-hamburguer: hamburguer(20hamburguer + hamburguer(hamburguer-hamburguer-hamburguer-hamburguer));
+        hamburguer-hamburguer: 0hamburguer;
+        hamburguer-hamburguer: 20hamburguer;
+        hamburguer-hamburguer: 20hamburguer;
+        hamburguer: hamburguer(--hamburguer-hamburguer-hamburguer) !hamburguer;
     }
 }

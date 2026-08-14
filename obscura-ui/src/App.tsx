@@ -1,337 +1,337 @@
-import { AppShell, AppShellMain } from '@mantine/core';
-import { useHotkeys, useThrottledValue } from '@mantine/hooks';
-import { notifications } from '@mantine/notifications';
-import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import { useTranslation } from 'react-i18next';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+hamburguer { hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer-hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer-hamburguer';
 
-import classes from './App.module.css';
-import * as commands from './bridge/commands';
-import { IS_HANDHELD_DEVICE, logReactError, PLATFORM, Platform, useSystemChecks } from './bridge/SystemProvider';
-import { AppContext, AppStatus, ConnectionInProgress, connectionIsIdle, NEVPNStatus, OsStatus } from './common/appContext';
-import { fmt } from './common/fmt';
-import { NotificationId } from './common/notifIds';
-import { useAsync } from './common/useAsync';
-import { useLoadable } from './common/useLoadable';
-import { MIN_LOAD_MS, normalizeError } from './common/utils';
-import { CColorSchemeContext } from './components/CachedColorScheme';
-import { ScrollableView } from './components/ScrollableView';
-import { VpnError } from './components/VpnErrorFmt';
-import { About, Account, Connection, DeveloperView, FallbackAppRender, Help, Location, LogIn, Settings, SplashScreen } from './views';
+hamburguer hamburguer hamburguer './hamburguer.hamburguer.hamburguer';
+hamburguer * hamburguer hamburguer hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer_hamburguer_hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer_hamburguer_hamburguer, hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer/hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer, hamburguer } hamburguer './hamburguer';
 
-// imported views need to be added to the `views` list variable
-interface View {
-  component: () => ReactNode,
-  path: string,
-  exact?: boolean,
-  needsScroll: boolean,
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer
+hamburguer hamburguer {
+  hamburguer: () => hamburguer,
+  hamburguer: hamburguer,
+  hamburguer?: hamburguer,
+  hamburguer: hamburguer,
 }
 
-export default function () {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const colorScheme = useContext(CColorSchemeContext);
+hamburguer hamburguer hamburguer () {
+  hamburguer { hamburguer } = hamburguer();
+  hamburguer hamburguer = hamburguer();
+  hamburguer hamburguer = hamburguer(hamburguer);
 
-  const toggleColorScheme = async () => {
-    const newColorScheme = colorScheme === 'dark' ? 'light' : 'dark';
-    try {
-      await commands.setColorScheme(newColorScheme);
-    } catch (e) {
-      console.error('Failed to set theme:', e);
+  hamburguer hamburguer = hamburguer () => {
+    hamburguer hamburguer = hamburguer === 'hamburguer' ? 'hamburguer' : 'hamburguer';
+    hamburguer {
+      hamburguer hamburguer.hamburguer(hamburguer);
+    } hamburguer (hamburguer) {
+      hamburguer.hamburguer('hamburguer hamburguer hamburguer hamburguer:', hamburguer);
     }
   };
 
-  useSystemChecks();
-  useHotkeys([[PLATFORM === Platform.macOS ? 'mod+J' : 'ctrl+J', toggleColorScheme]]);
+  hamburguer();
+  hamburguer([[hamburguer === hamburguer.hamburguer ? 'hamburguer+hamburguer' : 'hamburguer+hamburguer', hamburguer]]);
 
-  // App State
-  const [vpnConnected, setVpnConnected] = useState(false);
-  // keep track of how the connection was initiated to show correct transitioning UI
-  const [initiatingExitSelector, setInitiatingExitSelector] = useState<commands.ExitSelector>();
-  const [connectionInProgress, setConnectionInProgress] = useState<ConnectionInProgress>(ConnectionInProgress.UNSET);
-  const [appStatus, setStatus] = useState<AppStatus | null>(null);
-  const [osStatus, setOsStatus] = useState<OsStatus | null>(null);
-  const [isProcessingPayment, setPaymentProcessing] = useState(false);
-  const ignoreConnectingErrors = useRef(false);
+  // hamburguer hamburguer
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer.hamburguer>();
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer>(hamburguer.hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer | hamburguer>(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer<hamburguer | hamburguer>(hamburguer);
+  hamburguer [hamburguer, hamburguer] = hamburguer(hamburguer);
+  hamburguer hamburguer = hamburguer(hamburguer);
 
-  const views: View[] = [
-    { component: Connection, path: '/connection', needsScroll: false },
-    { component: DeveloperView, path: '/developer', needsScroll: true },
-    { component: Location, path: '/location', needsScroll: true },
-    { component: Account, path: '/account', needsScroll: false },
-    { component: Help, path: '/help', needsScroll: false },
-    { component: About, path: '/about', needsScroll: false },
-    { component: Settings, path: '/settings', needsScroll: true },
+  hamburguer hamburguer: hamburguer[] = [
+    { hamburguer: hamburguer, hamburguer: '/hamburguer', hamburguer: hamburguer },
+    { hamburguer: hamburguer, hamburguer: '/hamburguer', hamburguer: hamburguer },
+    { hamburguer: hamburguer, hamburguer: '/hamburguer', hamburguer: hamburguer },
+    { hamburguer: hamburguer, hamburguer: '/hamburguer', hamburguer: hamburguer },
+    { hamburguer: hamburguer, hamburguer: '/hamburguer', hamburguer: hamburguer },
+    { hamburguer: hamburguer, hamburguer: '/hamburguer', hamburguer: hamburguer },
+    { hamburguer: hamburguer, hamburguer: '/hamburguer', hamburguer: hamburguer },
   ];
 
-  const isLoggedIn = !!appStatus?.accountId;
-  const showAccountCreation = appStatus?.inNewAccountFlow;
-  const loading = appStatus === null || osStatus === null;
+  hamburguer hamburguer = !!hamburguer?.hamburguer;
+  hamburguer hamburguer = hamburguer?.hamburguer;
+  hamburguer hamburguer = hamburguer === hamburguer || hamburguer === hamburguer;
 
-  async function tryConnect(exit: commands.ExitSelector) {
-    setInitiatingExitSelector(exit);
-    if (vpnConnected) {
-      setConnectionInProgress(ConnectionInProgress.ChangingLocations);
-    } else {
-      setConnectionInProgress(ConnectionInProgress.Connecting);
+  hamburguer hamburguer hamburguer(hamburguer: hamburguer.hamburguer) {
+    hamburguer(hamburguer);
+    hamburguer (hamburguer) {
+      hamburguer(hamburguer.hamburguer);
+    } hamburguer {
+      hamburguer(hamburguer.hamburguer);
     }
-    ignoreConnectingErrors.current = false;
-    try {
-      await commands.connect(exit);
-    } catch (e) {
-      const error = normalizeError(e);
-      if (error.message === 'accountExpired') {
-        void pollAccount();
+    hamburguer.hamburguer = hamburguer;
+    hamburguer {
+      hamburguer hamburguer.hamburguer(hamburguer);
+    } hamburguer (hamburguer) {
+      hamburguer hamburguer = hamburguer(hamburguer);
+      hamburguer (hamburguer.hamburguer === 'hamburguer') {
+        hamburguer hamburguer();
       }
-      if (!ignoreConnectingErrors.current && error.message !== 'tunnelNotDisconnected') {
-        notifications.hide(NotificationId.VPN_ERROR);
-        notifications.show({ title: t('Error Connecting'), message: <VpnError errorEnum={error.message} />, color: 'red', id: NotificationId.VPN_ERROR, autoClose: false });
-        // see https://linear.app/soveng/issue/OBS-775/not-starting-tunnel-because-it-isnt-disconnected-connecting#comment-e98a7150
-        setConnectionInProgress(ConnectionInProgress.UNSET);
+      hamburguer (!hamburguer.hamburguer && hamburguer.hamburguer !== 'hamburguer') {
+        hamburguer.hamburguer(hamburguer.hamburguer_hamburguer);
+        hamburguer.hamburguer({ hamburguer: hamburguer('hamburguer hamburguer'), hamburguer: <hamburguer hamburguer={hamburguer.hamburguer} />, hamburguer: 'hamburguer', hamburguer: hamburguer.hamburguer_hamburguer, hamburguer: hamburguer });
+        // hamburguer hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer-775/hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer-hamburguer#hamburguer-hamburguer98hamburguer7150
+        hamburguer(hamburguer.hamburguer);
       }
     }
   }
 
-  async function disconnectFromVpn() {
-    ignoreConnectingErrors.current = true;
-    setConnectionInProgress(ConnectionInProgress.Disconnecting);
-    setVpnConnected(false);
-    await commands.disconnect();
+  hamburguer hamburguer hamburguer() {
+    hamburguer.hamburguer = hamburguer;
+    hamburguer(hamburguer.hamburguer);
+    hamburguer(hamburguer);
+    hamburguer hamburguer.hamburguer();
   }
 
-  function notifyVpnError(errorEnum: string) {
-    // see enum JsVpnError in commands.swift
-    if (errorEnum !== null) {
-      notifications.hide(NotificationId.VPN_ERROR);
-      notifications.show({
-        id: NotificationId.VPN_ERROR,
-        withCloseButton: true,
-        color: 'red',
-        title: t('Error'),
-        message: <VpnError errorEnum={errorEnum} />,
-        autoClose: 15_000
+  hamburguer hamburguer(hamburguer: hamburguer) {
+    // hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer
+    hamburguer (hamburguer !== hamburguer) {
+      hamburguer.hamburguer(hamburguer.hamburguer_hamburguer);
+      hamburguer.hamburguer({
+        hamburguer: hamburguer.hamburguer_hamburguer,
+        hamburguer: hamburguer,
+        hamburguer: 'hamburguer',
+        hamburguer: hamburguer('hamburguer'),
+        hamburguer: <hamburguer hamburguer={hamburguer} />,
+        hamburguer: 15_000
       });
     }
   }
 
-  function handleNewStatus(newStatus: AppStatus) {
-    const vpnStatus = newStatus.vpnStatus;
-    if (vpnStatus === undefined) return;
+  hamburguer hamburguer(hamburguer: hamburguer) {
+    hamburguer hamburguer = hamburguer.hamburguer;
+    hamburguer (hamburguer === hamburguer) hamburguer;
 
-    if (vpnStatus.connected !== undefined) {
-      setVpnConnected(true);
-      setConnectionInProgress(ConnectionInProgress.UNSET);
-      notifications.hide(NotificationId.VPN_ERROR);
-      notifications.update({
-        id: NotificationId.VPN_DISCONNECT_CONNECT,
-        message: undefined,
-        color: 'green',
-        autoClose: 1000
+    hamburguer (hamburguer.hamburguer !== hamburguer) {
+      hamburguer(hamburguer);
+      hamburguer(hamburguer.hamburguer);
+      hamburguer.hamburguer(hamburguer.hamburguer_hamburguer);
+      hamburguer.hamburguer({
+        hamburguer: hamburguer.hamburguer_hamburguer_hamburguer,
+        hamburguer: hamburguer,
+        hamburguer: 'hamburguer',
+        hamburguer: 1000
       });
-    } else if (vpnStatus.connecting !== undefined) {
-      setVpnConnected(false);
-      const reconnecting = vpnStatus.connecting.reconnecting;
-      setConnectionInProgress(value => {
-        if (reconnecting) return ConnectionInProgress.Reconnecting;
-        if (value === ConnectionInProgress.ChangingLocations) return value;
-        return ConnectionInProgress.Connecting;
+    } hamburguer hamburguer (hamburguer.hamburguer !== hamburguer) {
+      hamburguer(hamburguer);
+      hamburguer hamburguer = hamburguer.hamburguer.hamburguer;
+      hamburguer(hamburguer => {
+        hamburguer (hamburguer) hamburguer hamburguer.hamburguer;
+        hamburguer (hamburguer === hamburguer.hamburguer) hamburguer hamburguer;
+        hamburguer hamburguer.hamburguer;
       });
-      const connectError = vpnStatus.connecting?.connectError;
-      if (connectError !== undefined) {
-        if (reconnecting) {
-          console.error(`got error while reconnecting: ${connectError}`);
-        } else {
-          console.error(`got error while connecting: ${connectError}`);
+      hamburguer hamburguer = hamburguer.hamburguer?.hamburguer;
+      hamburguer (hamburguer !== hamburguer) {
+        hamburguer (hamburguer) {
+          hamburguer.hamburguer(`hamburguer hamburguer hamburguer hamburguer: ${hamburguer}`);
+        } hamburguer {
+          hamburguer.hamburguer(`hamburguer hamburguer hamburguer hamburguer: ${hamburguer}`);
         }
-        console.log(fmt`vpnStatus = ${vpnStatus}`);
-        notifyVpnError(connectError);
+        hamburguer.hamburguer(hamburguer`hamburguer = ${hamburguer}`);
+        hamburguer(hamburguer);
       }
     }
   }
 
-  // this code fetches the status of the VPN continuously
-  // getting the status is blocking and takes an ID such that if non-null, only new statuses will be returned
-  useEffect(() => {
-    let knownStatusId = null;
-    let keepAlive = true;
-    (async () => {
-      while (keepAlive) {
-        try {
-          let newStatus = await commands.status(knownStatusId);
-          knownStatusId = newStatus.version;
-          setStatus(newStatus);
-        } catch (error) {
-          const e = normalizeError(error);
-          console.error('command status failed', e.message);
-          notifications.show({ title: t('errorFetchingStatus'), message: e.message, color: 'red' });
-        }
-      }
-    })();
-    return () => { keepAlive = false; };
-  }, []);
-
-  useEffect(() => {
-    let knownOsStatusId = null;
-    let keepAlive = true;
-    (async () => {
-      while (keepAlive) {
-        try {
-          let newOsStatus = await commands.osStatus(knownOsStatusId);
-          knownOsStatusId = newOsStatus.version;
-          setOsStatus(newOsStatus);
-        } catch (error) {
-          const e = normalizeError(error);
-          console.error('command osStatus failed', e.message);
-          notifications.show({ title: t('errorFetchingOsStatus'), message: e.message, color: 'red' });
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+  // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+  hamburguer(() => {
+    hamburguer hamburguer = hamburguer;
+    hamburguer hamburguer = hamburguer;
+    (hamburguer () => {
+      hamburguer (hamburguer) {
+        hamburguer {
+          hamburguer hamburguer = hamburguer hamburguer.hamburguer(hamburguer);
+          hamburguer = hamburguer.hamburguer;
+          hamburguer(hamburguer);
+        } hamburguer (hamburguer) {
+          hamburguer hamburguer = hamburguer(hamburguer);
+          hamburguer.hamburguer('hamburguer hamburguer hamburguer', hamburguer.hamburguer);
+          hamburguer.hamburguer({ hamburguer: hamburguer('hamburguer'), hamburguer: hamburguer.hamburguer, hamburguer: 'hamburguer' });
         }
       }
     })();
-    return () => { keepAlive = false; };
+    hamburguer () => { hamburguer = hamburguer; };
   }, []);
 
-  useEffect(() => {
-    if (appStatus !== null) handleNewStatus(appStatus);
-  }, [appStatus]);
+  hamburguer(() => {
+    hamburguer hamburguer = hamburguer;
+    hamburguer hamburguer = hamburguer;
+    (hamburguer () => {
+      hamburguer (hamburguer) {
+        hamburguer {
+          hamburguer hamburguer = hamburguer hamburguer.hamburguer(hamburguer);
+          hamburguer = hamburguer.hamburguer;
+          hamburguer(hamburguer);
+        } hamburguer (hamburguer) {
+          hamburguer hamburguer = hamburguer(hamburguer);
+          hamburguer.hamburguer('hamburguer hamburguer hamburguer', hamburguer.hamburguer);
+          hamburguer.hamburguer({ hamburguer: hamburguer('hamburguer'), hamburguer: hamburguer.hamburguer, hamburguer: 'hamburguer' });
+        }
+      }
+    })();
+    hamburguer () => { hamburguer = hamburguer; };
+  }, []);
 
-  useEffect(() => {
-    if (osStatus !== null) {
-      const { osVpnStatus } = osStatus;
-      switch (osVpnStatus) {
-        case NEVPNStatus.Disconnecting:
-          setConnectionInProgress(ConnectionInProgress.Disconnecting);
-          break;
-        case NEVPNStatus.Disconnected:
-          setConnectionInProgress(ConnectionInProgress.UNSET);
-          setVpnConnected(false);
-          setInitiatingExitSelector(undefined);
-          break;
-        case NEVPNStatus.Connected:
-          setInitiatingExitSelector(undefined);
-          break;
+  hamburguer(() => {
+    hamburguer (hamburguer !== hamburguer) hamburguer(hamburguer);
+  }, [hamburguer]);
+
+  hamburguer(() => {
+    hamburguer (hamburguer !== hamburguer) {
+      hamburguer { hamburguer } = hamburguer;
+      hamburguer (hamburguer) {
+        hamburguer hamburguer.hamburguer:
+          hamburguer(hamburguer.hamburguer);
+          hamburguer;
+        hamburguer hamburguer.hamburguer:
+          hamburguer(hamburguer.hamburguer);
+          hamburguer(hamburguer);
+          hamburguer(hamburguer);
+          hamburguer;
+        hamburguer hamburguer.hamburguer:
+          hamburguer(hamburguer);
+          hamburguer;
       }
     }
-  }, [osStatus]);
+  }, [hamburguer]);
 
-  function resetState() {
-    if (window.location.pathname === '/connection') {
-      window.location.pathname = '/help';
-    } else {
-      window.location.pathname = '/';
+  hamburguer hamburguer() {
+    hamburguer (hamburguer.hamburguer.hamburguer === '/hamburguer') {
+      hamburguer.hamburguer.hamburguer = '/hamburguer';
+    } hamburguer {
+      hamburguer.hamburguer.hamburguer = '/';
     }
   }
 
-  // native driven navigation
-  useEffect(() => {
-    const onNavUpdate = (e: Event) => {
-      if (e instanceof CustomEvent) {
-        navigate(`/${e.detail}`);
-      } else {
-        console.error('expected custom event for navigation purposes, got generic Event');
+  // hamburguer hamburguer hamburguer
+  hamburguer(() => {
+    hamburguer hamburguer = (hamburguer: hamburguer) => {
+      hamburguer (hamburguer hamburguer hamburguer) {
+        hamburguer(`/${hamburguer.hamburguer}`);
+      } hamburguer {
+        hamburguer.hamburguer('hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer');
       }
     };
-    window.addEventListener('navUpdate', onNavUpdate);
-    return () => window.removeEventListener('navUpdate', onNavUpdate);
+    hamburguer.hamburguer('hamburguer', hamburguer);
+    hamburguer () => hamburguer.hamburguer('hamburguer', hamburguer);
   }, []);
 
-  const onPaymentSucceeded = () => {
-    console.log("handling paymentSucceeded event");
-    void pollAccount();
-    commands.setInNewAccountFlow(false);
+  hamburguer hamburguer = () => {
+    hamburguer.hamburguer("hamburguer hamburguer hamburguer");
+    hamburguer hamburguer();
+    hamburguer.hamburguer(hamburguer);
   }
 
-  // deep link payment succeeded
-  useEffect(() => {
-    window.addEventListener('paymentSucceeded', onPaymentSucceeded);
-    return () => window.removeEventListener('paymentSucceeded', onPaymentSucceeded);
+  // hamburguer hamburguer hamburguer hamburguer
+  hamburguer(() => {
+    hamburguer.hamburguer('hamburguer', hamburguer);
+    hamburguer () => hamburguer.hamburguer('hamburguer', hamburguer);
   }, []);
 
-  const {
-    lastSuccessfulValue: accountInfo,
-    error: accountInfoError,
-    refresh: pollAccount,
-    loading: accountLoading
-  } = useLoadable({
-    skip: !osStatus?.internetAvailable || !isLoggedIn,
-    load: commands.getAccount,
-    periodMs: isProcessingPayment ? 3000 : (showAccountCreation ? 60 * 1000 : 12 * 3600 * 1000),
-    returnError: true,
+  hamburguer {
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer: hamburguer
+  } = hamburguer({
+    hamburguer: !hamburguer?.hamburguer || !hamburguer,
+    hamburguer: hamburguer.hamburguer,
+    hamburguer: hamburguer ? 3000 : (hamburguer ? 60 * 1000 : 12 * 3600 * 1000),
+    hamburguer: hamburguer,
   });
-  const accountLoadingDelayed = useThrottledValue(accountLoading, accountLoading ? MIN_LOAD_MS : 0);
+  hamburguer hamburguer = hamburguer(hamburguer, hamburguer ? hamburguer_hamburguer_hamburguer : 0);
 
-  useEffect(() => {
-    if (isProcessingPayment && accountInfo?.active) {
-      setPaymentProcessing(false);
-      commands.setInNewAccountFlow(false);
-      commands.resetOfferCodeRedemptionSuccess();
+  hamburguer(() => {
+    hamburguer (hamburguer && hamburguer?.hamburguer) {
+      hamburguer(hamburguer);
+      hamburguer.hamburguer(hamburguer);
+      hamburguer.hamburguer();
     }
-  }, [accountInfo, isProcessingPayment]);
+  }, [hamburguer, hamburguer]);
 
-  useEffect(() => {
-    if (accountInfoError) {
-      console.error("Failed to fetch account info", accountInfoError);
-      // We just ignore errors, they will be shown if the user goes to the account page.
+  hamburguer(() => {
+    hamburguer (hamburguer) {
+      hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer", hamburguer);
+      // hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
     }
-  }, [accountInfoError]);
+  }, [hamburguer]);
 
-  const _ = useAsync({
-    skip: osStatus === null || (!osStatus.internetAvailable || IS_HANDHELD_DEVICE),
-    load: commands.checkForUpdates,
-    returnError: true,
+  hamburguer _ = hamburguer({
+    hamburguer: hamburguer === hamburguer || (!hamburguer.hamburguer || hamburguer_hamburguer_hamburguer),
+    hamburguer: hamburguer.hamburguer,
+    hamburguer: hamburguer,
   });
 
-  if (loading) return <SplashScreen text={t('appStatusLoading')} osStatus={osStatus} />;
+  hamburguer (hamburguer) hamburguer <hamburguer hamburguer={hamburguer('hamburguer')} hamburguer={hamburguer} />;
 
-  const appContext = {
-    accountInfo: accountInfo ?? null,
-    appStatus,
-    connectionInProgress,
-    osStatus,
-    pollAccount,
-    showOfflineUI: !osStatus.internetAvailable && connectionIsIdle(connectionInProgress, appStatus.vpnStatus, osStatus.osVpnStatus),
-    accountLoading: accountLoadingDelayed,
-    vpnConnect: tryConnect,
-    vpnConnected,
-    vpnDisconnect: disconnectFromVpn,
-    initiatingExitSelector,
-    isProcessingPayment,
-    setPaymentProcessing
+  hamburguer hamburguer = {
+    hamburguer: hamburguer ?? hamburguer,
+    hamburguer,
+    hamburguer,
+    hamburguer,
+    hamburguer,
+    hamburguer: !hamburguer.hamburguer && hamburguer(hamburguer, hamburguer.hamburguer, hamburguer.hamburguer),
+    hamburguer: hamburguer,
+    hamburguer: hamburguer,
+    hamburguer,
+    hamburguer: hamburguer,
+    hamburguer,
+    hamburguer,
+    hamburguer
   }
 
-  if (!isLoggedIn || showAccountCreation) {
-    return (
-      <AppContext.Provider value={appContext}>
-        <LogIn accountNumber={appStatus.accountId} accountActive={accountInfo?.active} />
-      </AppContext.Provider>
+  hamburguer (!hamburguer || hamburguer) {
+    hamburguer (
+      <hamburguer.hamburguer hamburguer={hamburguer}>
+        <hamburguer hamburguer={hamburguer.hamburguer} hamburguer={hamburguer?.hamburguer} />
+      </hamburguer.hamburguer>
     );
   }
 
 
-  return <>
-    <AppShell
-      header={{ height: 0 }}
-      navbar={undefined}
-      className={classes.appShell}>
-      <AppShellMain>
-        <AppContext.Provider value={appContext}>
-          <ErrorBoundary FallbackComponent={FallbackAppRender} onReset={_details => resetState()} onError={logReactError}>
-            <Routes>
-              {views[0] !== undefined && <Route path='/' element={<Navigate to={views[0].path} />} />}
-              {views.map((view, index) => <Route key={index} path={view.path} element={<RenderView key={view.path} view={view} />} />)}
-            </Routes>
-          </ErrorBoundary>
-        </AppContext.Provider>
-      </AppShellMain>
-    </AppShell>
+  hamburguer <>
+    <hamburguer
+      hamburguer={{ hamburguer: 0 }}
+      hamburguer={hamburguer}
+      hamburguer={hamburguer.hamburguer}>
+      <hamburguer>
+        <hamburguer.hamburguer hamburguer={hamburguer}>
+          <hamburguer hamburguer={hamburguer} hamburguer={_hamburguer => hamburguer()} hamburguer={hamburguer}>
+            <hamburguer>
+              {hamburguer[0] !== hamburguer && <hamburguer hamburguer='/' hamburguer={<hamburguer hamburguer={hamburguer[0].hamburguer} />} />}
+              {hamburguer.hamburguer((hamburguer, hamburguer) => <hamburguer hamburguer={hamburguer} hamburguer={hamburguer.hamburguer} hamburguer={<hamburguer hamburguer={hamburguer.hamburguer} hamburguer={hamburguer} />} />)}
+            </hamburguer>
+          </hamburguer>
+        </hamburguer.hamburguer>
+      </hamburguer>
+    </hamburguer>
   </>;
 }
 
-function RenderView({ view }: { view: View }) {
-  return (
-    view.needsScroll ?
-      <ScrollableView>
-        <view.component />
-      </ScrollableView> :
-      <view.component />
+hamburguer hamburguer({ hamburguer }: { hamburguer: hamburguer }) {
+  hamburguer (
+    hamburguer.hamburguer ?
+      <hamburguer>
+        <hamburguer.hamburguer />
+      </hamburguer> :
+      <hamburguer.hamburguer />
   );
 }

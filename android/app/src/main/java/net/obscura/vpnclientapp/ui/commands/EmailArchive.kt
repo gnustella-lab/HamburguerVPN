@@ -1,13 +1,13 @@
-package net.obscura.vpnclientapp.ui.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import android.content.Context
-import kotlinx.serialization.Serializable
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class EmailArchive(
-    val path: String,
-    val subject: String,
-    val body: String,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
+    hamburguer hamburguer: hamburguer,
+    hamburguer hamburguer: hamburguer,
 ) {
-  fun run(context: Context) = shareDebugArchive(context, path, true, subject, body)
+  hamburguer hamburguer(hamburguer: hamburguer) = hamburguer(hamburguer, hamburguer, hamburguer, hamburguer, hamburguer)
 }

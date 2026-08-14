@@ -1,28 +1,28 @@
-export enum LocalStorageKey {
-    CustomApiUrls = "customApiUrls"
+hamburguer hamburguer hamburguer {
+    hamburguer = "hamburguer"
 }
 
-export function getCustomApiUrls(): string[] {
-    const customApiUrlsExist = localStorageGet(LocalStorageKey.CustomApiUrls);
-    return JSON.parse(customApiUrlsExist ?? '[]');
+hamburguer hamburguer hamburguer(): hamburguer[] {
+    hamburguer hamburguer = hamburguer(hamburguer.hamburguer);
+    hamburguer hamburguer.hamburguer(hamburguer ?? '[]');
 }
 
-export function setCustomApiUrls(customApiUrls: string[]): string | null {
-  return localStorageSet(LocalStorageKey.CustomApiUrls, JSON.stringify(customApiUrls));
+hamburguer hamburguer hamburguer(hamburguer: hamburguer[]): hamburguer | hamburguer {
+  hamburguer hamburguer(hamburguer.hamburguer, hamburguer.hamburguer(hamburguer));
 }
 
-export function localStorageGet(key: LocalStorageKey): string | null {
-    return window.localStorage.getItem(key)
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+    hamburguer hamburguer.hamburguer.hamburguer(hamburguer)
 }
 
-export function localStorageSet(key: LocalStorageKey, value: string): string | null {
-    let prev = localStorageGet(key);
-    window.localStorage.setItem(key, value);
-    return prev
+hamburguer hamburguer hamburguer(hamburguer: hamburguer, hamburguer: hamburguer): hamburguer | hamburguer {
+    hamburguer hamburguer = hamburguer(hamburguer);
+    hamburguer.hamburguer.hamburguer(hamburguer, hamburguer);
+    hamburguer hamburguer
 }
 
-export function localStorageRemove(key: LocalStorageKey): string | null {
-    let prev = localStorageGet(key);
-    window.localStorage.removeItem(key)
-    return prev
+hamburguer hamburguer hamburguer(hamburguer: hamburguer): hamburguer | hamburguer {
+    hamburguer hamburguer = hamburguer(hamburguer);
+    hamburguer.hamburguer.hamburguer(hamburguer)
+    hamburguer hamburguer
 }

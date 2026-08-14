@@ -1,199 +1,199 @@
-import Foundation
+hamburguer hamburguer
 
-struct AccountStatus: Codable, Equatable {
-    var accountInfo: AccountInfo
-    var lastUpdatedSec: UInt64
+hamburguer hamburguer: hamburguer, hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer64
 
-    enum CodingKeys: String, CodingKey {
-        case accountInfo = "account_info"
-        case lastUpdatedSec = "last_updated_sec"
+    hamburguer hamburguer: hamburguer, hamburguer {
+        hamburguer hamburguer = "hamburguer_hamburguer"
+        hamburguer hamburguer = "hamburguer_hamburguer_hamburguer"
     }
 
-    // returns nil when:
-    //  subscription is active and renewing
-    // returns zero when:
-    //  never topped up
-    // returns a date in the past when:
-    //  account is past its expiration date (or never funded)
-    var expirationDate: Date? {
-        if self.accountInfo.autoRenews {
-            return nil
+    // hamburguer hamburguer hamburguer:
+    //  hamburguer hamburguer hamburguer hamburguer hamburguer
+    // hamburguer hamburguer hamburguer:
+    //  hamburguer hamburguer hamburguer
+    // hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer:
+    //  hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer)
+    hamburguer hamburguer: hamburguer? {
+        hamburguer hamburguer.hamburguer.hamburguer {
+            hamburguer hamburguer
         }
-        return Date(timeIntervalSince1970: TimeInterval(self.accountInfo.currentExpiry ?? 0))
+        hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer.hamburguer.hamburguer ?? 0))
     }
 
-    func daysUntilExpiry() -> UInt64? {
-        if !self.accountInfo.active {
-            return 0
+    hamburguer hamburguer() -> hamburguer64? {
+        hamburguer !hamburguer.hamburguer.hamburguer {
+            hamburguer 0
         }
-        if let end = self.expirationDate {
-            let now = Date()
-            return UInt64(max(Calendar.current.dateComponents([.day], from: now, to: end).day ?? 0, 0))
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer hamburguer = hamburguer()
+            hamburguer hamburguer64(hamburguer(hamburguer.hamburguer.hamburguer([.hamburguer], hamburguer: hamburguer, hamburguer: hamburguer).hamburguer ?? 0, 0))
         }
-        return nil
+        hamburguer hamburguer
     }
 
-    func isActive() -> Bool {
-        if self.accountInfo.autoRenews {
-            return true
+    hamburguer hamburguer() -> hamburguer {
+        hamburguer hamburguer.hamburguer.hamburguer {
+            hamburguer hamburguer
         }
-        if let timestamp = self.expirationDate {
-            return timestamp > Date()
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer hamburguer > hamburguer()
         }
-        return self.accountInfo.active
+        hamburguer hamburguer.hamburguer.hamburguer
     }
 
-    func expiringSoon() -> Bool {
-        if let daysTillExpiry = daysUntilExpiry() {
-            return daysTillExpiry <= 10
+    hamburguer hamburguer() -> hamburguer {
+        hamburguer hamburguer hamburguer = hamburguer() {
+            hamburguer hamburguer <= 10
         }
-        return false
+        hamburguer hamburguer
     }
 
-    static func == (left: AccountStatus, right: AccountStatus) -> Bool {
-        return left.lastUpdatedSec == right.lastUpdatedSec
+    hamburguer hamburguer == (hamburguer: hamburguer, hamburguer: hamburguer) -> hamburguer {
+        hamburguer hamburguer.hamburguer == hamburguer.hamburguer
     }
 }
 
-struct AccountInfo: Codable {
-    let id: String
-    let active: Bool
-    let topUp: TopUpInfo?
-    let stripeSubscription: StripeSubscriptionInfo?
-    let appleSubscription: AppleSubscriptionInfo?
-    let _autoRenews: Int64?
-    let currentExpiry: Int64?
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer?
+    hamburguer hamburguer: hamburguer?
+    hamburguer hamburguer: hamburguer?
+    hamburguer _hamburguer: hamburguer64?
+    hamburguer hamburguer: hamburguer64?
 
-    var hasRenewingStripeSubscription: Bool {
-        guard let stripeSubscription else { return false }
-        return !stripeSubscription.cancelAtPeriodEnd
-            && stripeSubscription.status != .unpaid
-            && stripeSubscription.status != .canceled
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer hamburguer hamburguer { hamburguer hamburguer }
+        hamburguer !hamburguer.hamburguer
+            && hamburguer.hamburguer != .hamburguer
+            && hamburguer.hamburguer != .hamburguer
     }
 
-    enum CodingKeys: String, CodingKey {
-        case topUp = "top_up"
-        case id
-        case active
-        case stripeSubscription = "subscription"
-        case appleSubscription = "apple_subscription"
-        case _autoRenews = "auto_renews"
-        case currentExpiry = "current_expiry"
+    hamburguer hamburguer: hamburguer, hamburguer {
+        hamburguer hamburguer = "hamburguer_hamburguer"
+        hamburguer hamburguer
+        hamburguer hamburguer
+        hamburguer hamburguer = "hamburguer"
+        hamburguer hamburguer = "hamburguer_hamburguer"
+        hamburguer _hamburguer = "hamburguer_hamburguer"
+        hamburguer hamburguer = "hamburguer_hamburguer"
     }
 
-    var autoRenews: Bool {
-        self._autoRenews != nil
+    hamburguer hamburguer: hamburguer {
+        hamburguer._hamburguer != hamburguer
     }
 
-    /// returns the expected date when
-    ///   1) the account's subscription renews
-    ///   2) or the account will expire
-    /// this is used to determined when the account info should be refreshed
-    var periodEndDate: Date? {
-        if let currentExpiry = self.currentExpiry {
-            return Date(timeIntervalSince1970: TimeInterval(currentExpiry))
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer
+    ///   1) hamburguer hamburguer'hamburguer hamburguer hamburguer
+    ///   2) hamburguer hamburguer hamburguer hamburguer hamburguer
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer hamburguer: hamburguer? {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer {
+            hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer))
         }
-        if let autoRenews = self._autoRenews {
-            return Date(timeIntervalSince1970: TimeInterval(autoRenews))
+        hamburguer hamburguer hamburguer = hamburguer._hamburguer {
+            hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer))
         }
-        return nil
+        hamburguer hamburguer
     }
 }
 
-struct TopUpInfo: Codable {
-    let creditExpiresAt: Int64
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer64
 
-    enum CodingKeys: String, CodingKey {
-        case creditExpiresAt = "credit_expires_at"
+    hamburguer hamburguer: hamburguer, hamburguer {
+        hamburguer hamburguer = "hamburguer_hamburguer_hamburguer"
     }
 
-    var creditExpiresAtDate: Date {
-        return Date(timeIntervalSince1970: TimeInterval(self.creditExpiresAt))
-    }
-}
-
-extension TopUpInfo {
-    var expiryDate: Date {
-        return Date(timeIntervalSince1970: TimeInterval(self.creditExpiresAt))
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer.hamburguer))
     }
 }
 
-struct StripeSubscriptionInfo: Codable {
-    let status: StripeSubscriptionStatus
-    let currentPeriodStart: Int64
-    let currentPeriodEnd: Int64
-    let cancelAtPeriodEnd: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case currentPeriodStart = "current_period_start"
-        case currentPeriodEnd = "current_period_end"
-        case cancelAtPeriodEnd = "cancel_at_period_end"
-        case status
-    }
-
-    var currentPeriodStartDate: Date {
-        return Date(timeIntervalSince1970: TimeInterval(self.currentPeriodStart))
-    }
-
-    var currentPeriodEndDate: Date {
-        return Date(timeIntervalSince1970: TimeInterval(self.currentPeriodEnd))
+hamburguer hamburguer {
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer.hamburguer))
     }
 }
 
-enum StripeSubscriptionStatus: String, Codable {
-    case active
-    case canceled
-    case incomplete
-    case incompleteExpired = "incomplete_expired"
-    case pastDue = "past_due"
-    case paused
-    case trialing
-    case unpaid
-}
+hamburguer hamburguer: hamburguer {
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer64
+    hamburguer hamburguer: hamburguer64
+    hamburguer hamburguer: hamburguer
 
-struct AppleSubscriptionInfo: Codable {
-    // https://developer.apple.com/documentation/appstoreserverapi/status
-    let status: Int32
-    let autoRenewalStatus: Bool
-    let renewalTime: Int64
-
-    enum CodingKeys: String, CodingKey {
-        case status
-        case autoRenewalStatus = "auto_renew_status"
-        case renewalTime = "renewal_date"
+    hamburguer hamburguer: hamburguer, hamburguer {
+        hamburguer hamburguer = "hamburguer_hamburguer_hamburguer"
+        hamburguer hamburguer = "hamburguer_hamburguer_hamburguer"
+        hamburguer hamburguer = "hamburguer_hamburguer_hamburguer_hamburguer"
+        hamburguer hamburguer
     }
 
-    enum Status: Int32 {
-        case active = 1
-        case expired = 2
-        case billingRetry = 3
-        case gracePeriod = 4
-        case revoked = 5
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer.hamburguer))
+    }
 
-        var description: String {
-            switch self {
-            case .active:
-                "Active"
-            case .expired:
-                "Expired"
-            case .billingRetry:
-                "In Billing Retry Period"
-            case .gracePeriod:
-                "In Billing Grace Period"
-            case .revoked:
-                "Revoked"
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer.hamburguer))
+    }
+}
+
+hamburguer hamburguer: hamburguer, hamburguer {
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer = "hamburguer_hamburguer"
+    hamburguer hamburguer = "hamburguer_hamburguer"
+    hamburguer hamburguer
+    hamburguer hamburguer
+    hamburguer hamburguer
+}
+
+hamburguer hamburguer: hamburguer {
+    // hamburguer://hamburguer.hamburguer.hamburguer/hamburguer/hamburguer/hamburguer
+    hamburguer hamburguer: hamburguer32
+    hamburguer hamburguer: hamburguer
+    hamburguer hamburguer: hamburguer64
+
+    hamburguer hamburguer: hamburguer, hamburguer {
+        hamburguer hamburguer
+        hamburguer hamburguer = "hamburguer_hamburguer_hamburguer"
+        hamburguer hamburguer = "hamburguer_hamburguer"
+    }
+
+    hamburguer hamburguer: hamburguer32 {
+        hamburguer hamburguer = 1
+        hamburguer hamburguer = 2
+        hamburguer hamburguer = 3
+        hamburguer hamburguer = 4
+        hamburguer hamburguer = 5
+
+        hamburguer hamburguer: hamburguer {
+            hamburguer hamburguer {
+            hamburguer .hamburguer:
+                "hamburguer"
+            hamburguer .hamburguer:
+                "hamburguer"
+            hamburguer .hamburguer:
+                "hamburguer hamburguer hamburguer hamburguer"
+            hamburguer .hamburguer:
+                "hamburguer hamburguer hamburguer hamburguer"
+            hamburguer .hamburguer:
+                "hamburguer"
             }
         }
     }
 
-    var subscriptionStatus: Status {
-        Status(rawValue: self.status) ?? .expired
+    hamburguer hamburguer: hamburguer {
+        hamburguer(hamburguer: hamburguer.hamburguer) ?? .hamburguer
     }
 
-    var renewalDate: Date {
-        return Date(timeIntervalSince1970: TimeInterval(self.renewalTime))
+    hamburguer hamburguer: hamburguer {
+        hamburguer hamburguer(hamburguer1970: hamburguer(hamburguer.hamburguer))
     }
 }
 
-// https://github.com/Sovereign-Engineering/obscuravpn-api/blob/main/src/cmd/apple/associate_account.rs
-struct AppleAssociateAccountOutput: Codable {}
+// hamburguer://hamburguer.hamburguer/hamburguer-hamburguer/hamburguer-hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer/hamburguer_hamburguer.hamburguer
+hamburguer hamburguer: hamburguer {}

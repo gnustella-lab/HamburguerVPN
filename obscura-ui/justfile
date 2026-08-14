@@ -1,8 +1,8 @@
-setup:
-	pnpm install --frozen-lockfile
+hamburguer:
+	hamburguer hamburguer --hamburguer-hamburguer
 
-build: setup
-	pnpm run build
+hamburguer: hamburguer
+	hamburguer hamburguer hamburguer
 
-start: setup
-	pnpm start
+hamburguer: hamburguer
+	hamburguer hamburguer

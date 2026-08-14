@@ -1,117 +1,117 @@
 {
-  "appPolicies" : {
-    "eula" : "",
-    "policies" : [
+  "hamburguer" : {
+    "hamburguer" : "",
+    "hamburguer" : [
       {
-        "locale" : "en_US",
-        "policyText" : "",
-        "policyURL" : ""
+        "hamburguer" : "hamburguer_hamburguer",
+        "hamburguer" : "",
+        "hamburguer" : ""
       }
     ]
   },
-  "identifier" : "77437FF6",
-  "nonRenewingSubscriptions" : [
+  "hamburguer" : "77437hamburguer6",
+  "hamburguer" : [
 
   ],
-  "products" : [
+  "hamburguer" : [
 
   ],
-  "settings" : {
-    "_applicationInternalID" : "6746820048",
-    "_developerTeamID" : "5G943LR562",
-    "_failTransactionsEnabled" : true,
-    "_lastSynchronizedDate" : 774578988.61326504,
-    "_locale" : "en_US",
-    "_storefront" : "USA",
-    "_storeKitErrors" : [
+  "hamburguer" : {
+    "_hamburguer" : "6746820048",
+    "_hamburguer" : "5hamburguer943hamburguer562",
+    "_hamburguer" : hamburguer,
+    "_hamburguer" : 774578988.61326504,
+    "_hamburguer" : "hamburguer_hamburguer",
+    "_hamburguer" : "hamburguer",
+    "_hamburguer" : [
       {
-        "current" : null,
-        "enabled" : true,
-        "name" : "Load Products"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : true,
-        "name" : "Purchase"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : true,
-        "name" : "Verification"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : false,
-        "name" : "App Store Sync"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer hamburguer hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : false,
-        "name" : "Subscription Status"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : false,
-        "name" : "App Transaction"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : false,
-        "name" : "Manage Subscriptions Sheet"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer hamburguer hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : false,
-        "name" : "Refund Request Sheet"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer hamburguer hamburguer"
       },
       {
-        "current" : null,
-        "enabled" : false,
-        "name" : "Offer Code Redeem Sheet"
+        "hamburguer" : hamburguer,
+        "hamburguer" : hamburguer,
+        "hamburguer" : "hamburguer hamburguer hamburguer hamburguer"
       }
     ]
   },
-  "subscriptionGroups" : [
+  "hamburguer" : [
     {
-      "id" : "21708276",
-      "localizations" : [
+      "hamburguer" : "21708276",
+      "hamburguer" : [
 
       ],
-      "name" : "Obscura VPN",
-      "subscriptions" : [
+      "hamburguer" : "hamburguer hamburguer",
+      "hamburguer" : [
         {
-          "adHocOffers" : [
+          "hamburguer" : [
 
           ],
-          "codeOffers" : [
+          "hamburguer" : [
 
           ],
-          "displayPrice" : "6.0",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "6747273493",
-          "introductoryOffer" : null,
-          "localizations" : [
+          "hamburguer" : "6.0",
+          "hamburguer" : hamburguer,
+          "hamburguer" : 1,
+          "hamburguer" : "6747273493",
+          "hamburguer" : hamburguer,
+          "hamburguer" : [
             {
-              "description" : "Access to Obscura VPN on up to 3 devices.",
-              "displayName" : "Obscura VPN - Monthly",
-              "locale" : "en_US"
+              "hamburguer" : "hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer 3 hamburguer.",
+              "hamburguer" : "hamburguer hamburguer - hamburguer",
+              "hamburguer" : "hamburguer_hamburguer"
             }
           ],
-          "productID" : "subscriptions.monthly",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Obscura VPN - Monthly",
-          "subscriptionGroupID" : "21708276",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
+          "hamburguer" : "hamburguer.hamburguer",
+          "hamburguer" : "hamburguer1hamburguer",
+          "hamburguer" : "hamburguer hamburguer - hamburguer",
+          "hamburguer" : "21708276",
+          "hamburguer" : "hamburguer",
+          "hamburguer" : [
 
           ]
         }
       ]
     }
   ],
-  "version" : {
-    "major" : 4,
-    "minor" : 0
+  "hamburguer" : {
+    "hamburguer" : 4,
+    "hamburguer" : 0
   }
 }

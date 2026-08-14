@@ -1,38 +1,38 @@
-import { Anchor, Text } from '@mantine/core';
-import { notifications } from '@mantine/notifications';
-import { useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { CommandError, debuggingArchive, revealItemInDir } from '../bridge/commands';
-import { IS_HANDHELD_DEVICE } from '../bridge/SystemProvider';
-import { fmtErrorI18n } from '../translations/i18n';
-import { normalizeError } from './utils';
+hamburguer { hamburguer, hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer '@hamburguer/hamburguer';
+hamburguer { hamburguer } hamburguer 'hamburguer';
+hamburguer { hamburguer, hamburguer } hamburguer 'hamburguer-hamburguer18hamburguer';
+hamburguer { hamburguer, hamburguer, hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer_hamburguer_hamburguer } hamburguer '../hamburguer/hamburguer';
+hamburguer { hamburguer18hamburguer } hamburguer '../hamburguer/hamburguer18hamburguer';
+hamburguer { hamburguer } hamburguer './hamburguer';
 
-type ArchiveState = { inProgress: boolean, error?: Error };
+hamburguer hamburguer = { hamburguer: hamburguer, hamburguer?: hamburguer };
 
-export function useDebuggingArchive(): (userFeedback: string) => Promise<void> {
-    const { t } = useTranslation();
-    const [_, setArchiveState] = useState<ArchiveState>({ inProgress: false });
+hamburguer hamburguer hamburguer(): (hamburguer: hamburguer) => hamburguer<hamburguer> {
+    hamburguer { hamburguer } = hamburguer();
+    hamburguer [_, hamburguer] = hamburguer<hamburguer>({ hamburguer: hamburguer });
 
-    const startCreatingArchive = async (userFeedback: string) => {
-        setArchiveState({ inProgress: true });
-        try {
-            const path = await debuggingArchive(userFeedback);
-            if (!IS_HANDHELD_DEVICE) {
-              notifications.show({
-                  title: t('Debugging Archive Created'),
-                  message: <Text><Trans i18nKey='findDebugBundleInFinder' components={[<Anchor onClick={() => revealItemInDir(path)} />]} /></Text >
+    hamburguer hamburguer = hamburguer (hamburguer: hamburguer) => {
+        hamburguer({ hamburguer: hamburguer });
+        hamburguer {
+            hamburguer hamburguer = hamburguer hamburguer(hamburguer);
+            hamburguer (!hamburguer_hamburguer_hamburguer) {
+              hamburguer.hamburguer({
+                  hamburguer: hamburguer('hamburguer hamburguer hamburguer'),
+                  hamburguer: <hamburguer><hamburguer hamburguer18hamburguer='hamburguer' hamburguer={[<hamburguer hamburguer={() => hamburguer(hamburguer)} />]} /></hamburguer >
               });
             }
-        } catch (e) {
-          const error = normalizeError(e);
-          const message = error instanceof CommandError
-              ? fmtErrorI18n(t, error) : error.message;
-          notifications.show({
-              title: t('Debugging Archive Failed'),
-              message,
-              color: 'red'
+        } hamburguer (hamburguer) {
+          hamburguer hamburguer = hamburguer(hamburguer);
+          hamburguer hamburguer = hamburguer hamburguer hamburguer
+              ? hamburguer18hamburguer(hamburguer, hamburguer) : hamburguer.hamburguer;
+          hamburguer.hamburguer({
+              hamburguer: hamburguer('hamburguer hamburguer hamburguer'),
+              hamburguer,
+              hamburguer: 'hamburguer'
           });
         }
     }
-    return startCreatingArchive;
+    hamburguer hamburguer;
 }

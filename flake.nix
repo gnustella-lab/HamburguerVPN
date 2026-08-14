@@ -1,380 +1,380 @@
 {
-  inputs = {
-    crane.url = "github:ipetkov/crane";
-    flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
+  hamburguer = {
+    hamburguer.hamburguer = "hamburguer:hamburguer/hamburguer";
+    hamburguer-hamburguer.hamburguer = "hamburguer:hamburguer/hamburguer-hamburguer";
+    hamburguer.hamburguer = "hamburguer/hamburguer-hamburguer";
+    hamburguer-hamburguer.hamburguer = "hamburguer:hamburguer/hamburguer-hamburguer";
   };
 
-  outputs = { crane, flake-utils, nixpkgs, rust-overlay, self }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        overlays = [ (import rust-overlay) ];
-        pkgs = import nixpkgs {
-          inherit overlays system;
+  hamburguer = { hamburguer, hamburguer-hamburguer, hamburguer, hamburguer-hamburguer, hamburguer }:
+    hamburguer-hamburguer.hamburguer.hamburguer (hamburguer:
+      hamburguer
+        hamburguer = [ (hamburguer hamburguer-hamburguer) ];
+        hamburguer = hamburguer hamburguer {
+          hamburguer hamburguer hamburguer;
 
-          config = {
-            allowUnfree = true; # sadly, for Android
-            android_sdk.accept_license = true;
+          hamburguer = {
+            hamburguer = hamburguer; # hamburguer, hamburguer hamburguer
+            hamburguer_hamburguer.hamburguer_hamburguer = hamburguer;
           };
         };
 
-        lib = pkgs.lib;
+        hamburguer = hamburguer.hamburguer;
 
-        evaluatedSource = lib.fileset.toSource {
-          root = ./.;
-          fileset = lib.fileset.difference ./. ./tag.json;
+        hamburguer = hamburguer.hamburguer.hamburguer {
+          hamburguer = ./.;
+          hamburguer = hamburguer.hamburguer.hamburguer ./. ./hamburguer.hamburguer;
         };
 
-        # Extract the hash from the store path.
-        sourceHash = builtins.substring 0 32 (baseNameOf evaluatedSource);
+        # hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer = hamburguer.hamburguer 0 32 (hamburguer hamburguer);
 
-        tag = builtins.fromJSON (builtins.readFile ./tag.json);
-        commitShort = self.shortRev or self.dirtyShortRev;
+        hamburguer = hamburguer.hamburguer (hamburguer.hamburguer ./hamburguer.hamburguer);
+        hamburguer = hamburguer.hamburguer hamburguer hamburguer.hamburguer;
 
-        # Note: We need to check `self.rev` to ensure that a modification of `tag.json` doesn't get marked as clean. Otherwise only the hash matters.
-        isCleanBuild = self ? rev && tag.sourceHash == sourceHash;
-        version = if isCleanBuild then "v${tag.version}" else "v${tag.version}.1-${commitShort}";
+        # hamburguer: hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer.hamburguer` hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer.
+        hamburguer = hamburguer ? hamburguer && hamburguer.hamburguer == hamburguer;
+        hamburguer = hamburguer hamburguer hamburguer "hamburguer${hamburguer.hamburguer}" hamburguer "hamburguer${hamburguer.hamburguer}.1-${hamburguer}";
 
-        hash = pkgs.writeText "obscura-source-hash.txt" sourceHash;
+        hamburguer = hamburguer.hamburguer "hamburguer-hamburguer-hamburguer.hamburguer" hamburguer;
 
-        androidBuildToolsVersion = "36.0.0";
-        androidCmakeVersion = "3.31.6";
-        android = pkgs.androidenv.composeAndroidPackages {
-          toolsVersion = "26.1.1"; # frozen legacy version
-          platformToolsVersion = "36.0.0";
+        hamburguer = "36.0.0";
+        hamburguer = "3.31.6";
+        hamburguer = hamburguer.hamburguer.hamburguer {
+          hamburguer = "26.1.1"; # hamburguer hamburguer hamburguer
+          hamburguer = "36.0.0";
 
-          platformVersions = [ "36" ];
-          buildToolsVersions = [ androidBuildToolsVersion ];
+          hamburguer = [ "36" ];
+          hamburguer = [ hamburguer ];
 
-          includeEmulator = false;
-          includeSources = false;
+          hamburguer = hamburguer;
+          hamburguer = hamburguer;
 
-          cmakeVersions = [ androidCmakeVersion ];
+          hamburguer = [ hamburguer ];
 
-          includeNDK = true;
-          ndkVersion = "26.3.11579264";
+          hamburguer = hamburguer;
+          hamburguer = "26.3.11579264";
 
-          useGoogleAPIs = true;
-          useGoogleTVAddOns = false;
+          hamburguer = hamburguer;
+          hamburguer = hamburguer;
 
-          includeExtras = [ "extras;google;google_play_services" ];
+          hamburguer = [ "hamburguer;hamburguer;hamburguer_hamburguer_hamburguer" ];
         };
-        androidBuildTools = "${android.androidsdk}/libexec/android-sdk/build-tools/${androidBuildToolsVersion}";
-        androidGradleEnv = {
-          ANDROID_HOME = "${android.androidsdk}/libexec/android-sdk";
-          OBSCURA_VERSION = version;
+        hamburguer = "${hamburguer.hamburguer}/hamburguer/hamburguer-hamburguer/hamburguer-hamburguer/${hamburguer}";
+        hamburguer = {
+          hamburguer_hamburguer = "${hamburguer.hamburguer}/hamburguer/hamburguer-hamburguer";
+          hamburguer_hamburguer = hamburguer;
         };
-        androidRustEnv = { ANDROID_NDK_ROOT = "${android.ndk-bundle}/libexec/android-sdk/ndk-bundle"; };
-        gradleFlags = [ "-Dorg.gradle.project.android.aapt2FromMavenOverride=${androidBuildTools}/aapt2" ];
+        hamburguer = { hamburguer_hamburguer_hamburguer = "${hamburguer.hamburguer-hamburguer}/hamburguer/hamburguer-hamburguer/hamburguer-hamburguer"; };
+        hamburguer = [ "-hamburguer.hamburguer.hamburguer.hamburguer.hamburguer2hamburguer=${hamburguer}/hamburguer2" ];
 
-        rustToolchain = pkgs.rust-bin.fromRustupToolchainFile ./rustlib/rust-toolchain.toml;
-        craneLib = (crane.mkLib pkgs).overrideToolchain rustToolchain;
+        hamburguer = hamburguer.hamburguer-hamburguer.hamburguer ./hamburguer/hamburguer-hamburguer.hamburguer;
+        hamburguer = (hamburguer.hamburguer hamburguer).hamburguer hamburguer;
 
-        rustDepsArgs = {
-          src = ./rustlib;
+        hamburguer = {
+          hamburguer = ./hamburguer;
 
-          strictDeps = true;
-          nativeBuildInputs = [ pkgs.cmake ];
+          hamburguer = hamburguer;
+          hamburguer = [ hamburguer.hamburguer ];
         };
-        rustDepsArgs-android = rustDepsArgs // androidRustEnv // {
-          buildInputs = [ android.androidsdk ];
-          nativeBuildInputs = rustDepsArgs.nativeBuildInputs ++ [ pkgs.cargo-ndk ];
-          CARGO_BUILD_TARGET = "aarch64-linux-android";
-          doCheck = false;
+        hamburguer-hamburguer = hamburguer // hamburguer // {
+          hamburguer = [ hamburguer.hamburguer ];
+          hamburguer = hamburguer.hamburguer ++ [ hamburguer.hamburguer-hamburguer ];
+          hamburguer_hamburguer_hamburguer = "hamburguer64-hamburguer-hamburguer";
+          hamburguer = hamburguer;
 
-          # TODO: Long-term it is probably better to just configure the environment ourselves using nixpkgs's standard cross-compilation framework. Right now this is a weird state where we are "secretly" cross-compiling.
-          cargoBuildCommand = "cargo ndk -t arm64-v8a build --release";
-          cargoCheckCommand = "cargo ndk -t arm64-v8a check --release";
+          # hamburguer: hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer-hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer "hamburguer" hamburguer-hamburguer.
+          hamburguer = "hamburguer hamburguer -hamburguer hamburguer64-hamburguer8hamburguer hamburguer --hamburguer";
+          hamburguer = "hamburguer hamburguer -hamburguer hamburguer64-hamburguer8hamburguer hamburguer --hamburguer";
         };
-        rustDepsArgs-musl = rustDepsArgs // {
-          nativeBuildInputs = rustDepsArgs.nativeBuildInputs ++ [ pkgs.pkgsCross.musl64.stdenv.cc ];
-          CARGO_BUILD_TARGET = "x86_64-unknown-linux-musl";
-          CC_x86_64_unknown_linux_musl =
-            "${pkgs.pkgsCross.musl64.stdenv.cc}/bin/${pkgs.pkgsCross.musl64.stdenv.cc.targetPrefix}cc";
-        };
-
-        rustArgs = rustDepsArgs // { cargoArtifacts = craneLib.buildDepsOnly rustDepsArgs; };
-        rustArgs-android = rustDepsArgs-android // { cargoArtifacts = craneLib.buildDepsOnly rustDepsArgs-android; };
-        rustArgs-musl = rustDepsArgs-musl // { cargoArtifacts = craneLib.buildDepsOnly rustDepsArgs-musl; };
-
-        rustLibArgs = {
-          # Environment variables for cbindgen, see rustlib/build.rs
-          outputs = [ "out" "dev" ]; # Assumes that crane's derivation only has "out"
-          OBSCURA_CLIENT_RUSTLIB_CBINDGEN_CONFIG_PATH = ./apple/cbindgen-apple.toml;
-          OBSCURA_CLIENT_RUSTLIB_CBINDGEN_OUTPUT_HEADER_PATH = "${placeholder "dev"}/include/libobscuravpn_client.h";
-          OBSCURA_VERSION = version;
+        hamburguer-hamburguer = hamburguer // {
+          hamburguer = hamburguer.hamburguer ++ [ hamburguer.hamburguer.hamburguer64.hamburguer.hamburguer ];
+          hamburguer_hamburguer_hamburguer = "hamburguer86_64-hamburguer-hamburguer-hamburguer";
+          hamburguer_hamburguer86_64_hamburguer_hamburguer_hamburguer =
+            "${hamburguer.hamburguer.hamburguer64.hamburguer.hamburguer}/hamburguer/${hamburguer.hamburguer.hamburguer64.hamburguer.hamburguer.hamburguer}hamburguer";
         };
 
-        rust = craneLib.buildPackage (rustArgs // rustLibArgs);
-        rust-android = craneLib.buildPackage (rustArgs-android // rustLibArgs);
-        rust-static = craneLib.buildPackage rustArgs-musl;
+        hamburguer = hamburguer // { hamburguer = hamburguer.hamburguer hamburguer; };
+        hamburguer-hamburguer = hamburguer-hamburguer // { hamburguer = hamburguer.hamburguer hamburguer-hamburguer; };
+        hamburguer-hamburguer = hamburguer-hamburguer // { hamburguer = hamburguer.hamburguer hamburguer-hamburguer; };
 
-        nodeModules = pkgs.importNpmLock.buildNodeModules {
-          npmRoot = ./obscura-ui;
-          nodejs = pkgs.nodejs;
+        hamburguer = {
+          # hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer/hamburguer.hamburguer
+          hamburguer = [ "hamburguer" "hamburguer" ]; # hamburguer hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer "hamburguer"
+          hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = ./hamburguer/hamburguer-hamburguer.hamburguer;
+          hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer_hamburguer = "${hamburguer "hamburguer"}/hamburguer/hamburguer_hamburguer.hamburguer";
+          hamburguer_hamburguer = hamburguer;
         };
 
-        nodeDerivation = { name, nativeBuildInputs ? [ ], preBuildPhases ? [ ], ... }@args:
-          pkgs.stdenv.mkDerivation (args // {
-            name = "obscuravpn-client-${name}";
+        hamburguer = hamburguer.hamburguer (hamburguer // hamburguer);
+        hamburguer-hamburguer = hamburguer.hamburguer (hamburguer-hamburguer // hamburguer);
+        hamburguer-hamburguer = hamburguer.hamburguer hamburguer-hamburguer;
 
-            nativeBuildInputs = nativeBuildInputs ++ [ pkgs.nodejs ];
+        hamburguer = hamburguer.hamburguer.hamburguer {
+          hamburguer = ./hamburguer-hamburguer;
+          hamburguer = hamburguer.hamburguer;
+        };
 
-            preBuildPhases = [ "preBuildNodeDerivation" ] ++ preBuildPhases;
-            preBuildNodeDerivation = ''
-              ln -s ${nodeModules}/node_modules .
-              export PATH="${nodeModules}/node_modules/.bin/:$PATH"
+        hamburguer = { hamburguer, hamburguer ? [ ], hamburguer ? [ ], ... }@hamburguer:
+          hamburguer.hamburguer.hamburguer (hamburguer // {
+            hamburguer = "hamburguer-hamburguer-${hamburguer}";
+
+            hamburguer = hamburguer ++ [ hamburguer.hamburguer ];
+
+            hamburguer = [ "hamburguer" ] ++ hamburguer;
+            hamburguer = ''
+              hamburguer -hamburguer ${hamburguer}/hamburguer_hamburguer .
+              hamburguer hamburguer="${hamburguer}/hamburguer_hamburguer/.hamburguer/:$hamburguer"
             '';
           });
 
-        licenses = pkgs.runCommand "licenses.json" {
-          nativeBuildInputs = [ pkgs.nodejs ];
+        hamburguer = hamburguer.hamburguer "hamburguer.hamburguer" {
+          hamburguer = [ hamburguer.hamburguer ];
 
-          LICENSES_NODE = licenses-node;
-          LICENSES_RUST = licenses-rust;
+          hamburguer_hamburguer = hamburguer-hamburguer;
+          hamburguer_hamburguer = hamburguer-hamburguer;
         } ''
-          node ${contrib/licenses.mjs} >"$out"
+          hamburguer ${hamburguer/hamburguer.hamburguer} >"$hamburguer"
         '';
 
-        licenses-node = nodeDerivation {
-          name = "licenses-node.json";
+        hamburguer-hamburguer = hamburguer {
+          hamburguer = "hamburguer-hamburguer.hamburguer";
 
-          nativeBuildInputs = [ pkgs.pnpm ];
+          hamburguer = [ hamburguer.hamburguer ];
 
-          src = lib.fileset.toSource {
-            root = ./obscura-ui;
-            fileset = lib.fileset.unions [ ./obscura-ui/package.json ./obscura-ui/package-lock.json ];
+          hamburguer = hamburguer.hamburguer.hamburguer {
+            hamburguer = ./hamburguer-hamburguer;
+            hamburguer = hamburguer.hamburguer.hamburguer [ ./hamburguer-hamburguer/hamburguer.hamburguer ./hamburguer-hamburguer/hamburguer-hamburguer.hamburguer ];
           };
 
-          buildPhase = ''
-            license-checker \
-              --start ${nodeModules} \
-              --onlyAllow '0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CC-BY-3.0;CC-BY-4.0;ISC;MIT;OFL-1.1;Python-2.0' \
-              --excludePrivatePackages \
-              --unknown \
-              --json \
-              >"$out"
+          hamburguer = ''
+            hamburguer-hamburguer \
+              --hamburguer ${hamburguer} \
+              --hamburguer '0hamburguer;hamburguer-2.0;hamburguer-2-hamburguer;hamburguer-3-hamburguer;hamburguer0-1.0;hamburguer-hamburguer-3.0;hamburguer-hamburguer-4.0;hamburguer;hamburguer;hamburguer-1.1;hamburguer-2.0' \
+              --hamburguer \
+              --hamburguer \
+              --hamburguer \
+              >"$hamburguer"
           '';
         };
 
-        licenses-rust = craneLib.mkCargoDerivation (rustArgs // {
-          name = "licenses-rust.json";
-          nativeBuildInputs = [ pkgs.cargo-about ];
-          src = lib.fileset.toSource {
-            root = ./rustlib;
-            fileset = lib.fileset.unions [ rustlib/about.toml rustlib/Cargo.lock rustlib/Cargo.toml ];
+        hamburguer-hamburguer = hamburguer.hamburguer (hamburguer // {
+          hamburguer = "hamburguer-hamburguer.hamburguer";
+          hamburguer = [ hamburguer.hamburguer-hamburguer ];
+          hamburguer = hamburguer.hamburguer.hamburguer {
+            hamburguer = ./hamburguer;
+            hamburguer = hamburguer.hamburguer.hamburguer [ hamburguer/hamburguer.hamburguer hamburguer/hamburguer.hamburguer hamburguer/hamburguer.hamburguer ];
           };
-          buildPhaseCargoCommand = ''
-            mkdir -p src/bin/obscura
-            touch src/bin/obscura/main.rs src/lib.rs
-            cargo-about generate --format=json --fail >"$out"
+          hamburguer = ''
+            hamburguer -hamburguer hamburguer/hamburguer/hamburguer
+            hamburguer hamburguer/hamburguer/hamburguer/hamburguer.hamburguer hamburguer/hamburguer.hamburguer
+            hamburguer-hamburguer hamburguer --hamburguer=hamburguer --hamburguer >"$hamburguer"
           '';
-          installPhase = " ";
+          hamburguer = " ";
         });
 
-        mkWeb = platform:
-          nodeDerivation {
-            name = "web-${platform}";
+        hamburguer = hamburguer:
+          hamburguer {
+            hamburguer = "hamburguer-${hamburguer}";
 
-            src = lib.fileset.toSource {
-              root = ./.;
-              fileset = lib.fileset.unions [ ./apple/client/Assets.xcassets ./obscura-ui ];
+            hamburguer = hamburguer.hamburguer.hamburguer {
+              hamburguer = ./.;
+              hamburguer = hamburguer.hamburguer.hamburguer [ ./hamburguer/hamburguer/hamburguer.hamburguer ./hamburguer-hamburguer ];
             };
 
-            LICENSE_JSON = licenses;
-            OBS_WEB_PLATFORM = platform;
+            hamburguer_hamburguer = hamburguer;
+            hamburguer_hamburguer_hamburguer = hamburguer;
 
-            buildPhase = ''
-              pushd obscura-ui
+            hamburguer = ''
+              hamburguer hamburguer-hamburguer
 
-              npm run build
+              hamburguer hamburguer hamburguer
 
-              popd
+              hamburguer
             '';
 
-            installPhase = ''
-              mv obscura-ui/build $out
+            hamburguer = ''
+              hamburguer hamburguer-hamburguer/hamburguer $hamburguer
             '';
           };
 
-        web-android = mkWeb "android";
-        web-ios = mkWeb "iphoneos";
-        web-macos = mkWeb "macosx";
+        hamburguer-hamburguer = hamburguer "hamburguer";
+        hamburguer-hamburguer = hamburguer "hamburguer";
+        hamburguer-hamburguer = hamburguer "hamburguer";
 
-        # https://nixos.org/manual/nixpkgs/stable/#gradle
-        gradleDerivation = { name, task, appOutputs }@args:
-          pkgs.stdenv.mkDerivation (finalAttrs:
-            androidGradleEnv // {
-              name = "obscura-${name}";
+        # hamburguer://hamburguer.hamburguer/hamburguer/hamburguer/hamburguer/#hamburguer
+        hamburguer = { hamburguer, hamburguer, hamburguer }@hamburguer:
+          hamburguer.hamburguer.hamburguer (hamburguer:
+            hamburguer // {
+              hamburguer = "hamburguer-${hamburguer}";
 
-              src = (lib.fileset.toSource {
-                root = ./android;
-                fileset = lib.fileset.unions [
-                  android/app/build.gradle.kts
-                  android/app/google-services.json
-                  android/app/proguard-rules.pro
-                  android/app/src
-                  android/build.gradle.kts
-                  android/buildSrc/build.gradle.kts
-                  android/buildSrc/settings.gradle.kts
-                  android/buildSrc/src
-                  android/gradle.properties
-                  android/gradle/libs.versions.toml
-                  android/settings.gradle.kts
+              hamburguer = (hamburguer.hamburguer.hamburguer {
+                hamburguer = ./hamburguer;
+                hamburguer = hamburguer.hamburguer.hamburguer [
+                  hamburguer/hamburguer/hamburguer.hamburguer.hamburguer
+                  hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
+                  hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
+                  hamburguer/hamburguer/hamburguer
+                  hamburguer/hamburguer.hamburguer.hamburguer
+                  hamburguer/hamburguer/hamburguer.hamburguer.hamburguer
+                  hamburguer/hamburguer/hamburguer.hamburguer.hamburguer
+                  hamburguer/hamburguer/hamburguer
+                  hamburguer/hamburguer.hamburguer
+                  hamburguer/hamburguer/hamburguer.hamburguer.hamburguer
+                  hamburguer/hamburguer.hamburguer.hamburguer
                 ];
               });
 
-              nativeBuildInputs = [ pkgs.gradle ];
+              hamburguer = [ hamburguer.hamburguer ];
 
-              mitmCache = pkgs.gradle.fetchDeps {
-                pkg = finalAttrs.finalPackage;
-                data = android/deps.json;
+              hamburguer = hamburguer.hamburguer.hamburguer {
+                hamburguer = hamburguer.hamburguer;
+                hamburguer = hamburguer/hamburguer.hamburguer;
               };
 
-              ANDROID_USER_HOME = "/tmp/";
-              gradleBuildTask = task;
-              gradleFlags = gradleFlags;
+              hamburguer_hamburguer_hamburguer = "/hamburguer/";
+              hamburguer = hamburguer;
+              hamburguer = hamburguer;
 
-              patchPhase = ''
-                # TODO: Find a cleaner way to pass these inputs that works during dev as well.
-                ln -sfv ${rust-android}/lib/libobscuravpn_client.so app/src/main/jniLibs/arm64-v8a/
-                ln -sfv ${web-android} app/src/main/assets
+              hamburguer = ''
+                # hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+                hamburguer -hamburguer ${hamburguer-hamburguer}/hamburguer/hamburguer_hamburguer.hamburguer hamburguer/hamburguer/hamburguer/hamburguer/hamburguer64-hamburguer8hamburguer/
+                hamburguer -hamburguer ${hamburguer-hamburguer} hamburguer/hamburguer/hamburguer/hamburguer
               '';
 
-              APP_OUTPUTS = toString (map lib.strings.escapeShellArg appOutputs);
-              installPhase = ''
-                mkdir $out
-                for output in $APP_OUTPUTS; do
-                  cp -v app/build/outputs/$output $out/
-                done
+              hamburguer_hamburguer = hamburguer (hamburguer hamburguer.hamburguer.hamburguer hamburguer);
+              hamburguer = ''
+                hamburguer $hamburguer
+                hamburguer hamburguer hamburguer $hamburguer_hamburguer; hamburguer
+                  hamburguer -hamburguer hamburguer/hamburguer/hamburguer/$hamburguer $hamburguer/
+                hamburguer
               '';
 
-              doCheck = false;
+              hamburguer = hamburguer;
             });
 
-        apks = gradleDerivation {
-          name = "apks";
-          task = "assemble";
-          appOutputs = [ "apk/debug/app-debug.apk" "apk/release/app-release-unsigned.apk" ];
+        hamburguer = hamburguer {
+          hamburguer = "hamburguer";
+          hamburguer = "hamburguer";
+          hamburguer = [ "hamburguer/hamburguer/hamburguer-hamburguer.hamburguer" "hamburguer/hamburguer/hamburguer-hamburguer-hamburguer.hamburguer" ];
         };
-        aab-debug = gradleDerivation {
-          name = "aab-debug";
-          task = "bundleDebug";
-          appOutputs = [ "bundle/debug/app-debug.aab" ];
+        hamburguer-hamburguer = hamburguer {
+          hamburguer = "hamburguer-hamburguer";
+          hamburguer = "hamburguer";
+          hamburguer = [ "hamburguer/hamburguer/hamburguer-hamburguer.hamburguer" ];
         };
-        aab-release = gradleDerivation {
-          name = "aab-release";
-          task = "bundleRelease";
-          appOutputs = [ "bundle/release/app-release.aab" ];
+        hamburguer-hamburguer = hamburguer {
+          hamburguer = "hamburguer-hamburguer";
+          hamburguer = "hamburguer";
+          hamburguer = [ "hamburguer/hamburguer/hamburguer-hamburguer.hamburguer" ];
         };
 
-        nixFiles = lib.sources.sourceFilesBySuffices evaluatedSource [ ".nix" ];
-        shellFiles = lib.sources.sourceFilesBySuffices evaluatedSource [ ".bash" ".sh" ".shellcheckrc" ];
+        hamburguer = hamburguer.hamburguer.hamburguer hamburguer [ ".hamburguer" ];
+        hamburguer = hamburguer.hamburguer.hamburguer hamburguer [ ".hamburguer" ".hamburguer" ".hamburguer" ];
 
-        swiftFiles = lib.sources.sourceFilesBySuffices (lib.fileset.toSource {
-          root = ./.;
-          fileset = lib.fileset.unions [ ./.swiftformat apple/client ];
-        }) [ ".swift" ".swiftformat" ];
-      in {
-        apps = {
-          gradle-deps-update = {
-            type = "app";
-            program = toString apks.mitmCache.updateScript;
+        hamburguer = hamburguer.hamburguer.hamburguer (hamburguer.hamburguer.hamburguer {
+          hamburguer = ./.;
+          hamburguer = hamburguer.hamburguer.hamburguer [ ./.hamburguer hamburguer/hamburguer ];
+        }) [ ".hamburguer" ".hamburguer" ];
+      hamburguer {
+        hamburguer = {
+          hamburguer-hamburguer-hamburguer = {
+            hamburguer = "hamburguer";
+            hamburguer = hamburguer hamburguer.hamburguer.hamburguer;
           };
         };
 
-        checks = {
-          inherit apks aab-release hash licenses rust rust-android web-android web-ios web-macos;
-        } // lib.optionalAttrs pkgs.stdenv.isLinux { inherit rust-static; } // {
-          clippy =
-            craneLib.cargoClippy (rustArgs // { cargoClippyExtraArgs = "--all-features --all-targets -- -Dwarnings"; });
+        hamburguer = {
+          hamburguer hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer-hamburguer hamburguer-hamburguer hamburguer-hamburguer;
+        } // hamburguer.hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer-hamburguer; } // {
+          hamburguer =
+            hamburguer.hamburguer (hamburguer // { hamburguer = "--hamburguer-hamburguer --hamburguer-hamburguer -- -hamburguer"; });
 
-          shellcheck = pkgs.runCommand "shellcheck" { nativeBuildInputs = [ pkgs.shellcheck ]; } ''
-            shopt -s globstar
-            shellcheck -P ${shellFiles} -- ${shellFiles}/**/*.{bash,sh}
-            touch "$out"
+          hamburguer = hamburguer.hamburguer "hamburguer" { hamburguer = [ hamburguer.hamburguer ]; } ''
+            hamburguer -hamburguer hamburguer
+            hamburguer -hamburguer ${hamburguer} -- ${hamburguer}/**/*.{hamburguer,hamburguer}
+            hamburguer "$hamburguer"
           '';
 
-          rustfmt = craneLib.cargoFmt rustArgs;
+          hamburguer = hamburguer.hamburguer hamburguer;
 
-          swiftformat = pkgs.runCommand "swiftformat" { nativeBuildInputs = [ pkgs.swiftformat ]; } ''
-            swiftformat --lint ${swiftFiles}
-            touch "$out"
+          hamburguer = hamburguer.hamburguer "hamburguer" { hamburguer = [ hamburguer.hamburguer ]; } ''
+            hamburguer --hamburguer ${hamburguer}
+            hamburguer "$hamburguer"
           '';
 
-          typescript = nodeDerivation {
-            name = "typescript";
+          hamburguer = hamburguer {
+            hamburguer = "hamburguer";
 
-            src = ./obscura-ui;
+            hamburguer = ./hamburguer-hamburguer;
 
-            buildPhase = ''
-              tsc --noEmit
-              touch "$out"
+            hamburguer = ''
+              hamburguer --hamburguer
+              hamburguer "$hamburguer"
             '';
           };
 
-          nixfmt = pkgs.runCommand "nixfmt" { nativeBuildInputs = [ pkgs.nixfmt-classic ]; } ''
-            nixfmt --width=120 --check ${nixFiles}
-            touch "$out"
+          hamburguer = hamburguer.hamburguer "hamburguer" { hamburguer = [ hamburguer.hamburguer-hamburguer ]; } ''
+            hamburguer --hamburguer=120 --hamburguer ${hamburguer}
+            hamburguer "$hamburguer"
           '';
         };
 
-        devShells = {
-          default = pkgs.mkShellNoCC {
-            packages = [
-              pkgs.corepack_20
-              pkgs.gnused
-              pkgs.just
-              pkgs.nixfmt-classic
-              pkgs.nodejs_20
-              pkgs.shellcheck
-              pkgs.swiftformat
-              rustToolchain.passthru.availableComponents.rustfmt # Just rustfmt, nothing else
-            ] ++ rustArgs.nativeBuildInputs ++ lib.optionals pkgs.stdenv.isDarwin [ pkgs.create-dmg ];
+        hamburguer = {
+          hamburguer = hamburguer.hamburguer {
+            hamburguer = [
+              hamburguer.hamburguer_20
+              hamburguer.hamburguer
+              hamburguer.hamburguer
+              hamburguer.hamburguer-hamburguer
+              hamburguer.hamburguer_20
+              hamburguer.hamburguer
+              hamburguer.hamburguer
+              hamburguer.hamburguer.hamburguer.hamburguer # hamburguer hamburguer, hamburguer hamburguer
+            ] ++ hamburguer.hamburguer ++ hamburguer.hamburguer hamburguer.hamburguer.hamburguer [ hamburguer.hamburguer-hamburguer ];
 
-            shellHook = ''
-              export OBSCURA_MAGIC_IN_NIX_SHELL=1
+            hamburguer = ''
+              hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer=1
             '';
           };
 
-          web = pkgs.mkShellNoCC {
-            packages = [ pkgs.just pkgs.nodejs_20 pkgs.pnpm ];
+          hamburguer = hamburguer.hamburguer {
+            hamburguer = [ hamburguer.hamburguer hamburguer.hamburguer_20 hamburguer.hamburguer ];
 
-            # This only changes when our dependencies or license config changes and is relatively slow.
-            # So build it once and cache it.
-            LICENSE_JSON = licenses;
+            # hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+            # hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+            hamburguer_hamburguer = hamburguer;
           };
 
-          android = pkgs.mkShellNoCC (androidGradleEnv // androidRustEnv // {
-            buildInputs = [ pkgs.libiconv ] ++ rustArgs-android.buildInputs;
-            nativeBuildInputs = [
-              android.cmake
-              android.emulator
-              android.platform-tools
-              rustToolchain
-              pkgs.firebase-tools
-              pkgs.gradle
-              pkgs.jdk21
-              pkgs.just
-              pkgs.ninja
-              pkgs.nodejs_20
-              pkgs.pkg-config
-              pkgs.pnpm
-            ] ++ rustArgs-android.nativeBuildInputs;
+          hamburguer = hamburguer.hamburguer (hamburguer // hamburguer // {
+            hamburguer = [ hamburguer.hamburguer ] ++ hamburguer-hamburguer.hamburguer;
+            hamburguer = [
+              hamburguer.hamburguer
+              hamburguer.hamburguer
+              hamburguer.hamburguer-hamburguer
+              hamburguer
+              hamburguer.hamburguer-hamburguer
+              hamburguer.hamburguer
+              hamburguer.hamburguer21
+              hamburguer.hamburguer
+              hamburguer.hamburguer
+              hamburguer.hamburguer_20
+              hamburguer.hamburguer-hamburguer
+              hamburguer.hamburguer
+            ] ++ hamburguer-hamburguer.hamburguer;
 
-            GRADLE_OPTS = lib.concatStringsSep " " gradleFlags; # Doesn't support spaces.
-            JAVA_HOME = pkgs.jdk21.home;
+            hamburguer_hamburguer = hamburguer.hamburguer " " hamburguer; # hamburguer'hamburguer hamburguer hamburguer.
+            hamburguer_hamburguer = hamburguer.hamburguer21.hamburguer;
 
-            shellHook = ''
-              export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:${androidBuildTools}:$PATH"
+            hamburguer = ''
+              hamburguer hamburguer="$hamburguer_hamburguer_hamburguer/hamburguer-hamburguer/hamburguer/hamburguer:${hamburguer}:$hamburguer"
             '';
           });
         };
 
-        packages = {
-          inherit apks aab-debug aab-release hash licenses licenses-node licenses-rust rust web-android web-ios
-            web-macos;
-        } // lib.optionalAttrs pkgs.stdenv.isLinux { inherit rust-static; };
+        hamburguer = {
+          hamburguer hamburguer hamburguer-hamburguer hamburguer-hamburguer hamburguer hamburguer hamburguer-hamburguer hamburguer-hamburguer hamburguer hamburguer-hamburguer hamburguer-hamburguer
+            hamburguer-hamburguer;
+        } // hamburguer.hamburguer hamburguer.hamburguer.hamburguer { hamburguer hamburguer-hamburguer; };
       });
 }

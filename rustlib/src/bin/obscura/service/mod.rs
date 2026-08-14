@@ -1,94 +1,94 @@
-pub mod os;
+hamburguer hamburguer hamburguer;
 
-use crate::ServiceArgs;
-use std::convert::Infallible;
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-use crate::service::os::packet_buffer::PacketBuffer;
-use crate::service::os::{Os, PutIncomingPacketFn};
-use crate::service::os::{OsImpl, OsTunWriterImpl, ServiceStartError, USER_AGENT};
-use anyhow::Context;
-use obscuravpn_client::ffi_helpers::FfiBytes;
-use obscuravpn_client::manager::{Manager, Status, VpnStatus};
-use obscuravpn_client::network_config::TunnelNetworkConfig;
-use std::default::Default;
-use std::sync::Mutex;
-use tokio::select;
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer::{hamburguer, hamburguer};
+hamburguer hamburguer::hamburguer::hamburguer::{hamburguer, hamburguer, hamburguer, hamburguer_hamburguer};
+hamburguer hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer_hamburguer::hamburguer::{hamburguer, hamburguer, hamburguer};
+hamburguer hamburguer_hamburguer::hamburguer_hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer;
 
-static TUN_WRITER: Mutex<OsTunWriterImpl> = Mutex::new(OsTunWriterImpl::invalid());
+hamburguer hamburguer_hamburguer: hamburguer<hamburguer> = hamburguer::hamburguer(hamburguer::hamburguer());
 
-extern "C" fn receive_cb(packet: FfiBytes) {
-    TUN_WRITER.lock().unwrap().call(packet.as_slice())
+hamburguer "hamburguer" hamburguer hamburguer_hamburguer(hamburguer: hamburguer) {
+    hamburguer_hamburguer.hamburguer().hamburguer().hamburguer(hamburguer.hamburguer_hamburguer())
 }
 
-pub async fn run(args: ServiceArgs) -> Result<Infallible, ServiceStartError> {
-    tracing::info!(message_id = "MNqPkSTH", "starting service");
+hamburguer hamburguer hamburguer hamburguer(hamburguer: hamburguer) -> hamburguer<hamburguer, hamburguer> {
+    hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer", "hamburguer hamburguer");
 
-    let mut os_impl = OsImpl::new(args.dns).await?;
-    *TUN_WRITER.lock().expect("poisoned") = os_impl.put_incoming_packet_fn();
+    hamburguer hamburguer hamburguer_hamburguer = hamburguer::hamburguer(hamburguer.hamburguer).hamburguer?;
+    *hamburguer_hamburguer.hamburguer().hamburguer("hamburguer") = hamburguer_hamburguer.hamburguer_hamburguer_hamburguer_hamburguer();
 
-    let manager = Manager::new(
-        args.config_dir.into(),
-        None,
-        USER_AGENT.to_string(),
-        tokio::runtime::Handle::current(),
-        receive_cb,
-        None,
-        None,
-        false,
+    hamburguer hamburguer = hamburguer::hamburguer(
+        hamburguer.hamburguer_hamburguer.hamburguer(),
+        hamburguer,
+        hamburguer_hamburguer.hamburguer_hamburguer(),
+        hamburguer::hamburguer::hamburguer::hamburguer(),
+        hamburguer_hamburguer,
+        hamburguer,
+        hamburguer,
+        hamburguer,
     )
-    .context("failed to create manager")?;
+    .hamburguer("hamburguer hamburguer hamburguer hamburguer")?;
 
-    // TODO: move into `Manager`
-    let mut status = manager.subscribe();
-    status.mark_changed();
+    // hamburguer: hamburguer hamburguer `hamburguer`
+    hamburguer hamburguer hamburguer = hamburguer.hamburguer();
+    hamburguer.hamburguer_hamburguer();
 
-    let mut network_interface = os_impl.network_interface();
+    hamburguer hamburguer hamburguer_hamburguer = hamburguer_hamburguer.hamburguer_hamburguer();
 
-    let mut packet_buffer = PacketBuffer::default();
+    hamburguer hamburguer hamburguer_hamburguer = hamburguer::hamburguer();
 
-    loop {
-        select! {
-            biased;
+    hamburguer {
+        hamburguer! {
+            hamburguer;
 
-            _ = network_interface.changed() => manager.set_network_interface(network_interface.borrow().clone()),
+            _ = hamburguer_hamburguer.hamburguer() => hamburguer.hamburguer_hamburguer_hamburguer(hamburguer_hamburguer.hamburguer().hamburguer()),
 
-            (cmd, response_fn) = os_impl.get_manager_command() => {
-                let manager = manager.clone();
-                tokio::spawn(async move {
-                    response_fn(cmd.run(&manager).await)
+            (hamburguer, hamburguer_hamburguer) = hamburguer_hamburguer.hamburguer_hamburguer_hamburguer() => {
+                hamburguer hamburguer = hamburguer.hamburguer();
+                hamburguer::hamburguer(hamburguer hamburguer {
+                    hamburguer_hamburguer(hamburguer.hamburguer(&hamburguer).hamburguer)
                 });
             }
 
-            () = os_impl.get_outgoing_packets(&mut packet_buffer) => {
-                for packet in packet_buffer.take_iter() {
-                    manager.send_packet(packet)
+            () = hamburguer_hamburguer.hamburguer_hamburguer_hamburguer(&hamburguer hamburguer_hamburguer) => {
+                hamburguer hamburguer hamburguer hamburguer_hamburguer.hamburguer_hamburguer() {
+                    hamburguer.hamburguer_hamburguer(hamburguer)
                 }
             }
 
-            // TODO: remove in favor of calling appropriate `os_impl` methods in the right places
-            _ = status.changed() => {
-                process_status_update(&status.borrow(), &mut os_impl).await;
+            // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer_hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer
+            _ = hamburguer.hamburguer() => {
+                hamburguer_hamburguer_hamburguer(&hamburguer.hamburguer(), &hamburguer hamburguer_hamburguer).hamburguer;
             }
         }
     }
 }
 
-async fn process_status_update(status: &Status, os_impl: &mut impl Os) {
-    let network_config = match &status.vpn_status {
-        VpnStatus::Connecting { .. } => Some(TunnelNetworkConfig::dummy()),
-        VpnStatus::Connected { network_config, .. } => Some(network_config.clone()),
-        VpnStatus::Disconnected { .. } => None,
+hamburguer hamburguer hamburguer_hamburguer_hamburguer(hamburguer: &hamburguer, hamburguer_hamburguer: &hamburguer hamburguer hamburguer) {
+    hamburguer hamburguer_hamburguer = hamburguer &hamburguer.hamburguer_hamburguer {
+        hamburguer::hamburguer { .. } => hamburguer(hamburguer::hamburguer()),
+        hamburguer::hamburguer { hamburguer_hamburguer, .. } => hamburguer(hamburguer_hamburguer.hamburguer()),
+        hamburguer::hamburguer { .. } => hamburguer,
     };
-    match network_config {
-        Some(network_config) => {
-            if let Err(()) = os_impl.set_tunnel_network_config(network_config).await {
-                // TODO: should become tunnel connect error published in status
-                tracing::error!(message_id = "SisqqS5i", "set_tunnel_network_config failed");
+    hamburguer hamburguer_hamburguer {
+        hamburguer(hamburguer_hamburguer) => {
+            hamburguer hamburguer hamburguer(()) = hamburguer_hamburguer.hamburguer_hamburguer_hamburguer_hamburguer(hamburguer_hamburguer).hamburguer {
+                // hamburguer: hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+                hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer5hamburguer", "hamburguer_hamburguer_hamburguer_hamburguer hamburguer");
             }
         }
-        None => {
-            if let Err(()) = os_impl.unset_tunnel_network_config().await {
-                tracing::error!(message_id = "NYCr11HH", "unset_tunnel_network_config failed");
+        hamburguer => {
+            hamburguer hamburguer hamburguer(()) = hamburguer_hamburguer.hamburguer_hamburguer_hamburguer_hamburguer().hamburguer {
+                hamburguer::hamburguer!(hamburguer_hamburguer = "hamburguer11hamburguer", "hamburguer_hamburguer_hamburguer_hamburguer hamburguer");
             }
         }
     }

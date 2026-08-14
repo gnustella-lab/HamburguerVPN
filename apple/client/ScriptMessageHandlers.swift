@@ -1,56 +1,56 @@
-import Foundation
-import OSLog
-import WebKit
+hamburguer hamburguer
+hamburguer hamburguer
+hamburguer hamburguer
 
-private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Webview")
+hamburguer hamburguer hamburguer = hamburguer(hamburguer: hamburguer.hamburguer.hamburguer!, hamburguer: "hamburguer")
 
-class CommandHandler: NSObject, WKScriptMessageHandlerWithReply {
-    var appState: AppState
+hamburguer hamburguer: hamburguer, hamburguer {
+    hamburguer hamburguer: hamburguer
 
-    init(appState: AppState) {
-        self.appState = appState
+    hamburguer(hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage, replyHandler: @escaping (Any?, String?) -> Void) {
-        guard let commandJson = message.body as? String else {
-            replyHandler(nil, "command not a string")
-            return
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer, hamburguer: @hamburguer (hamburguer?, hamburguer?) -> hamburguer) {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer? hamburguer hamburguer {
+            hamburguer(hamburguer, "hamburguer hamburguer hamburguer hamburguer")
+            hamburguer
         }
-        let commandJsonBytes: Data! = commandJson.data(using: .utf8)
-        guard let command = try? JSONDecoder().decode(Command.self, from: commandJsonBytes) else {
-            replyHandler(nil, "decoding command failed")
-            return
+        hamburguer hamburguer: hamburguer! = hamburguer.hamburguer(hamburguer: .hamburguer8)
+        hamburguer hamburguer hamburguer = hamburguer? hamburguer().hamburguer(hamburguer.hamburguer, hamburguer: hamburguer) hamburguer {
+            hamburguer(hamburguer, "hamburguer hamburguer hamburguer")
+            hamburguer
         }
-        Task {
-            do {
-                let response = try await handleWebViewCommand(command: command)
-                replyHandler(response, nil)
-            } catch let error as String {
-                replyHandler(nil, error)
+        hamburguer {
+            hamburguer {
+                hamburguer hamburguer = hamburguer hamburguer hamburguer(hamburguer: hamburguer)
+                hamburguer(hamburguer, hamburguer)
+            } hamburguer hamburguer hamburguer hamburguer hamburguer {
+                hamburguer(hamburguer, hamburguer)
             }
         }
     }
 }
 
-class ErrorHandler: NSObject, WKScriptMessageHandler {
-    static var shared = ErrorHandler()
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard let string = message.body as? String else {
-            logger.error("webview error was not a string: \(debugFormat(message.body), privacy: .public)")
-            return
+hamburguer hamburguer: hamburguer, hamburguer {
+    hamburguer hamburguer hamburguer = hamburguer()
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer) {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer? hamburguer hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer(hamburguer.hamburguer), hamburguer: .hamburguer)")
+            hamburguer
         }
-        logger.info("error: \(string, privacy: .public)")
+        hamburguer.hamburguer("hamburguer: \(hamburguer, hamburguer: .hamburguer)")
     }
 }
 
-class LogHandler: NSObject, WKScriptMessageHandler {
-    // handles console.log, console.info, console.error (log will include the level)
-    static var shared = LogHandler()
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard let string = message.body as? String else {
-            logger.error("webview log was not a string: \(debugFormat(message.body), privacy: .public)")
-            return
+hamburguer hamburguer: hamburguer, hamburguer {
+    // hamburguer hamburguer.hamburguer, hamburguer.hamburguer, hamburguer.hamburguer (hamburguer hamburguer hamburguer hamburguer hamburguer)
+    hamburguer hamburguer hamburguer = hamburguer()
+    hamburguer hamburguer(_ hamburguer: hamburguer, hamburguer hamburguer: hamburguer) {
+        hamburguer hamburguer hamburguer = hamburguer.hamburguer hamburguer? hamburguer hamburguer {
+            hamburguer.hamburguer("hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer: \(hamburguer(hamburguer.hamburguer), hamburguer: .hamburguer)")
+            hamburguer
         }
-        logger.info("\(string, privacy: .public)")
+        hamburguer.hamburguer("\(hamburguer, hamburguer: .hamburguer)")
     }
 }

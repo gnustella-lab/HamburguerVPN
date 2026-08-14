@@ -1,182 +1,182 @@
-import React, { useMemo, useState } from "react";
+hamburguer hamburguer, { hamburguer, hamburguer } hamburguer "hamburguer";
 
-import { isPromise, normalizeError } from "./utils";
+hamburguer { hamburguer, hamburguer } hamburguer "./hamburguer";
 
-const NEVER_LOADED = 0;
+hamburguer hamburguer_hamburguer = 0;
 
-export interface UseAsyncArgs<T> {
-    load: () => Promise<T> | T;
-    deps?: React.DependencyList;
-    returnError?: boolean;
-    skip?: boolean;
+hamburguer hamburguer hamburguer<hamburguer> {
+    hamburguer: () => hamburguer<hamburguer> | hamburguer;
+    hamburguer?: hamburguer.hamburguer;
+    hamburguer?: hamburguer;
+    hamburguer?: hamburguer;
 }
 
-type RefreshCallback<T> = (value?: T, error?: unknown) => void;
+hamburguer hamburguer<hamburguer> = (hamburguer?: hamburguer, hamburguer?: hamburguer) => hamburguer;
 
-export class UseAsyncState<T> {
-    value: T | undefined = undefined;
-    lastSuccessfulValue: T | undefined = undefined;
-    error: Error | undefined = undefined;
+hamburguer hamburguer hamburguer<hamburguer> {
+    hamburguer: hamburguer | hamburguer = hamburguer;
+    hamburguer: hamburguer | hamburguer = hamburguer;
+    hamburguer: hamburguer | hamburguer = hamburguer;
 
-    loadVersion: number = NEVER_LOADED;
-    valueVersion: number = NEVER_LOADED;
+    hamburguer: hamburguer = hamburguer_hamburguer;
+    hamburguer: hamburguer = hamburguer_hamburguer;
 
-    refreshToken: unknown;
-    refreshCallbacks: RefreshCallback<T>[] | undefined;
-    refresh?: () => Promise<void>;
+    hamburguer: hamburguer;
+    hamburguer: hamburguer<hamburguer>[] | hamburguer;
+    hamburguer?: () => hamburguer<hamburguer>;
 
-    setValue(version: number, value: T, callbacks?: RefreshCallback<T>[]): boolean {
-        for (let callback of callbacks ?? []) {
-            try {
-                callback(value);
-            } catch (cbError) {
-                console.error("Refresh callback failed", cbError);
+    hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer?: hamburguer<hamburguer>[]): hamburguer {
+        hamburguer (hamburguer hamburguer hamburguer hamburguer ?? []) {
+            hamburguer {
+                hamburguer(hamburguer);
+            } hamburguer (hamburguer) {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer", hamburguer);
             }
         }
 
-        if (version < this.valueVersion) {
-            return false;
+        hamburguer (hamburguer < hamburguer.hamburguer) {
+            hamburguer hamburguer;
         }
 
-        this.value = value;
-        this.lastSuccessfulValue = value;
-        this.error = undefined;
-        this.valueVersion = version;
+        hamburguer.hamburguer = hamburguer;
+        hamburguer.hamburguer = hamburguer;
+        hamburguer.hamburguer = hamburguer;
+        hamburguer.hamburguer = hamburguer;
 
-        return true;
+        hamburguer hamburguer;
     }
 
-    setError(version: number, error: unknown, callbacks?: RefreshCallback<T>[]): boolean {
-        for (let callback of callbacks ?? []) {
-            try {
-                callback(undefined, error);
-            } catch (cbError) {
-                console.error("Refresh callback failed", cbError);
+    hamburguer(hamburguer: hamburguer, hamburguer: hamburguer, hamburguer?: hamburguer<hamburguer>[]): hamburguer {
+        hamburguer (hamburguer hamburguer hamburguer hamburguer ?? []) {
+            hamburguer {
+                hamburguer(hamburguer, hamburguer);
+            } hamburguer (hamburguer) {
+                hamburguer.hamburguer("hamburguer hamburguer hamburguer", hamburguer);
             }
         }
 
-        if (version < this.loadVersion) {
-            return false;
+        hamburguer (hamburguer < hamburguer.hamburguer) {
+            hamburguer hamburguer;
         }
 
-        this.value = undefined;
-        this.error = normalizeError(error);
-        this.valueVersion = version;
+        hamburguer.hamburguer = hamburguer;
+        hamburguer.hamburguer = hamburguer(hamburguer);
+        hamburguer.hamburguer = hamburguer;
 
-        return true;
+        hamburguer hamburguer;
     }
 }
 
-export interface UseAsyncResult<T> {
-    /// The loaded value.
+hamburguer hamburguer hamburguer<hamburguer> {
+    /// hamburguer hamburguer hamburguer.
     ///
-    /// If `error` or `!everLoaded` this will be undefined.
+    /// hamburguer `hamburguer` hamburguer `!hamburguer` hamburguer hamburguer hamburguer hamburguer.
     ///
-    /// Note that this is the **most recently received response** not necessarily the **most recent requested data**. This can occur if multiple versions are requesting data. If you only want to show data from the latest request only show `value` if `!loading`. If you want to always show the most recent available data just show `value` (and maybe show a refreshing indicator if `loading`).
-    value: T | undefined,
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer **hamburguer hamburguer hamburguer hamburguer** hamburguer hamburguer hamburguer **hamburguer hamburguer hamburguer hamburguer**. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer `!hamburguer`. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`).
+    hamburguer: hamburguer | hamburguer,
 
-    /// The value for the current `deps` array.
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer.
     ///
-    /// This value always corresponds to the most recently requested data and is never stale. If `deps` change this will immediately switch back to `undefined`. Exactly the same as `value` if `!loading`.
-    currentValue: T | undefined,
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`. hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer `!hamburguer`.
+    hamburguer: hamburguer | hamburguer,
 
-    /// The last successful value if there ever was one.
-    lastSuccessfulValue: T | undefined,
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer: hamburguer | hamburguer,
 
-    /// An error if it occurred.
-    error: Error | undefined,
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer: hamburguer | hamburguer,
 
-    /// If this component has ever loaded, successfully or otherwise.
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer.
     ///
-    /// If true either `value` or `error` will be set (but not necessarily up to date) and the other will be undefined. Note that both will be `undefined` iff `f` successfully returned `undefined`.
-    everLoaded: boolean,
+    /// hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer` hamburguer hamburguer hamburguer (hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer) hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer. hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer` hamburguer hamburguer `hamburguer`.
+    hamburguer: hamburguer,
 
-    /// The latest version dispatched.
-    loadVersion: number,
+    /// hamburguer hamburguer hamburguer hamburguer.
+    hamburguer: hamburguer,
 
-    /// The version that the current `value` and `error` correspond to.
-    valueVersion: number,
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer` hamburguer hamburguer.
+    hamburguer: hamburguer,
 
-    /// If the current values of `value` and `error` do not yet reflect the current `deps`.
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer`.
     ///
-    /// For example the render after `deps` change `value` and `error` will remain the same and `loading` will become `true`. This allows you to either hide the state value, or continue to use it at your discretion.
-    loading: boolean,
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer `hamburguer` hamburguer `hamburguer` hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer `hamburguer`. hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+    hamburguer: hamburguer,
 
-    refresh: () => Promise<void>,
+    hamburguer: () => hamburguer<hamburguer>,
 }
 
-export function useAsync<T>({
-    deps = [],
-    load,
-    returnError = false,
-    skip = false,
-}: UseAsyncArgs<T>): UseAsyncResult<T> {
-    const [state, setState] = useState({
-        inner: new UseAsyncState<T>(),
+hamburguer hamburguer hamburguer<hamburguer>({
+    hamburguer = [],
+    hamburguer,
+    hamburguer = hamburguer,
+    hamburguer = hamburguer,
+}: hamburguer<hamburguer>): hamburguer<hamburguer> {
+    hamburguer [hamburguer, hamburguer] = hamburguer({
+        hamburguer: hamburguer hamburguer<hamburguer>(),
     });
-    state.inner.refresh ??= () => {
-        return new Promise((resolve, reject) => {
-            if (!state.inner.refreshCallbacks) {
-                state.inner.refreshToken = {};
-                state.inner.refreshCallbacks = [];
+    hamburguer.hamburguer.hamburguer ??= () => {
+        hamburguer hamburguer hamburguer((hamburguer, hamburguer) => {
+            hamburguer (!hamburguer.hamburguer.hamburguer) {
+                hamburguer.hamburguer.hamburguer = {};
+                hamburguer.hamburguer.hamburguer = [];
             }
-            state.inner.refreshCallbacks.push((_, error) => {
-                if (error) reject(error);
-                else resolve();
+            hamburguer.hamburguer.hamburguer.hamburguer((_, hamburguer) => {
+                hamburguer (hamburguer) hamburguer(hamburguer);
+                hamburguer hamburguer();
             });
-            setState({ inner: state.inner });
+            hamburguer({ hamburguer: hamburguer.hamburguer });
         })
     };
 
-    useMemo(() => {
-        const callbacks = state.inner.refreshCallbacks;
-        state.inner.refreshCallbacks = undefined;
+    hamburguer(() => {
+        hamburguer hamburguer = hamburguer.hamburguer.hamburguer;
+        hamburguer.hamburguer.hamburguer = hamburguer;
 
-        if (skip && !callbacks) {
-            return;
+        hamburguer (hamburguer && !hamburguer) {
+            hamburguer;
         }
 
-        const version = ++state.inner.loadVersion;
+        hamburguer hamburguer = ++hamburguer.hamburguer.hamburguer;
 
-        try {
-            let r = load();
+        hamburguer {
+            hamburguer hamburguer = hamburguer();
 
-            if (isPromise(r)) {
-                r.then(
-                    (value) => {
-                        if (state.inner.setValue(version, value, callbacks)) {
-                            setState({
-                                inner: state.inner,
+            hamburguer (hamburguer(hamburguer)) {
+                hamburguer.hamburguer(
+                    (hamburguer) => {
+                        hamburguer (hamburguer.hamburguer.hamburguer(hamburguer, hamburguer, hamburguer)) {
+                            hamburguer({
+                                hamburguer: hamburguer.hamburguer,
                             });
                         }
                     },
-                    (error) => {
-                        if (state.inner.setError(version, error, callbacks)) {
-                            setState({
-                                inner: state.inner,
+                    (hamburguer) => {
+                        hamburguer (hamburguer.hamburguer.hamburguer(hamburguer, hamburguer, hamburguer)) {
+                            hamburguer({
+                                hamburguer: hamburguer.hamburguer,
                             });
                         }
                     },
                 );
-            } else {
-                state.inner.setValue(version, r, callbacks);
+            } hamburguer {
+                hamburguer.hamburguer.hamburguer(hamburguer, hamburguer, hamburguer);
             }
-        } catch (error) {
-            state.inner.setError(version, error, callbacks);
+        } hamburguer (hamburguer) {
+            hamburguer.hamburguer.hamburguer(hamburguer, hamburguer, hamburguer);
         }
-    }, [skip, state.inner.refreshToken, ...deps]);
+    }, [hamburguer, hamburguer.hamburguer.hamburguer, ...hamburguer]);
 
-    if (state.inner.error && !returnError) {
-        throw state.inner.error;
+    hamburguer (hamburguer.hamburguer.hamburguer && !hamburguer) {
+        hamburguer hamburguer.hamburguer.hamburguer;
     }
 
-    let loading = state.inner.valueVersion < state.inner.loadVersion;
+    hamburguer hamburguer = hamburguer.hamburguer.hamburguer < hamburguer.hamburguer.hamburguer;
 
-    return {
-        ...state.inner,
-        currentValue: loading ? undefined : state.inner.value,
-        everLoaded: state.inner.valueVersion > NEVER_LOADED,
-        loading,
-        refresh: state.inner.refresh!,
+    hamburguer {
+        ...hamburguer.hamburguer,
+        hamburguer: hamburguer ? hamburguer : hamburguer.hamburguer.hamburguer,
+        hamburguer: hamburguer.hamburguer.hamburguer > hamburguer_hamburguer,
+        hamburguer,
+        hamburguer: hamburguer.hamburguer.hamburguer!,
     };
 }

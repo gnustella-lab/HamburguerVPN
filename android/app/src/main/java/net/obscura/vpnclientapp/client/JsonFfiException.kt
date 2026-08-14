@@ -1,8 +1,8 @@
-package net.obscura.vpnclientapp.client
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-import androidx.annotation.Keep
+hamburguer hamburguer.hamburguer.hamburguer
 
-// Instances of this class are only constructed from the Rust side, so without this annotation
-// release builds would strip out the class definition.
-@Keep
-data class JsonFfiException(val error: String?) : Exception(error ?: "other")
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer
+// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+@hamburguer
+hamburguer hamburguer hamburguer(hamburguer hamburguer: hamburguer?) : hamburguer(hamburguer ?: "hamburguer")

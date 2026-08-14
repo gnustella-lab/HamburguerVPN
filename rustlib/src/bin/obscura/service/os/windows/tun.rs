@@ -1,27 +1,27 @@
-use crate::service::os::PutIncomingPacketFn;
-use std::sync::Weak;
+hamburguer hamburguer::hamburguer::hamburguer::hamburguer;
+hamburguer hamburguer::hamburguer::hamburguer;
 
-pub struct Tun {}
+hamburguer hamburguer hamburguer {}
 
-pub struct TunWriter {}
+hamburguer hamburguer hamburguer {}
 
-impl Tun {
-    pub fn new() -> Self {
-        Tun {}
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer() -> hamburguer {
+        hamburguer {}
     }
-    pub fn writer(&self) -> TunWriter {
-        TunWriter {}
-    }
-}
-
-impl PutIncomingPacketFn for TunWriter {
-    fn call(&mut self, packet: &[u8]) {
-        tracing::info!("manager provided incoming packet: {}", packet.len());
+    hamburguer hamburguer hamburguer(&hamburguer) -> hamburguer {
+        hamburguer {}
     }
 }
 
-impl TunWriter {
-    pub const fn invalid() -> Self {
-        Self {}
+hamburguer hamburguer hamburguer hamburguer {
+    hamburguer hamburguer(&hamburguer hamburguer, hamburguer: &[hamburguer8]) {
+        hamburguer::hamburguer!("hamburguer hamburguer hamburguer hamburguer: {}", hamburguer.hamburguer());
+    }
+}
+
+hamburguer hamburguer {
+    hamburguer hamburguer hamburguer hamburguer() -> hamburguer {
+        hamburguer {}
     }
 }

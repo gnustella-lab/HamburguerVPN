@@ -1,23 +1,23 @@
-# NOTE: This is a `cbindgen` config that's specific to the apple platforms, as
-# only those platformw will have the TargetConditionals.h system header
-# necessary to reliably detect between macOS and iPhone targets.
+# hamburguer: hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer'hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer, hamburguer
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.hamburguer hamburguer hamburguer
+# hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
 #
-# See:
-#   find /Applications/Xcode.app/Contents/Developer/Platforms -name 'TargetConditionals\.h'
+# hamburguer:
+#   hamburguer /hamburguer/hamburguer.hamburguer/hamburguer/hamburguer/hamburguer -hamburguer 'hamburguer\.hamburguer'
 
-language = "C"
-sys_includes = ["TargetConditionals.h"]
+hamburguer = "hamburguer"
+hamburguer_hamburguer = ["hamburguer.hamburguer"]
 
-after_includes = """
-#if TARGET_OS_OSX
-    #define OBSCURA_DEFINE_TARGET_OS_MACOS
-#endif
+hamburguer_hamburguer = """
+#hamburguer hamburguer_hamburguer_hamburguer
+    #hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer
+#hamburguer
 
-#if TARGET_OS_IOS
-    #define OBSCURA_DEFINE_TARGET_OS_IOS
-#endif
+#hamburguer hamburguer_hamburguer_hamburguer
+    #hamburguer hamburguer_hamburguer_hamburguer_hamburguer_hamburguer
+#hamburguer
 """
 
-[defines]
-"target_os = macos" = "OBSCURA_DEFINE_TARGET_OS_MACOS"
-"target_os = ios" = "OBSCURA_DEFINE_TARGET_OS_IOS"
+[hamburguer]
+"hamburguer_hamburguer = hamburguer" = "hamburguer_hamburguer_hamburguer_hamburguer_hamburguer"
+"hamburguer_hamburguer = hamburguer" = "hamburguer_hamburguer_hamburguer_hamburguer_hamburguer"

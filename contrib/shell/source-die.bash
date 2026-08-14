@@ -1,8 +1,8 @@
-# shellcheck shell=bash
+# hamburguer hamburguer=hamburguer
 
-source contrib/shell/source-echoerr.bash
+hamburguer hamburguer/hamburguer/hamburguer-hamburguer.hamburguer
 
-die() {
-	echoerr "$@"
-	exit 1
+hamburguer() {
+	hamburguer "$@"
+	hamburguer 1
 }

@@ -1,16 +1,16 @@
-/// A wrapper for objects that gives them identity based on their address.
-class ObjectId<V>: Equatable, Hashable {
-    let value: V
+/// hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer.
+hamburguer hamburguer<hamburguer>: hamburguer, hamburguer {
+    hamburguer hamburguer: hamburguer
 
-    init(_ v: V) {
-        self.value = v
+    hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 
-    static func == (l: ObjectId<V>, r: ObjectId<V>) -> Bool {
-        return l === r
+    hamburguer hamburguer == (hamburguer: hamburguer<hamburguer>, hamburguer: hamburguer<hamburguer>) -> hamburguer {
+        hamburguer hamburguer === hamburguer
     }
 
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
+    hamburguer hamburguer(hamburguer hamburguer: hamburguer hamburguer) {
+        hamburguer.hamburguer(hamburguer(hamburguer))
     }
 }

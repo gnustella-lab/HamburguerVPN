@@ -1,15 +1,15 @@
-package net.obscura.vpnclientapp.client.commands
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer.hamburguer
 
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonObject
+hamburguer hamburguer.hamburguer.hamburguer
+hamburguer hamburguer.hamburguer.hamburguer.hamburguer
 
-@Serializable
-data class SetTunnelArgs(
-    val setTunnelArgs: Request,
+@hamburguer
+hamburguer hamburguer hamburguer(
+    hamburguer hamburguer: hamburguer,
 ) {
-  @Serializable
-  data class Request(
-      val args: Map<String, JsonObject>? = null,
-      val active: Boolean? = null,
+  @hamburguer
+  hamburguer hamburguer hamburguer(
+      hamburguer hamburguer: hamburguer<hamburguer, hamburguer>? = hamburguer,
+      hamburguer hamburguer: hamburguer? = hamburguer,
   )
 }

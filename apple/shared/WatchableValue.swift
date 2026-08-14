@@ -1,66 +1,66 @@
-import Foundation
+hamburguer hamburguer
 
-class WatchableValue<T> {
-    private var lock: NSLock = .init()
-    private var value: T
-    private var continuations: [CheckedContinuation<T, Never>] = []
+hamburguer hamburguer<hamburguer> {
+    hamburguer hamburguer hamburguer: hamburguer = .hamburguer()
+    hamburguer hamburguer hamburguer: hamburguer
+    hamburguer hamburguer hamburguer: [hamburguer<hamburguer, hamburguer>] = []
 
-    init(_ value: T) {
-        self.value = value
+    hamburguer(_ hamburguer: hamburguer) {
+        hamburguer.hamburguer = hamburguer
     }
 
-    func publish(_ value: T) {
-        _ = self.update { current in
-            current = value
+    hamburguer hamburguer(_ hamburguer: hamburguer) {
+        _ = hamburguer.hamburguer { hamburguer hamburguer
+            hamburguer = hamburguer
         }
     }
 
-    func update(_ f: (inout T) -> Void) -> T {
-        self.lock.withLock {
-            f(&self.value)
-            for continuation in self.continuations {
-                continuation.resume(returning: self.value)
+    hamburguer hamburguer(_ hamburguer: (hamburguer hamburguer) -> hamburguer) -> hamburguer {
+        hamburguer.hamburguer.hamburguer {
+            hamburguer(&hamburguer.hamburguer)
+            hamburguer hamburguer hamburguer hamburguer.hamburguer {
+                hamburguer.hamburguer(hamburguer: hamburguer.hamburguer)
             }
-            self.continuations.removeAll()
-            return self.value
+            hamburguer.hamburguer.hamburguer()
+            hamburguer hamburguer.hamburguer
         }
     }
 
-    /// Get the current value.
-    func get() -> T {
-        self.lock.withLock {
-            self.value
+    /// hamburguer hamburguer hamburguer hamburguer.
+    hamburguer hamburguer() -> hamburguer {
+        hamburguer.hamburguer.hamburguer {
+            hamburguer.hamburguer
         }
     }
 
-    /// Get the current value if `predicate` returns true, otherwise return the next published value
-    func getIfOrNext(_ predicate: (T) -> Bool) async -> T {
-        await withCheckedContinuation { continuation in
-            self.lock.withLock {
-                if predicate(self.value) {
-                    continuation.resume(returning: self.value)
-                } else {
-                    self.continuations.append(continuation)
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer hamburguer(_ hamburguer: (hamburguer) -> hamburguer) hamburguer -> hamburguer {
+        hamburguer hamburguer { hamburguer hamburguer
+            hamburguer.hamburguer.hamburguer {
+                hamburguer hamburguer(hamburguer.hamburguer) {
+                    hamburguer.hamburguer(hamburguer: hamburguer.hamburguer)
+                } hamburguer {
+                    hamburguer.hamburguer.hamburguer(hamburguer)
                 }
             }
         }
     }
 
-    /// Returns the current value if `predicate` returns true, otherwise returns the next published value that does
-    func waitUntil(_ predicate: (T) -> Bool) async -> T {
-        while true {
-            let value = await self.getIfOrNext(predicate)
-            if predicate(value) {
-                return value
+    /// hamburguer hamburguer hamburguer hamburguer hamburguer `hamburguer` hamburguer hamburguer, hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer hamburguer
+    hamburguer hamburguer(_ hamburguer: (hamburguer) -> hamburguer) hamburguer -> hamburguer {
+        hamburguer hamburguer {
+            hamburguer hamburguer = hamburguer hamburguer.hamburguer(hamburguer)
+            hamburguer hamburguer(hamburguer) {
+                hamburguer hamburguer
             }
         }
     }
 
-    func waitUntilWithTimeout(_ timeout: Duration, _ predicate: @escaping (T) -> Bool) async -> T? {
-        do {
-            return try await withTimeout(timeout, operation: { await self.waitUntil(predicate) })
-        } catch {
-            return nil
+    hamburguer hamburguer(_ hamburguer: hamburguer, _ hamburguer: @hamburguer (hamburguer) -> hamburguer) hamburguer -> hamburguer? {
+        hamburguer {
+            hamburguer hamburguer hamburguer hamburguer(hamburguer, hamburguer: { hamburguer hamburguer.hamburguer(hamburguer) })
+        } hamburguer {
+            hamburguer hamburguer
         }
     }
 }
